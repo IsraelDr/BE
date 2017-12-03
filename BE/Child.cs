@@ -8,7 +8,8 @@ namespace BE
 {
     public class Child
     {
-    protected uint ID { get; set; }
+    protected uint ID;
+    protected uint _ID { get ; set; }
     protected uint Mother_ID { get; set; }
     protected string name { get; set; }
     protected string Birthdate { get; set; }
