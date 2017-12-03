@@ -8,6 +8,19 @@ namespace BE
 {
     class Mother
     {
+        protected uint ID { get; set; }
+        protected string Lastname { get; set; }
+        protected string Firstname { get; set; }
+        protected uint Phonenumber { get; set; }
+        protected string Adress { get; set; }//(psikim)
+        protected string surrounding_adress { get; set; }
+        protected bool[] nanny_required { get; set; }
+        protected int[,] Daily_Nanny_required { get; set; }
+        protected string Comment { get; set; }
+        public override string ToString()
+        {
+            return "";
+        }
         /*
          * ID
          * Last name
