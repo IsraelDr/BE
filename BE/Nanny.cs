@@ -28,7 +28,11 @@ namespace BE
         protected bool Vacation_days { get; set; }// "Chinuch" or "tamat" { get; set; //Vacation days- "Chinuch" or "tamat"
         protected string Recommendations { get; set; }                                //Recommendations
         protected int Additional_Info { get; set; }                                   //Additional Info
-        protected string Tostring { get; set; }                                       //Tostring
+        
+        public override string ToString()
+        {
+            return this.ToStringProperty();
+        }
         protected int fideback { get; set; }                                          //
         Nanny() { }
     }
