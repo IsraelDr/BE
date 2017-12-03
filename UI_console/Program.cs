@@ -10,6 +10,7 @@ namespace UI_console
     {
         static void Main(string[] args)
         {
+            BE.Child nachum = new BE.Child();
         }
     }
 }

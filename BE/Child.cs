@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    class Child
+    public class Child
     {
-        uint ID { get; set; }
-        uint Mother_ID { get; set; }
-        string name { get; set; }
-        string Birthdate { get; set; }
-        bool SpecialNeeds { get; set; }//-yes or no
-        //Additional Info
-        //string Tostring() 
-      Child() { }
+    protected uint ID { get; set; }
+    protected uint Mother_ID { get; set; }
+    protected string name { get; set; }
+    protected string Birthdate { get; set; }
+    protected bool SpecialNeeds { get; set; }//-yes or no
+     //Additional Info
+     //string Tostring() 
+     public override string ToString() { return  ""; }
+     public Child() { }
 
     }
 }
