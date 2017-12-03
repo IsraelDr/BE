@@ -11,7 +11,7 @@ namespace UI_console
         static void Main(string[] args)
         {
             BE.Child n = new BE.Child();
-            n.
+            
         }
     }
 }

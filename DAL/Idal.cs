@@ -6,29 +6,31 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-     class Idal
-    {
-        protected void addNanny() { }
-         protected void deleteNanny() { }
-        protected void editNanny() { }
+   
+        interface Idal
+        {
+            void addNanny();
+            void deleteNanny();
+            void editNanny();
 
-        protected void addMother() { }
-        protected void deleteMother() { }
-        protected void editMother() { }
+            void addMother();
+            void deleteMother();
+            void editMother();
 
 
-        protected void addChild() { }
-        protected void deleteChild() { }
-        protected void editChild() { }
+            void addChild();
+            void deleteChild();
+            void editChild();
 
-        protected void addContract() { }
-        protected void deleteContract() { }
-        protected void editContract() { }
+            void addContract();
+            void deleteContract();
+            void editContract();
 
-        protected List<BE.Nanny> getNannyList() { List < BE.Nanny > n= new List<BE.Nanny>(); return n; }
-        protected List<BE.Mother> getMotherList() { List<BE.Mother> n = new List<BE.Mother>(); return n; }
-        protected List<BE.Child> getChildList() { List<BE.Child> n = new List<BE.Child>(); return n; }
-        protected List<BE.Contract> getContractList() { List<BE.Contract> n = new List<BE.Contract>(); return n; }
-        
-    }
+            List<BE.Nanny> getNannyList();
+            List<BE.Mother> getMotherList();
+            List<BE.Child> getChildList();
+            List<BE.Contract> getContractList();
+
+        }
+    
 }
