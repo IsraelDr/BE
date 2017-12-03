@@ -10,18 +10,7 @@ namespace BE
     {
     }
     
-    public class Child
-    {
-        /*
-         * ID
-         * Mother ID
-         * name
-         * Birthdate
-         * Special needs-yes or no
-         *    Additional Info
-          Tostring
-         */
-    }
+    
     public class Contract
     {
         /*
