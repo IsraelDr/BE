@@ -17,7 +17,10 @@ namespace BE
         protected bool[] nanny_required { get; set; }
         protected int[,] Daily_Nanny_required { get; set; }
         protected string Comment { get; set; }
-        //public string ToString(){ }
+        public override string ToString()
+        {
+            return "";
+        }
         /*
          * ID
          * Last name
