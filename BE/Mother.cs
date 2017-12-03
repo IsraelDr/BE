@@ -18,8 +18,8 @@ namespace BE
         protected int[,] Daily_Nanny_required { get; set; }
         protected string Comment { get; set; }
         public override string ToString()
-        {
-            return "";
+        {//using ToStringProperty() in Class Tools 
+            return this.ToStringProperty();
         }
         /*
          * ID

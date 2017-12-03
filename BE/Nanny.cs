@@ -30,7 +30,7 @@ namespace BE
         protected int Additional_Info { get; set; }                                   //Additional Info
         
         public override string ToString()
-        {
+        {//using ToStringProperty() in Class Tools 
             return this.ToStringProperty();
         }
         protected int fideback { get; set; }                                          //

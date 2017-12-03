@@ -14,10 +14,12 @@ namespace BE
     protected string name { get; set; }
     protected string Birthdate { get; set; }
     protected bool SpecialNeeds { get; set; }//-yes or no
-     //Additional Info
-     //string Tostring() 
-     public override string ToString() { return  ""; }
-     public Child() { }
+                                             //Additional Info
+    public override string ToString()
+    {//using ToStringProperty() in Class Tools 
+            return this.ToStringProperty();
+    }
+    public Child() { }
 
     }
 }
