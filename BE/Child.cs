@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    class Child
+    public class Child
     {
     protected uint ID { get; set; }
     protected uint Mother_ID { get; set; }
