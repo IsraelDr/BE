@@ -39,7 +39,7 @@ namespace BE
         protected string first_name { get; set; }
         protected int Birthdate { get; set; }
         protected int PhoneNumber { get; set; }
-        protected string address { get; set; }
+        protected string address { get; set; }//(st,city,cuntry)
         protected bool elevatorExists { get; set; }
         protected int Floor { get; set; }
         protected int experience { get; set; }
@@ -49,12 +49,13 @@ namespace BE
         protected bool Possible_Hourly_rate { get; set; }//Possible pay rate by Hour?
         protected int Hourly_rate { get; set; }//
         protected int Monthly_rate { get; set; }
-        protected int Working_days { get; set; }
-        protected int Daily_Working_hours { get; set; }// Daily_Working_hours(week)
+        protected bool[] Working_days { get; set; }
+        protected int[,] Daily_Working_hours { get; set; }// Daily_Working_hours(week)
         protected bool Vacation_days { get; set; }// "Chinuch" or "tamat" { get; set; }
         protected string Recommendations { get; set; }
         protected int Additional_Info { get; set; }
         protected string Tostring { get; set; }
-
+        protected int fideback { get; set; }
+        Nanny() { }
     }
 }
