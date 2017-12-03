@@ -8,17 +8,14 @@ namespace BE
 {
     class Child
     {
+        uint ID { get; set; }
+        uint Mother_ID { get; set; }
+        string name { get; set; }
+        string Birthdate { get; set; }
+        bool SpecialNeeds { get; set; }//-yes or no
+        //Additional Info
+        //string Tostring() 
+      Child() { }
 
-       
-            /*
-             * ID
-             * Mother ID
-             * name
-             * Birthdate
-             * Special needs-yes or no
-             *    Additional Info
-              Tostring
-             */
-        
     }
 }
