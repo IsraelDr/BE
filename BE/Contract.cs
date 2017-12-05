@@ -22,9 +22,5 @@ namespace BE
          * 
           Tostring
          */
-        public override string ToString()
-        {//using ToStringProperty() in Class Tools 
-            return this.ToStringProperty();
-        }
     }
 }
