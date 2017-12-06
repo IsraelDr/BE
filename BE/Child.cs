@@ -8,22 +8,18 @@ namespace BE
 {
     public class Child
     {
-        public uint _ID { get ; set; }
-        public uint Mother_ID { get; set; }
-        public string name { get; set; }
-        public string Birthdate { get; set; }
-        public bool SpecialNeeds { get; set; }//-yes or no
-            //Additional Info
-            //string Tostring() 
-        public override string ToString() { return  ""; }
-        public Child(uint _id, uint _mother_id,string _name,string _birthdate,bool _specialneeds)
-        {
-            _ID = _id;
-            Mother_ID = _mother_id;
-            name = _name;
-            Birthdate = _birthdate;
-            SpecialNeeds = _specialneeds;
-        }
+    protected uint ID;
+    protected uint _ID { get ; set; }
+    protected uint Mother_ID { get; set; }
+    protected string name { get; set; }
+    protected string Birthdate { get; set; }
+    protected bool SpecialNeeds { get; set; }//-yes or no
+                                             //Additional Info
+    public override string ToString()
+    {//using ToStringProperty() in Class Tools 
+            return this.ToStringProperty();
+    }
+    
 
     }
 }
