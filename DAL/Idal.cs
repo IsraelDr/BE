@@ -3,34 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BE;
 
 namespace DAL
 {
-   
-        interface Idal
+
+         public interface Idal
         {
-            void addNanny();
-            void deleteNanny();
-            void editNanny();
+        void AddNanny(Nanny nanny);
+        void RemoveNanny(int id);
+        void UpdateNanny(int id);
 
-            void addMother();
-            void deleteMother();
-            void editMother();
+        void AddMother(Mother mother);
+        void RemoveMother(int id);
+        void UpdateMother(int id);
 
 
-            void addChild();
-            void deleteChild();
-            void editChild();
+        void AddChild(Child child);
+        void RemoveChild(int id);
+        void UpdateChild(int id);
 
-            void addContract();
-            void deleteContract();
-            void editContract();
+        void AddContract(Contract contract);
+        void RemoveContract(int id);
+        void UpdateContract(int id);
 
-            List<BE.Nanny> getNannyList();
-            List<BE.Mother> getMotherList();
-            List<BE.Child> getChildList();
-            List<BE.Contract> getContractList();
-
-        }
+        List<BE.Nanny> getNannyList();
+        List<BE.Mother> getMotherList();
+        List<BE.Child> getChildList();
+        List<BE.Contract> getContractList();
+    }
     
 }
