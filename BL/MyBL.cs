@@ -8,14 +8,14 @@ using DAL;
 
 namespace BL
 {
-
     public class MyBL
     {
-        //Hello
+        static Dal_imp dal = new Dal_imp();
+        public void addChild(Child child)
+        {
+            dal.AddChild(child);//need to add logic
+        }       
     }
-    public void addChild(Child ch)
-    {
-        
-    }
+    
 
 }

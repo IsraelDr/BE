@@ -8,7 +8,7 @@ using BE;
 
 namespace DAL
 {
-    class Dal_imp
+    public class Dal_imp
     {
         public void AddNanny(Nanny nanny)
         {
