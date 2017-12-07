@@ -50,6 +50,10 @@
       <Project>{b11be523-8e45-456b-8ab6-ec8e4baf564c}</Project>
       <Name>BE</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DS\DS.csproj">
+      <Project>{77b99442-0ba6-46f7-8534-7207830af536}</Project>
+      <Name>DS</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

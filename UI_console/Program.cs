@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BE;
+using BL;
 
 namespace UI_console
 {
@@ -16,17 +18,25 @@ namespace UI_console
             input = int.Parse(Console.ReadLine());
             do
             {
-                switch (input)
+                try
                 {
-                    case 1:
-                        bl.addChild(new Child(1, 3, "Test", "12/05/1994", true));
-                        break;
-                    case 2:
-                        bl.addMother(new Mother());
-                        break;
-                    default:
-                        break;
-                };
+                    switch (input)
+                    {
+                        case 1:
+                            bl.addChild(new Child(1, 3, "Test", "12/05/1994", true));
+                            break;
+                        case 2:
+                            bl.addMother(new Mother());
+                            break;
+                        default:
+                            break;
+                    };
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Error");
+                    throw;
+                }
                 Console.WriteLine("Input any number: 0-exit,1-add child");
                 input = int.Parse(Console.ReadLine());
             } while (input != 0);

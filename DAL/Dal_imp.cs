@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DS;
 using BE;
-using DAL;
-using System.Reflection;
-using System.IO;
 
-namespace DS
+namespace DAL
 {
-    public  class Dal_imp 
+    class Dal_imp
     {
         public void AddNanny(Nanny nanny)
         {
@@ -18,7 +16,7 @@ namespace DS
             if (nann != null)
                 throw new Exception("Nanny with the same id already exists...");
             DataSource.NannyList.Add(nanny);
-                
+
         }
         public Nanny GetNanny(int id)
         {
@@ -31,30 +29,29 @@ namespace DS
             if (nann == null)
                 throw new Exception("Nanny with the same id not found...");
 
-           DataSource.NannyList.RemoveAll(n => n.ID == id);
+            DataSource.NannyList.RemoveAll(n => n.ID == id);
 
             DataSource.NannyList.Remove(nann);
         }
-    
-        public void UpdateNanny(int id){}
 
-        public void AddMother(Mother mother){}
-        public void RemoveMother(int id){}
-        public void UpdateMother(int id){}
+        public void UpdateNanny(int id) { }
+
+        public void AddMother(Mother mother) { }
+        public void RemoveMother(int id) { }
+        public void UpdateMother(int id) { }
 
 
-        public void AddChild(Child child){}
-        public void RemoveChild(int id){}
-        public void UpdateChild(int id){}
+        public void AddChild(Child child) { }
+        public void RemoveChild(int id) { }
+        public void UpdateChild(int id) { }
 
-        public void AddContract(Contract contract){}
-        public void RemoveContract(int id){}
-        public void UpdateContract(int id){}
+        public void AddContract(Contract contract) { }
+        public void RemoveContract(int id) { }
+        public void UpdateContract(int id) { }
 
-        public List<BE.Nanny> getNannyList(){ return DataSource.NannyList; }
+        public List<BE.Nanny> getNannyList() { return DataSource.NannyList; }
         public List<BE.Mother> getMotherList() { return DataSource.MotherList; }
         public List<BE.Child> getChildList() { return DataSource.ChildList; }
         public List<BE.Contract> getContractList() { return DataSource.ContractList; }
-
     }
 }
