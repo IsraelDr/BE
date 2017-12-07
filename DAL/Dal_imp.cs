@@ -17,7 +17,7 @@ namespace DAL
             DataSource.NannyList.Add(nanny);
 
         }
-        public Nanny GetNanny(uint id)
+        public Nanny GetNanny(int id)
         {
             return DataSource.NannyList.FirstOrDefault(n => n.ID == id);
         }
@@ -35,12 +35,32 @@ namespace DAL
 
         public void UpdateNanny(int id) { }
 
-        public void AddMother(Mother mother) { }
+        public void AddMother(Mother mother)
+        {
+            Mother mom = GetMother(mother.ID);
+            if (mom != null)
+                throw new Exception("Mother with the same id already exists...");
+            DataSource.MotherList.Add(mother);
+        }
+        public Mother GetMother(int id)
+        {
+            return DataSource.MotherList.FirstOrDefault(n => n.ID == id);
+        }
         public void RemoveMother(int id) { }
         public void UpdateMother(int id) { }
 
 
-        public void AddChild(Child child) { }
+        public void AddChild(Child child)
+        {
+            Child chil = GetChild(child._ID);
+            if (chil != null)
+                throw new Exception("Child with the same id already exists...");
+            DataSource.ChildList.Add(child);
+        }
+        public Child GetChild(int id)
+        {
+            return DataSource.ChildList.FirstOrDefault(n => n._ID == id);
+        }
         public void RemoveChild(int id) { }
         public void UpdateChild(int id) { }
 

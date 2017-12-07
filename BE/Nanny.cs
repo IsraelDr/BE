@@ -56,6 +56,5 @@ namespace BE
             return this.ToStringProperty();
         }
         protected int fideback { get; set; }                                          //
-        Nanny() { }
     }
 }
