@@ -8,15 +8,15 @@ namespace BE
 {
     public class Mother
     {
-        protected uint ID { get; set; }
-        protected string Lastname { get; set; }
-        protected string Firstname { get; set; }
-        protected uint Phonenumber { get; set; }
-        protected string Adress { get; set; }//(psikim)
-        protected string surrounding_adress { get; set; }
-        protected bool[] nanny_required { get; set; }
-        protected int[,] Daily_Nanny_required { get; set; }
-        protected string Comment { get; set; }
+        public uint ID { get; set; }
+        public string Lastname { get; set; }
+        public string Firstname { get; set; }
+        public uint Phonenumber { get; set; }
+        public string Adress { get; set; }//(psikim)
+        public string surrounding_adress { get; set; }
+        public bool[] nanny_required { get; set; }
+        public int[,] Daily_Nanny_required { get; set; }
+        public string Comment { get; set; }
         public override string ToString()
         {//using ToStringProperty() in Class Tools 
             return this.ToStringProperty();

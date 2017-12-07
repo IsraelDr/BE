@@ -8,12 +8,12 @@ namespace BE
 {
     public class Child
     {
-    protected uint ID;
-    protected uint _ID { get ; set; }
-    protected uint Mother_ID { get; set; }
-    protected string name { get; set; }
-    protected string Birthdate { get; set; }
-    protected bool SpecialNeeds { get; set; }//-yes or no
+    public uint ID;
+    public uint _ID { get ; set; }
+    public uint Mother_ID { get; set; }
+    public string name { get; set; }
+    public string Birthdate { get; set; }
+    public bool SpecialNeeds { get; set; }//-yes or no
                                              //Additional Info
     public override string ToString()
     {//using ToStringProperty() in Class Tools 
