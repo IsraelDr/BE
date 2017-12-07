@@ -17,12 +17,12 @@ namespace DAL
             DataSource.NannyList.Add(nanny);
 
         }
-        public Nanny GetNanny(int id)
+        public Nanny GetNanny(uint id)
         {
             return DataSource.NannyList.FirstOrDefault(n => n.ID == id);
         }
 
-        public void RemoveNanny(int id)
+        public void RemoveNanny(uint id)
         {
             Nanny nann = GetNanny(id);
             if (nann == null)

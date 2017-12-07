@@ -29,7 +29,7 @@ namespace UI_console
                             bl.addMother(new Mother(1,"first","last",0798512565,"adress","surrounding",true,new int[,] { { 1,3}, { 2,4} },"comment"));
                             break;
                         case 3:
-                            bl.add(new Mother(1, "first", "last", 0798512565, "adress", "surrounding", true, new int[,] { { 1, 3 }, { 2, 4 } }, "comment"));
+                            bl.AddNanny(new Nanny(1, "first", "last", 0798512565, "adress", "surrounding", true, new int[,] { { 1, 3 }, { 2, 4 } }, "comment"));
                             break;
                         default:
                             break;
