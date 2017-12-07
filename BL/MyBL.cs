@@ -14,7 +14,12 @@ namespace BL
         public void addChild(Child child)
         {
             dal.AddChild(child);//need to add logic
-        }       
+        }
+        public void addMother(Mother mother)
+        {
+            dal.AddMother(mother);//need to add logic
+        }
+
     }
     
 

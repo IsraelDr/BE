@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    
     public class MyDAL
     {
     }

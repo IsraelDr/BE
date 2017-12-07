@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BE;
-
 namespace DAL
 {
-
-         public interface Idal
-        {
+    public interface Idal
+    {
         void AddNanny(Nanny nanny);
         void RemoveNanny(int id);
         void UpdateNanny(int id);
@@ -32,5 +30,4 @@ namespace DAL
         List<BE.Child> getChildList();
         List<BE.Contract> getContractList();
     }
-    
 }
