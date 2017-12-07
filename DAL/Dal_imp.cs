@@ -22,7 +22,7 @@ namespace DAL
             return DataSource.NannyList.FirstOrDefault(n => n.ID == id);
         }
 
-        public void RemoveNanny(uint id)
+        public void RemoveNanny(int id)
         {
             Nanny nann = GetNanny(id);
             if (nann == null)

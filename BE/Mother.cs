@@ -8,10 +8,10 @@ namespace BE
 {
     public class Mother
     {
-        public uint ID { get; set; }
+        public int ID { get; set; }
         public string Lastname { get; set; }
         public string Firstname { get; set; }
-        public uint Phonenumber { get; set; }
+        public int Phonenumber { get; set; }
         public string Adress { get; set; }//(psikim)
         public string surrounding_adress { get; set; }
         public bool[] nanny_required { get; set; }
@@ -19,10 +19,10 @@ namespace BE
         public string Comment { get; set; }
         public Mother(params object[] parameters)
         {
-            ID = (uint)parameters[0];
+            ID = (int)(parameters[0]);
             Lastname = (string)parameters[1];
             Firstname = (string)parameters[2];
-            Phonenumber = (uint)parameters[3];
+            Phonenumber = (int)parameters[3];
             Adress = (string)parameters[4];
             surrounding_adress = (string)parameters[5];
             nanny_required = (bool[])parameters[6];

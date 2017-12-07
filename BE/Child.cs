@@ -8,8 +8,8 @@ namespace BE
 {
     public class Child
     {
-        public uint _ID { get; set; }
-        public uint Mother_ID { get; set; }
+        public int _ID { get; set; }
+        public int Mother_ID { get; set; }
         public string name { get; set; }
         public string Birthdate { get; set; }
         public bool SpecialNeeds { get; set; }//-yes or no
@@ -18,7 +18,7 @@ namespace BE
         {//using ToStringProperty() in Class Tools 
             return this.ToStringProperty();
         }
-        public Child(uint _id,uint mother_id,string _name,string _birthdate,bool specialneeds)
+        public Child(int _id,int mother_id,string _name,string _birthdate,bool specialneeds)
         {
             _ID = _id;
             Mother_ID = mother_id;
