@@ -55,7 +55,7 @@
       <Name>BE</Name>
     </ProjectReference>
     <ProjectReference Include="..\BL\BL.csproj">
-      <Project>{72c6875c-9178-4dc6-89c2-c601f0b71c2c}</Project>
+      <Project>{c9678f5d-8bb0-440a-ba41-92f4a34cf54f}</Project>
       <Name>BL</Name>
     </ProjectReference>
   </ItemGroup>
