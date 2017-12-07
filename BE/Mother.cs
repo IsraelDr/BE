@@ -17,6 +17,18 @@ namespace BE
         public bool[] nanny_required { get; set; }
         public int[,] Daily_Nanny_required { get; set; }
         public string Comment { get; set; }
+        public Mother(params object[] parameters)
+        {
+            ID = (uint)parameters[0];
+            Lastname = (string)parameters[1];
+            Firstname = (string)parameters[2];
+            Phonenumber = (uint)parameters[3];
+            Adress = (string)parameters[4];
+            surrounding_adress = (string)parameters[5];
+            nanny_required = (bool[])parameters[6];
+            Daily_Nanny_required = (int[,])parameters[7];
+            Comment = (string)parameters[8];
+        }
         public override string ToString()
         {//using ToStringProperty() in Class Tools 
             return this.ToStringProperty();
