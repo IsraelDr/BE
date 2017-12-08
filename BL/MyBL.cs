@@ -14,31 +14,26 @@ namespace BL
 
         public void AddChild(Child child)
         {
-            throw new NotImplementedException();
-        }
-
-        public void addChild(Child child)
-        {
             dal.AddChild(child);//need to add logic
         }
 
         public void AddContract(Contract contract)
         {
-            throw new NotImplementedException();
-        }
-
-        public void addMother(Mother mother)
-        {
-            dal.AddMother(mother);//need to add logic
+            DateTime temporary = DateTime.Now.AddMonths(-3);
+            dal.AddContract(contract);
         }
 
         public void AddMother(Mother mother)
         {
-            throw new NotImplementedException();
+            dal.AddMother(mother);//need to add logic
         }
 
         public void AddNanny(Nanny nanny)
         {
+            DateTime temporary = nanny.Birthdate;
+            temporary= temporary.AddYears(18);
+            if(temporary.CompareTo(DateTime.Now)>0)
+                throw new Exception("The nanny must be over 18 years old");
             dal.AddNanny(nanny);//need to add logic
         }
 
@@ -90,6 +85,8 @@ namespace BL
         public void UpdateContract(int id)
         {
             throw new NotImplementedException();
+            //if (dal.GetChild(contract.Child_ID).Birthdate.CompareTo(temporary) > 0)
+            //    throw new Exception("Cannot sign contract for child under 3 month!!");//cant sign contract if younger then 3 month
         }
 
         public void UpdateMother(int id)

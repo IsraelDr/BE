@@ -11,7 +11,7 @@ namespace BE
         public int ID { get; set; }                                                //ID
         public string last_name { get; set; }                                      //last name
         public string first_name { get; set; }                                     //first name
-        public string Birthdate { get; set; }                                         //Birthdate
+        public DateTime Birthdate { get; set; }                                         //Birthdate
         public int PhoneNumber { get; set; }                                       //Phone number
         public string address { get; set; }//(st,city,cuntry)                      //Address(St, City, Country)
         public bool elevatorExists { get; set; }                                   //Elevator exists?
@@ -33,7 +33,7 @@ namespace BE
             ID = (int)parameters[0];
             last_name = (string)parameters[1];
             first_name = (string)parameters[2];
-            Birthdate = (string)parameters[3];
+            Birthdate = (DateTime)parameters[3];
             PhoneNumber = (int)parameters[4];
             address = (string)parameters[5];
             elevatorExists = (bool)parameters[6];

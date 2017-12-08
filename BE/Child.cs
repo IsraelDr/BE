@@ -11,14 +11,14 @@ namespace BE
         public int _ID { get; set; }
         public int Mother_ID { get; set; }
         public string name { get; set; }
-        public string Birthdate { get; set; }
+        public DateTime Birthdate { get; set; }
         public bool SpecialNeeds { get; set; }//-yes or no
                                               //Additional Info
         public override string ToString()
         {//using ToStringProperty() in Class Tools 
             return this.ToStringProperty();
         }
-        public Child(int _id,int mother_id,string _name,string _birthdate,bool specialneeds)
+        public Child(int _id,int mother_id,string _name,DateTime _birthdate,bool specialneeds)
         {
             _ID = _id;
             Mother_ID = mother_id;

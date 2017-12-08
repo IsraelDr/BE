@@ -64,7 +64,17 @@ namespace DAL
         public void RemoveChild(int id) { }
         public void UpdateChild(int id) { }
 
-        public void AddContract(Contract contract) { }
+        public void AddContract(Contract contract)
+        {
+            Contract contr = GetContract(contract.Contract_number);
+            if (contr != null)
+                throw new Exception("Contract with the same id already exists...");
+            DataSource.ContractList.Add(contract);
+        }
+        public Contract GetContract(int id)
+        {
+            return DataSource.ContractList.FirstOrDefault(n => n.Contract_number == id);
+        }
         public void RemoveContract(int id) { }
         public void UpdateContract(int id) { }
 

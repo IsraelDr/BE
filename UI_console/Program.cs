@@ -14,22 +14,25 @@ namespace UI_console
         static void Main(string[] args)
         {
             int input;
-            Console.WriteLine("Input any number: 0-exit,1-add child,2-addMother,3-addNanny");
+            Console.WriteLine("Input any number: 0-exit,1-add child,2-addMother,3-addNanny,4-addCOntract");
             input = int.Parse(Console.ReadLine());
-            do
+            while (input != 0)
             {
                 try
                 {
                     switch (input)
                     {
                         case 1:
-                            bl.addChild(new Child(1, 3, "Test", "12/05/1994", true));
+                            bl.AddChild(new Child(1, 3, "Test", new DateTime(1994, 05, 12), true));
                             break;
                         case 2:
-                            bl.addMother(new Mother(1, "first", "last", 0798512565, "adress", "surrounding",new bool[]{ true, false },new int[,] { { 1,3}, { 2,4} },"comment"));
+                            bl.AddMother(new Mother(1, "first", "last", 0798512565, "adress", "surrounding", new bool[] { true, false }, new int[,] { { 1, 3 }, { 2, 4 } }, "comment"));
                             break;
                         case 3:
-                            bl.AddNanny(new Nanny(1, "first", "last", "12/05/1994", 0798516858, "adress", true, 6, 5, 12, 2, 6, false, 200, 300, new bool[] {true, false},new int[,]{ {1,2 }, { 2,5} },false,"recommend",15));
+                            bl.AddNanny(new Nanny(1, "first", "last", new DateTime(1994, 05, 17), 0798516858, "adress", true, 6, 5, 12, 2, 6, false, 200, 300, new bool[] { true, false }, new int[,] { { 1, 2 }, { 2, 5 } }, false, "recommend", 15));
+                            break;
+                        case 4:
+                            bl.AddContract(new Contract(1,4, true, false,17,485,true, new DateTime(1994, 05, 17), new DateTime(2000, 05, 17)));
                             break;
                         default:
                             break;
@@ -40,9 +43,9 @@ namespace UI_console
                     Console.WriteLine("Error");
                     Console.WriteLine(e.Message);
                 }
-                Console.WriteLine("Input any number: 0-exit,1-add child");
+                Console.WriteLine("Input any number: 0-exit,1-add child,2-addMother,3-addNanny,4-addCOntract");
                 input = int.Parse(Console.ReadLine());
-            } while (input != 0);
+            }
 
         }
     }
