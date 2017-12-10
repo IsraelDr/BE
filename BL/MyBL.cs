@@ -20,6 +20,8 @@ namespace BL
         public void AddContract(Contract contract)
         {
             DateTime temporary = DateTime.Now.AddMonths(-3);
+            if (dal.GetChild(contract.Child_ID).Birthdate.CompareTo(temporary) > 0&&contract.contract_signed)
+                throw new Exception("Cannot sign contract for child under 3 month!!");//cant sign contract if younger then 3 month
             dal.AddContract(contract);
         }
 
@@ -59,22 +61,22 @@ namespace BL
 
         public void RemoveChild(int id)
         {
-            throw new NotImplementedException();
+            dal.RemoveChild(id);
         }
 
         public void RemoveContract(int id)
         {
-            throw new NotImplementedException();
+            dal.RemoveContract(id);
         }
 
         public void RemoveMother(int id)
         {
-            throw new NotImplementedException();
+            dal.RemoveMother(id);
         }
 
         public void RemoveNanny(int id)
         {
-            throw new NotImplementedException();
+            dal.RemoveNanny(id);
         }
 
         public void UpdateChild(int id)

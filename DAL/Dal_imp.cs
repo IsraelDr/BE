@@ -46,7 +46,16 @@ namespace DAL
         {
             return DataSource.MotherList.FirstOrDefault(n => n.ID == id);
         }
-        public void RemoveMother(int id) { }
+        public void RemoveMother(int id)
+        {
+            Mother moth = GetMother(id);
+            if (moth == null)
+                throw new Exception("Mother with the same id not found...");
+
+            DataSource.MotherList.RemoveAll(n => n.ID == id);
+
+            DataSource.MotherList.Remove(moth);
+        }
         public void UpdateMother(int id) { }
 
 
@@ -61,7 +70,16 @@ namespace DAL
         {
             return DataSource.ChildList.FirstOrDefault(n => n._ID == id);
         }
-        public void RemoveChild(int id) { }
+        public void RemoveChild(int id)
+        {
+            Child chil = GetChild(id);
+            if (chil == null)
+                throw new Exception("Child with the same id not found...");
+
+            DataSource.ChildList.RemoveAll(n => n._ID == id);
+
+            DataSource.ChildList.Remove(chil);
+        }
         public void UpdateChild(int id) { }
 
         public void AddContract(Contract contract)
@@ -75,7 +93,16 @@ namespace DAL
         {
             return DataSource.ContractList.FirstOrDefault(n => n.Contract_number == id);
         }
-        public void RemoveContract(int id) { }
+        public void RemoveContract(int id)
+        {
+            Contract contr = GetContract(id);
+            if (contr == null)
+                throw new Exception("Contract with the same id not found...");
+
+            DataSource.ContractList.RemoveAll(n => n.Contract_number == id);
+
+            DataSource.ContractList.Remove(contr);
+        }
         public void UpdateContract(int id) { }
 
         public List<BE.Nanny> getNannyList() { return DataSource.NannyList; }
