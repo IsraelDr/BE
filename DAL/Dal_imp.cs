@@ -87,6 +87,8 @@ namespace DAL
             Contract contr = GetContract(contract.Contract_number);
             if (contr != null)
                 throw new Exception("Contract with the same id already exists...");
+             
+               
             DataSource.ContractList.Add(contract);
         }
         public Contract GetContract(int id)

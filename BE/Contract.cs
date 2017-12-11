@@ -22,7 +22,7 @@ namespace BE
         public bool introduce_meeting { get; set; }
         public bool contract_signed { get; set; }
         public int Hourly_payment { get; set; }
-        public int Monthly_payment { get; set; }
+        public double Monthly_payment { get; set; }
         public bool Monthly_or_Hourly { get; set; }//monthly is true
         public DateTime startdate { get; set; }
         public DateTime enddate { get; set; }

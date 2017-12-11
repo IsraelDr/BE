@@ -19,10 +19,26 @@ namespace BL
 
         public void AddContract(Contract contract)
         {
-            DateTime temporary = DateTime.Now.AddMonths(-3);
-            if (dal.GetChild(contract.Child_ID).Birthdate.CompareTo(temporary) > 0&&contract.contract_signed)
-                throw new Exception("Cannot sign contract for child under 3 month!!");//cant sign contract if younger then 3 month
-            dal.AddContract(contract);
+           // DateTime temporary = DateTime.Now.AddMonths(-3);
+            //if (dal.GetChild(contract.Child_ID).Birthdate.CompareTo(temporary) > 0&&contract.contract_signed)
+             //   throw new Exception("Cannot sign contract for child under 3 month!!");//cant sign contract if younger then 3 month
+            
+           
+                bool flag = false; 
+            if(dal.getContractList().Count>0)
+                foreach (Contract c  in dal.getContractList())//check brathers for 2% discount
+            	{            
+                            if(dal.GetMother(contract.Child_ID)==dal.GetMother(c.Child_ID))
+                            {
+                             flag=true;
+                             break;
+                            }
+            	}   
+                if (flag)
+                {
+                contract.Monthly_payment =contract.Monthly_payment*0.98 ;
+                }   
+               dal.AddContract(contract);
         }
 
         public void AddMother(Mother mother)
