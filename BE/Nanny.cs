@@ -28,6 +28,7 @@ namespace BE
         public bool Vacation_days { get; set; }// "Chinuch" or "tamat" { get; set; //Vacation days- "Chinuch" or "tamat"
         public string Recommendations { get; set; }                                //Recommendations
         public int Additional_Info { get; set; }                                   //Additional Info
+        public int kidsCount { get; set; }
         public Nanny(params object[] parameters)
         {
             ID = (int)parameters[0];
@@ -50,7 +51,8 @@ namespace BE
             Vacation_days = (bool)parameters[17];
             Recommendations = (string)parameters[18];
             Additional_Info = (int)parameters[19];
-        }
+            kidsCount = (int)parameters[20];
+    }
         public override string ToString()
         {//using ToStringProperty() in Class Tools 
             return this.ToStringProperty();
