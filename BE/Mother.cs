@@ -17,6 +17,7 @@ namespace BE
         public bool[] nanny_required { get; set; }
         public int[,] Daily_Nanny_required { get; set; }
         public string Comment { get; set; }
+        //public Paymentmethode{}
         public Mother(params object[] parameters)
         {
             ID = (int)(parameters[0]);

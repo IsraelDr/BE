@@ -20,8 +20,8 @@ namespace BL
         public void AddContract(Contract contract)
         {
            // DateTime temporary = DateTime.Now.AddMonths(-3);
-            //if (dal.GetChild(contract.Child_ID).Birthdate.CompareTo(temporary) > 0&&contract.contract_signed)
-             //   throw new Exception("Cannot sign contract for child under 3 month!!");//cant sign contract if younger then 3 month
+           //if (dal.GetChild(contract.Child_ID).Birthdate.CompareTo(temporary) > 0&&contract.contract_signed)
+           //   throw new Exception("Cannot sign contract for child under 3 month!!");//cant sign contract if younger then 3 month
             
            
                 bool flag = false; 
