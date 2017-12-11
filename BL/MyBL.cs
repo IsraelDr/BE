@@ -23,9 +23,21 @@ namespace BL
            //if (dal.GetChild(contract.Child_ID).Birthdate.CompareTo(temporary) > 0&&contract.contract_signed)
            //   throw new Exception("Cannot sign contract for child under 3 month!!");//cant sign contract if younger then 3 month
             
-           
+                if(dal.GetMother(contract.Child_ID).Paymentmethode==MyEnum.Paymentmethode.houerly)
+                 {
+                   contract.Paymentmethode = MyEnum.Paymentmethode.houerly;
+                   double sum = 0;
+                   for (int i = 0; i < 6; i++)
+                   {
+
+
+                    sum += contract.Hourly_payment * (dal.GetNanny(contract.Nanny_ID).Daily_Working_hours[i, 0] - dal.GetNanny(contract.Nanny_ID).Daily_Working_hours[i, 1]);
+                   }
+                   contract.salary = sum;
+                }
+
                 bool flag = false; 
-            if(dal.getContractList().Count>0)
+                if(dal.getContractList().Count>0)
                 foreach (Contract c  in dal.getContractList())//check brathers for 2% discount
             	{            
                             if(dal.GetMother(contract.Child_ID)==dal.GetMother(c.Child_ID))

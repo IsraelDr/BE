@@ -17,7 +17,7 @@ namespace BE
         public bool[] nanny_required { get; set; }
         public int[,] Daily_Nanny_required { get; set; }
         public string Comment { get; set; }
-        //public Paymentmethode{}
+        public MyEnum.Paymentmethode Paymentmethode {get; set;}
         public Mother(params object[] parameters)
         {
             ID = (int)(parameters[0]);
@@ -29,6 +29,7 @@ namespace BE
             nanny_required = (bool[])parameters[6];
             Daily_Nanny_required = (int[,])parameters[7];
             Comment = (string)parameters[8];
+            Paymentmethode = (MyEnum.Paymentmethode)parameters[9];
         }
         public override string ToString()
         {//using ToStringProperty() in Class Tools 
