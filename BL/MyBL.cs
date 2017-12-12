@@ -50,9 +50,11 @@ namespace BL
                 if (flag)
                 {
                 contract.Monthly_payment =contract.Monthly_payment*0.98 ;
-                }  
-                if(dal.GetNanny(contract.Nanny_ID).Max_number_kids== dal.GetNanny(contract.Nanny_ID).kidsCount)
+                }
+
+            if (dal.GetNanny(contract.Nanny_ID).Max_number_kids <= dal.GetNanny(contract.Nanny_ID).kidsCount)
                 throw new Exception("Cannot sign contract nanny over the maximum kids !!!");//cant sign contract over the maximum kids lavel
+            else dal.GetNanny(contract.Nanny_ID).kidsCount++;//if contract sign so Nanny.kidsCount++ 
             dal.AddContract(contract);
         }
 
