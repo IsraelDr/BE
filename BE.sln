@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{C9678F5D-8BB0-440A-BA41-92F4A34CF54F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI_WPF_TEMPORARY", "UI_WPF_TEMPORARY\UI_WPF_TEMPORARY.csproj", "{2D4875B0-0B4C-494A-98CB-5B2EA34828B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{C9678F5D-8BB0-440A-BA41-92F4A34CF54F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9678F5D-8BB0-440A-BA41-92F4A34CF54F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9678F5D-8BB0-440A-BA41-92F4A34CF54F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D4875B0-0B4C-494A-98CB-5B2EA34828B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D4875B0-0B4C-494A-98CB-5B2EA34828B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D4875B0-0B4C-494A-98CB-5B2EA34828B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D4875B0-0B4C-494A-98CB-5B2EA34828B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

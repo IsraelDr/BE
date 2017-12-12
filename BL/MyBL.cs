@@ -74,22 +74,22 @@ namespace BL
 
         public List<Child> getChildList()
         {
-            throw new NotImplementedException();
+            return dal.getChildList();
         }
 
         public List<Contract> getContractList()
         {
-            throw new NotImplementedException();
+            return dal.getContractList();
         }
 
         public List<Mother> getMotherList()
         {
-            throw new NotImplementedException();
+            return dal.getMotherList();
         }
 
         public List<Nanny> getNannyList()
         {
-            throw new NotImplementedException();
+            return dal.getNannyList();
         }
 
         public void RemoveChild(int id)
