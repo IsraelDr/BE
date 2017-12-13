@@ -8,11 +8,17 @@ namespace BE
 {
     public class Child
     {
-        public int _ID { get; set; }
-        public int Mother_ID { get; set; }
-        public string name { get; set; }
-        public DateTime Birthdate { get; set; }
-        public bool SpecialNeeds { get; set; }//-yes or no
+        private int ID_;
+        private int Mother_ID_;
+        private string name_;
+        private DateTime Birthdate_;
+        private bool SpecialNeeds_;
+
+        public int ID            { get { return ID_; } set { ID_=value; } }
+        public int Mother_ID      { get { return Mother_ID_; } set { Mother_ID_=value; } }
+        public string name        { get { return name_; } set { name_=value; } }
+        public DateTime Birthdate { get { return Birthdate_; } set { Birthdate_=value; } }
+        public bool SpecialNeeds  { get { return SpecialNeeds_; } set { SpecialNeeds_=value; } }//-yes or no
                                               //Additional Info
         public override string ToString()
         {//using ToStringProperty() in Class Tools 
