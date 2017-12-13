@@ -10,7 +10,7 @@ namespace UI_console
 {
     class Program
     {
-        static MyBL bl = new MyBL();
+        static BL_imp bl = new BL_imp();
         static void Main(string[] args)
         {
             int input;

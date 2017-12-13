@@ -14,7 +14,7 @@ namespace BE
         private DateTime Birthdate_;
         private bool SpecialNeeds_;
 
-        public int ID            { get { return ID_; } set { ID_=value; } }
+        public int ID             { get { return ID_; } set { ID_=value; } }
         public int Mother_ID      { get { return Mother_ID_; } set { Mother_ID_=value; } }
         public string name        { get { return name_; } set { name_=value; } }
         public DateTime Birthdate { get { return Birthdate_; } set { Birthdate_=value; } }
