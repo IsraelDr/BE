@@ -62,6 +62,23 @@ namespace UI_WPF_TEMPORARY
         void openwindow(object sender, EventArgs e)
         {
             this.Show();
+            listofAll.ItemsSource = null;
+            switch (Choosen)
+            {
+                case 0:
+                    
+                    listofAll.ItemsSource = bl.getMotherList();
+                    break;
+                case 1:
+                    listofAll.ItemsSource = bl.getNannyList();
+                    break;
+                case 2:
+                    listofAll.ItemsSource = bl.getChildList();
+                    break;
+                case 3:
+                    listofAll.ItemsSource = bl.getContractList();
+                    break;
+            }
         }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
@@ -98,5 +115,33 @@ namespace UI_WPF_TEMPORARY
 
             }
 }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                switch (Choosen)
+                {
+                    case 0:
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        Child chil=bl.GetChildById(((Child)listofAll.SelectedItem).ID);
+                        UpdateWindow a = new UpdateWindow(Choosen,chil);
+                        a.Show();
+                        this.Hide();
+                        a.Closed += new EventHandler(openwindow);
+                        break;
+                    case 3:
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No line was choosen", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
+        }
     }
 }

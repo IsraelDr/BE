@@ -11,27 +11,27 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using BE;
 namespace UI_WPF_TEMPORARY
 {
     /// <summary>
-    /// Interaction logic for AddWindow.xaml
+    /// Interaction logic for UpdateWindow.xaml
     /// </summary>
-    public partial class AddWindow : Window
+    public partial class UpdateWindow : Window
     {
-        public AddWindow(int choosen)
+        public UpdateWindow(int choice,object a)
         {
             InitializeComponent();
-            switch (choosen)
+            switch (choice)
             {
                 case 0:
                     //listofAll.ItemsSource = bl.getMotherList();
                     break;
                 case 1:
-                    AddGrid.Children.Add(new Nannydetails());
+                    //Updategrid.Children.Add(new Nannydetails(a));
                     break;
                 case 2:
-                    AddGrid.Children.Add(new ChildDetails(this));
+                    Updategrid.Children.Add(new ChildDetails(this,(Child)a));
                     break;
                 case 3:
                     //listofAll.ItemsSource = bl.getContractList();

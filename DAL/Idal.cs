@@ -19,7 +19,7 @@ namespace DAL
 
         void AddChild(Child child);
         void RemoveChild(int id);
-        void UpdateChild(int id);
+        void UpdateChild(Child chil);
 
         void AddContract(Contract contract);
         void RemoveContract(int id);

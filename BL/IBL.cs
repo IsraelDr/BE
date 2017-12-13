@@ -19,7 +19,8 @@ namespace BL
 
         void AddChild(Child child);
         void RemoveChild(int id);
-        void UpdateChild(int id);
+        void UpdateChild(Child chil);
+        Child GetChildById(int id);
 
         void AddContract(Contract contract);
         void RemoveContract(int id);
