@@ -3,15 +3,82 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GoogleMapsApi.Entities.Common;
+using GoogleMapsApi.Entities.Directions.Request;
+using GoogleMapsApi.Entities.Directions.Response;
+using GoogleMapsApi.Entities.Elevation.Request;
+using GoogleMapsApi.Entities.Geocoding.Request;
+using GoogleMapsApi.Entities.Geocoding.Response;
+using GoogleMapsApi.StaticMaps;
+using GoogleMapsApi.StaticMaps.Entities;
+
 using BE;
 using DAL;
 
 namespace BL
 {
-    public class MyBL:IBL
+    public class BL_imp : IBL
     {
         static Dal_imp dal = new Dal_imp();
 
+        //public static int calculateDistance(Address source, Address destination)
+        //{
+        //    var drivingDirectionRequest = new DirectionsRequest
+        //    {
+        //        TravelMode = TravelMode.Walking,
+        //        Origin = source.address,
+        //        //Destination = "kfar ivri ,10, Jerusalem,israel"
+        //        Destination = destination.address,
+        //    };
+        //    DirectionsResponse drivingDirections = GoogleMapsApi.Entities.Directions.Response(drivingDirectionRequest);
+        //    Route route = drivingDirections.Routes.First();
+        //    Leg leg = route.Legs.First();
+        //    return leg.Distance.Value;
+
+        //}
+        public int PrioritiesMach(Mother m,Nanny n)
+        {
+            int mcheCount = 0, daysCheck=0,startHoursCheck = 0, endHoursCheck = 0; 
+            for (int i = 0; i < 6; i++)
+                {
+                if (n.Working_days[i] == true && m.nanny_required[i] == true)
+                    daysCheck++;//6 checks
+                if (n.Daily_Working_hours[i, 0] <= m.daily_Nanny_required[i, 0])
+                    startHoursCheck++;//6 checks
+                if (n.Daily_Working_hours[i, 1] >= m.daily_Nanny_required[i, 1])
+                    endHoursCheck++;//6 checks
+            }
+            mcheCount = daysCheck + startHoursCheck + endHoursCheck;//18 is match
+            return mcheCount;
+        }
+        public bool isPrioritiesMach(Mother m, Nanny n)
+        { if (PrioritiesMach(m, n) == 18)//there if 18 cheacs "days Check" + "start Hours Check" , "end Hours Check"
+                return true;
+            else
+                return false;
+        }
+        public List<Nanny> motherPriorities(Mother mother)// return list of Nnany's that fit to the mother Priorities 
+        {
+
+            List<Nanny> matcheList = new List<Nanny>();
+            foreach (Nanny nanny in dal.getNannyList())
+            {
+                if (isPrioritiesMach(mother, nanny))
+                    matcheList.Add(nanny);
+            }
+            if (matcheList.Count == 0)//retur 5 closes mother Priorities 
+            {
+                List<Nanny> temp = new List<Nanny>();
+                temp = dal.getNannyList();
+                //sorting by Priorities Mache from 1 to 18 scale
+                temp.Sort((x, y) => PrioritiesMach(mother, x).CompareTo(PrioritiesMach(mother,y)));
+                for (int i=temp.Count-1 ; i > (temp.Count - 1)-5; i--)
+                {
+                    matcheList.Add(temp[i]);
+                }
+            }
+            return matcheList;
+        }
         public void AddChild(Child child)
         {
             dal.AddChild(child);//need to add logic
@@ -26,14 +93,12 @@ namespace BL
             if (dal.GetMother(contract.Child_ID).Paymentmethode == MyEnum.Paymentmethode.houerly)
             {
                 contract.Paymentmethode = MyEnum.Paymentmethode.houerly;
-                double sum = 0;
-                for (int i = 0; i < 6; i++)
+                double week_payment = 0;
+                for (int i = 0; i < 6; i++)//6 days hours X Hourly_payment= week 
                 {
-
-
-                    sum += contract.Hourly_payment * 4 * (dal.GetNanny(contract.Nanny_ID).Daily_Working_hours[i, 0] - dal.GetNanny(contract.Nanny_ID).Daily_Working_hours[i, 1]);
+                    week_payment += contract.Hourly_payment  * (dal.GetNanny(contract.Nanny_ID).Daily_Working_hours[i, 0] - dal.GetNanny(contract.Nanny_ID).Daily_Working_hours[i, 1]);
                 }
-                contract.salary = sum;
+                contract.salary = week_payment * 4;//week hours X 4 =month salary
             }
             else contract.salary = contract.Monthly_payment;
 

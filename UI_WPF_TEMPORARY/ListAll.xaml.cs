@@ -20,7 +20,7 @@ namespace UI_WPF_TEMPORARY
     /// </summary>
     public partial class ListAll : Window
     {
-        static MyBL bl = new MyBL();
+        static BL_imp bl = new BL_imp();
         static int Choosen;
         public ListAll(int choosen)
         {

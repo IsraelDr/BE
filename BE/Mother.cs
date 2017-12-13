@@ -27,7 +27,7 @@ namespace BE
         public string Adress                        { get { return Adress_; } set { Adress_ = value; } }//(psikim)
         public string surrounding_adress            { get { return surrounding_adress_; } set { surrounding_adress_ = value; } }
         public bool[] nanny_required                { get { return nanny_required_; } set { nanny_required_ = value; } }
-        public int[,] Daily_Nanny_required          { get { return Daily_Nanny_required_; } set { Daily_Nanny_required_ = value; } }
+        public int[,] daily_Nanny_required          { get { return Daily_Nanny_required_; } set { Daily_Nanny_required_ = value; } }
         public string Comment                       { get { return Comment_; } set { Comment_ = value; } }
         public MyEnum.Paymentmethode Paymentmethode { get { return Paymentmethode_; } set { Paymentmethode_ = value; } }
         public Mother(params object[] parameters)
@@ -39,7 +39,7 @@ namespace BE
             Adress = (string)parameters[4];
             surrounding_adress = (string)parameters[5];
             nanny_required = (bool[])parameters[6];
-            Daily_Nanny_required = (int[,])parameters[7];
+            daily_Nanny_required = (int[,])parameters[7];
             Comment = (string)parameters[8];
             Paymentmethode = (MyEnum.Paymentmethode)parameters[9];
         }

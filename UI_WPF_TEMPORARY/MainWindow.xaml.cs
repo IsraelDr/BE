@@ -22,7 +22,7 @@ namespace UI_WPF_TEMPORARY
     /// </summary>
     public partial class MainWindow : Window
     {
-        static MyBL bl = new MyBL();
+        static BL_imp bl = new BL_imp();
         public MainWindow()
         {
             try
