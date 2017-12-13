@@ -43,9 +43,9 @@ namespace BL
                 {
                 if (n.Working_days[i] == true && m.nanny_required[i] == true)
                     daysCheck++;//6 checks
-                if (n.Daily_Working_hours[i, 0] <= m.daily_Nanny_required[i, 0])
+                if (n.Daily_Working_hours[i, 0].TotalHours <= m.daily_Nanny_required[i, 0])
                     startHoursCheck++;//6 checks
-                if (n.Daily_Working_hours[i, 1] >= m.daily_Nanny_required[i, 1])
+                if (n.Daily_Working_hours[i, 1].TotalHours >= m.daily_Nanny_required[i, 1])
                     endHoursCheck++;//6 checks
             }
             mcheCount = daysCheck + startHoursCheck + endHoursCheck;//18 is match
@@ -87,6 +87,10 @@ namespace BL
         {
             return dal.GetChild(id);
         }
+        public Nanny GetNannyById(int id)
+        {
+            return dal.GetNanny(id);
+        }
         public void AddContract(Contract contract)
         {
                DateTime temporary = DateTime.Now.AddMonths(-3);
@@ -99,7 +103,7 @@ namespace BL
                 double week_payment = 0;
                 for (int i = 0; i < 6; i++)//6 days hours X Hourly_payment= week 
                 {
-                    week_payment += contract.Hourly_payment  * (dal.GetNanny(contract.Nanny_ID).Daily_Working_hours[i, 0] - dal.GetNanny(contract.Nanny_ID).Daily_Working_hours[i, 1]);
+                    week_payment += contract.Hourly_payment  * (dal.GetNanny(contract.Nanny_ID).Daily_Working_hours[i, 0].TotalHours - dal.GetNanny(contract.Nanny_ID).Daily_Working_hours[i, 1].TotalHours);
                 }
                 contract.salary = week_payment * 4;//week hours X 4 =month salary
             }
@@ -197,9 +201,13 @@ namespace BL
             throw new NotImplementedException();
         }
 
-        public void UpdateNanny(int id)
+        public void UpdateNanny(Nanny nanny)
         {
-            throw new NotImplementedException();
+            DateTime temporary = nanny.Birthdate;
+            temporary = temporary.AddYears(18);
+            if (temporary.CompareTo(DateTime.Now) > 0)
+                throw new Exception("The nanny must be over 18 years old");
+            dal.UpdateNanny(nanny);
         }
     }
     
