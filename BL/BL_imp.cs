@@ -36,7 +36,7 @@ namespace BL
         //    return leg.Distance.Value;
 
         //}
-        public int PrioritiesMach(Mother m,Nanny n)
+        public int PrioritiesMach(Mother m,Nanny  n)
         {
             int mcheCount = 0, daysCheck=0,startHoursCheck = 0, endHoursCheck = 0; 
             for (int i = 0; i < 6; i++)
