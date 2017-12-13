@@ -26,7 +26,7 @@ namespace BE
         }
         public Child(int _id,int mother_id,string _name,DateTime _birthdate,bool specialneeds)
         {
-            _ID = _id;
+            ID = _id;
             Mother_ID = mother_id;
             name = _name;
             Birthdate = _birthdate;

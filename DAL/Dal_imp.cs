@@ -61,14 +61,14 @@ namespace DAL
 
         public void AddChild(Child child)
         {
-            Child chil = GetChild(child._ID);
+            Child chil = GetChild(child.ID);
             if (chil != null)
                 throw new Exception("Child with the same id already exists...");
             DataSource.ChildList.Add(child);
         }
         public Child GetChild(int id)
         {
-            return DataSource.ChildList.FirstOrDefault(n => n._ID == id);
+            return DataSource.ChildList.FirstOrDefault(n => n.ID == id);
         }
         public void RemoveChild(int id)
         {
@@ -76,7 +76,7 @@ namespace DAL
             if (chil == null)
                 throw new Exception("Child with the same id not found...");
 
-            DataSource.ChildList.RemoveAll(n => n._ID == id);
+            DataSource.ChildList.RemoveAll(n => n.ID == id);
 
             DataSource.ChildList.Remove(chil);
         }

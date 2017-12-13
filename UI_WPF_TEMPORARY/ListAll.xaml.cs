@@ -81,7 +81,7 @@ namespace UI_WPF_TEMPORARY
                         listofAll.ItemsSource = bl.getNannyList();
                         break;
                     case 2:
-                        bl.RemoveChild(((Child)listofAll.SelectedItem)._ID);
+                        bl.RemoveChild(((Child)listofAll.SelectedItem).ID);
                         listofAll.ItemsSource = null;
                         listofAll.ItemsSource = bl.getChildList();
                         break;
