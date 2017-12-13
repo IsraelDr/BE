@@ -19,7 +19,7 @@
             </Grid.RowDefinitions>
             <Button x:Name="Addbutton" Content="ADD" Width="100" Height="30" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Addbutton_Click"  />
             <Button x:Name="RemoveButton" Content="REMOVE"  Grid.Row="1"  Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Click="RemoveButton_Click" />
-            <Button Content="UPDATE" Grid.Row="2" Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Button Content="UPDATE" Grid.Row="2" Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="270" VerticalAlignment="Top" Width="722" Grid.ColumnSpan="2">
             <DataGrid x:Name="listofAll" Margin="0,0,0,10"/>

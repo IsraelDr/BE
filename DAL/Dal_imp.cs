@@ -80,7 +80,12 @@ namespace DAL
 
             DataSource.ChildList.Remove(chil);
         }
-        public void UpdateChild(int id) { }
+        public void UpdateChild(Child chil)
+        {
+            DataSource.ChildList.RemoveAll(n => n.ID == chil.ID);
+            DataSource.ChildList.Add(chil);
+
+        }
 
         public void AddContract(Contract contract)
         {

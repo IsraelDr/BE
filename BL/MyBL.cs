@@ -16,7 +16,10 @@ namespace BL
         {
             dal.AddChild(child);//need to add logic
         }
-
+        public Child GetChildById(int id)
+        {
+            return dal.GetChild(id);
+        }
         public void AddContract(Contract contract)
         {
                DateTime temporary = DateTime.Now.AddMonths(-3);
@@ -112,9 +115,9 @@ namespace BL
             dal.RemoveNanny(id);
         }
 
-        public void UpdateChild(int id)
+        public void UpdateChild(Child chil)
         {
-            throw new NotImplementedException();
+            dal.UpdateChild(chil);
         }
 
         public void UpdateContract(int id)
