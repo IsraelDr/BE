@@ -120,15 +120,21 @@ namespace UI_WPF_TEMPORARY
         {
             try
             {
+                UpdateWindow a;
                 switch (Choosen)
                 {
                     case 0:
                         break;
                     case 1:
+                        Nanny nanny = bl.GetNannyById(((Nanny)listofAll.SelectedItem).ID);
+                        a = new UpdateWindow(Choosen, nanny);
+                        a.Show();
+                        this.Hide();
+                        a.Closed += new EventHandler(openwindow);
                         break;
                     case 2:
                         Child chil=bl.GetChildById(((Child)listofAll.SelectedItem).ID);
-                        UpdateWindow a = new UpdateWindow(Choosen,chil);
+                        a = new UpdateWindow(Choosen,chil);
                         a.Show();
                         this.Hide();
                         a.Closed += new EventHandler(openwindow);

@@ -20,6 +20,10 @@ namespace BL
         {
             return dal.GetChild(id);
         }
+        public Nanny GetNannyById(int id)
+        {
+            return dal.GetNanny(id);
+        }
         public void AddContract(Contract contract)
         {
                DateTime temporary = DateTime.Now.AddMonths(-3);
@@ -34,7 +38,7 @@ namespace BL
                 {
 
 
-                    sum += contract.Hourly_payment * 4 * (dal.GetNanny(contract.Nanny_ID).Daily_Working_hours[i, 0] - dal.GetNanny(contract.Nanny_ID).Daily_Working_hours[i, 1]);
+                    sum += contract.Hourly_payment * 4 * (dal.GetNanny(contract.Nanny_ID).Daily_Working_hours[i, 0].TotalHours - dal.GetNanny(contract.Nanny_ID).Daily_Working_hours[i, 1].TotalHours);
                 }
                 contract.salary = sum;
             }
@@ -132,9 +136,13 @@ namespace BL
             throw new NotImplementedException();
         }
 
-        public void UpdateNanny(int id)
+        public void UpdateNanny(Nanny nanny)
         {
-            throw new NotImplementedException();
+            DateTime temporary = nanny.Birthdate;
+            temporary = temporary.AddYears(18);
+            if (temporary.CompareTo(DateTime.Now) > 0)
+                throw new Exception("The nanny must be over 18 years old");
+            dal.UpdateNanny(nanny);//need to add logic
         }
     }
     

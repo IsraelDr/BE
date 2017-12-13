@@ -33,7 +33,11 @@ namespace DAL
             DataSource.NannyList.Remove(nann);
         }
 
-        public void UpdateNanny(int id) { }
+        public void UpdateNanny(Nanny nanny)
+        {
+            DataSource.NannyList.RemoveAll(n => n.ID == nanny.ID);
+            DataSource.NannyList.Add(nanny);
+        }
 
         public void AddMother(Mother mother)
         {

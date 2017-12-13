@@ -10,7 +10,8 @@ namespace BL
     {
         void AddNanny(Nanny nanny);
         void RemoveNanny(int id);
-        void UpdateNanny(int id);
+        void UpdateNanny(Nanny nanny);
+        Nanny GetNannyById(int id);
 
         void AddMother(Mother mother);
         void RemoveMother(int id);

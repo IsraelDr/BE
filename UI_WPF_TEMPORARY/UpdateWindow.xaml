@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UI_WPF_TEMPORARY"
         mc:Ignorable="d"
-        Title="UpdateWindow" Height="383.333" Width="437.838">
+        Title="UpdateWindow" Height="956.742" Width="755.957">
     <Grid x:Name="Updategrid">
 
     </Grid>

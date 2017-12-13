@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UI_WPF_TEMPORARY"
         mc:Ignorable="d"
-        Title="AddWindow" Height="509.695" Width="532.926">
+        Title="AddWindow" Height="247990.291" Width="544.054">
     <Grid x:Name="AddGrid">
 
     </Grid>

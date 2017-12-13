@@ -28,7 +28,7 @@ namespace UI_WPF_TEMPORARY
                     //listofAll.ItemsSource = bl.getMotherList();
                     break;
                 case 1:
-                    AddGrid.Children.Add(new Nannydetails());
+                    AddGrid.Children.Add(new Nannydetails(this));
                     break;
                 case 2:
                     AddGrid.Children.Add(new ChildDetails(this));

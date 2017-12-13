@@ -24,7 +24,7 @@ namespace BE
         private int Hourly_rate_;//                                     //Hourly rate
         private int Monthly_rate_;                                     //Monthly rate
         private bool[] Working_days_;                                  //Working days
-        private int[,] Daily_Working_hours_;// Daily_Working_hours(week)//Daily Working hours(week)
+        private TimeSpan[,] Daily_Working_hours_;// Daily_Working_hours(week)//Daily Working hours(week)
         private bool Vacation_days_;// "Chinuch" or "tamat" { get; set; //Vacation days- "Chinuch" or "tamat"
         private string Recommendations_;                               //Recommendations
         private int Additional_Info_;                                  //Additional Info
@@ -48,7 +48,7 @@ namespace BE
         public int Hourly_rate           { get { return Hourly_rate_; } set { Hourly_rate_ = value; } }//                                     //Hourly rate
         public int Monthly_rate          { get { return Monthly_rate_; } set { Monthly_rate_ = value; } }                                      //Monthly rate
         public bool[] Working_days       { get { return Working_days_; } set { Working_days_ = value; } }                                   //Working days
-        public int[,] Daily_Working_hours{ get { return Daily_Working_hours_; } set { Daily_Working_hours_ = value; } }// Daily_Working_hours(week)//Daily Working hours(week)
+        public TimeSpan[,] Daily_Working_hours{ get { return Daily_Working_hours_; } set { Daily_Working_hours_ = value; } }// Daily_Working_hours(week)//Daily Working hours(week)
         public bool Vacation_days        { get { return Vacation_days_; } set { Vacation_days_ = value; } }// "Chinuch" or "tamat" { get; set; //Vacation days- "Chinuch" or "tamat"
         public string Recommendations    { get { return Recommendations_; } set { Recommendations_ = value; } }                                //Recommendations
         public int Additional_Info       { get { return Additional_Info_; } set { Additional_Info_ = value; } }                                   //Additional Info
@@ -56,27 +56,27 @@ namespace BE
         public int fideback              { get { return fideback_; } set { fideback_ = value; } }
         public Nanny(params object[] parameters)
         {
-            ID = (int)parameters[0];
+            ID = int.Parse(parameters[0].ToString());
             last_name = (string)parameters[1];
             first_name = (string)parameters[2];
-            Birthdate = (DateTime)parameters[3];
-            PhoneNumber = (int)parameters[4];
+            Birthdate = Convert.ToDateTime(parameters[3]);
+            PhoneNumber = int.Parse(parameters[4].ToString());
             address = (string)parameters[5];
             elevatorExists = (bool)parameters[6];
-            Floor = (int)parameters[7];
-            experience = (int)parameters[8];
-            Max_number_kids = (int)parameters[9];
-            Min_age = (int)parameters[10];
-            Max_age = (int)parameters[11];
+            Floor = int.Parse(parameters[7].ToString());
+            experience = int.Parse(parameters[8].ToString());
+            Max_number_kids = int.Parse(parameters[9].ToString());
+            Min_age = int.Parse(parameters[10].ToString());
+            Max_age = int.Parse(parameters[11].ToString());
             Possible_Hourly_rate = (bool)parameters[12];
-            Hourly_rate = (int)parameters[13];
-            Monthly_rate = (int)parameters[14];
+            Hourly_rate = int.Parse(parameters[13].ToString());
+            Monthly_rate = int.Parse(parameters[14].ToString());
             Working_days = (bool[])parameters[15];
-            Daily_Working_hours = (int[,])parameters[16];
+            Daily_Working_hours = (TimeSpan[,])parameters[16];
             Vacation_days = (bool)parameters[17];
             Recommendations = (string)parameters[18];
-            Additional_Info = (int)parameters[19];
-            kidsCount = (int)parameters[20];
+            Additional_Info = int.Parse(parameters[19].ToString());
+            kidsCount = int.Parse(parameters[20].ToString());
     }
         public override string ToString()
         {//using ToStringProperty() in Class Tools 
