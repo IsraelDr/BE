@@ -3,39 +3,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using GoogleMapsApi.Entities.Common;
-//using GoogleMapsApi.Entities.Directions.Request;
-//using GoogleMapsApi.Entities.Directions.Response;
-//using GoogleMapsApi.Entities.Elevation.Request;
-//using GoogleMapsApi.Entities.Geocoding.Request;
-//using GoogleMapsApi.Entities.Geocoding.Response;
-//using GoogleMapsApi.StaticMaps;
-//using GoogleMapsApi.StaticMaps.Entities;
+using Google.Api.Maps.Service;
+using GoogleMapsApi.Entities.Common;
+using GoogleMapsApi.Entities.Directions.Request;
+using GoogleMapsApi.Entities.Directions.Response;
+using GoogleMapsApi.Entities.Elevation.Request;
+using GoogleMapsApi.Entities.Geocoding.Request;
+using GoogleMapsApi.Entities.Geocoding.Response;
+using GoogleMapsApi.StaticMaps;
+using GoogleMapsApi.StaticMaps.Entities;
 
 using BE;
 using DAL;
+using GoogleMapsApi;
 
 namespace BL
 {
     public class BL_imp : IBL
     {
         static Dal_imp dal = new Dal_imp();
+        /**********new******/
+        public static int calculateDistance(Address source, Address destination)
+        {
+            var drivingDirectionRequest = new DirectionsRequest
+            {
+                TravelMode = TravelMode.Walking,
+                Origin = source.address,
+                //Destination = "kfar ivri ,10, Jerusalem,israel"
+                Destination = destination.address,
+            };
+            DirectionsResponse drivingDirections = GoogleMaps.Directions.Query(drivingDirectionRequest);
+            Route route = drivingDirections.Routes.First();
+            Leg leg = route.Legs.First();
+            return leg.Distance.Value;
 
-        //public static int calculateDistance(Address source, Address destination)
-        //{
-        //    var drivingDirectionRequest = new DirectionsRequest
-        //    {
-        //        TravelMode = TravelMode.Walking,
-        //        Origin = source.address,
-        //        //Destination = "kfar ivri ,10, Jerusalem,israel"
-        //        Destination = destination.address,
-        //    };
-        //    DirectionsResponse drivingDirections = GoogleMapsApi.Entities.Directions.Response(drivingDirectionRequest);
-        //    Route route = drivingDirections.Routes.First();
-        //    Leg leg = route.Legs.First();
-        //    return leg.Distance.Value;
-
-        //}
+        }
+        /**********new******/
         public int PrioritiesMach(Mother m,Nanny  n)
         {
             int mcheCount = 0, daysCheck=0,startHoursCheck = 0, endHoursCheck = 0; 
@@ -51,12 +54,14 @@ namespace BL
             mcheCount = daysCheck + startHoursCheck + endHoursCheck;//18 is match
             return mcheCount;
         }
+        /**********new******/
         public bool isPrioritiesMach(Mother m, Nanny n)
         { if (PrioritiesMach(m, n) == 18)//there if 18 cheacs "days Check" + "start Hours Check" , "end Hours Check"
                 return true;
             else
                 return false;
         }
+        /**********new******/
         public List<Nanny> motherPriorities(Mother mother)// return list of Nnany's that fit to the mother Priorities 
         {
 
