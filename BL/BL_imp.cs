@@ -23,14 +23,14 @@ namespace BL
     {
         static Dal_imp dal = new Dal_imp();
         /**********new******/
-        public static int calculateDistance(Address source, Address destination)
+        public static int calculateDistance(string source, string destination)
         {
             var drivingDirectionRequest = new DirectionsRequest
             {
                 TravelMode = TravelMode.Walking,
-                Origin = source.address,
+                Origin = source,
                 //Destination = "kfar ivri ,10, Jerusalem,israel"
-                Destination = destination.address,
+                Destination = destination,
             };
             DirectionsResponse drivingDirections = GoogleMaps.Directions.Query(drivingDirectionRequest);
             Route route = drivingDirections.Routes.First();
@@ -84,6 +84,23 @@ namespace BL
             }
             return matcheList;
         }
+        /**********new******/ //return the Nanny list that the close to mother
+        public List<Nanny> closeNannyList(Mother mom,string source,int radius  )
+        {
+            if (source == null)
+                source = mom.Adress;
+            List<Nanny> closesNannyList = new List<Nanny>();
+            List<Nanny> temp = new List<Nanny>();
+            temp = dal.getNannyList();
+            temp.Sort((x, y) => calculateDistance(mom.Adress, x.address).CompareTo(calculateDistance(mom.Adress, y.address)));
+            foreach (Nanny n in temp)
+            {
+                if (calculateDistance(mom.Adress, n.address) <= radius)
+                    closesNannyList.Add(n);
+            }
+            return closesNannyList;
+        }
+        /**********new******/
         public void AddChild(Child child)
         {
             dal.AddChild(child);//need to add logic
@@ -138,7 +155,24 @@ namespace BL
             else dal.GetNanny(contract.Nanny_ID).kidsCount++;//if contract sign so Nanny.kidsCount++ 
             dal.AddContract(contract);
         }
-
+        /**********new******/
+        public List<Child> childWithOutNunnyList()//return list of all children with out Nanny
+        {
+            List<Child> children = new List<Child>();
+            foreach (Child kide in dal.getChildList())  
+            { bool flag = true;
+                foreach (Contract c in dal.getContractList())
+                {
+                    if (c.Child_ID == kide.ID)
+                        flag = false;
+                }
+                if (flag)
+                    children.Add(kide);
+            }
+            if (children == null)
+                throw new Exception("To all childeren thre is Nanny!");
+            return children;
+        }
         public void AddMother(Mother mother)
         {
             dal.AddMother(mother);//need to add logic
