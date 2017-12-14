@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 //using GoogleMapsApi.StaticMaps;
 //using GoogleMapsApi.StaticMaps.Entities;
 
-using BE;/
+using BE;//
 using DAL;
 
 namespace BL
