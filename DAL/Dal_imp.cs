@@ -60,7 +60,11 @@ namespace DAL
 
             DataSource.MotherList.Remove(moth);
         }
-        public void UpdateMother(int id) { }
+        public void UpdateMother(Mother mother)
+        {
+            DataSource.MotherList.RemoveAll(n => n.ID == mother.ID);
+            DataSource.MotherList.Add(mother);
+        }
 
 
         public void AddChild(Child child)

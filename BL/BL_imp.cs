@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GoogleMapsApi.Entities.Common;
-using GoogleMapsApi.Entities.Directions.Request;
-using GoogleMapsApi.Entities.Directions.Response;
-using GoogleMapsApi.Entities.Elevation.Request;
-using GoogleMapsApi.Entities.Geocoding.Request;
-using GoogleMapsApi.Entities.Geocoding.Response;
-using GoogleMapsApi.StaticMaps;
-using GoogleMapsApi.StaticMaps.Entities;
+//using GoogleMapsApi.Entities.Common;
+//using GoogleMapsApi.Entities.Directions.Request;
+//using GoogleMapsApi.Entities.Directions.Response;
+//using GoogleMapsApi.Entities.Elevation.Request;
+//using GoogleMapsApi.Entities.Geocoding.Request;
+//using GoogleMapsApi.Entities.Geocoding.Response;
+//using GoogleMapsApi.StaticMaps;
+//using GoogleMapsApi.StaticMaps.Entities;
 
 using BE;
 using DAL;
@@ -43,9 +43,9 @@ namespace BL
                 {
                 if (n.Working_days[i] == true && m.nanny_required[i] == true)
                     daysCheck++;//6 checks
-                if (n.Daily_Working_hours[i, 0].TotalHours <= m.daily_Nanny_required[i, 0])
+                if (n.Daily_Working_hours[i, 0].TotalHours <= m.daily_Nanny_required[i, 0].TotalHours)
                     startHoursCheck++;//6 checks
-                if (n.Daily_Working_hours[i, 1].TotalHours >= m.daily_Nanny_required[i, 1])
+                if (n.Daily_Working_hours[i, 1].TotalHours >= m.daily_Nanny_required[i, 1].TotalHours)
                     endHoursCheck++;//6 checks
             }
             mcheCount = daysCheck + startHoursCheck + endHoursCheck;//18 is match
@@ -90,6 +90,10 @@ namespace BL
         public Nanny GetNannyById(int id)
         {
             return dal.GetNanny(id);
+        }
+        public Mother GetMotherById(int id)
+        {
+            return dal.GetMother(id);
         }
         public void AddContract(Contract contract)
         {
@@ -196,9 +200,9 @@ namespace BL
             //    throw new Exception("Cannot sign contract for child under 3 month!!");//cant sign contract if younger then 3 month
         }
 
-        public void UpdateMother(int id)
+        public void UpdateMother(Mother mother)
         {
-            throw new NotImplementedException();
+            dal.UpdateMother(mother);
         }
 
         public void UpdateNanny(Nanny nanny)

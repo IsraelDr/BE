@@ -15,7 +15,8 @@ namespace BL
 
         void AddMother(Mother mother);
         void RemoveMother(int id);
-        void UpdateMother(int id);
+        void UpdateMother(Mother mother);
+        Mother GetMotherById(int id);
 
 
         void AddChild(Child child);

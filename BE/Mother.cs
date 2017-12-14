@@ -15,7 +15,7 @@ namespace BE
         private string Adress_;//(psikim)
         private string surrounding_adress_;
         private bool[] nanny_required_;
-        private int[,] Daily_Nanny_required_;
+        private TimeSpan[,] Daily_Nanny_required_;
         private string Comment_;
         private MyEnum.Paymentmethode Paymentmethode_;
         
@@ -27,19 +27,19 @@ namespace BE
         public string Adress                        { get { return Adress_; } set { Adress_ = value; } }//(psikim)
         public string surrounding_adress            { get { return surrounding_adress_; } set { surrounding_adress_ = value; } }
         public bool[] nanny_required                { get { return nanny_required_; } set { nanny_required_ = value; } }
-        public int[,] daily_Nanny_required          { get { return Daily_Nanny_required_; } set { Daily_Nanny_required_ = value; } }
+        public TimeSpan[,] daily_Nanny_required          { get { return Daily_Nanny_required_; } set { Daily_Nanny_required_ = value; } }
         public string Comment                       { get { return Comment_; } set { Comment_ = value; } }
         public MyEnum.Paymentmethode Paymentmethode { get { return Paymentmethode_; } set { Paymentmethode_ = value; } }
         public Mother(params object[] parameters)
         {
-            ID = (int)(parameters[0]);
+            ID = int.Parse(parameters[0].ToString());
             Lastname = (string)parameters[1];
             Firstname = (string)parameters[2];
-            Phonenumber = (int)parameters[3];
+            Phonenumber = int.Parse(parameters[3].ToString());
             Adress = (string)parameters[4];
             surrounding_adress = (string)parameters[5];
             nanny_required = (bool[])parameters[6];
-            daily_Nanny_required = (int[,])parameters[7];
+            daily_Nanny_required = (TimeSpan[,])parameters[7];
             Comment = (string)parameters[8];
             Paymentmethode = (MyEnum.Paymentmethode)parameters[9];
         }

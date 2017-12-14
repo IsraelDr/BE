@@ -22,7 +22,7 @@ namespace UI_WPF_TEMPORARY
     public partial class Nannydetails : UserControl
     {
         public Window fr;
-        public static MyBL bl = new MyBL();
+        public static BL_imp bl = new BL_imp();
         public bool isUpdate = false;
         public Nannydetails(Window f,Nanny nanny=null)
         {
@@ -54,7 +54,7 @@ namespace UI_WPF_TEMPORARY
                 new_Thursday.IsChecked = nanny.Working_days[4];
                 new_Friday.IsChecked = nanny.Working_days[5];
                 new_Saturday.IsChecked = nanny.Working_days[6];
-                new_Sunday_start.Time = new RoyT.TimePicker.DigitalTime(nanny.Daily_Working_hours[0, 0].Hours, nanny.Daily_Working_hours[0, 0].Minutes);   
+                new_Sunday_start.Time = new RoyT.TimePicker.DigitalTime(21,00);   
                 new_Sunday_end.Time = new RoyT.TimePicker.DigitalTime(nanny.Daily_Working_hours[0, 1].Hours, nanny.Daily_Working_hours[0, 1].Minutes);
                 new_Monday_start.Time = new RoyT.TimePicker.DigitalTime(nanny.Daily_Working_hours[1, 0].Hours, nanny.Daily_Working_hours[1, 0].Minutes);
                 new_Monday_end.Time = new RoyT.TimePicker.DigitalTime(nanny.Daily_Working_hours[1, 1].Hours, nanny.Daily_Working_hours[1, 1].Minutes);
@@ -97,8 +97,7 @@ namespace UI_WPF_TEMPORARY
                                     {new_Friday_start.Time.ToTimeSpan(),new_Friday_end.Time.ToTimeSpan() },
                                     {new_Saturday_start.Time.ToTimeSpan(),new_Saturday_end.Time.ToTimeSpan() }},
                                         new_vacationdays.IsChecked, new_recommendations.Text, new_additional_info.Text,
-                                        news_kidsCount.Text
-                    );
+                                        news_kidsCount.Text);
                 if (isUpdate)
                     bl.UpdateNanny(newNanny);
                 else

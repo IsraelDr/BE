@@ -25,7 +25,7 @@ namespace UI_WPF_TEMPORARY
             switch (choosen)
             {
                 case 0:
-                    //listofAll.ItemsSource = bl.getMotherList();
+                    AddGrid.Children.Add(new MotherDetails(this));
                     break;
                 case 1:
                     AddGrid.Children.Add(new Nannydetails(this));
