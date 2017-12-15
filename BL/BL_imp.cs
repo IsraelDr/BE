@@ -16,6 +16,7 @@ using GoogleMapsApi.StaticMaps.Entities;
 using BE;//
 using DAL;
 using GoogleMapsApi;
+using System.Reflection;
 
 namespace BL
 {
@@ -206,9 +207,20 @@ namespace BL
         {
             return dal.getNannyList();
         }
-
+        /**********new******/
         public void RemoveChild(int id)
         {
+            #region check if child  has open contracts
+            
+            RemoveContract( (dal.getContractList().FirstOrDefault(n => n.Child_ID == id)).Contract_number);
+            int openContractCount =
+                    (from contr in dal.getContractList()
+                     where contr.Child_ID == id/*&& contr.contractFinalized == true*/ && ((DateTime.Today - contr.enddate).Days < 0)
+                     select contr).Count();
+            if (openContractCount >= 0)
+                RemoveContract((dal.getContractList().FirstOrDefault(n => n.Child_ID == id)).Contract_number);
+           
+            #endregion
             dal.RemoveChild(id);
         }
 
@@ -219,7 +231,13 @@ namespace BL
 
         public void RemoveMother(int id)
         {
+            foreach (Contract c in dal.getContractList())
+            {
+                if (dal.GetChild(c.Child_ID).Mother_ID == id)
+                    dal.RemoveContract(c.Contract_number);
+            }
             dal.RemoveMother(id);
+
         }
 
         public void RemoveNanny(int id)
