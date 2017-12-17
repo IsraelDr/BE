@@ -23,7 +23,7 @@ namespace BL
     public class BL_imp : IBL
     {
         static Dal_imp dal = new Dal_imp();
-        /**********new******/
+        /**********new Google Maps ******/
         public static int calculateDistance(string source, string destination)
         {
             var drivingDirectionRequest = new DirectionsRequest
@@ -85,21 +85,63 @@ namespace BL
             }
             return matcheList;
         }
-        /**********new******/ //return the Nanny list that the close to mother
+        /**********new close Nanny List using Google Maps &  Thread ******/ //return the Nanny list that the close to mother
+        public List<Nanny> closeNannyList(Mother mom, int radius)
+        {
+            return closeNannyList(mom, mom.Adress, radius);
+        }
         public List<Nanny> closeNannyList(Mother mom,string source,int radius  )
         {
+            if (mom == null) { return null; }
             if (source == null)
                 source = mom.Adress;
             List<Nanny> closesNannyList = new List<Nanny>();
             List<Nanny> temp = new List<Nanny>();
             temp = dal.getNannyList();
-            temp.Sort((x, y) => calculateDistance(mom.Adress, x.address).CompareTo(calculateDistance(mom.Adress, y.address)));
+
+            // check temp not null
+
+            Dictionary<Nanny, int> nnn = new Dictionary<Nanny, int>(); // check Nanny,int
+
+            List<System.Threading.Thread> thds = new List<System.Threading.Thread>();
             foreach (Nanny n in temp)
             {
-                if (calculateDistance(mom.Adress, n.address) <= radius)
-                    closesNannyList.Add(n);
+                System.Threading.Thread t = new System.Threading.Thread(() =>
+                    {
+                        try
+                        {
+                            int d = calculateDistance(mom.Adress, n.address);
+                            if (d <= radius && d >= 0)
+                            {
+                                nnn.Add(n, d);
+                            }
+                        }
+                        catch
+                        {
+                            // fix Nanny?
+                        }
+                    });
+                t.Start();
+                //t.Join();
+                thds.Add(t);
             }
+            foreach (System.Threading.Thread t in thds)
+            {
+                t.Join();
+            }
+            closesNannyList = nnn.OrderBy(x => x.Value).Select(x => x.Key).ToList<Nanny>();
             return closesNannyList;
+            /******old*********/
+            ////foreach (int nan in )
+            //{
+            //}
+            ////temp.Sort((x, y) => calculateDistance(mom.Adress, x.address).CompareTo(calculateDistance(mom.Adress, y.address)));
+            //foreach (Nanny n in temp)
+            //{
+            //    if (calculateDistance(mom.Adress, n.address) <= radius)
+            //        closesNannyList.Add(n);
+            //}
+            //return closesNannyList;
         }
         /**********new******/
         public void AddChild(Child child)

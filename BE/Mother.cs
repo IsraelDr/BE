@@ -11,7 +11,7 @@ namespace BE
         private int ID_;
         private string Lastname_;
         private string Firstname_;
-        private int Phonenumber_;
+        private string Phonenumber_;
         private string Adress_;//(psikim)
         private string surrounding_adress_;
         private bool[] nanny_required_;
@@ -23,7 +23,7 @@ namespace BE
         public int ID                               { get { return ID_; } set { ID_ = value; } }
         public string Lastname                      { get { return Lastname_; } set { Lastname_ = value; } }
         public string Firstname                     { get { return Firstname_; } set { Firstname_ = value; } }
-        public int Phonenumber                      { get { return Phonenumber_; } set { Phonenumber_ = value; } }
+        public string Phonenumber                      { get { return Phonenumber_; } set { Phonenumber_ = value; } }
         public string Adress                        { get { return Adress_; } set { Adress_ = value; } }//(psikim)
         public string surrounding_adress            { get { return surrounding_adress_; } set { surrounding_adress_ = value; } }
         public bool[] nanny_required                { get { return nanny_required_; } set { nanny_required_ = value; } }
@@ -35,7 +35,7 @@ namespace BE
             ID = int.Parse(parameters[0].ToString());
             Lastname = (string)parameters[1];
             Firstname = (string)parameters[2];
-            Phonenumber = int.Parse(parameters[3].ToString());
+            Phonenumber = parameters[3].ToString();
             Adress = (string)parameters[4];
             surrounding_adress = (string)parameters[5];
             nanny_required = (bool[])parameters[6];
