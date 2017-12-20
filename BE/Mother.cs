@@ -30,19 +30,33 @@ namespace BE
         public TimeSpan[,] daily_Nanny_required          { get { return Daily_Nanny_required_; } set { Daily_Nanny_required_ = value; } }
         public string Comment                       { get { return Comment_; } set { Comment_ = value; } }
         public MyEnum.Paymentmethode Paymentmethode { get { return Paymentmethode_; } set { Paymentmethode_ = value; } }
-        public Mother(params object[] parameters)
+        
+        public Mother( int ID,string Firstname,string Lastname, string Phonenumber,string Adress,string surrounding_adress,bool[] nanny_required,TimeSpan[,] daily_Nanny_required,string Comment,MyEnum.Paymentmethode Paymentmethode)
         {
-            ID = int.Parse(parameters[0].ToString());
-            Lastname = (string)parameters[1];
-            Firstname = (string)parameters[2];
-            Phonenumber = parameters[3].ToString();
-            Adress = (string)parameters[4];
-            surrounding_adress = (string)parameters[5];
-            nanny_required = (bool[])parameters[6];
-            daily_Nanny_required = (TimeSpan[,])parameters[7];
-            Comment = (string)parameters[8];
-            Paymentmethode = (MyEnum.Paymentmethode)parameters[9];
+            int ID_ = ID;
+            string Lastname_ = Lastname;
+            string Firstname_ = Firstname;
+            string Phonenumber_ = Phonenumber;
+            string Adress_ = Adress;
+            string surrounding_adress_ = surrounding_adress;
+            bool[] nanny_required_ = nanny_required;
+            TimeSpan[,] daily_Nanny_required_ = daily_Nanny_required;
+            string Comment_ = Comment;
+            MyEnum.Paymentmethode Paymentmethode_ = Paymentmethode;
         }
+        //public Mother(params object[] parameters)
+        //{
+        //    ID = int.Parse(parameters[0].ToString());
+        //    Lastname = (string)parameters[1];
+        //    Firstname = (string)parameters[2];
+        //    Phonenumber = parameters[3].ToString();
+        //    Adress = (string)parameters[4];
+        //    surrounding_adress = (string)parameters[5];
+        //    nanny_required = (bool[])parameters[6];
+        //    daily_Nanny_required = (TimeSpan[,])parameters[7];
+        //    Comment = (string)parameters[8];
+        //    Paymentmethode = (MyEnum.Paymentmethode)parameters[9];
+        //}
         public override string ToString()
         {//using ToStringProperty() in Class Tools 
             return this.ToStringProperty();

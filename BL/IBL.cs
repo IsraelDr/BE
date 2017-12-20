@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using BE;
 namespace BL
 {
-    interface IBL
+    public interface IBL
     {
         void AddNanny(Nanny nanny);
         void RemoveNanny(int id);

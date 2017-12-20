@@ -73,6 +73,16 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Address.datasource" />
+    <None Include="Properties\DataSources\Child.datasource" />
+    <None Include="Properties\DataSources\Contract.datasource" />
+    <None Include="Properties\DataSources\Mother.datasource" />
+    <None Include="Properties\DataSources\MyBE.datasource" />
+    <None Include="Properties\DataSources\MyEnum.datasource" />
+    <None Include="Properties\DataSources\MyEnum.Paymentmethode.datasource" />
+    <None Include="Properties\DataSources\MyEnum.Vacation.datasource" />
+    <None Include="Properties\DataSources\Nanny.datasource" />
+    <None Include="Properties\DataSources\Tools.datasource" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

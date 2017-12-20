@@ -152,6 +152,15 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="BE.Address.datasource" />
+    <None Include="BE.Child.datasource" />
+    <None Include="BE.Contract.datasource" />
+    <None Include="BE.Mother.datasource" />
+    <None Include="BE.MyBE.datasource" />
+    <None Include="BE.MyEnum+Paymentmethode.datasource" />
+    <None Include="BE.MyEnum+Vacation.datasource" />
+    <None Include="BE.MyEnum.datasource" />
+    <None Include="BE.Nanny.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

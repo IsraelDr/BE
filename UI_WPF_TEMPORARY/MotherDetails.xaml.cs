@@ -74,7 +74,7 @@ namespace UI_WPF_TEMPORARY
         {
             try
             {
-                Mother mother = new Mother(new_ID.Text,new_LastName.Text, new_Firstname.Text,
+                Mother mother = new Mother(/*new_ID.Text*/int.Parse( new_ID.Text),new_LastName.Text, new_Firstname.Text,
                                             new_Phonenumber.Text, new_Address.Text,
                                             new_surrounding_address.Text,
                                             new bool[] {new_Sunday.IsChecked==true, new_Monday.IsChecked == true ,
@@ -87,7 +87,7 @@ namespace UI_WPF_TEMPORARY
                                     {new_Thursday_start.Time.ToTimeSpan(),new_Thursday_end.Time.ToTimeSpan() },
                                     {new_Friday_start.Time.ToTimeSpan(),new_Friday_end.Time.ToTimeSpan() },
                                     {new_Saturday_start.Time.ToTimeSpan(),new_Saturday_end.Time.ToTimeSpan() }},
-                                            new_comment.Text,new_paymentmethode.Text);
+                                    new_comment.Text,/*new_paymentmethode.Text*/(MyEnum.Paymentmethode)Enum.Parse             ( typeof(MyEnum.Paymentmethode), new_paymentmethode.Text));
                 if (isUpdate)
                     bl.UpdateMother(mother);
                 else
