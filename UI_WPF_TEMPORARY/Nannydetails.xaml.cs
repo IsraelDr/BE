@@ -68,7 +68,7 @@ namespace UI_WPF_TEMPORARY
                 new_Friday_end.Time = new RoyT.TimePicker.DigitalTime(nanny.Daily_Working_hours[5, 1].Hours, nanny.Daily_Working_hours[5, 1].Minutes);
                 new_Saturday_start.Time = new RoyT.TimePicker.DigitalTime(nanny.Daily_Working_hours[6, 0].Hours, nanny.Daily_Working_hours[6, 0].Minutes);
                 new_Saturday_end.Time = new RoyT.TimePicker.DigitalTime(nanny.Daily_Working_hours[6, 1].Hours, nanny.Daily_Working_hours[6, 1].Minutes);
-                new_vacationdays.IsChecked = nanny.Vacation_days;
+                vacationmethod.Text = nanny.Vacation_days.ToString();
                 new_recommendations.Text = nanny.Recommendations;
                 new_additional_info.Text = nanny.Additional_Info+"";
                 news_kidsCount.Text = nanny.kidsCount.ToString();
@@ -96,7 +96,7 @@ namespace UI_WPF_TEMPORARY
                                     {new_Thursday_start.Time.ToTimeSpan(),new_Thursday_end.Time.ToTimeSpan() },
                                     {new_Friday_start.Time.ToTimeSpan(),new_Friday_end.Time.ToTimeSpan() },
                                     {new_Saturday_start.Time.ToTimeSpan(),new_Saturday_end.Time.ToTimeSpan() }},
-                                        new_vacationdays.IsChecked, new_recommendations.Text, new_additional_info.Text,
+                                        vacationmethod.Text, new_recommendations.Text, new_additional_info.Text,
                                         news_kidsCount.Text);
                 if (isUpdate)
                     bl.UpdateNanny(newNanny);

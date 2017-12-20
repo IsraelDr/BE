@@ -161,6 +161,7 @@
     <None Include="BE.MyEnum+Vacation.datasource" />
     <None Include="BE.MyEnum.datasource" />
     <None Include="BE.Nanny.datasource" />
+    <None Include="Properties\DataSources\BE.MyEnum+Context.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

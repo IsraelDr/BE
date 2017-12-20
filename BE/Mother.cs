@@ -33,16 +33,16 @@ namespace BE
         
         public Mother( int ID,string Firstname,string Lastname, string Phonenumber,string Adress,string surrounding_adress,bool[] nanny_required,TimeSpan[,] daily_Nanny_required,string Comment,MyEnum.Paymentmethode Paymentmethode)
         {
-            int ID_ = ID;
-            string Lastname_ = Lastname;
-            string Firstname_ = Firstname;
-            string Phonenumber_ = Phonenumber;
-            string Adress_ = Adress;
-            string surrounding_adress_ = surrounding_adress;
-            bool[] nanny_required_ = nanny_required;
-            TimeSpan[,] daily_Nanny_required_ = daily_Nanny_required;
-            string Comment_ = Comment;
-            MyEnum.Paymentmethode Paymentmethode_ = Paymentmethode;
+            ID_ = ID;
+            Lastname_ = Lastname;
+            Firstname_ = Firstname;
+            Phonenumber_ = Phonenumber;
+            Adress_ = Adress;
+            surrounding_adress_ = surrounding_adress;
+            nanny_required_ = nanny_required;
+            Daily_Nanny_required_ = daily_Nanny_required;
+            Comment_ = Comment;
+            Paymentmethode_ = Paymentmethode;
         }
         //public Mother(params object[] parameters)
         //{
