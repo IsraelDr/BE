@@ -93,10 +93,12 @@
         </Grid>
         <CheckBox  Name="new_elevator_exists" Content="Elevator Exists" Grid.Row="6"/>
         <CheckBox  x:Name="possible_hourly_rate" Content="Is per Hour possible" Grid.Row="6" Grid.Column="4" />
-        <CheckBox  x:Name="new_vacationdays" Content="Vacation days" Grid.Row="6" Grid.Column="2" />
         <TextBox x:Name="new_additional_info" Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="" />
         <Label Content="Additional Info"  Grid.Row="5"/>
         <Label Content="Recommendations" Grid.Row="4" Grid.Column="4"/>
         <TextBox Grid.Column="5"  x:Name="new_recommendations" Grid.Row="4" TextWrapping="Wrap" Text=""/>
+        <ComboBox>
+            
+        </ComboBox>
     </Grid>
 </UserControl>

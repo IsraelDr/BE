@@ -25,7 +25,7 @@ namespace BE
         private int Monthly_rate_;                                     //Monthly rate
         private bool[] Working_days_;                                  //Working days
         private TimeSpan[,] Daily_Working_hours_;// Daily_Working_hours(week)//Daily Working hours(week)
-        private bool Vacation_days_;// "Chinuch" or "tamat" { get; set; //Vacation days- "Chinuch" or "tamat"
+        private MyEnum.Vacation Vacation_days_;// "Chinuch" or "tamat" { get; set; //Vacation days- "Chinuch" or "tamat"
         private string Recommendations_;                               //Recommendations
         private int Additional_Info_;                                  //Additional Info
         private int kidsCount_;
@@ -49,7 +49,7 @@ namespace BE
         public int Monthly_rate          { get { return Monthly_rate_; } set { Monthly_rate_ = value; } }                                      //Monthly rate
         public bool[] Working_days       { get { return Working_days_; } set { Working_days_ = value; } }                                   //Working days
         public TimeSpan[,] Daily_Working_hours{ get { return Daily_Working_hours_; } set { Daily_Working_hours_ = value; } }// Daily_Working_hours(week)//Daily Working hours(week)
-        public bool Vacation_days        { get { return Vacation_days_; } set { Vacation_days_ = value; } }// "Chinuch" or "tamat" { get; set; //Vacation days- "Chinuch" or "tamat"
+        public MyEnum.Vacation Vacation_days        { get { return Vacation_days_; } set { Vacation_days_ = value; } }// "Chinuch" or "tamat" { get; set; //Vacation days- "Chinuch" or "tamat"
         public string Recommendations    { get { return Recommendations_; } set { Recommendations_ = value; } }                                //Recommendations
         public int Additional_Info       { get { return Additional_Info_; } set { Additional_Info_ = value; } }                                   //Additional Info
         public int kidsCount             { get { return kidsCount_; } set { kidsCount_ = value; } }
@@ -73,7 +73,7 @@ namespace BE
             Monthly_rate = int.Parse(parameters[14].ToString());
             Working_days = (bool[])parameters[15];
             Daily_Working_hours = (TimeSpan[,])parameters[16];
-            Vacation_days = (bool)parameters[17];
+            Vacation_days = (MyEnum.Vacation)parameters[17];
             Recommendations = (string)parameters[18];
             Additional_Info = int.Parse(parameters[19].ToString());
             kidsCount = int.Parse(parameters[20].ToString());

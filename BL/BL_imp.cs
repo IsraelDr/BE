@@ -23,7 +23,8 @@ namespace BL
     public class BL_imp : IBL
     {
         static Dal_imp dal = new Dal_imp();
-        /**********new Google Maps ******/
+
+        //Function
         public static int calculateDistance(string source, string destination)
         {
             var drivingDirectionRequest = new DirectionsRequest
@@ -38,13 +39,12 @@ namespace BL
             Leg leg = route.Legs.First();
             return leg.Distance.Value;
 
-        }
-        /**********new******/
-        public int PrioritiesMach(Mother m,Nanny  n)
+        }/**********new Google Maps ******/
+        public int PrioritiesMach(Mother m, Nanny n)
         {
-            int mcheCount = 0, daysCheck=0,startHoursCheck = 0, endHoursCheck = 0; 
+            int mcheCount = 0, daysCheck = 0, startHoursCheck = 0, endHoursCheck = 0;
             for (int i = 0; i < 6; i++)
-                {
+            {
                 if (n.Working_days[i] == true && m.nanny_required[i] == true)
                     daysCheck++;//6 checks
                 if (n.Daily_Working_hours[i, 0].TotalHours <= m.daily_Nanny_required[i, 0].TotalHours)
@@ -55,14 +55,12 @@ namespace BL
             mcheCount = daysCheck + startHoursCheck + endHoursCheck;//18 is match
             return mcheCount;
         }
-        /**********new******/
         public bool isPrioritiesMach(Mother m, Nanny n)
         { if (PrioritiesMach(m, n) == 18)//there if 18 cheacs "days Check" + "start Hours Check" , "end Hours Check"
                 return true;
             else
                 return false;
         }
-        /**********new******/
         public List<Nanny> motherPriorities(Mother mother)// return list of Nnany's that fit to the mother Priorities 
         {
 
@@ -77,8 +75,8 @@ namespace BL
                 List<Nanny> temp = new List<Nanny>();
                 temp = dal.getNannyList();
                 //sorting by Priorities Mache from 1 to 18 scale
-                temp.Sort((x, y) => PrioritiesMach(mother, x).CompareTo(PrioritiesMach(mother,y)));
-                for (int i=temp.Count-1 ; i > (temp.Count - 1)-5; i--)
+                temp.Sort((x, y) => PrioritiesMach(mother, x).CompareTo(PrioritiesMach(mother, y)));
+                for (int i = temp.Count - 1; i > (temp.Count - 1) - 5; i--)
                 {
                     matcheList.Add(temp[i]);
                 }
@@ -90,7 +88,7 @@ namespace BL
         {
             return closeNannyList(mom, mom.Adress, radius);
         }
-        public List<Nanny> closeNannyList(Mother mom,string source,int radius  )
+        public List<Nanny> closeNannyList(Mother mom, string source, int radius)
         {
             if (mom == null) { return null; }
             if (source == null)
@@ -143,12 +141,62 @@ namespace BL
             //}
             //return closesNannyList;
         }
-        /**********new******/
-        public void AddChild(Child child)
+        public List<Child> childWithOutNunnyList()//return list of all children with out Nanny
         {
-            dal.AddChild(child);//need to add logic
+            List<Child> children = new List<Child>();
+            foreach (Child kide in dal.getChildList())
+            {
+                bool flag = true;
+                foreach (Contract c in dal.getContractList())
+                {
+                    if (c.Child_ID == kide.ID)
+                        flag = false;
+                }
+                if (flag)
+                    children.Add(kide);
+            }
+            if (children == null)
+                throw new Exception("To all childeren thre is Nanny!");
+            return children;
         }
-        public Child GetChildById(int id)
+        public List<Nanny> NannyByViction()
+        {
+            List<Nanny> ByViction = new List<Nanny>();
+            foreach (Nanny nan in dal.getNannyList())
+            {
+                if (nan.Vacation_days == MyEnum.Vacation.tamat)
+                    ByViction.Add(nan);
+            }
+            if (ByViction != null)
+                return ByViction;
+            else
+                throw new Exception("Ther is't Nanny with Tamat Viction days");
+        }
+        public delegate bool contractCondition();
+        //public List<Contract> conditionContract(contractCondition)
+        //{
+        //    foreach (Contract c in dal.getContractList())
+        //    {
+        //        if(c.someDelegate==true)
+        //    }
+        //    List<Contract> d = new List<Contract>();
+        //    return d;
+        //}
+
+
+
+//Groping
+//public IEnumerable<IGrouping<string, Student>>
+//            GetAllStudentAtCourseGroupByGrade(int courseId, int year, Semester semester)
+//{
+//    return from item in dal.GetAllStudentCourse(sc => sc.CourseId == courseId)
+//           where item.RegisterYear == year && item.RegisterSemester == semester
+//           group GetStudent(item.StudentId) by GetGradeMark(item.Grade);
+//}
+
+
+//ID
+public Child GetChildById(int id)
         {
             return dal.GetChild(id);
         }
@@ -159,6 +207,12 @@ namespace BL
         public Mother GetMotherById(int id)
         {
             return dal.GetMother(id);
+        }
+
+        //add
+        public void AddChild(Child child)
+        {
+            dal.AddChild(child);//need to add logic
         }
         public void AddContract(Contract contract)
         {
@@ -198,29 +252,10 @@ namespace BL
             else dal.GetNanny(contract.Nanny_ID).kidsCount++;//if contract sign so Nanny.kidsCount++ 
             dal.AddContract(contract);
         }
-        /**********new******/
-        public List<Child> childWithOutNunnyList()//return list of all children with out Nanny
-        {
-            List<Child> children = new List<Child>();
-            foreach (Child kide in dal.getChildList())  
-            { bool flag = true;
-                foreach (Contract c in dal.getContractList())
-                {
-                    if (c.Child_ID == kide.ID)
-                        flag = false;
-                }
-                if (flag)
-                    children.Add(kide);
-            }
-            if (children == null)
-                throw new Exception("To all childeren thre is Nanny!");
-            return children;
-        }
         public void AddMother(Mother mother)
         {
             dal.AddMother(mother);//need to add logic
         }
-
         public void AddNanny(Nanny nanny)
         {
             DateTime temporary = nanny.Birthdate;
@@ -229,7 +264,7 @@ namespace BL
                 throw new Exception("The nanny must be over 18 years old");
             dal.AddNanny(nanny);//need to add logic
         }
-
+        //GET LIST
         public List<Child> getChildList()
         {
             return dal.getChildList();
@@ -249,7 +284,7 @@ namespace BL
         {
             return dal.getNannyList();
         }
-        /**********new******/
+        /**********Remove******/
         public void RemoveChild(int id)
         {
             #region check if child  has open contracts
@@ -287,6 +322,7 @@ namespace BL
             dal.RemoveNanny(id);
         }
 
+        /**********Update******/
         public void UpdateChild(Child chil)
         {
             dal.UpdateChild(chil);
