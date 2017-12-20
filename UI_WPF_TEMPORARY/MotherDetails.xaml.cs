@@ -99,5 +99,10 @@ namespace UI_WPF_TEMPORARY
                 MessageBox.Show(w.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        private void new_paymentmethode_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
