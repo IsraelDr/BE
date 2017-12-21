@@ -25,7 +25,7 @@ namespace BL
         static Dal_imp dal = new Dal_imp();
 
         //Function
-        public static int calculateDistance(string source, string destination)
+        public int calculateDistance(string source, string destination)
         {
             var drivingDirectionRequest = new DirectionsRequest
             {
@@ -175,7 +175,7 @@ namespace BL
         public List<PriorityNanny> PriorityNannyList(Mother m)
         {
             List<PriorityNanny> p = new List<PriorityNanny>();
-            foreach (Nanny nan in closeNannyList(m,6000))
+            foreach (Nanny nan in dal.getNannyList())
             {
                 PriorityNanny temp = new PriorityNanny();
                 temp.distance = calculateDistance(m.Adress, nan.address);

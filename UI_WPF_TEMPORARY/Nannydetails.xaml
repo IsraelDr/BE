@@ -75,7 +75,7 @@
             <CheckBox Content="Thursday" Name="new_Thursday" Grid.Row="4"/>
             <CheckBox Content="Friday" Name="new_Friday" Grid.Row="5"/>
             <CheckBox Content="Saturday" Name="new_Saturday" Grid.Row="6" Margin="0,1,0,0"/>
-            <tp:TimePickerSlider Name="new_Sunday_start"  Grid.Column="1" Time="{Binding DigitalTime, Mode=TwoWay}" MinTime="{Binding MinTime}" MaxTime="{Binding MaxTime}" Margin="0,0,0.8,0.2"/>
+            <tp:TimePickerSlider Name="new_Sunday_start"  Grid.Column="1"  Time="{Binding DigitalTime, Mode=TwoWay}" MinTime="{Binding MinTime}" MaxTime="{Binding MaxTime}" Margin="0,0,0.8,0.2"/>
             <tp:TimePickerSlider Name="new_Sunday_end" Grid.Column="2" Time="{Binding DigitalTime, Mode=TwoWay}" MinTime="{Binding MinTime}" MaxTime="{Binding MaxTime}" Margin="0.2,0,1,0.2"/>
             <tp:TimePickerSlider Name="new_Monday_start"  Grid.Column="1" Time="{Binding DigitalTime, Mode=TwoWay}" MinTime="{Binding MinTime}" MaxTime="{Binding MaxTime}"  Grid.Row="1" Margin="0,0.4,0.8,0.4"/>
             <tp:TimePickerSlider Name="new_Monday_end" Grid.Column="2" Time="{Binding DigitalTime, Mode=TwoWay}" MinTime="{Binding MinTime}" MaxTime="{Binding MaxTime}"  Grid.Row="1" Margin="0.2,0.4,1,0.4"/>

@@ -31,6 +31,7 @@ namespace UI_WPF_TEMPORARY
             isUpdate = false;
             if (nanny != null)
             {
+                //new_Sunday_start.Time.Hour = 21;// = new RoyT.TimePicker.DigitalTime(21, 00);
                 isUpdate = true;
                 new_ID.Text = nanny.ID + "";
                 new_LastName.Text = nanny.last_name;

@@ -47,6 +47,10 @@
       <HintPath>..\packages\Google.Apis.1.31.1\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="GoogleMapsApi, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoogleMapsApi.0.68.0\lib\net40\GoogleMapsApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="GoogleMapsAPI.NET, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\GoogleMapsAPI.NET.1.0.0\lib\net40\GoogleMapsAPI.NET.dll</HintPath>
       <Private>True</Private>
@@ -168,6 +172,7 @@
     <None Include="BE.MyEnum+Vacation.datasource" />
     <None Include="BE.MyEnum.datasource" />
     <None Include="BE.Nanny.datasource" />
+    <None Include="packages.config" />
     <None Include="Properties\DataSources\BE.MyEnum+Context.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
