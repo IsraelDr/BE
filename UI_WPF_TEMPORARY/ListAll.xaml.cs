@@ -124,6 +124,11 @@ namespace UI_WPF_TEMPORARY
                 switch (Choosen)
                 {
                     case 0:
+                        Mother mother = bl.GetMotherById(((Mother)listofAll.SelectedItem).ID);
+                        a = new UpdateWindow(Choosen, mother);
+                        a.Show();
+                        this.Hide();
+                        a.Closed += new EventHandler(openwindow);
                         break;
                     case 1:
                         Nanny nanny = bl.GetNannyById(((Nanny)listofAll.SelectedItem).ID);
