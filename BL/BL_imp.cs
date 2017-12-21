@@ -172,6 +172,23 @@ namespace BL
             else
                 throw new Exception("Ther is't Nanny with Tamat Viction days");
         }
+        public List<PriorityNanny> PriorityNannyList(Mother m)
+        {
+            List<PriorityNanny> p = new List<PriorityNanny>();
+            foreach (Nanny nan in closeNannyList(m,6000))
+            {
+                PriorityNanny temp = new PriorityNanny();
+                temp.distance = calculateDistance(m.Adress, nan.address);
+                temp.nanny=nan;
+                p.Add(temp);
+                    
+            }
+           
+              //  p.Sort((x, y) => calculateDistance(m.Adress, x.nanny.address).CompareTo(calculateDistance(m.Adress, y.nanny.address)));
+            p.Sort((x, y) =>x.distance.CompareTo(y.distance));
+            return p;
+        }
+
         public delegate bool contractCondition();
         //public List<Contract> conditionContract(contractCondition)
         //{
