@@ -226,7 +226,7 @@ public Child GetChildById(int id)
                 double week_payment = 0;
                 for (int i = 0; i < 6; i++)//6 days hours X Hourly_payment= week 
                 {
-                    week_payment += contract.Hourly_payment  * (dal.GetNanny(contract.Nanny_ID).Daily_Working_hours[i, 0].TotalHours - dal.GetNanny(contract.Nanny_ID).Daily_Working_hours[i, 1].TotalHours);
+                     week_payment += contract.Hourly_payment  * (dal.GetNanny(contract.Nanny_ID).Daily_Working_hours[i, 1].TotalHours - dal.GetNanny(contract.Nanny_ID).Daily_Working_hours[i, 0].TotalHours);
                 }
                 contract.salary = week_payment * 4;//week hours X 4 =month salary
             }
