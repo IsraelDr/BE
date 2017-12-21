@@ -30,6 +30,7 @@ namespace UI_WPF_TEMPORARY
                 switch (choosen)
                 {
                     case 0:
+                        listofAll.AutoGeneratingColumn += listofAll_MotherGeneratingColumns;
                         listofAll.ItemsSource = bl.getMotherList();
                     break;
                     case 1:
@@ -39,6 +40,7 @@ namespace UI_WPF_TEMPORARY
                         listofAll.ItemsSource = bl.getChildList();
                         break;
                     case 3:
+                        listofAll.AutoGeneratingColumn += listofAll_ContractGeneratingColumns;
                         listofAll.ItemsSource = bl.getContractList();
                         break;
                 }
@@ -66,7 +68,6 @@ namespace UI_WPF_TEMPORARY
             switch (Choosen)
             {
                 case 0:
-                    
                     listofAll.ItemsSource = bl.getMotherList();
                     break;
                 case 1:
@@ -153,6 +154,18 @@ namespace UI_WPF_TEMPORARY
                 MessageBox.Show("No line was choosen", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
 
             }
+        }
+        void listofAll_MotherGeneratingColumns(object sender, System.Windows.Controls.DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName == "daily_Nanny_required")
+                e.Cancel = true;
+
+        }
+        void listofAll_ContractGeneratingColumns(object sender, System.Windows.Controls.DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName == "Contract_number")
+                e.Cancel = true;
+
         }
     }
 }
