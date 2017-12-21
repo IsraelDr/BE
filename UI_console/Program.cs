@@ -16,7 +16,7 @@ namespace UI_console
 
         static void Main(string[] args)
         {
-            Console.WriteLine(bl.calculateDistance("jerusalem", "tel-aviv").ToString());
+            Console.WriteLine((BL.BL_imp.calculateDistance("jerusalem", "tel-aviv")/1000).ToString());
 
             #region test case
 

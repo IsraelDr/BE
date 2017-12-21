@@ -25,7 +25,7 @@ namespace BL
         static Dal_imp dal = new Dal_imp();
 
         //Function
-        public /*static*/ int calculateDistance(string source, string destination)
+        public static int calculateDistance(string source, string destination)
         {
             var drivingDirectionRequest = new DirectionsRequest
             {
