@@ -27,14 +27,26 @@ namespace UI_WPF_TEMPORARY
         public ContractDetails(Window f, Contract mother = null)
         {
             InitializeComponent();
+            var values = from Mother moth in bl.getMotherList()
+                         select new { ID = moth.ID, Name = moth.Firstname + " "+moth.Lastname };
+            foreach (var value in values)
+            {
+                listofMothers.Items.Add(value.ID);
+            }
             fr = f;
             isUpdate = false;
             nannysoptiongrid.ItemsSource = null;
-            nannysoptiongrid.ItemsSource = bl.getNannyList();
+            //nannysoptiongrid.ItemsSource = bl.calculateDistance();
             if (mother != null)
             {
                 isUpdate = true;
             }
+        }
+
+        private void listofMothers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            nannysoptiongrid.ItemsSource = null;
+            nannysoptiongrid.ItemsSource = bl.motherPriorities(bl.GetMotherById(int.Parse(listofMothers.SelectedItem.ToString())));
         }
     }
 }
