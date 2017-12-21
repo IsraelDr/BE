@@ -97,7 +97,7 @@ namespace DAL
 
         public void AddContract(Contract contract)
         {
-            Contract contr = GetContract(contract.Contract_number);
+            Contract contr = GetContract(contract.Contract_ID);
             if (contr != null)
                 throw new Exception("Contract with the same id already exists...");
              
@@ -106,7 +106,7 @@ namespace DAL
         }
         public Contract GetContract(int id)
         {
-            return DataSource.ContractList.FirstOrDefault(n => n.Contract_number == id);
+            return DataSource.ContractList.FirstOrDefault(n => n.Contract_ID == id);
         }
         public void RemoveContract(int id)
         {

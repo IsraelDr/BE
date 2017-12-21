@@ -41,7 +41,7 @@ namespace UI_WPF_TEMPORARY
                 bl.AddChild(new Child(2, 3, "Test", new DateTime(1994, 05, 12), true));
                 bl.AddChild(new Child(3, 3, "Test", new DateTime(1994, 05, 12), true));
                 bl.AddChild(new Child(4, 3, "Test", new DateTime(1994, 05, 12), true));
-                bl.AddContract(new Contract( 4,1, true, false, 17, 485, MyEnum.Paymentmethode.houerly, new DateTime(1994, 05, 17), new DateTime(2000, 05, 17),19.15));
+                bl.AddContract(new Contract(4,1, true, false, 17, 485, MyEnum.Paymentmethode.houerly, new DateTime(1994, 05, 17), new DateTime(2000, 05, 17),19.15));
                 bl.AddContract(new Contract(4,2,true, false, 17, 485, MyEnum.Paymentmethode.houerly, new DateTime(1994, 05, 17), new DateTime(2000, 05, 17),15.14));
                 bl.AddContract(new Contract(4,3, true, false, 17, 485, MyEnum.Paymentmethode.houerly, new DateTime(1994, 05, 17), new DateTime(2000, 05, 17),751.5));
                 bl.AddContract(new Contract(4,4, true, false, 17, 485, MyEnum.Paymentmethode.houerly, new DateTime(1994, 05, 17), new DateTime(2000, 05, 17),14000.50));

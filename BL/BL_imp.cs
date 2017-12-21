@@ -224,19 +224,23 @@ public Child GetChildById(int id)
             {
                 contract.Paymentmethode = MyEnum.Paymentmethode.houerly;
                 double week_payment = 0;
+                Nanny n = dal.GetNanny(contract.Nanny_ID);
                 for (int i = 0; i < 6; i++)//6 days hours X Hourly_payment= week 
                 {
-                     week_payment += contract.Hourly_payment  * (dal.GetNanny(contract.Nanny_ID).Daily_Working_hours[i, 1].TotalHours - dal.GetNanny(contract.Nanny_ID).Daily_Working_hours[i, 0].TotalHours);
+                   
+                     week_payment += contract.Hourly_payment  * (n.Daily_Working_hours[i, 1].TotalHours - n.Daily_Working_hours[i, 0].TotalHours);
                 }
                 contract.salary = week_payment * 4;//week hours X 4 =month salary
             }
             else contract.salary = contract.Monthly_payment;
 
-                bool flag = false; 
-                if(dal.getContractList().Count>0)
+                bool flag = false;
+                Child kide = dal.GetChild(contract.Child_ID);
+
+                if (dal.getContractList().Count>0)
                 foreach (Contract c  in dal.getContractList())//check brathers for 2% discount
-            	{            
-                            if(dal.GetMother(contract.Child_ID)==dal.GetMother(c.Child_ID))
+            	{
+                            if (kide.Mother_ID==dal.GetChild(c.Child_ID).Mother_ID&& contract.Nanny_ID == c.Nanny_ID)
                             {
                              flag=true;
                              break;
