@@ -27,17 +27,17 @@ namespace BL
         //Function
         public static int calculateDistance(string source, string destination)
         {
-            var drivingDirectionRequest = new DirectionsRequest
-            {
-                TravelMode = TravelMode.Walking,
-                Origin = source,
-                //Destination = "kfar ivri ,10, Jerusalem,israel"
-                Destination = destination,
-            };
-            DirectionsResponse drivingDirections = GoogleMaps.Directions.Query(drivingDirectionRequest);
-            Route route = drivingDirections.Routes.First();
-            Leg leg = route.Legs.First();
-            return leg.Distance.Value;
+                var drivingDirectionRequest = new DirectionsRequest
+                {
+                    TravelMode = TravelMode.Walking,
+                    Origin = source,
+                    //Destination = "kfar ivri ,10, Jerusalem,israel"
+                    Destination = destination,
+                };
+                DirectionsResponse drivingDirections = GoogleMaps.Directions.Query(drivingDirectionRequest);
+                Route route = drivingDirections.Routes.First();
+                Leg leg = route.Legs.First();
+                return leg.Distance.Value;
 
         }/**********new Google Maps ******/
         public int PrioritiesMach(Mother m, Nanny n)
@@ -173,12 +173,17 @@ namespace BL
                 throw new Exception("Ther is't Nanny with Tamat Viction days");
         }
         public List<PriorityNanny> PriorityNannyList(Mother m)
-        {
+        { 
             List<PriorityNanny> p = new List<PriorityNanny>();
-            foreach (Nanny nan in closeNannyList(m,6000))
+            foreach (Nanny nan in dal.getNannyList())
             {
                 PriorityNanny temp = new PriorityNanny();
-                temp.distance = calculateDistance(m.Adress, nan.address);
+                System.Threading.Thread t = new System.Threading.Thread(() => {
+                    temp.distance = BL.BL_imp.calculateDistance("jerusalem", "tel-aviv");
+
+                });
+                t.Start();
+                //t.Join();
                 temp.nanny=nan;
                 p.Add(temp);
                     

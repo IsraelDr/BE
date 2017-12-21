@@ -36,6 +36,7 @@ namespace UI_WPF_TEMPORARY
             fr = f;
             isUpdate = false;
             nannysoptiongrid.ItemsSource = null;
+            
             //nannysoptiongrid.ItemsSource = bl.calculateDistance();
             if (mother != null)
             {
