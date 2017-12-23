@@ -17,6 +17,7 @@ using BE;//
 using DAL;
 using GoogleMapsApi;
 using System.Reflection;
+using System.Windows.Threading;
 
 namespace BL
 {
@@ -186,7 +187,6 @@ namespace BL
                 //t.Join();
                 temp.nanny=nan;
                 p.Add(temp);
-                    
             }
            
               //  p.Sort((x, y) => calculateDistance(m.Adress, x.nanny.address).CompareTo(calculateDistance(m.Adress, y.nanny.address)));
