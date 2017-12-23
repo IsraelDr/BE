@@ -73,7 +73,7 @@ namespace BE
             Monthly_rate = int.Parse(parameters[14].ToString());
             Working_days = (bool[])parameters[15];
             Daily_Working_hours = (TimeSpan[,])parameters[16];
-            Vacation_days = (MyEnum.Vacation)parameters[17];
+            Vacation_days = (MyEnum.Vacation)Enum.Parse(typeof(MyEnum.Vacation), parameters[17].ToString());
             Recommendations = (string)parameters[18];
             Additional_Info = int.Parse(parameters[19].ToString());
             kidsCount = int.Parse(parameters[20].ToString());

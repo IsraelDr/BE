@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BE;
+using RoyT.TimePicker;
 using BL;
 namespace UI_WPF_TEMPORARY
 {
@@ -33,7 +34,52 @@ namespace UI_WPF_TEMPORARY
             {
                 new_paymentmethode.Items.Add(value.Name);
             }
+            new_paymentmethode.SelectedItem = MyEnum.Paymentmethode.houerly.ToString();
             fr = f;
+            new_Sunday_start.MinTime = new DigitalTime(00, 00);
+            new_Sunday_end.MinTime = new DigitalTime(00, 00);
+            new_Monday_start.MinTime = new DigitalTime(00, 00);
+            new_Monday_end.MinTime = new DigitalTime(00, 00);
+            new_Tuesday_start.MinTime = new DigitalTime(00, 00);
+            new_Tuesday_end.MinTime = new DigitalTime(00, 00);
+            new_Wednesday_start.MinTime = new DigitalTime(00, 00);
+            new_Wednesday_end.MinTime = new DigitalTime(00, 00);
+            new_Thursday_start.MinTime = new DigitalTime(00, 00);
+            new_Thursday_end.MinTime = new DigitalTime(00, 00);
+            new_Friday_start.MinTime = new DigitalTime(00, 00);
+            new_Friday_end.MinTime = new DigitalTime(00, 00);
+            new_Saturday_start.MinTime = new DigitalTime(00, 00);
+            new_Saturday_end.MinTime = new DigitalTime(00, 00);
+
+            new_Sunday_start.MaxTime = new DigitalTime(23, 59);
+            new_Sunday_end.MaxTime = new DigitalTime(23, 59);
+            new_Monday_start.MaxTime = new DigitalTime(23, 59);
+            new_Monday_end.MaxTime = new DigitalTime(23, 59);
+            new_Tuesday_start.MaxTime = new DigitalTime(23, 59);
+            new_Tuesday_end.MaxTime = new DigitalTime(23, 59);
+            new_Wednesday_start.MaxTime = new DigitalTime(23, 59);
+            new_Wednesday_end.MaxTime = new DigitalTime(23, 59);
+            new_Thursday_start.MaxTime = new DigitalTime(23, 59);
+            new_Thursday_end.MaxTime = new DigitalTime(23, 59);
+            new_Friday_start.MaxTime = new DigitalTime(23, 59);
+            new_Friday_end.MaxTime = new DigitalTime(23, 59);
+            new_Saturday_start.MaxTime = new DigitalTime(23, 59);
+            new_Saturday_end.MaxTime = new DigitalTime(23, 59);
+
+            new_Sunday_start.Time = new DigitalTime(12, 00);
+            new_Sunday_end.Time = new DigitalTime(12, 00);
+            new_Monday_start.Time = new DigitalTime(12, 00);
+            new_Monday_end.Time = new DigitalTime(12, 00);
+            new_Tuesday_start.Time = new DigitalTime(12, 00);
+            new_Tuesday_end.Time = new DigitalTime(12, 00);
+            new_Wednesday_start.Time = new DigitalTime(12, 00);
+            new_Wednesday_end.Time = new DigitalTime(12, 00);
+            new_Thursday_start.Time = new DigitalTime(12, 00);
+            new_Thursday_end.Time = new DigitalTime(12, 00);
+            new_Friday_start.Time = new DigitalTime(12, 00);
+            new_Friday_end.Time = new DigitalTime(12, 00);
+            new_Saturday_start.Time = new DigitalTime(12, 00);
+            new_Saturday_end.Time = new DigitalTime(12, 00);
             isUpdate = false;
             if(mother!=null)
             {
@@ -51,20 +97,20 @@ namespace UI_WPF_TEMPORARY
                 new_Thursday.IsChecked = mother.nanny_required[4];
                 new_Friday.IsChecked = mother.nanny_required[5];
                 new_Saturday.IsChecked = mother.nanny_required[6];
-                new_Sunday_start.Time = new RoyT.TimePicker.DigitalTime(21, 00);
-                new_Sunday_end.Time = new RoyT.TimePicker.DigitalTime(mother.daily_Nanny_required[0, 1].Hours, mother.daily_Nanny_required[0, 1].Minutes);
-                new_Monday_start.Time = new RoyT.TimePicker.DigitalTime(mother.daily_Nanny_required[1, 0].Hours, mother.daily_Nanny_required[1, 0].Minutes);
-                new_Monday_end.Time = new RoyT.TimePicker.DigitalTime(mother.daily_Nanny_required[1, 1].Hours, mother.daily_Nanny_required[1, 1].Minutes);
-                new_Tuesday_start.Time = new RoyT.TimePicker.DigitalTime(mother.daily_Nanny_required[2, 0].Hours, mother.daily_Nanny_required[2, 0].Minutes);
-                new_Tuesday_end.Time = new RoyT.TimePicker.DigitalTime(mother.daily_Nanny_required[2, 1].Hours, mother.daily_Nanny_required[2, 1].Minutes);
-                new_Wednesday_start.Time = new RoyT.TimePicker.DigitalTime(mother.daily_Nanny_required[3, 0].Hours, mother.daily_Nanny_required[3, 0].Minutes);
-                new_Wednesday_end.Time = new RoyT.TimePicker.DigitalTime(mother.daily_Nanny_required[3, 1].Hours, mother.daily_Nanny_required[3, 1].Minutes);
-                new_Thursday_start.Time = new RoyT.TimePicker.DigitalTime(mother.daily_Nanny_required[4, 0].Hours, mother.daily_Nanny_required[4, 0].Minutes);
-                new_Thursday_end.Time = new RoyT.TimePicker.DigitalTime(mother.daily_Nanny_required[4, 1].Hours, mother.daily_Nanny_required[4, 1].Minutes);
-                new_Friday_start.Time = new RoyT.TimePicker.DigitalTime(mother.daily_Nanny_required[5, 0].Hours, mother.daily_Nanny_required[5, 0].Minutes);
-                new_Friday_end.Time = new RoyT.TimePicker.DigitalTime(mother.daily_Nanny_required[5, 1].Hours, mother.daily_Nanny_required[5, 1].Minutes);
-                new_Saturday_start.Time = new RoyT.TimePicker.DigitalTime(mother.daily_Nanny_required[6, 0].Hours, mother.daily_Nanny_required[6, 0].Minutes);
-                new_Saturday_end.Time = new RoyT.TimePicker.DigitalTime(mother.daily_Nanny_required[6, 1].Hours, mother.daily_Nanny_required[6, 1].Minutes);
+                new_Sunday_start.Time = new DigitalTime(mother.daily_Nanny_required[0, 0].Hours, mother.daily_Nanny_required[0, 0].Minutes);
+                new_Sunday_end.Time = new DigitalTime(mother.daily_Nanny_required[0, 1].Hours, mother.daily_Nanny_required[0, 1].Minutes);
+                new_Monday_start.Time = new DigitalTime(mother.daily_Nanny_required[1, 0].Hours, mother.daily_Nanny_required[1, 0].Minutes);
+                new_Monday_end.Time = new DigitalTime(mother.daily_Nanny_required[1, 1].Hours, mother.daily_Nanny_required[1, 1].Minutes);
+                new_Tuesday_start.Time = new DigitalTime(mother.daily_Nanny_required[2, 0].Hours, mother.daily_Nanny_required[2, 0].Minutes);
+                new_Tuesday_end.Time = new DigitalTime(mother.daily_Nanny_required[2, 1].Hours, mother.daily_Nanny_required[2, 1].Minutes);
+                new_Wednesday_start.Time = new DigitalTime(mother.daily_Nanny_required[3, 0].Hours, mother.daily_Nanny_required[3, 0].Minutes);
+                new_Wednesday_end.Time = new DigitalTime(mother.daily_Nanny_required[3, 1].Hours, mother.daily_Nanny_required[3, 1].Minutes);
+                new_Thursday_start.Time = new DigitalTime(mother.daily_Nanny_required[4, 0].Hours, mother.daily_Nanny_required[4, 0].Minutes);
+                new_Thursday_end.Time = new DigitalTime(mother.daily_Nanny_required[4, 1].Hours, mother.daily_Nanny_required[4, 1].Minutes);
+                new_Friday_start.Time = new DigitalTime(mother.daily_Nanny_required[5, 0].Hours, mother.daily_Nanny_required[5, 0].Minutes);
+                new_Friday_end.Time = new DigitalTime(mother.daily_Nanny_required[5, 1].Hours, mother.daily_Nanny_required[5, 1].Minutes);
+                new_Saturday_start.Time = new DigitalTime(mother.daily_Nanny_required[6, 0].Hours, mother.daily_Nanny_required[6, 0].Minutes);
+                new_Saturday_end.Time = new DigitalTime(mother.daily_Nanny_required[6, 1].Hours, mother.daily_Nanny_required[6, 1].Minutes);
                 new_comment.Text = mother.Comment;
                 new_paymentmethode.Text = mother.Paymentmethode.ToString();
             }

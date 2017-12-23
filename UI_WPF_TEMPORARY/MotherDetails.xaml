@@ -37,20 +37,20 @@
             <CheckBox Content="Thursday" x:Name="new_Thursday" Grid.Row="3" Grid.ColumnSpan="3" Margin="0,55.8,0,0" Grid.RowSpan="2"/>
             <CheckBox Content="Friday" x:Name="new_Friday" Grid.Row="5" Grid.ColumnSpan="3"/>
             <CheckBox Content="Saturday" x:Name="new_Saturday" Grid.Row="6" Margin="0,1,0,0.2" Grid.ColumnSpan="3"/>
-            <TimePicker:TimePickerSlider x:Name="new_Sunday_start"  Grid.Column="3" Time="{Binding DigitalTime, Mode=TwoWay}" MinTime="{Binding MinTime}" MaxTime="{Binding MaxTime}" Margin="0,0,1.2,53.2" Grid.RowSpan="2"/>
-            <TimePicker:TimePickerSlider x:Name="new_Sunday_end" Grid.Column="3" Time="{Binding DigitalTime, Mode=TwoWay}" MinTime="{Binding MinTime}" MaxTime="{Binding MaxTime}" Margin="247,0,0.8,53.2" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-            <TimePicker:TimePickerSlider x:Name="new_Monday_start"  Grid.Column="3" Time="{Binding DigitalTime, Mode=TwoWay}" MinTime="{Binding MinTime}" MaxTime="{Binding MaxTime}" Margin="0,35,1.2,0.2" Grid.RowSpan="2"/>
-            <TimePicker:TimePickerSlider x:Name="new_Monday_end" Grid.Column="3" Time="{Binding DigitalTime, Mode=TwoWay}" MinTime="{Binding MinTime}" MaxTime="{Binding MaxTime}" Margin="247,35,0.8,0.2" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-            <TimePicker:TimePickerSlider x:Name="new_Tuesday_start" Grid.Column="3" Time="{Binding DigitalTime, Mode=TwoWay}" MinTime="{Binding MinTime}" MaxTime="{Binding MaxTime}"  Grid.Row="1" Margin="0,52.8,0.2,0.2" Grid.RowSpan="2" />
-            <TimePicker:TimePickerSlider x:Name="new_Tuesday_end" Grid.Column="3" Time="{Binding DigitalTime, Mode=TwoWay}" MinTime="{Binding MinTime}" MaxTime="{Binding MaxTime}"  Grid.Row="1" Grid.ColumnSpan="2" Margin="247,52.8,-0.2,0.2" Grid.RowSpan="2" />
-            <TimePicker:TimePickerSlider x:Name="new_Wednesday_start" Grid.Column="3" Time="{Binding DigitalTime, Mode=TwoWay}" MinTime="{Binding MinTime}" MaxTime="{Binding MaxTime}" Grid.Row="2" Margin="0,55.8,0.2,0.2" Grid.RowSpan="2"  />
-            <TimePicker:TimePickerSlider x:Name="new_Wednesday_end" Grid.Column="3" Time="{Binding DigitalTime, Mode=TwoWay}" MinTime="{Binding MinTime}" MaxTime="{Binding MaxTime}" Grid.Row="2" Grid.ColumnSpan="2" Margin="247,55.8,-0.2,0.2" Grid.RowSpan="2" />
-            <TimePicker:TimePickerSlider x:Name="new_Thursday_start" Grid.Column="3" Time="{Binding DigitalTime, Mode=TwoWay}" MinTime="{Binding MinTime}" MaxTime="{Binding MaxTime}" Grid.Row="4" Margin="0,0.8,0.2,0"/>
-            <TimePicker:TimePickerSlider x:Name="new_Thursday_end" Grid.Column="3" Time="{Binding DigitalTime, Mode=TwoWay}" MinTime="{Binding MinTime}" MaxTime="{Binding MaxTime}"  Grid.Row="4" Margin="247,0.8,-0.2,0" Grid.ColumnSpan="2"/>
-            <TimePicker:TimePickerSlider x:Name="new_Friday_start"  Grid.Column="3" Time="{Binding DigitalTime, Mode=TwoWay}" MinTime="{Binding MinTime}" MaxTime="{Binding MaxTime}" Grid.Row="5" Margin="0,0,0.2,0" />
-            <TimePicker:TimePickerSlider x:Name="new_Friday_end"  Grid.Column="3" Time="{Binding DigitalTime, Mode=TwoWay}" MinTime="{Binding MinTime}" MaxTime="{Binding MaxTime}" Grid.Row="5" Grid.ColumnSpan="2" Margin="247,0,-0.2,0" />
-            <TimePicker:TimePickerSlider x:Name="new_Saturday_start" Time="{Binding DigitalTime, Mode=TwoWay}" MinTime="{Binding MinTime}" MaxTime="{Binding MaxTime}" Grid.Row="6" Grid.Column="3" Margin="0,0,0.2,0.2" />
-            <TimePicker:TimePickerSlider x:Name="new_Saturday_end" Grid.Column="3" Time="{Binding DigitalTime, Mode=TwoWay}" MinTime="{Binding MinTime}" MaxTime="{Binding MaxTime}"  Grid.Row="6" Grid.ColumnSpan="2" Margin="247,0,-0.2,0.2" />
+            <TimePicker:TimePickerSlider x:Name="new_Sunday_start"  Grid.Column="3"  Margin="0,0,1.2,53.2" Grid.RowSpan="2"/>
+            <TimePicker:TimePickerSlider x:Name="new_Sunday_end" Grid.Column="3"  Margin="247,0,0.8,53.2" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+            <TimePicker:TimePickerSlider x:Name="new_Monday_start"  Grid.Column="3"  Margin="0,35,1.2,0.2" Grid.RowSpan="2"/>
+            <TimePicker:TimePickerSlider x:Name="new_Monday_end" Grid.Column="3"  Margin="247,35,0.8,0.2" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+            <TimePicker:TimePickerSlider x:Name="new_Tuesday_start" Grid.Column="3"   Grid.Row="1" Margin="0,52.8,0.2,0.2" Grid.RowSpan="2" />
+            <TimePicker:TimePickerSlider x:Name="new_Tuesday_end" Grid.Column="3"   Grid.Row="1" Grid.ColumnSpan="2" Margin="247,52.8,-0.2,0.2" Grid.RowSpan="2" />
+            <TimePicker:TimePickerSlider x:Name="new_Wednesday_start" Grid.Column="3"  Grid.Row="2" Margin="0,55.8,0.2,0.2" Grid.RowSpan="2"  />
+            <TimePicker:TimePickerSlider x:Name="new_Wednesday_end" Grid.Column="3"  Grid.Row="2" Grid.ColumnSpan="2" Margin="247,55.8,-0.2,0.2" Grid.RowSpan="2" />
+            <TimePicker:TimePickerSlider x:Name="new_Thursday_start" Grid.Column="3"  Grid.Row="4" Margin="0,0.8,0.2,0"/>
+            <TimePicker:TimePickerSlider x:Name="new_Thursday_end" Grid.Column="3"   Grid.Row="4" Margin="247,0.8,-0.2,0" Grid.ColumnSpan="2"/>
+            <TimePicker:TimePickerSlider x:Name="new_Friday_start"  Grid.Column="3"  Grid.Row="5" Margin="0,0,0.2,0" />
+            <TimePicker:TimePickerSlider x:Name="new_Friday_end"  Grid.Column="3"  Grid.Row="5" Grid.ColumnSpan="2" Margin="247,0,-0.2,0" />
+            <TimePicker:TimePickerSlider x:Name="new_Saturday_start"  Grid.Row="6" Grid.Column="3" Margin="0,0,0.2,0.2" />
+            <TimePicker:TimePickerSlider x:Name="new_Saturday_end" Grid.Column="3"   Grid.Row="6" Grid.ColumnSpan="2" Margin="247,0,-0.2,0.2" />
             <Button Content="Save" HorizontalAlignment="Left" Margin="40,92,0,-59.8" Grid.Row="6" VerticalAlignment="Top" Width="105" Height="23" Grid.Column="3" Click="Button_Click"/>
         </Grid>
         <Grid Margin="10,10,30,88.4">
@@ -69,8 +69,6 @@
             <TextBox x:Name="new_comment" TextWrapping="Wrap" Text="" Margin="113,145,441,50"/>
             <TextBox x:Name="new_surrounding_address" TextWrapping="Wrap" Text="" Margin="113,75,441,120"/>
             <ComboBox HorizontalAlignment="Left" Name="new_paymentmethode" Margin="315,147,0,0" VerticalAlignment="Top" Width="115" SelectionChanged="new_paymentmethode_SelectionChanged" Height="24" >
-                <ComboBoxItem IsSelected="True">hourly</ComboBoxItem>
-                <ComboBoxItem IsSelected="True">monthly</ComboBoxItem>
 
             </ComboBox>
             <Label Content="payment methode" HorizontalAlignment="Left" Margin="195,145,0,0" VerticalAlignment="Top" Height="25" Width="120" RenderTransformOrigin="0.52,0.322"/>
