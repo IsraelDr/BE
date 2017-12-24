@@ -27,6 +27,8 @@ namespace BL
         //Function
         public static int calculateDistance(string source, string destination)
         {
+            try
+            {
                 var drivingDirectionRequest = new DirectionsRequest
                 {
                     TravelMode = TravelMode.Walking,
@@ -38,6 +40,11 @@ namespace BL
                 Route route = drivingDirections.Routes.First();
                 Leg leg = route.Legs.First();
                 return leg.Distance.Value;
+            }
+            catch(Exception)
+            {
+                throw new Exception("Not able to find distance");
+            };
 
         }/**********new Google Maps ******/
         public int PrioritiesMach(Mother m, Nanny n)
@@ -179,11 +186,11 @@ namespace BL
             {
                 PriorityNanny temp = new PriorityNanny();
                 System.Threading.Thread t = new System.Threading.Thread(() => {
-                    temp.distance = BL.BL_imp.calculateDistance("jerusalem", "tel-aviv");
+                        temp.distance = calculateDistance(m.Adress, nan.address);
 
                 });
                 t.Start();
-                //t.Join();
+                t.Join();
                 temp.nanny=nan;
                 p.Add(temp);
             }

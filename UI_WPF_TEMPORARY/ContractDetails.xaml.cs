@@ -48,6 +48,7 @@ namespace UI_WPF_TEMPORARY
         {
             nannysoptiongrid.ItemsSource = null;
             nannysoptiongrid.ItemsSource = bl.PriorityNannyList(bl.GetMotherById(int.Parse(listofMothers.SelectedItem.ToString())));
+            nannysoptiongrid.Items.Refresh();
         }
     }
 }
