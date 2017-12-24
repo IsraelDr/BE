@@ -9,13 +9,13 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="81*"/>
-            <RowDefinition Height="259*"/>
-            <RowDefinition Height="314*"/>
+            <RowDefinition Height="539*"/>
+            <RowDefinition Height="34*"/>
             <RowDefinition Height="91*"/>
         </Grid.RowDefinitions>
-        <DataGrid Name="nannysoptiongrid" Grid.Row="1"/>
-        <Button Content="Button" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="116" Height="36" Margin="367,27.6,366.6,27.6"/>
-        <Grid HorizontalAlignment="Left" Height="81" Grid.RowSpan="2" VerticalAlignment="Top" Width="446" Margin="10,0,0,0">
+        <DataGrid Name="nannysoptiongrid" Grid.Row="1" SelectionChanged="nannysoptiongrid_SelectionChanged" Margin="0,0.667,0,0" Grid.RowSpan="2"/>
+        <Button Content="Button" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="116" Height="36" Margin="367,28,367,27.333"/>
+        <Grid HorizontalAlignment="Left" Height="81" VerticalAlignment="Top" Width="446" Margin="10,0,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="175*"/>
                 <ColumnDefinition Width="271*"/>

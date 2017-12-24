@@ -12,8 +12,7 @@ using GoogleMapsApi.Entities.Geocoding.Request;
 using GoogleMapsApi.Entities.Geocoding.Response;
 using GoogleMapsApi.StaticMaps;
 using GoogleMapsApi.StaticMaps.Entities;
-
-using BE;//
+using BE;
 using DAL;
 using GoogleMapsApi;
 using System.Reflection;
@@ -193,32 +192,36 @@ namespace BL
             p.Sort((x, y) =>x.distance.CompareTo(y.distance));
             return p;
         }
+        delegate bool contractCondition(Contract c);
 
-        public delegate bool contractCondition();
-        //public List<Contract> conditionContract(contractCondition)
+        static List<Contract> GetAllNannyWithCondition( contractCondition condition)
+        {
+            List <Contract> contractCondtionList = new List <Contract>();
+            foreach (Contract c in dal.getContractList())
+            {
+                if (condition(c))
+                    contractCondtionList.Add(c);
+            }
+            if (contractCondtionList.Count > 0)
+                return contractCondtionList;
+            else throw new Exception("Contract with serch condition not found");
+        }
+
+       
+
+
+        //Groping
+        //public IEnumerable<IGrouping<string, Student>>
+        //            GetAllStudentAtCourseGroupByGrade(int courseId, int year, Semester semester)
         //{
-        //    foreach (Contract c in dal.getContractList())
-        //    {
-        //        if(c.someDelegate==true)
-        //    }
-        //    List<Contract> d = new List<Contract>();
-        //    return d;
+        //    return from item in dal.GetAllStudentCourse(sc => sc.CourseId == courseId)
+        //           where item.RegisterYear == year && item.RegisterSemester == semester
+        //           group GetStudent(item.StudentId) by GetGradeMark(item.Grade);
         //}
 
 
-
-//Groping
-//public IEnumerable<IGrouping<string, Student>>
-//            GetAllStudentAtCourseGroupByGrade(int courseId, int year, Semester semester)
-//{
-//    return from item in dal.GetAllStudentCourse(sc => sc.CourseId == courseId)
-//           where item.RegisterYear == year && item.RegisterSemester == semester
-//           group GetStudent(item.StudentId) by GetGradeMark(item.Grade);
-//}
-
-
-//ID
-public Child GetChildById(int id)
+        //ID
+        public Child GetChildById(int id)
         {
             return dal.GetChild(id);
         }
