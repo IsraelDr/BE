@@ -194,7 +194,7 @@ namespace BL
         }
         delegate bool contractCondition(Contract c);
 
-        static List<Contract> GetAllNannyWithCondition( contractCondition condition)
+        static List<Contract> GetAllContractWithCondition( contractCondition condition)
         {
             List <Contract> contractCondtionList = new List <Contract>();
             foreach (Contract c in dal.getContractList())
@@ -206,8 +206,21 @@ namespace BL
                 return contractCondtionList;
             else throw new Exception("Contract with serch condition not found");
         }
+        static int GetNumberOfContractWithCondition(contractCondition condition)
+        {
+            List<Contract> contractCondtionList = new List<Contract>();
+            int numberOfContract=0;
+            foreach (Contract c in dal.getContractList())
+            {
+                if (condition(c))
+                    numberOfContract++;
+            }
+           
+                return numberOfContract;
+            
+        }
 
-       
+
 
 
         //Groping
