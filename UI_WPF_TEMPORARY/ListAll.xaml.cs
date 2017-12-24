@@ -40,6 +40,7 @@ namespace UI_WPF_TEMPORARY
                         listofAll.ItemsSource = bl.getChildList();
                         break;
                     case 3:
+                        listofAll.AutoGeneratingColumn += listofAll_ContractGeneratingColumns;
                         listofAll.ItemsSource = bl.getContractList();
                         break;
                 }

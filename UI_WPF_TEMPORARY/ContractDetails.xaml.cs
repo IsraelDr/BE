@@ -33,6 +33,12 @@ namespace UI_WPF_TEMPORARY
             {
                 listofMothers.Items.Add(value.ID);
             }
+            var paymentmethods = from Enum e in Enum.GetValues(typeof(MyEnum.Paymentmethode))
+                                 select new { ID = e, Name = e.ToString() };
+            foreach (var value in paymentmethods)
+            {
+                paymentmethod.Items.Add(value.Name);
+            }
             fr = f;
             isUpdate = false;
             nannysoptiongrid.ItemsSource = null;
@@ -49,6 +55,14 @@ namespace UI_WPF_TEMPORARY
             nannysoptiongrid.ItemsSource = null;
             nannysoptiongrid.ItemsSource = bl.PriorityNannyList(bl.GetMotherById(int.Parse(listofMothers.SelectedItem.ToString())));
             nannysoptiongrid.Items.Refresh();
+            listofChildren.ItemsSource = null;
+            var values = from Child child in bl.getChildList()
+                         where child.Mother_ID== int.Parse(listofMothers.SelectedItem.ToString())
+                         select new { ID = child.ID, Name = child.name };
+            foreach (var value in values)
+            {
+                listofChildren.Items.Add(value.Name);
+            }
         }
     }
 }
