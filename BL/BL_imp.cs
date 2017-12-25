@@ -190,7 +190,7 @@ namespace BL
 
                 });
                 t.Start();
-                t.Join();
+                //t.Join();
                 temp.nanny=nan;
                 p.Add(temp);
             }

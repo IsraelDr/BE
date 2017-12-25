@@ -55,7 +55,7 @@ namespace UI_WPF_TEMPORARY
             nannysoptiongrid.ItemsSource = null;
             nannysoptiongrid.ItemsSource = bl.PriorityNannyList(bl.GetMotherById(int.Parse(listofMothers.SelectedItem.ToString())));
             nannysoptiongrid.Items.Refresh();
-            listofChildren.ItemsSource = null;
+            listofChildren.Items.Clear();
             var values = from Child child in bl.getChildList()
                          where child.Mother_ID== int.Parse(listofMothers.SelectedItem.ToString())
                          select new { ID = child.ID, Name = child.name };
