@@ -23,7 +23,7 @@ namespace DAL
 
         void AddContract(Contract contract);
         void RemoveContract(int id);
-        void UpdateContract(int id);
+        void UpdateContract(Contract contract);
 
         List<BE.Nanny> getNannyList();
         List<BE.Mother> getMotherList();

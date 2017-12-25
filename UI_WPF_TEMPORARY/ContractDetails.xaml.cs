@@ -76,20 +76,14 @@ namespace UI_WPF_TEMPORARY
         {
             try
             {
-                Contract contract = new Contract(int.Parse(new_ID.Text), new_LastName.Text, new_Firstname.Text,
-                                            new_Phonenumber.Text, new_Address.Text,
-                                            new_surrounding_address.Text,
-                                            new bool[] {new_Sunday.IsChecked==true, new_Monday.IsChecked == true ,
-                                    new_Tuesday.IsChecked==true,new_Wednesday.IsChecked==true,new_Thursday.IsChecked==true,
-                                    new_Friday.IsChecked==true,new_Saturday.IsChecked==true},
-                                            new TimeSpan[,] { {new_Sunday_start.Time.ToTimeSpan(),new_Sunday_end.Time.ToTimeSpan() },
-                                    {new_Monday_start.Time.ToTimeSpan(),new_Monday_end.Time.ToTimeSpan() },
-                                    {new_Tuesday_start.Time.ToTimeSpan(),new_Tuesday_end.Time.ToTimeSpan() },
-                                    {new_Wednesday_start.Time.ToTimeSpan(),new_Wednesday_end.Time.ToTimeSpan() },
-                                    {new_Thursday_start.Time.ToTimeSpan(),new_Thursday_end.Time.ToTimeSpan() },
-                                    {new_Friday_start.Time.ToTimeSpan(),new_Friday_end.Time.ToTimeSpan() },
-                                    {new_Saturday_start.Time.ToTimeSpan(),new_Saturday_end.Time.ToTimeSpan() }},
-                                    new_comment.Text,/*new_paymentmethode.Text*/(MyEnum.Paymentmethode)Enum.Parse(typeof(MyEnum.Paymentmethode), new_paymentmethode.Text));
+                if (introduce_meeting.IsChecked == false || is_signed.IsChecked == false)
+                    return;
+                Contract contract = new Contract(((PriorityNanny)(nannysoptiongrid.SelectedItem)).ID, ((Child)(listofChildren.SelectedItem)).ID, introduce_meeting.IsChecked,
+                                            is_signed.IsChecked, ((PriorityNanny)(nannysoptiongrid.SelectedItem)).Hourly_rate,
+                                            ((PriorityNanny)(nannysoptiongrid.SelectedItem)).Monthly_rate,
+                                            (MyEnum.Paymentmethode)Enum.Parse(typeof(MyEnum.Paymentmethode),paymentmethod.Text),
+                                            Convert.ToDateTime(workbegindate.SelectedDate), Convert.ToDateTime(workenddate.SelectedDate),
+                                            ((PriorityNanny)(nannysoptiongrid.SelectedItem)).salary);
                 if (isUpdate)
                     bl.UpdateContract(contract);
                 else
