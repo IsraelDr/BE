@@ -182,20 +182,49 @@ namespace BL
         public List<PriorityNanny> PriorityNannyList(Mother m)
         { 
             List<PriorityNanny> p = new List<PriorityNanny>();
+
+
+            List<System.Threading.Thread> thds = new List<System.Threading.Thread>();
             foreach (Nanny nan in dal.getNannyList())
             {
                 PriorityNanny temp = new PriorityNanny();
-                System.Threading.Thread t = new System.Threading.Thread(() => {
+                System.Threading.Thread t = new System.Threading.Thread(() =>
+                {
+                    try
+                    {
                         temp.distance = calculateDistance(m.Adress, nan.address);
+                        temp.nanny = nan;
+                        p.Add(temp);
 
+                    }
+                    catch
+                    {
+                        // fix Nanny?
+                    }
                 });
                 t.Start();
                 //t.Join();
-                temp.nanny=nan;
-                p.Add(temp);
+                thds.Add(t);
             }
+            foreach (System.Threading.Thread t in thds)
+            {
+                t.Join();
+            }
+            /****************/
+            //foreach (Nanny nan in dal.getNannyList())
+            //{
+            //    PriorityNanny temp = new PriorityNanny();
+            //    System.Threading.Thread t = new System.Threading.Thread(() => {
+            //            temp.distance = calculateDistance(m.Adress, nan.address);
+
+            //    });
+            //    t.Start();
+            //    //t.Join();
+            //    temp.nanny=nan;
+            //    p.Add(temp);
+            //}
            
-              //  p.Sort((x, y) => calculateDistance(m.Adress, x.nanny.address).CompareTo(calculateDistance(m.Adress, y.nanny.address)));
+            //  //  p.Sort((x, y) => calculateDistance(m.Adress, x.nanny.address).CompareTo(calculateDistance(m.Adress, y.nanny.address)));
             p.Sort((x, y) =>x.distance.CompareTo(y.distance));
             return p;
         }
