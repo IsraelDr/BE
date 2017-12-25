@@ -57,8 +57,8 @@ namespace BE
         public Nanny(params object[] parameters)
         {
             ID = int.Parse(parameters[0].ToString());
-            last_name = (string)parameters[1];
-            first_name = (string)parameters[2];
+            first_name = (string)parameters[1];
+            last_name = (string)parameters[2];
             Birthdate = Convert.ToDateTime(parameters[3]);
             PhoneNumber = int.Parse(parameters[4].ToString());
             address = (string)parameters[5];

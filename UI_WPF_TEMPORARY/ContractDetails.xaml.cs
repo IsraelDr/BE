@@ -24,15 +24,17 @@ namespace UI_WPF_TEMPORARY
         static BL_imp bl = new BL_imp();
         static Window fr;
         bool isUpdate = false;
-        public ContractDetails(Window f, Contract mother = null)
+        public ContractDetails(Window f, Contract contract = null)
         {
             InitializeComponent();
             var values = from Mother moth in bl.getMotherList()
                          select new { ID = moth.ID, Name = moth.Firstname + " "+moth.Lastname };
             foreach (var value in values)
             {
-                listofMothers.Items.Add(value.ID);
+                listofMothers.Items.Add(value);
             }
+            listofMothers.DisplayMemberPath = "Name";
+            listofMothers.SelectedValuePath = "ID";
             var paymentmethods = from Enum e in Enum.GetValues(typeof(MyEnum.Paymentmethode))
                                  select new { ID = e, Name = e.ToString() };
             foreach (var value in paymentmethods)
@@ -42,11 +44,11 @@ namespace UI_WPF_TEMPORARY
             fr = f;
             isUpdate = false;
             nannysoptiongrid.ItemsSource = null;
-            
-            //nannysoptiongrid.ItemsSource = bl.calculateDistance();
-            if (mother != null)
+            if (contract != null)
             {
                 isUpdate = true;
+                listofMothers.SelectedValue = bl.GetChildById(contract.Child_ID).Mother_ID;
+                listofChildren.SelectedValue = contract.Child_ID;
             }
         }
 
@@ -54,16 +56,18 @@ namespace UI_WPF_TEMPORARY
         {
             nannysoptiongrid.ItemsSource = null;
             nannysoptiongrid.AutoGeneratingColumn += nannysoptiongrid_PriorityNannyGeneratingColumns;
-            nannysoptiongrid.ItemsSource = bl.PriorityNannyList(bl.GetMotherById(int.Parse(listofMothers.SelectedItem.ToString())));
+            nannysoptiongrid.ItemsSource = bl.PriorityNannyList(bl.GetMotherById(int.Parse((listofMothers.SelectedValue).ToString())));
             nannysoptiongrid.Items.Refresh();
             listofChildren.Items.Clear();
             var values = from Child child in bl.getChildList()
-                         where child.Mother_ID== int.Parse(listofMothers.SelectedItem.ToString())
+                         where child.Mother_ID== int.Parse(listofMothers.SelectedValue.ToString())
                          select new { ID = child.ID, Name = child.name };
             foreach (var value in values)
             {
-                listofChildren.Items.Add(value.Name);
+                listofChildren.Items.Add(value);
             }
+            listofChildren.DisplayMemberPath = "Name";
+            listofChildren.SelectedValuePath = "ID";
         }
         void nannysoptiongrid_PriorityNannyGeneratingColumns(object sender, System.Windows.Controls.DataGridAutoGeneratingColumnEventArgs e)
         {
@@ -77,8 +81,8 @@ namespace UI_WPF_TEMPORARY
             try
             {
                 if (introduce_meeting.IsChecked == false || is_signed.IsChecked == false)
-                    return;
-                Contract contract = new Contract(((PriorityNanny)(nannysoptiongrid.SelectedItem)).ID, ((Child)(listofChildren.SelectedItem)).ID, introduce_meeting.IsChecked,
+                    throw new Exception("One of the checkboxes was not clicked!!");
+                Contract contract = new Contract(((PriorityNanny)(nannysoptiongrid.SelectedItem)).ID, listofChildren.SelectedValue, introduce_meeting.IsChecked,
                                             is_signed.IsChecked, ((PriorityNanny)(nannysoptiongrid.SelectedItem)).Hourly_rate,
                                             ((PriorityNanny)(nannysoptiongrid.SelectedItem)).Monthly_rate,
                                             (MyEnum.Paymentmethode)Enum.Parse(typeof(MyEnum.Paymentmethode),paymentmethod.Text),

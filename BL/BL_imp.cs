@@ -294,7 +294,11 @@ namespace BL
         {
             return dal.GetMother(id);
         }
-
+        public Contract GetContractById(int id)
+        {
+            return dal.GetContract(id);
+        }
+        
         //add
         public void AddChild(Child child)
         {

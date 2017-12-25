@@ -34,7 +34,7 @@ namespace UI_WPF_TEMPORARY
                     Updategrid.Children.Add(new ChildDetails(this,(Child)a));
                     break;
                 case 3:
-                    //listofAll.ItemsSource = bl.getContractList();
+                    Updategrid.Children.Add(new ContractDetails(this, (Contract)a));
                     break;
             }
         }

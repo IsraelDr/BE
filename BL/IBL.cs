@@ -27,6 +27,7 @@ namespace BL
         void AddContract(Contract contract);
         void RemoveContract(int id);
         void UpdateContract(Contract contract);
+        Contract GetContractById(int id);
 
         List<BE.Nanny> getNannyList();
         List<BE.Mother> getMotherList();

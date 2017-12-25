@@ -104,7 +104,7 @@ namespace UI_WPF_TEMPORARY
                         listofAll.ItemsSource = bl.getChildList();
                         break;
                     case 3:
-                        bl.RemoveContract(((Contract)listofAll.SelectedItem).Contract_number);
+                        bl.RemoveContract(((Contract)listofAll.SelectedItem).Contract_ID);
                         listofAll.ItemsSource = null;
                         listofAll.ItemsSource = bl.getContractList();
                         break;
@@ -146,6 +146,11 @@ namespace UI_WPF_TEMPORARY
                         a.Closed += new EventHandler(openwindow);
                         break;
                     case 3:
+                        Contract contract = bl.GetContractById(((Contract)listofAll.SelectedItem).Contract_ID);
+                        a = new UpdateWindow(Choosen, contract);
+                        a.Show();
+                        this.Hide();
+                        a.Closed += new EventHandler(openwindow);
                         break;
                 }
             }

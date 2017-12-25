@@ -114,7 +114,7 @@ namespace DAL
             if (contr == null)
                 throw new Exception("Contract with the same id not found...");
 
-            DataSource.ContractList.RemoveAll(n => n.Contract_number == id);
+            DataSource.ContractList.RemoveAll(n => n.Contract_ID == id);
 
             DataSource.ContractList.Remove(contr);
         }
