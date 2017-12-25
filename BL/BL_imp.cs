@@ -187,7 +187,7 @@ namespace BL
             List<System.Threading.Thread> thds = new List<System.Threading.Thread>();
             foreach (Nanny nan in dal.getNannyList())
             {
-                PriorityNanny temp = new PriorityNanny(nan);
+                PriorityNanny temp = new PriorityNanny(nan,m);
                 System.Threading.Thread t = new System.Threading.Thread(() =>
                 {
                     try
@@ -416,9 +416,9 @@ namespace BL
             dal.UpdateChild(chil);
         }
 
-        public void UpdateContract(int id)
+        public void UpdateContract(Contract contract)
         {
-            throw new NotImplementedException();
+            dal.UpdateContract(contract);
             //if (dal.GetChild(contract.Child_ID).Birthdate.CompareTo(temporary) > 0)
             //    throw new Exception("Cannot sign contract for child under 3 month!!");//cant sign contract if younger then 3 month
         }

@@ -14,7 +14,7 @@
             <RowDefinition Height="63*"/>
         </Grid.RowDefinitions>
         <DataGrid Name="nannysoptiongrid" Grid.Row="1" Margin="0,0.6,-0.4,7.4"/>
-        <Button Content="Save" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="116" Height="36" Margin="366,33,367.6,56.6"/>
+        <Button Content="Save" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="116" Height="36" Margin="366,33,367.6,56.6" Click="Button_Click"/>
         <Grid HorizontalAlignment="Left" Height="81" VerticalAlignment="Top" Width="415" Margin="10,0,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="175*"/>
