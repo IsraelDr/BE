@@ -192,9 +192,9 @@ namespace BL
             p.Sort((x, y) =>x.distance.CompareTo(y.distance));
             return p;
         }
-        delegate bool contractCondition(Contract c);
+        public delegate bool contractCondition(Contract c);
 
-        static List<Contract> GetAllContractWithCondition( contractCondition condition)
+        public List<Contract> GetAllContractWithCondition( contractCondition condition)
         {
             List <Contract> contractCondtionList = new List <Contract>();
             foreach (Contract c in dal.getContractList())
@@ -206,7 +206,7 @@ namespace BL
                 return contractCondtionList;
             else throw new Exception("Contract with serch condition not found");
         }
-        static int GetNumberOfContractWithCondition(contractCondition condition)
+        public  int GetNumberOfContractWithCondition(contractCondition condition)
         {
             List<Contract> contractCondtionList = new List<Contract>();
             int numberOfContract=0;
@@ -224,14 +224,23 @@ namespace BL
 
 
         //Groping
-        //public IEnumerable<IGrouping<string, Student>>
-        //            GetAllStudentAtCourseGroupByGrade(int courseId, int year, Semester semester)
-        //{
-        //    return from item in dal.GetAllStudentCourse(sc => sc.CourseId == courseId)
-        //           where item.RegisterYear == year && item.RegisterSemester == semester
-        //           group GetStudent(item.StudentId) by GetGradeMark(item.Grade);
-        //}
-
+       //public List<Nanny> nannyByChildrenAge(bool order=false)
+       //{
+       //     var result =
+       //         dal.getNannyList().GroupBy(c => c.Max_age);
+       //     var largestGroupFirst=
+       //         from g in result
+       //         orderby g.;
+       //     List<Nanny> n = new List<Nanny>();
+       //     n = result.ToList<Nanny>;
+       //     return n;
+       //     foreach (IGrouping<int,Nanny> group in result)
+       //     {
+       //         n.
+       //     }
+            
+            
+       //}
 
         //ID
         public Child GetChildById(int id)
