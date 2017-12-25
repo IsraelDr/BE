@@ -53,6 +53,7 @@ namespace UI_WPF_TEMPORARY
         private void listofMothers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             nannysoptiongrid.ItemsSource = null;
+            nannysoptiongrid.AutoGeneratingColumn += nannysoptiongrid_PriorityNannyGeneratingColumns;
             nannysoptiongrid.ItemsSource = bl.PriorityNannyList(bl.GetMotherById(int.Parse(listofMothers.SelectedItem.ToString())));
             nannysoptiongrid.Items.Refresh();
             listofChildren.Items.Clear();
@@ -63,6 +64,12 @@ namespace UI_WPF_TEMPORARY
             {
                 listofChildren.Items.Add(value.Name);
             }
+        }
+        void nannysoptiongrid_PriorityNannyGeneratingColumns(object sender, System.Windows.Controls.DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName == "Working_days"|| e.PropertyName == "Daily_Working_hours" || e.PropertyName == "Vacation_days")
+                e.Cancel = true;
+
         }
     }
 }

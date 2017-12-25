@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class PriorityNanny
+    public class PriorityNanny:Nanny
     {
-        private Nanny nanny_;
+        //private Nanny nanny_;
         private double distance_;
 
-        public Nanny nanny { get; set;}
+        //public Nanny nanny { get; set;}
         public double distance { get; set; }
+        public PriorityNanny(Nanny nan):base(nan){
+
+        }
     }
 }

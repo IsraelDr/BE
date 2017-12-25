@@ -33,8 +33,8 @@ namespace BE
 
         /********************/
         public int ID                    { get { return ID_; } set { ID_ = value; } }                                                //ID
-        public string last_name          { get { return last_name_; } set { last_name_ = value; } }                                      //last name
         public string first_name         { get { return first_name_; } set { first_name_ = value; } }                                      //first name
+        public string last_name          { get { return last_name_; } set { last_name_ = value; } }                                      //last name
         public DateTime Birthdate        { get { return Birthdate_; } set { Birthdate_ = value; } }                                       //Birthdate
         public int PhoneNumber           { get { return PhoneNumber_; } set { PhoneNumber_ = value; } }                                       //Phone number
         public string address            { get { return address_; } set { address_ = value; } }//(st,city,cuntry)                      //Address(St, City, Country)
@@ -78,6 +78,30 @@ namespace BE
             Additional_Info = int.Parse(parameters[19].ToString());
             kidsCount = int.Parse(parameters[20].ToString());
     }
+        public Nanny(Nanny nan)
+        {
+            ID = nan.ID;
+            last_name = nan.last_name;
+            first_name = nan.first_name;
+            Birthdate = nan.Birthdate;
+            PhoneNumber = nan.PhoneNumber;
+            address = nan.address;
+            elevatorExists = nan.elevatorExists;
+            Floor = nan.Floor;
+            experience = nan.experience;
+            Max_number_kids = nan.Max_number_kids;
+            Min_age = nan.Min_age;
+            Max_age = nan.Max_age;
+            Possible_Hourly_rate = nan.Possible_Hourly_rate;
+            Hourly_rate = nan.Hourly_rate;
+            Monthly_rate = nan.Monthly_rate;
+            Working_days = nan.Working_days;
+            Daily_Working_hours = nan.Daily_Working_hours;
+            Vacation_days = nan.Vacation_days;
+            Recommendations = nan.Recommendations;
+            Additional_Info = nan.Additional_Info;
+            kidsCount = nan.kidsCount;
+        }
         public override string ToString()
         {//using ToStringProperty() in Class Tools 
             return this.ToStringProperty();

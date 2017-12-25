@@ -187,13 +187,14 @@ namespace BL
             List<System.Threading.Thread> thds = new List<System.Threading.Thread>();
             foreach (Nanny nan in dal.getNannyList())
             {
-                PriorityNanny temp = new PriorityNanny();
+                PriorityNanny temp = new PriorityNanny(nan);
                 System.Threading.Thread t = new System.Threading.Thread(() =>
                 {
                     try
                     {
+                        
+                        //temp = (PriorityNanny)nan;
                         temp.distance = calculateDistance(m.Adress, nan.address);
-                        temp.nanny = nan;
                         p.Add(temp);
 
                     }
