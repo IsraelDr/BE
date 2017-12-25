@@ -118,7 +118,11 @@ namespace DAL
 
             DataSource.ContractList.Remove(contr);
         }
-        public void UpdateContract(int id) { }
+        public void UpdateContract(Contract contract)
+        {
+            DataSource.ContractList.RemoveAll(n => n.Contract_ID == contract.Contract_ID);
+            DataSource.ContractList.Add(contract);
+        }
 
         public List<BE.Nanny> getNannyList() { return DataSource.NannyList; }
         public List<BE.Mother> getMotherList() { return DataSource.MotherList; }
