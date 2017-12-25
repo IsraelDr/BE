@@ -13,6 +13,7 @@ namespace BE
 
         //public Nanny nanny { get; set;}
         public double distance { get; set; }
+        public double salary { get; set; }
         public PriorityNanny(Nanny nan):base(nan){
 
         }

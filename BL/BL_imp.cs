@@ -187,7 +187,8 @@ namespace BL
             List<System.Threading.Thread> thds = new List<System.Threading.Thread>();
             foreach (Nanny nan in dal.getNannyList())
             {
-                PriorityNanny temp = new PriorityNanny(nan,m);
+                PriorityNanny temp = new PriorityNanny(nan);
+                temp.salary = calculateSalary(nan,m);
                 System.Threading.Thread t = new System.Threading.Thread(() =>
                 {
                     try
@@ -230,6 +231,11 @@ namespace BL
             return p;
         }
         public delegate bool contractCondition(Contract c);
+
+        public double calculateSalary(Nanny nan, Mother m)
+        {
+            return 0;//moshe
+        }
 
         public List<Contract> GetAllContractWithCondition( contractCondition condition)
         {
