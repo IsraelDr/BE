@@ -10,10 +10,10 @@ namespace BE
     {
         //private Nanny nanny_;
         private double distance_;
-
+        private double salary_;
         //public Nanny nanny { get; set;}
-        public double distance { get; set; }
-        public double salary { get; set; }
+        public double Distance { get {return distance_; } set { distance_ = value; } }
+        public double Salary { get { return salary_; } set { salary_ = value; } }
         public PriorityNanny(Nanny nan):base(nan){
 
         }

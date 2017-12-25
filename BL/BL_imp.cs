@@ -232,11 +232,7 @@ namespace BL
         }
         public delegate bool contractCondition(Contract c);
 
-        public double calculateSalary(Nanny nan, Mother m)
-        {
-            return 0;//moshe
-        }
-
+       
         public List<Contract> GetAllContractWithCondition( contractCondition condition)
         {
             List <Contract> contractCondtionList = new List <Contract>();
@@ -304,6 +300,38 @@ namespace BL
         {
             dal.AddChild(child);//need to add logic
         }
+        public double calculateSalary(Nanny nan, Mother m)
+        {
+            double salary = 0;
+            bool flag = false;
+            foreach (Contract c in dal.getContractList())
+            {
+                if (c.Nanny_ID == nan.ID && dal.GetChild(c.Child_ID).Mother_ID == m.ID)
+                {
+                    flag = true;
+                    break;
+                }
+            }
+            if (m.Paymentmethode == MyEnum.Paymentmethode.houerly)
+            {
+
+                double week_payment = 0;
+
+                for (int i = 0; i < 6; i++)//6 days hours X Hourly_payment= week 
+                {
+
+                    week_payment += nan.Hourly_rate * (nan.Daily_Working_hours[i, 1].TotalHours - nan.Daily_Working_hours[i, 0].TotalHours);
+                }
+                salary = week_payment * 4;//week hours X 4 =month salary
+            }
+            else salary = nan.Monthly_rate;
+            if (flag)
+            {
+                return salary * 0.98;
+            }
+            else { return salary; }
+        }
+
         public void AddContract(Contract contract)
         {
                DateTime temporary = DateTime.Now.AddMonths(-3);
