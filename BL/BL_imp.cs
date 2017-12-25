@@ -188,14 +188,14 @@ namespace BL
             foreach (Nanny nan in dal.getNannyList())
             {
                 PriorityNanny temp = new PriorityNanny(nan);
-                temp.salary = calculateSalary(nan,m);
+                temp.Salary = calculateSalary(nan,m);
                 System.Threading.Thread t = new System.Threading.Thread(() =>
                 {
                     try
                     {
                         
                         //temp = (PriorityNanny)nan;
-                        temp.distance = calculateDistance(m.Adress, nan.address);
+                        temp.Distance = calculateDistance(m.Adress, nan.address);
                         p.Add(temp);
 
                     }
@@ -227,7 +227,7 @@ namespace BL
             //}
            
             //  //  p.Sort((x, y) => calculateDistance(m.Adress, x.nanny.address).CompareTo(calculateDistance(m.Adress, y.nanny.address)));
-            p.Sort((x, y) =>x.distance.CompareTo(y.distance));
+            p.Sort((x, y) =>x.Distance.CompareTo(y.Distance));
             return p;
         }
         public delegate bool contractCondition(Contract c);
