@@ -4,34 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UI_WPF_TEMPORARY"
-             mc:Ignorable="d" 
-             d:DesignHeight="745.608" Width="881.081">
-    <Grid Margin="0,0,-0.4,68.6">
+             mc:Ignorable="d">
+    <Grid Margin="0,0,-0.4,-0.6">
         <Grid.RowDefinitions>
-            <RowDefinition Height="41*"/>
-            <RowDefinition Height="116*"/>
-            <RowDefinition Height="153*"/>
-            <RowDefinition Height="63*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <DataGrid Name="nannysoptiongrid" Grid.Row="1" Margin="0,0.6,-0.4,7.4"/>
-        <Button Content="Save" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="116" Height="36" Margin="366,33,367.6,56.6" Click="Button_Click"/>
-        <Grid HorizontalAlignment="Left" Height="81" VerticalAlignment="Top" Width="415" Margin="10,0,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="175*"/>
-                <ColumnDefinition Width="271*"/>
-            </Grid.ColumnDefinitions>
-            <Label Content="Mother" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <ComboBox Name="listofMothers" Width="188" Height="30" Grid.Column="1" SelectionChanged="listofMothers_SelectionChanged"/>
-        </Grid>
-        <Grid HorizontalAlignment="Left" Height="81" VerticalAlignment="Top" Width="420" Margin="430,0,-0.4,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="175*"/>
-                <ColumnDefinition Width="271*"/>
-            </Grid.ColumnDefinitions>
-            <Label Content="Child" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <ComboBox x:Name="listofChildren" Width="188" Height="30" Grid.Column="1" />
-        </Grid>
-        <Grid HorizontalAlignment="Left" Height="247" Margin="0,231.6,-0.4,0" Grid.Row="1" VerticalAlignment="Top" Width="850" Grid.RowSpan="2">
+        <DataGrid Name="nannysoptiongrid" Grid.Row="1" Height="200" Margin="0,4.8,0,1.733" MouseDoubleClick="nannysoptiongrid_MouseDoubleClick"/>
+        <Button Content="Save" Name="Savebutton" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="116" Height="36" Click="Button_Click" />
+        <Grid HorizontalAlignment="Center" Height="191" Grid.Row="2" VerticalAlignment="Top" Width="850">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -40,7 +23,7 @@
                 <RowDefinition Height="91*"/>
                 <RowDefinition Height="89*"/>
             </Grid.RowDefinitions>
-            <Grid HorizontalAlignment="Left" Height="91" VerticalAlignment="Top" Width="425" Grid.ColumnSpan="2">
+            <Grid HorizontalAlignment="Left" Height="91" VerticalAlignment="Top" Width="425" Grid.ColumnSpan="2" Margin="0,10,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="206*"/>
                     <ColumnDefinition Width="219*"/>
@@ -71,6 +54,28 @@
                 </Grid.RowDefinitions>
                 <CheckBox Content="Introduction Meeting" Name="introduce_meeting" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <CheckBox Content="I accept the Terms and signed" Name="is_signed" HorizontalAlignment="Center" Margin="0,47,0,0" VerticalAlignment="Center" Grid.RowSpan="2"/>
+            </Grid>
+        </Grid>
+        <Grid HorizontalAlignment="Center" Height="auto" VerticalAlignment="Top" Grid.Row="0" Width="850">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="431*"/>
+                <ColumnDefinition Width="419*"/>
+            </Grid.ColumnDefinitions>
+            <Grid HorizontalAlignment="Left" Height="91" VerticalAlignment="Top" Width="424" Grid.Row="0" Margin="0,3,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="175*"/>
+                    <ColumnDefinition Width="271*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Mother" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <ComboBox x:Name="listofMothers" Width="188" Height="30" Grid.Column="1" SelectionChanged="listofMothers_SelectionChanged"/>
+            </Grid>
+            <Grid HorizontalAlignment="Center" Height="94" VerticalAlignment="Top" Width="420" Grid.Row="0" Margin="0.6,0,-1.4,0" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="175*"/>
+                    <ColumnDefinition Width="271*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Child" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <ComboBox x:Name="listofChildren" Width="188" Height="30" Grid.Column="1" />
             </Grid>
         </Grid>
 

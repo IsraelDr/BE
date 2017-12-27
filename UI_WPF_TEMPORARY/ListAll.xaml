@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UI_WPF_TEMPORARY"
         mc:Ignorable="d"
-        Title="ListAll" Height="300" Width="864.211">
+        Title="ListAll" Height="331.311" Width="929.26">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="361*"/>

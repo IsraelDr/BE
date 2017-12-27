@@ -19,7 +19,7 @@ namespace UI_WPF_TEMPORARY
     /// </summary>
     public partial class UpdateWindow : Window
     {
-        public UpdateWindow(int choice,object a)
+        public UpdateWindow(int choice,object a,bool isSaveable=true)
         {
             InitializeComponent();
             switch (choice)
@@ -28,7 +28,7 @@ namespace UI_WPF_TEMPORARY
                     Updategrid.Children.Add(new MotherDetails(this, (Mother)a));
                     break;
                 case 1:
-                    Updategrid.Children.Add(new Nannydetails(this,(Nanny)a));
+                    Updategrid.Children.Add(new Nannydetails(this,(Nanny)a, isSaveable));
                     break;
                 case 2:
                     Updategrid.Children.Add(new ChildDetails(this,(Child)a));

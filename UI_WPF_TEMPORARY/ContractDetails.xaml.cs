@@ -24,9 +24,12 @@ namespace UI_WPF_TEMPORARY
         static BL_imp bl = new BL_imp();
         static Window fr;
         bool isUpdate = false;
-        public ContractDetails(Window f, Contract contract = null)
+        Contract contr;
+        public ContractDetails(Window f, Contract contract = null, bool isSaveable=true)
         {
             InitializeComponent();
+            if (isSaveable == false)
+                Savebutton.Visibility = Visibility.Collapsed;
             var values = from Mother moth in bl.getMotherList()
                          select new { ID = moth.ID, Name = moth.Firstname + " "+moth.Lastname };
             foreach (var value in values)
@@ -46,6 +49,7 @@ namespace UI_WPF_TEMPORARY
             nannysoptiongrid.ItemsSource = null;
             if (contract != null)
             {
+                contr = contract;
                 isUpdate = true;
                 listofMothers.SelectedValue = bl.GetChildById(contract.Child_ID).Mother_ID;
                 listofChildren.SelectedValue = contract.Child_ID;
@@ -54,9 +58,14 @@ namespace UI_WPF_TEMPORARY
 
         private void listofMothers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            int motherid;
             nannysoptiongrid.ItemsSource = null;
             nannysoptiongrid.AutoGeneratingColumn += nannysoptiongrid_PriorityNannyGeneratingColumns;
-            nannysoptiongrid.ItemsSource = bl.PriorityNannyList(bl.GetMotherById(int.Parse((listofMothers.SelectedValue).ToString())));
+            if (isUpdate)
+                motherid = bl.GetChildById(contr.Child_ID).Mother_ID;
+            else
+                motherid = int.Parse((listofMothers.SelectedValue).ToString());
+            nannysoptiongrid.ItemsSource = bl.PriorityNannyList(bl.GetMotherById(motherid));
             nannysoptiongrid.Items.Refresh();
             listofChildren.Items.Clear();
             var values = from Child child in bl.getChildList()
@@ -98,6 +107,20 @@ namespace UI_WPF_TEMPORARY
             {
                 MessageBox.Show(w.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void nannysoptiongrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Nanny nanny = bl.GetNannyById(((Nanny)nannysoptiongrid.SelectedItem).ID);
+            UpdateWindow a = new UpdateWindow(1, nanny,false);
+            a.Show();
+            fr.Hide();
+            a.Closed += new EventHandler(openwindow);
+        }
+        private void openwindow(object sender, EventArgs e)
+        {
+            fr.Show();
+            
         }
     }
 }

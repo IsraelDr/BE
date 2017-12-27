@@ -25,9 +25,11 @@ namespace UI_WPF_TEMPORARY
         public Window fr;
         public static BL_imp bl = new BL_imp();
         public bool isUpdate = false;
-        public Nannydetails(Window f,Nanny nanny=null)
+        public Nannydetails(Window f,Nanny nanny=null,bool IsSaveable=true)
         {
             InitializeComponent();
+            if (IsSaveable == false)
+                NannySavebutton.Visibility = Visibility.Collapsed;
             var values = from Enum e in Enum.GetValues(typeof(MyEnum.Vacation))
                          select new { ID = e, Name = e.ToString() };
             foreach (var value in values)
