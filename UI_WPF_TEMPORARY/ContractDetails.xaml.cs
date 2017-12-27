@@ -42,8 +42,10 @@ namespace UI_WPF_TEMPORARY
                                  select new { ID = e, Name = e.ToString() };
             foreach (var value in paymentmethods)
             {
-                paymentmethod.Items.Add(value.Name);
+                paymentmethod.Items.Add(value);
             }
+            paymentmethod.DisplayMemberPath = "Name";
+            paymentmethod.SelectedValuePath = "ID";
             fr = f;
             isUpdate = false;
             nannysoptiongrid.ItemsSource = null;
@@ -53,6 +55,17 @@ namespace UI_WPF_TEMPORARY
                 isUpdate = true;
                 listofMothers.SelectedValue = bl.GetChildById(contract.Child_ID).Mother_ID;
                 listofChildren.SelectedValue = contract.Child_ID;
+                paymentmethod.SelectedValue = contract.Paymentmethode;
+                introduce_meeting.IsChecked = contract.introduce_meeting ? true : false;
+                is_signed.IsChecked = contract.contract_signed? true : false;
+                workbegindate.SelectedDate = contract.startdate;
+                workenddate.SelectedDate = contract.enddate;
+                foreach (var item in nannysoptiongrid.ItemsSource)
+                {
+                    if (((PriorityNanny)item).ID == contract.Nanny_ID)
+                        nannysoptiongrid.SelectedItem = (PriorityNanny)item;
+                        
+                }
             }
         }
 
@@ -69,7 +82,7 @@ namespace UI_WPF_TEMPORARY
             nannysoptiongrid.Items.Refresh();
             listofChildren.Items.Clear();
             var values = from Child child in bl.getChildList()
-                         where child.Mother_ID== int.Parse(listofMothers.SelectedValue.ToString())
+                         where child.Mother_ID== motherid
                          select new { ID = child.ID, Name = child.name };
             foreach (var value in values)
             {

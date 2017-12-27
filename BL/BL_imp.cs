@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 //using Google.Api.Maps.Service;
+using BE;
+using DAL;
+using GoogleMapsApi;
 using GoogleMapsApi.Entities.Common;
 using GoogleMapsApi.Entities.Directions.Request;
 using GoogleMapsApi.Entities.Directions.Response;
@@ -12,12 +13,6 @@ using GoogleMapsApi.Entities.Geocoding.Request;
 using GoogleMapsApi.Entities.Geocoding.Response;
 using GoogleMapsApi.StaticMaps;
 using GoogleMapsApi.StaticMaps.Entities;
-using BE;
-using DAL;
-using GoogleMapsApi;
-using System.Reflection;
-using System.Windows.Threading;
-
 namespace BL
 {
     public class BL_imp : IBL
