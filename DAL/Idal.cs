@@ -25,9 +25,9 @@ namespace DAL
         void RemoveContract(int id);
         void UpdateContract(Contract contract);
 
-        List<BE.Nanny> getNannyList();
-        List<BE.Mother> getMotherList();
-        List<BE.Child> getChildList();
-        List<BE.Contract> getContractList();
+        IEnumerable<BE.Nanny> getNannyList(Func<Nanny, bool> predicate = null);
+        IEnumerable<BE.Mother> getMotherList(Func<Mother, bool> predicate = null);
+        IEnumerable<BE.Child> getChildList(Func<Child, bool> predicate = null);
+        IEnumerable<BE.Contract> getContractList(Func<Contract, bool> predicate = null);
     }
 }

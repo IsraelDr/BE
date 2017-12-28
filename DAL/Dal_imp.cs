@@ -31,6 +31,12 @@ namespace DAL
             DataSource.NannyList.RemoveAll(n => n.ID == id);
 
             DataSource.NannyList.Remove(nann);
+            IEnumerable<Contract> contractsofNanny = getContractList(x => x.Nanny_ID == id);
+            foreach (Contract contr in contractsofNanny.ToList())
+            {
+                RemoveContract(contr.Contract_ID);
+            }
+
         }
 
         public void UpdateNanny(Nanny nanny)
@@ -59,6 +65,11 @@ namespace DAL
             DataSource.MotherList.RemoveAll(n => n.ID == id);
 
             DataSource.MotherList.Remove(moth);
+            IEnumerable<Child> children = getChildList(x => x.Mother_ID == id);
+            foreach (Child child in children.ToList())
+            {
+                RemoveChild(child.ID);
+            }
         }
         public void UpdateMother(Mother mother)
         {
@@ -87,6 +98,11 @@ namespace DAL
             DataSource.ChildList.RemoveAll(n => n.ID == id);
 
             DataSource.ChildList.Remove(chil);
+            IEnumerable<Contract> contractsofChild = getContractList(x => x.Child_ID == id);
+            foreach (Contract contr in contractsofChild.ToList())
+            {
+                RemoveContract(contr.Contract_ID);
+            }
         }
         public void UpdateChild(Child chil)
         {
@@ -124,9 +140,25 @@ namespace DAL
             DataSource.ContractList.Add(contract);
         }
 
-        public List<BE.Nanny> getNannyList() { return DataSource.NannyList; }
-        public List<BE.Mother> getMotherList() { return DataSource.MotherList; }
-        public List<BE.Child> getChildList() { return DataSource.ChildList; }
-        public List<BE.Contract> getContractList() { return DataSource.ContractList; }
+        public IEnumerable<BE.Nanny> getNannyList(Func<Nanny,bool> predicate =null) {
+            if(predicate==null)
+                return DataSource.NannyList.AsEnumerable();
+            return DataSource.NannyList.Where(predicate);
+        }
+        public IEnumerable<BE.Mother> getMotherList(Func<Mother, bool> predicate = null) {
+            if(predicate==null)
+                return DataSource.MotherList.AsEnumerable();
+            return DataSource.MotherList.Where(predicate);
+        }
+        public IEnumerable<BE.Child> getChildList(Func<Child, bool> predicate = null) {
+            if(predicate==null)
+                return DataSource.ChildList.AsEnumerable();
+            return DataSource.ChildList.Where(predicate);
+        }
+        public IEnumerable<BE.Contract> getContractList (Func<Contract, bool> predicate = null) {
+            if(predicate==null)
+                return DataSource.ContractList.AsEnumerable();
+            return DataSource.ContractList.Where(predicate);
+        }
     }
 }

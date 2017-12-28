@@ -29,10 +29,10 @@ namespace BL
         void UpdateContract(Contract contract);
         Contract GetContractById(int id);
 
-        List<BE.Nanny> getNannyList();
-        List<BE.Mother> getMotherList();
-        List<BE.Child> getChildList();
-        List<BE.Contract> getContractList();
+        IEnumerable<BE.Nanny> getNannyList();
+        IEnumerable<BE.Mother> getMotherList();
+        IEnumerable<BE.Child> getChildList();
+        IEnumerable<BE.Contract> getContractList();
 
     }
 }

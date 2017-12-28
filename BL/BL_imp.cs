@@ -74,8 +74,8 @@ namespace BL
             }
             if (matcheList.Count == 0)//retur 5 closes mother Priorities 
             {
-                List<Nanny> temp = new List<Nanny>();
-                temp = dal.getNannyList();
+                IEnumerable<Nanny> ienum= dal.getNannyList();
+                List<Nanny>temp= ienum.ToList<Nanny>();
                 //sorting by Priorities Mache from 1 to 18 scale
                 temp.Sort((x, y) => PrioritiesMach(mother, x).CompareTo(PrioritiesMach(mother, y)));
                 for (int i = temp.Count - 1; i > (temp.Count - 1) - 5; i--)
@@ -97,7 +97,7 @@ namespace BL
                 source = mom.Adress;
             List<Nanny> closesNannyList = new List<Nanny>();
             List<Nanny> temp = new List<Nanny>();
-            temp = dal.getNannyList();
+            //temp = dal.getNannyList();
 
             // check temp not null
 
@@ -353,8 +353,7 @@ namespace BL
 
                 bool flag = false;
                 Child kide = dal.GetChild(contract.Child_ID);
-
-                if (dal.getContractList().Count>0)
+                if (dal.getContractList().ToList().Count>0)
                 foreach (Contract c  in dal.getContractList())//check brathers for 2% discount
             	{
                             if (kide.Mother_ID==dal.GetChild(c.Child_ID).Mother_ID&& contract.Nanny_ID == c.Nanny_ID)
@@ -386,39 +385,29 @@ namespace BL
             dal.AddNanny(nanny);//need to add logic
         }
         //GET LIST
-        public List<Child> getChildList()
+        public IEnumerable<Child> getChildList()
         {
             return dal.getChildList();
         }
 
-        public List<Contract> getContractList()
+        public IEnumerable<Contract> getContractList()
         {
             return dal.getContractList();
         }
 
-        public List<Mother> getMotherList()
+        public IEnumerable<Mother> getMotherList()
         {
             return dal.getMotherList();
         }
 
-        public List<Nanny> getNannyList()
+        public IEnumerable<Nanny> getNannyList()
         {
             return dal.getNannyList();
         }
         /**********Remove******/
         public void RemoveChild(int id)
         {
-            #region check if child  has open contracts
-            
-            RemoveContract( (dal.getContractList().FirstOrDefault(n => n.Child_ID == id)).Contract_number);
-            int openContractCount =
-                    (from contr in dal.getContractList()
-                     where contr.Child_ID == id/*&& contr.contractFinalized == true*/ && ((DateTime.Today - contr.enddate).Days < 0)
-                     select contr).Count();
-            if (openContractCount >= 0)
-                RemoveContract((dal.getContractList().FirstOrDefault(n => n.Child_ID == id)).Contract_number);
            
-            #endregion
             dal.RemoveChild(id);
         }
 
@@ -429,13 +418,7 @@ namespace BL
 
         public void RemoveMother(int id)
         {
-            foreach (Contract c in dal.getContractList())
-            {
-                if (dal.GetChild(c.Child_ID).Mother_ID == id)
-                    dal.RemoveContract(c.Contract_number);
-            }
             dal.RemoveMother(id);
-
         }
 
         public void RemoveNanny(int id)
