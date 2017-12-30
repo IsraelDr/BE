@@ -5,18 +5,46 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UI_WPF_TEMPORARY"
              xmlns:TimePicker="clr-namespace:RoyT.TimePicker;assembly=RoyT.TimePicker" x:Class="UI_WPF_TEMPORARY.MotherDetails"
-             mc:Ignorable="d" 
-             d:DesignHeight="821.307" Width="809.978">
-    <Grid Margin="0,0,138.6,-0.4">
+              >
+    <Grid >
         <Grid.RowDefinitions>
-            <RowDefinition Height="128*"/>
-            <RowDefinition Height="203*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-
-        <Grid Margin="0,17.4,-0.2,9.6" Grid.Row="1">
+        <Grid Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0*"/>
-                <ColumnDefinition Width="0*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="ID" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"  />
+            <TextBox x:Name="new_ID" TextWrapping="Wrap" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"/>
+            <Label Content="Firstname" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox x:Name="new_Firstname" TextWrapping="Wrap" Text="" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" />
+            <Label Content="Lastname"  Grid.Row="0" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox x:Name="new_LastName" TextWrapping="Wrap" Text="" Grid.Row="0" Grid.Column="5" VerticalAlignment="Center"/>
+            <Label Content="Sorounding Address" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Label Content="Phonenumber" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBox x:Name="new_Phonenumber" TextWrapping="Wrap" Text="" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center"/>
+            <Label Content="Address" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBox x:Name="new_Address" TextWrapping="Wrap" Text="" Grid.Row="1" Grid.Column="5" VerticalAlignment="Center"/>
+            <Label Content="Comment" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBox x:Name="new_comment" TextWrapping="Wrap" Text="" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"/>
+            <TextBox x:Name="new_surrounding_address" TextWrapping="Wrap" Text="" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"/>
+            <ComboBox Name="new_paymentmethode" VerticalAlignment="Center" SelectionChanged="new_paymentmethode_SelectionChanged" Grid.Row="2" Grid.Column="3"/>
+            <Label Content="payment methode" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="2" />
+        </Grid>
+
+        <Grid Grid.Row="1" >
+            <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="172*"/>
                 <ColumnDefinition Width="247*"/>
                 <ColumnDefinition Width="258*"/>
@@ -24,54 +52,39 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto" MinHeight="55.2"/>
-                <RowDefinition Height="Auto" MinHeight="55.2"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <CheckBox Content="Sunday" x:Name="new_Sunday" Margin="0,0,0,1.2" Grid.ColumnSpan="3"/>
-            <CheckBox Content="Monday" x:Name="new_Monday" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="16" Margin="0,35,0,0" Width="63" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
-            <CheckBox Content="Tuesday" x:Name="new_Tuesday" Grid.Row="1" Grid.ColumnSpan="3" Margin="0,52.8,0,0.2" Grid.RowSpan="2" />
-            <CheckBox Content="Wednesday" x:Name="new_Wednesday" Grid.Row="2" Grid.ColumnSpan="3" Margin="0,55.8,0,0.2" Grid.RowSpan="2" />
-            <CheckBox Content="Thursday" x:Name="new_Thursday" Grid.Row="3" Grid.ColumnSpan="3" Margin="0,55.8,0,0" Grid.RowSpan="2"/>
-            <CheckBox Content="Friday" x:Name="new_Friday" Grid.Row="5" Grid.ColumnSpan="3"/>
-            <CheckBox Content="Saturday" x:Name="new_Saturday" Grid.Row="6" Margin="0,1,0,0.2" Grid.ColumnSpan="3"/>
-            <TimePicker:TimePickerSlider x:Name="new_Sunday_start"  Grid.Column="3"  Margin="0,0,1.2,53.2" Grid.RowSpan="2"/>
-            <TimePicker:TimePickerSlider x:Name="new_Sunday_end" Grid.Column="3"  Margin="247,0,0.8,53.2" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-            <TimePicker:TimePickerSlider x:Name="new_Monday_start"  Grid.Column="3"  Margin="0,35,1.2,0.2" Grid.RowSpan="2"/>
-            <TimePicker:TimePickerSlider x:Name="new_Monday_end" Grid.Column="3"  Margin="247,35,0.8,0.2" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-            <TimePicker:TimePickerSlider x:Name="new_Tuesday_start" Grid.Column="3"   Grid.Row="1" Margin="0,52.8,0.2,0.2" Grid.RowSpan="2" />
-            <TimePicker:TimePickerSlider x:Name="new_Tuesday_end" Grid.Column="3"   Grid.Row="1" Grid.ColumnSpan="2" Margin="247,52.8,-0.2,0.2" Grid.RowSpan="2" />
-            <TimePicker:TimePickerSlider x:Name="new_Wednesday_start" Grid.Column="3"  Grid.Row="2" Margin="0,55.8,0.2,0.2" Grid.RowSpan="2"  />
-            <TimePicker:TimePickerSlider x:Name="new_Wednesday_end" Grid.Column="3"  Grid.Row="2" Grid.ColumnSpan="2" Margin="247,55.8,-0.2,0.2" Grid.RowSpan="2" />
-            <TimePicker:TimePickerSlider x:Name="new_Thursday_start" Grid.Column="3"  Grid.Row="4" Margin="0,0.8,0.2,0"/>
-            <TimePicker:TimePickerSlider x:Name="new_Thursday_end" Grid.Column="3"   Grid.Row="4" Margin="247,0.8,-0.2,0" Grid.ColumnSpan="2"/>
-            <TimePicker:TimePickerSlider x:Name="new_Friday_start"  Grid.Column="3"  Grid.Row="5" Margin="0,0,0.2,0" />
-            <TimePicker:TimePickerSlider x:Name="new_Friday_end"  Grid.Column="3"  Grid.Row="5" Grid.ColumnSpan="2" Margin="247,0,-0.2,0" />
-            <TimePicker:TimePickerSlider x:Name="new_Saturday_start"  Grid.Row="6" Grid.Column="3" Margin="0,0,0.2,0.2" />
-            <TimePicker:TimePickerSlider x:Name="new_Saturday_end" Grid.Column="3"   Grid.Row="6" Grid.ColumnSpan="2" Margin="247,0,-0.2,0.2" />
-            <Button Content="Save" HorizontalAlignment="Left" Margin="40,92,0,-59.8" Grid.Row="6" VerticalAlignment="Top" Width="105" Height="23" Grid.Column="3" Click="Button_Click"/>
-        </Grid>
-        <Grid Margin="10,10,30,88.4">
-            <Label Content="ID" Margin="0,0,555,196" />
-            <TextBox x:Name="new_ID" TextWrapping="Wrap" Margin="113,0,441,193"/>
-            <Label Content="Firstname"  Margin="225,0,328,195"/>
-            <TextBox x:Name="new_Firstname" TextWrapping="Wrap" Text="" Margin="339,0,215,193" />
-            <Label Content="Lastname"  Margin="451,0,102,195"/>
-            <TextBox x:Name="new_LastName" TextWrapping="Wrap" Text="" Margin="565,0,-11,193"/>
-            <Label Content="Sorounding Address"  Margin="0,74,554,123"/>
-            <Label Content="Phonenumber" Margin="225,74,328,123" />
-            <TextBox x:Name="new_Phonenumber" TextWrapping="Wrap" Text=""  Margin="339,74,215,120"/>
-            <Label Content="Address" Margin="451,74,102,123" />
-            <TextBox x:Name="new_Address" TextWrapping="Wrap" Text=""  Margin="565,74,-11,120"/>
-            <Label Content="Comment" Margin="0,145,554,52" />
-            <TextBox x:Name="new_comment" TextWrapping="Wrap" Text="" Margin="113,145,441,50"/>
-            <TextBox x:Name="new_surrounding_address" TextWrapping="Wrap" Text="" Margin="113,75,441,120"/>
-            <ComboBox HorizontalAlignment="Left" Name="new_paymentmethode" Margin="315,147,0,0" VerticalAlignment="Top" Width="115" SelectionChanged="new_paymentmethode_SelectionChanged" Height="24" >
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
 
-            </ComboBox>
-            <Label Content="payment methode" HorizontalAlignment="Left" Margin="195,145,0,0" VerticalAlignment="Top" Height="25" Width="120" RenderTransformOrigin="0.52,0.322"/>
+            </Grid.RowDefinitions>
+            <Label Content="starttime" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" />
+            <Label Content="endtime" VerticalAlignment="Center" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" />
+            <CheckBox Content="Sunday" x:Name="new_Sunday" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"/>
+            <CheckBox Content="Monday" x:Name="new_Monday" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center"/>
+            <CheckBox Content="Tuesday" x:Name="new_Tuesday" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"/>
+            <CheckBox Content="Wednesday" x:Name="new_Wednesday" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"/>
+            <CheckBox Content="Thursday" x:Name="new_Thursday" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center"/>
+            <CheckBox Content="Friday" x:Name="new_Friday" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center"/>
+            <CheckBox Content="Saturday" x:Name="new_Saturday" Grid.Row="7" Grid.Column="0" VerticalAlignment="Center"/>
+            <TimePicker:TimePickerSlider x:Name="new_Sunday_start"  Grid.Column="1" Grid.Row="1"/>
+            <TimePicker:TimePickerSlider x:Name="new_Sunday_end" Grid.Column="2" Grid.Row="1"/>
+            <TimePicker:TimePickerSlider x:Name="new_Monday_start"  Grid.Column="1" Grid.Row="2"/>
+            <TimePicker:TimePickerSlider x:Name="new_Monday_end" Grid.Column="2" Grid.Row="2"/>
+            <TimePicker:TimePickerSlider x:Name="new_Tuesday_start" Grid.Column="1"   Grid.Row="3"/>
+            <TimePicker:TimePickerSlider x:Name="new_Tuesday_end" Grid.Column="2"   Grid.Row="3"/>
+            <TimePicker:TimePickerSlider x:Name="new_Wednesday_start" Grid.Column="1"  Grid.Row="4"/>
+            <TimePicker:TimePickerSlider x:Name="new_Wednesday_end" Grid.Column="2"  Grid.Row="4"/>
+            <TimePicker:TimePickerSlider x:Name="new_Thursday_start" Grid.Column="1"  Grid.Row="5" />
+            <TimePicker:TimePickerSlider x:Name="new_Thursday_end" Grid.Column="2"   Grid.Row="5"/>
+            <TimePicker:TimePickerSlider x:Name="new_Friday_start"  Grid.Column="1"  Grid.Row="6"/>
+            <TimePicker:TimePickerSlider x:Name="new_Friday_end"  Grid.Column="2"  Grid.Row="6"/>
+            <TimePicker:TimePickerSlider x:Name="new_Saturday_start"  Grid.Column="1" Grid.Row="7"/>
+            <TimePicker:TimePickerSlider x:Name="new_Saturday_end" Grid.Column="2"   Grid.Row="7"/>
+            <Button Content="Save" Grid.Row="8" VerticalAlignment="Center" Grid.Column="1" Click="Button_Click"/>
         </Grid>
 
     </Grid>

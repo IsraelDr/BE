@@ -13,6 +13,8 @@ using GoogleMapsApi.Entities.Geocoding.Request;
 using GoogleMapsApi.Entities.Geocoding.Response;
 using GoogleMapsApi.StaticMaps;
 using GoogleMapsApi.StaticMaps.Entities;
+using System.Runtime;
+using System.Runtime.InteropServices;
 namespace BL
 {
     public class BL_imp : IBL
@@ -20,6 +22,7 @@ namespace BL
         static Dal_imp dal = new Dal_imp();
 
         //Function
+
         public static int calculateDistance(string source, string destination)
         {
             try
@@ -174,29 +177,44 @@ namespace BL
             else
                 throw new Exception("Ther is't Nanny with Tamat Viction days");
         }
+        public class InternetAvailability
+        {
+            [DllImport("wininet.dll")]
+            private extern static bool InternetGetConnectedState(out int description, int reservedValue);
+
+            public static bool IsInternetAvailable()
+            {
+                int description;
+                return InternetGetConnectedState(out description, 0);
+            }
+        }
+         
         public List<PriorityNanny> PriorityNannyList(Mother m)
         { 
             List<PriorityNanny> p = new List<PriorityNanny>();
 
 
             List<System.Threading.Thread> thds = new List<System.Threading.Thread>();
-            foreach (Nanny nan in dal.getNannyList())
+            foreach (Nanny nan in motherPriorities(m))
             {
                 PriorityNanny temp = new PriorityNanny(nan);
                 temp.Salary = calculateSalary(nan,m);
+                if (!InternetAvailability.IsInternetAvailable())
+                {
+                    throw new Exception("No internet connection");
+                }
                 System.Threading.Thread t = new System.Threading.Thread(() =>
                 {
                     try
                     {
                         
-                        //temp = (PriorityNanny)nan;
                         temp.Distance = calculateDistance(m.Adress, nan.address);
                         p.Add(temp);
 
                     }
-                    catch
+                    catch(Exception)
                     {
-                        // fix Nanny?
+                        
                     }
                 });
                 t.Start();
@@ -207,27 +225,11 @@ namespace BL
             {
                 t.Join();
             }
-            /****************/
-            //foreach (Nanny nan in dal.getNannyList())
-            //{
-            //    PriorityNanny temp = new PriorityNanny();
-            //    System.Threading.Thread t = new System.Threading.Thread(() => {
-            //            temp.distance = calculateDistance(m.Adress, nan.address);
-
-            //    });
-            //    t.Start();
-            //    //t.Join();
-            //    temp.nanny=nan;
-            //    p.Add(temp);
-            //}
-           
-            //  //  p.Sort((x, y) => calculateDistance(m.Adress, x.nanny.address).CompareTo(calculateDistance(m.Adress, y.nanny.address)));
             p.Sort((x, y) =>x.Distance.CompareTo(y.Distance));
             return p;
         }
         public delegate bool contractCondition(Contract c);
 
-       
         public List<Contract> GetAllContractWithCondition( contractCondition condition)
         {
             List <Contract> contractCondtionList = new List <Contract>();
@@ -297,6 +299,8 @@ namespace BL
         //add
         public void AddChild(Child child)
         {
+            if (GetMotherById(child.Mother_ID) == null)
+                throw new Exception("A mother with this ID doesn't exist");
             dal.AddChild(child);//need to add logic
         }
         public double calculateSalary(Nanny nan, Mother m)
@@ -316,7 +320,7 @@ namespace BL
 
                 double week_payment = 0;
 
-                for (int i = 0; i < 6; i++)//6 days hours X Hourly_payment= week 
+                for (int i = 0; i <= 6; i++)//6 days hours X Hourly_payment= week 
                 {
 
                     week_payment += nan.Hourly_rate * (nan.Daily_Working_hours[i, 1].TotalHours - nan.Daily_Working_hours[i, 0].TotalHours);
@@ -326,9 +330,9 @@ namespace BL
             else salary = nan.Monthly_rate;
             if (flag)
             {
-                return salary * 0.98;
+                return (int)(salary * 0.98);
             }
-            else { return salary; }
+            else { return (int)salary; }
         }
 
         public void AddContract(Contract contract)
@@ -342,7 +346,7 @@ namespace BL
                 contract.Paymentmethode = MyEnum.Paymentmethode.houerly;
                 double week_payment = 0;
                 Nanny n = dal.GetNanny(contract.Nanny_ID);
-                for (int i = 0; i < 6; i++)//6 days hours X Hourly_payment= week 
+                for (int i = 0; i <= 6; i++)//6 days hours X Hourly_payment= week 
                 {
                    
                      week_payment += contract.Hourly_payment  * (n.Daily_Working_hours[i, 1].TotalHours - n.Daily_Working_hours[i, 0].TotalHours);
@@ -429,6 +433,10 @@ namespace BL
         /**********Update******/
         public void UpdateChild(Child chil)
         {
+            if (GetMotherById(chil.Mother_ID) == null)
+                throw new Exception("A mother with this ID doesn't exist");
+            if (GetChildById(chil.ID) == null)
+                throw new Exception("A child with this ID doesn't exist");
             dal.UpdateChild(chil);
         }
 
