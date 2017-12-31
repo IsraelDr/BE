@@ -27,7 +27,7 @@ namespace BE
         private TimeSpan[,] Daily_Working_hours_;// Daily_Working_hours(week)//Daily Working hours(week)
         private MyEnum.Vacation Vacation_days_;// "Chinuch" or "tamat" { get; set; //Vacation days- "Chinuch" or "tamat"
         private string Recommendations_;                               //Recommendations
-        private int Additional_Info_;                                  //Additional Info
+        private string Additional_Info_;                                  //Additional Info
         private int kidsCount_;
         private int fideback_;
 
@@ -51,7 +51,7 @@ namespace BE
         public TimeSpan[,] Daily_Working_hours{ get { return Daily_Working_hours_; } set { Daily_Working_hours_ = value; } }// Daily_Working_hours(week)//Daily Working hours(week)
         public MyEnum.Vacation Vacation_days        { get { return Vacation_days_; } set { Vacation_days_ = value; } }// "Chinuch" or "tamat" { get; set; //Vacation days- "Chinuch" or "tamat"
         public string Recommendations    { get { return Recommendations_; } set { Recommendations_ = value; } }                                //Recommendations
-        public int Additional_Info       { get { return Additional_Info_; } set { Additional_Info_ = value; } }                                   //Additional Info
+        public string Additional_Info       { get { return Additional_Info_; } set { Additional_Info_ = value; } }                                   //Additional Info
         public int kidsCount             { get { return kidsCount_; } set { kidsCount_ = value; } }
         public int fideback              { get { return fideback_; } set { fideback_ = value; } }
         public Nanny(params object[] parameters)
@@ -75,8 +75,8 @@ namespace BE
             Daily_Working_hours = (TimeSpan[,])parameters[16];
             Vacation_days = (MyEnum.Vacation)Enum.Parse(typeof(MyEnum.Vacation), parameters[17].ToString());
             Recommendations = (string)parameters[18];
-            Additional_Info = int.Parse(parameters[19].ToString());
-            kidsCount = int.Parse(parameters[20].ToString());
+            Additional_Info = parameters[19].ToString();
+            kidsCount = 0;
     }
         public Nanny(Nanny nan)
         {

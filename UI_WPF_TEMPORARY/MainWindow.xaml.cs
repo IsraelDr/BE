@@ -40,10 +40,10 @@ namespace UI_WPF_TEMPORARY
                 bl.AddNanny   (new Nanny(4, "Efrat" , "Milikowski",new DateTime(1994, 05, 17), 0798516858, "ashdod",   true, 6, 5, 12, 2, 6, false, 50, 300, new bool[] { true, false, true, false, true, false, true }, new TimeSpan[,] { { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) },{ new TimeSpan(5, 3, 5),new TimeSpan (8, 3, 5)}, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) } }, MyEnum.Vacation.tamat, "recommend", 15,3));
                 bl.AddNanny   (new Nanny(6, "Ilana" , "Levy",      new DateTime(1994, 05, 17), 0798516858, "bnei brak",true, 6, 5, 12, 2, 6, false, 50, 300, new bool[] { true, false, true, false, true, false, true }, new TimeSpan[,] { { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) } }, MyEnum.Vacation.tamat, "recommend", 15,5));
 
-                bl.AddChild   (new Child(1, 3, "Jankel", new DateTime(1994, 05, 12), true));
-                bl.AddChild   (new Child(2, 1, "Shloime", new DateTime(1994, 05, 12), true));
-                bl.AddChild   (new Child(3, 3, "Jossi", new DateTime(1994, 05, 12), true));
-                bl.AddChild   (new Child(4, 2, "Avi", new DateTime(1994, 05, 12), true));
+                bl.AddChild   (new Child("1", "3", "Jankel", new DateTime(1994, 05, 12), true));
+                bl.AddChild   (new Child("2", "1", "Shloime", new DateTime(1994, 05, 12), true));
+                bl.AddChild   (new Child("3", "3", "Jossi", new DateTime(1994, 05, 12), true));
+                bl.AddChild   (new Child("4", "2", "Avi", new DateTime(1994, 05, 12), true));
 
                 bl.AddContract(new Contract(4,1, true, false, 17, 485, MyEnum.Paymentmethode.houerly, new DateTime(1994, 05, 17), new DateTime(2000, 05, 17),19.15));
                 bl.AddContract(new Contract(4,2,true, false,  17, 485, MyEnum.Paymentmethode.houerly, new DateTime(1994, 05, 17), new DateTime(2000, 05, 17),15.14));
