@@ -61,7 +61,28 @@ namespace UI_WPF_TEMPORARY
             this.Show();
         }
 
-        private void MotherButton_Click(object sender, RoutedEventArgs e)
+
+        private void Grid_MouseEnter(object sender, MouseEventArgs e)
+        {
+            mother_title.FontSize += 10;
+        }
+
+        private void Grid_MouseEnter_1(object sender, MouseEventArgs e)
+        {
+            nanny_title.FontSize += 10;
+        }
+
+        private void Grid_MouseLeave(object sender, MouseEventArgs e)
+        {
+            mother_title.FontSize -= 10;
+        }
+
+        private void Grid_MouseLeave_1(object sender, MouseEventArgs e)
+        {
+            nanny_title.FontSize -= 10;
+        }
+
+        private void Grid_KeyDown(object sender, KeyEventArgs e)
         {
             ListAll a = new ListAll(0);
             a.Show();
@@ -69,7 +90,16 @@ namespace UI_WPF_TEMPORARY
             a.Closed += new EventHandler(openwindow);
         }
 
-        private void NannyButton_Click(object sender, RoutedEventArgs e)
+
+        private void mother_title_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ListAll a = new ListAll(0);
+            a.Show();
+            this.Hide();
+            a.Closed += new EventHandler(openwindow);
+        }
+
+        private void nanny_title_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ListAll b = new ListAll(1);
             b.Show();
@@ -77,7 +107,47 @@ namespace UI_WPF_TEMPORARY
             b.Closed += new EventHandler(openwindow);
         }
 
-        private void ChildButton_Click(object sender, RoutedEventArgs e)
+        private void mother_title_grid_MouseEnter(object sender, MouseEventArgs e)
+        {
+            mother_title.FontSize += 10;
+        }
+
+        private void mother_title_grid_MouseLeave(object sender, MouseEventArgs e)
+        {
+            mother_title.FontSize -= 10;
+        }
+
+        private void nanny_title_grid_MouseEnter(object sender, MouseEventArgs e)
+        {
+            nanny_title.FontSize += 10;
+        }
+
+        private void nanny_title_grid_MouseLeave(object sender, MouseEventArgs e)
+        {
+            nanny_title.FontSize -= 10;
+        }
+
+        private void child_title_grid_MouseEnter(object sender, MouseEventArgs e)
+        {
+            child_title.FontSize += 10;
+        }
+
+        private void child_title_grid_MouseLeave(object sender, MouseEventArgs e)
+        {
+            child_title.FontSize -= 10;
+        }
+
+        private void contract_title_grid_MouseEnter(object sender, MouseEventArgs e)
+        {
+            contract_title.FontSize += 10;
+        }
+
+        private void contract_title_grid_MouseLeave(object sender, MouseEventArgs e)
+        {
+            contract_title.FontSize -= 10;
+        }
+
+        private void child_title_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ListAll c = new ListAll(2);
             c.Show();
@@ -85,7 +155,7 @@ namespace UI_WPF_TEMPORARY
             c.Closed += new EventHandler(openwindow);
         }
 
-        private void ContractsButton_Click(object sender, RoutedEventArgs e)
+        private void contract_title_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ListAll d = new ListAll(3);
             d.Show();

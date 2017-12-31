@@ -29,7 +29,7 @@ namespace BL
             {
                 var drivingDirectionRequest = new DirectionsRequest
                 {
-                    TravelMode = TravelMode.Walking,
+                    TravelMode = TravelMode.Driving,
                     Origin = source,
                     //Destination = "kfar ivri ,10, Jerusalem,israel"
                     Destination = destination,
@@ -39,9 +39,9 @@ namespace BL
                 Leg leg = route.Legs.First();
                 return leg.Distance.Value;
             }
-            catch(Exception)
+            catch(Exception e)
             {
-                throw new Exception("Not able to find distance");
+                throw e;
             };
 
         }/**********new Google Maps ******/
@@ -119,9 +119,10 @@ namespace BL
                                 nnn.Add(n, d);
                             }
                         }
-                        catch
+                        catch(Exception e)
                         {
                             // fix Nanny?
+                            int a = 5;
                         }
                     });
                 t.Start();
