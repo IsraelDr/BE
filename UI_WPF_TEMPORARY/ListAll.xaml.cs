@@ -164,6 +164,10 @@ namespace UI_WPF_TEMPORARY
         {
             if (e.PropertyName == "daily_Nanny_required")
                 e.Cancel = true;
+            if (e.PropertyName == "nanny_required")
+                e.Cancel = true;
+
+
 
         }
         void listofAll_ContractGeneratingColumns(object sender, System.Windows.Controls.DataGridAutoGeneratingColumnEventArgs e)

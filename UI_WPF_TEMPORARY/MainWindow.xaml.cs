@@ -162,5 +162,10 @@ namespace UI_WPF_TEMPORARY
             this.Hide();
             d.Closed += new EventHandler(openwindow);
         }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            options_grid.Visibility = Visibility.Visible;
+        }
     }
 }
