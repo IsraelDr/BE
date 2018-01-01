@@ -316,7 +316,7 @@ namespace BL
                     break;
                 }
             }
-            if (m.Paymentmethode == MyEnum.Paymentmethode.houerly)
+            if (m.Paymentmethode == MyEnum.Paymentmethode.hourly)
             {
 
                 double week_payment = 0;
@@ -342,9 +342,9 @@ namespace BL
                if (dal.GetChild(contract.Child_ID).Birthdate.CompareTo(temporary) > 0&&contract.contract_signed)
                throw new Exception("Cannot sign contract for child under 3 month!!");//cant sign contract if younger then 3 month
 
-            if (dal.GetMother(contract.Child_ID).Paymentmethode == MyEnum.Paymentmethode.houerly)
+            if (dal.GetMother(contract.Child_ID).Paymentmethode == MyEnum.Paymentmethode.hourly)
             {
-                contract.Paymentmethode = MyEnum.Paymentmethode.houerly;
+                contract.Paymentmethode = MyEnum.Paymentmethode.hourly;
                 double week_payment = 0;
                 Nanny n = dal.GetNanny(contract.Nanny_ID);
                 for (int i = 0; i <= 6; i++)//6 days hours X Hourly_payment= week 

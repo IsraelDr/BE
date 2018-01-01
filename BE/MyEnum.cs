@@ -9,7 +9,7 @@ namespace BE
     public class MyEnum
     {
         public enum Vacation { Chinuch, tamat }//Vacation_days = "Chinuch" or "tamat" { get; set; //Vacation days- "Chinuch" or "tamat"
-        public enum Paymentmethode { houerly,  monthly }
+        public enum Paymentmethode { hourly,  monthly }
        
     }
 }
