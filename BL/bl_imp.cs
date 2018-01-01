@@ -20,7 +20,7 @@ namespace BL
 {
     public class BL_imp : IBL
     {
-        static Dal_imp dal = new Dal_imp();
+        public Idal dal = FactoryDAL.IdalInstance;
 
         //Function
 
