@@ -34,6 +34,7 @@ namespace UI_WPF_TEMPORARY
                         listofAll.ItemsSource = bl.getMotherList();
                     break;
                     case 1:
+                        listofAll.AutoGeneratingColumn += listofAll_NannyGeneratingColumns;
                         listofAll.ItemsSource = bl.getNannyList();
                         break;
                     case 2:
@@ -176,5 +177,26 @@ namespace UI_WPF_TEMPORARY
                 e.Cancel = true;
 
         }
+        void listofAll_NannyGeneratingColumns(object sender, System.Windows.Controls.DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName == "Daily_Working_hours")
+                e.Cancel = true;
+            if (e.PropertyName == "Working_days")
+                e.Cancel = true;
+            if (e.PropertyName == "Additional_Info")
+                e.Cancel = true;
+            if (e.PropertyName == "Min_age")
+                e.Cancel = true;
+            if (e.PropertyName == "Max_age")
+                e.Cancel = true;
+            if (e.PropertyName == "fideback")
+                e.Cancel = true;
+            if (e.PropertyName == "Vacation_days")
+                e.Cancel = true;
+            if (e.PropertyName == "Recommendations")
+                e.Cancel = true;
+
+        }
+        
     }
 }

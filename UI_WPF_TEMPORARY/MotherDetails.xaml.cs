@@ -34,7 +34,7 @@ namespace UI_WPF_TEMPORARY
             {
                 new_paymentmethode.Items.Add(value.Name);
             }
-            new_paymentmethode.SelectedItem = MyEnum.Paymentmethode.houerly.ToString();
+            new_paymentmethode.SelectedItem = MyEnum.Paymentmethode.hourly.ToString();
             fr = f;
             new_Sunday_start.MinTime = new DigitalTime(00, 00);
             new_Sunday_end.MinTime = new DigitalTime(00, 00);

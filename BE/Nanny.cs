@@ -12,7 +12,7 @@ namespace BE
         private string last_name_;                                     //last name
         private string first_name_;                                    //first name
         private DateTime Birthdate_;                                        //Birthdate
-        private int PhoneNumber_;                                      //Phone number
+        private string PhoneNumber_;                                      //Phone number
         private string address_;//(st,city,cuntry)                      //Address(St, City, Country)
         private bool elevatorExists_;                                  //Elevator exists?
         private int Floor_;                                            //Floor
@@ -36,7 +36,7 @@ namespace BE
         public string first_name         { get { return first_name_; } set { first_name_ = value; } }                                      //first name
         public string last_name          { get { return last_name_; } set { last_name_ = value; } }                                      //last name
         public DateTime Birthdate        { get { return Birthdate_; } set { Birthdate_ = value; } }                                       //Birthdate
-        public int PhoneNumber           { get { return PhoneNumber_; } set { PhoneNumber_ = value; } }                                       //Phone number
+        public string PhoneNumber           { get { return PhoneNumber_; } set { PhoneNumber_ = value; } }                                       //Phone number
         public string address            { get { return address_; } set { address_ = value; } }//(st,city,cuntry)                      //Address(St, City, Country)
         public bool elevatorExists       { get { return elevatorExists_; } set { elevatorExists_ = value; } }                                   //Elevator exists?
         public int Floor                 { get { return Floor_; } set { Floor_ = value; } }                                             //Floor_
@@ -60,7 +60,7 @@ namespace BE
             first_name = (string)parameters[1];
             last_name = (string)parameters[2];
             Birthdate = Convert.ToDateTime(parameters[3]);
-            PhoneNumber = int.Parse(parameters[4].ToString());
+            PhoneNumber = parameters[4].ToString();
             address = (string)parameters[5];
             elevatorExists = (bool)parameters[6];
             Floor = int.Parse(parameters[7].ToString());
