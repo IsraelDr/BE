@@ -230,7 +230,7 @@ namespace BL
             p.Sort((x, y) => x.Distance.CompareTo(y.Distance));
             return p;
         }
-        public delegate bool contractCondition(Contract c);
+        
 
         public List<Contract> GetAllContractWithCondition(contractCondition condition)
         {
@@ -244,6 +244,20 @@ namespace BL
                 return contractCondtionList;
             else throw new Exception("Contract with serch condition not found");
         }
+        //dalegate condition 
+        public bool contractConditionDistanceGreatThen10(Contract c) { return true; }
+        public bool contractConditionDistanceSmallThen10(Contract c) { return true; }
+        public bool contractConditionDistanceNannyHaveMoreThen2Children(Contract c) { return true; }
+        public bool contractsEnd(Contract c) { return true; }
+        public bool contractStart2018(Contract c) { return true; }
+        public bool contractStartBefore2018(Contract c) { return true; }
+        public bool contractStartAfter2018(Contract c) { return true; }
+        public bool contractStoOneNanny(Contract c) { return true; }
+        //public bool contractConditionDistanceGreatThen10(Contract c) { return true; }
+        //public bool contractConditionDistanceGreatThen10(Contract c) { return true; }
+
+        /*Get Number Of Contract With Condition*/
+        public delegate bool contractCondition(Contract c);
         public int GetNumberOfContractWithCondition(contractCondition condition)
         {
             List<Contract> contractCondtionList = new List<Contract>();
