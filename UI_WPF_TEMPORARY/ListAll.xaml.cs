@@ -197,6 +197,30 @@ namespace UI_WPF_TEMPORARY
                 e.Cancel = true;
 
         }
-        
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                switch (Choosen)
+                {
+                    case 1:
+                        GroupByAge uc = new GroupByAge();
+                        uc.Source = bl.nannysByChildrenAge(true);
+                        this.GroupingPanel.Content = uc;
+                        break;
+                    case 3:
+
+                        break;
+                }
+
+                
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
