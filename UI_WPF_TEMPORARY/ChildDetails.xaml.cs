@@ -21,12 +21,18 @@ namespace UI_WPF_TEMPORARY
     /// </summary>
     public partial class ChildDetails : UserControl
     {
-        static BL_imp bl = new BL_imp();
+        //static BL_imp bl = new BL_imp();
         public bool isUpdate = false;
         public Window fr;
+        Child child;
+        public IBL bl;
+                
         public ChildDetails(Window f,Child a=null)
         {
             InitializeComponent();
+            bl = FactoryBL.IBLInstance;
+            child = new Child();
+            this.DataContext = child;
             fr = f;
             isUpdate = false;
             if(a!=null)

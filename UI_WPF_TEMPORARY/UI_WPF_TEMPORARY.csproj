@@ -66,8 +66,15 @@
     <Compile Include="ContractDetails.xaml.cs">
       <DependentUpon>ContractDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="contractsgrouptemplate.xaml.cs">
+      <DependentUpon>contractsgrouptemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="converter.cs" />
     <Compile Include="GroupByAge.xaml.cs">
       <DependentUpon>GroupByAge.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Groupbycontracts.xaml.cs">
+      <DependentUpon>Groupbycontracts.xaml</DependentUpon>
     </Compile>
     <Compile Include="MotherDetails.xaml.cs">
       <DependentUpon>MotherDetails.xaml</DependentUpon>
@@ -90,7 +97,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="contractsgrouptemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GroupByAge.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Groupbycontracts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

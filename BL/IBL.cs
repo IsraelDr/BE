@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,10 @@ namespace BL
 {
     public interface IBL
     {
+        List<PriorityNanny> PriorityNannyList(Mother m);
+        IEnumerable<IGrouping<int, Nanny>> nannysByChildrenAge(bool orderByMaxAge = false);
+        IEnumerable<IGrouping<double, Contract>> ContractsByNannyDistance();
+
         void AddNanny(Nanny nanny);
         void RemoveNanny(int id);
         void UpdateNanny(Nanny nanny);
@@ -33,6 +38,6 @@ namespace BL
         IEnumerable<BE.Mother> getMotherList();
         IEnumerable<BE.Child> getChildList();
         IEnumerable<BE.Contract> getContractList();
-
+        
     }
 }

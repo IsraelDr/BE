@@ -23,11 +23,13 @@ namespace UI_WPF_TEMPORARY
     public partial class Nannydetails : UserControl
     {
         public Window fr;
-        public static BL_imp bl = new BL_imp();
+        //public static BL_imp bl = new BL_imp();
+        public IBL bl;
         public bool isUpdate = false;
         public Nannydetails(Window f,Nanny nanny=null,bool IsSaveable=true)
         {
             InitializeComponent();
+            bl = FactoryBL.IBLInstance;
             if (IsSaveable == false)
                 NannySavebutton.Visibility = Visibility.Collapsed;
             var values = from Enum e in Enum.GetValues(typeof(MyEnum.Vacation))
@@ -36,6 +38,7 @@ namespace UI_WPF_TEMPORARY
             {
                 vacationmethod.Items.Add(value.Name);
             }
+
             vacationmethod.SelectedItem = MyEnum.Vacation.Chinuch.ToString();
             new_Sunday_start.MinTime = new DigitalTime(00, 00);
             new_Sunday_end.MinTime = new DigitalTime(00, 00);
@@ -161,6 +164,26 @@ namespace UI_WPF_TEMPORARY
             {
                 MessageBox.Show(w.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void Checkbox_Checked(object sender, RoutedEventArgs e)
+        {
+            TimePickerSlider slider;
+            if (((CheckBox)(sender)).IsChecked == true)
+            {
+                slider = (TimePickerSlider)FindName("new_" + ((CheckBox)(sender)).Content + "_start");
+                slider.Visibility = Visibility.Visible;
+                slider = (TimePickerSlider)FindName("new_" + ((CheckBox)(sender)).Content + "_end");
+                slider.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                slider = (TimePickerSlider)FindName("new_" + ((CheckBox)(sender)).Content + "_start");
+                slider.Visibility = Visibility.Collapsed;
+                slider = (TimePickerSlider)FindName("new_" + ((CheckBox)(sender)).Content + "_end");
+                slider.Visibility = Visibility.Collapsed;
+            }
+
         }
     }
 }

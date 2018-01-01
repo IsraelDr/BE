@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
+    [Serializable]
     public class Child
     {
         private int ID_;
@@ -23,6 +24,8 @@ namespace BE
         public override string ToString()
         {//using ToStringProperty() in Class Tools 
             return this.ToStringProperty();
+        }
+        public Child() {
         }
         public Child(string _id,string mother_id,string _name,DateTime? _birthdate,bool specialneeds)
         {

@@ -20,13 +20,15 @@ namespace UI_WPF_TEMPORARY
     /// </summary>
     public partial class ListAll : Window
     {
-        static BL_imp bl = new BL_imp();
+        //static BL_imp bl = new BL_imp();
+        public IBL bl;
         static int Choosen;
         public ListAll(int choosen)
         {
             try
             {
                 InitializeComponent();
+                bl = FactoryBL.IBLInstance;
                 switch (choosen)
                 {
                     case 0:
@@ -210,7 +212,9 @@ namespace UI_WPF_TEMPORARY
                         this.GroupingPanel.Content = uc;
                         break;
                     case 3:
-
+                        Groupbycontracts userc = new Groupbycontracts();
+                        userc.Source = bl.ContractsByNannyDistance();
+                        this.GroupingPanel.Content = userc;
                         break;
                 }
 

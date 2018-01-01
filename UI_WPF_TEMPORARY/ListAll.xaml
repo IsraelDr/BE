@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:UI_WPF_TEMPORARY"
         mc:Ignorable="d"
         Title="ListAll" Height="331.311" Width="929.26">
-    <Grid>
+    <Grid Margin="0,0,0.2,-48.4">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="#FFF1D0D0" Offset="1"/>
@@ -29,13 +29,13 @@
             <Button Content="UPDATE" Grid.Row="2" Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click"/>
             <Button Content="GROUPING" Grid.Row="3" Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click_1"/>
         </Grid>
-        <Grid HorizontalAlignment="Left" Height="302" VerticalAlignment="Top" Width="777" Grid.ColumnSpan="2" Margin="0,0,0,-0.4">
+        <Grid HorizontalAlignment="Left" Height="350" VerticalAlignment="Top" Width="777" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="78*"/>
                 <RowDefinition Height="73*"/>
             </Grid.RowDefinitions>
             <DataGrid x:Name="listofAll" ColumnWidth="*" Margin="0,-1,0,4.4" Background="#FFF1D0D0" IsReadOnly="True" MouseDoubleClick="Button_Click" />
-            <ContentControl Name="GroupingPanel" HorizontalAlignment="Left" Margin="0,152,0,0" VerticalAlignment="Top" Height="150" Grid.RowSpan="2" Width="777"/>
+            <ContentControl Name="GroupingPanel" HorizontalAlignment="Left" Margin="0,0.2,0,0" VerticalAlignment="Top" Height="167" Width="777" Grid.Row="1"/>
         </Grid>
 
     </Grid>

@@ -21,13 +21,16 @@ namespace UI_WPF_TEMPORARY
     /// </summary>
     public partial class ContractDetails : UserControl
     {
-        static BL_imp bl = new BL_imp();
+        //static BL_imp bl = new BL_imp();
+        public IBL bl;
         static Window fr;
         bool isUpdate = false;
         Contract contr;
+
         public ContractDetails(Window f, Contract contract = null, bool isSaveable=true)
         {
             InitializeComponent();
+            bl = FactoryBL.IBLInstance;
             if (isSaveable == false)
                 Savebutton.Visibility = Visibility.Collapsed;
             var values = from Mother moth in bl.getMotherList()

@@ -13,17 +13,17 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
                 <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
                 <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
                 <ColumnDefinition Width="100"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
             <Label Content="ID" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"  />
             <TextBox x:Name="new_ID" TextWrapping="Wrap" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"/>
@@ -43,11 +43,11 @@
             <Label Content="payment methode" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="2" />
         </Grid>
 
-        <Grid Grid.Row="1" >
+        <Grid Grid.Row="1"  >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>

@@ -29,5 +29,9 @@ namespace DAL
         IEnumerable<BE.Mother> getMotherList(Func<Mother, bool> predicate = null);
         IEnumerable<BE.Child> getChildList(Func<Child, bool> predicate = null);
         IEnumerable<BE.Contract> getContractList(Func<Contract, bool> predicate = null);
+        Child GetChild(int id);
+        Nanny GetNanny(int id);
+        Mother GetMother(int id);
+        Contract GetContract(int id);
     }
 }

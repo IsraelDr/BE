@@ -22,12 +22,15 @@ namespace UI_WPF_TEMPORARY
     /// </summary>
     public partial class MainWindow : Window
     {
-        static BL_imp bl = new BL_imp();
+        //static BL_imp bls = new BL_imp();
+
+        public IBL bl;
         public MainWindow()
         {
             try
             {
                 InitializeComponent();
+                bl = FactoryBL.IBLInstance;
                 //                 class      first   last          id             adreass      adress      ************************work days**********************  *work hours:         sunday :       start******************end*****                   start******************end*****                  start******************end*****                    start******************end*****                   start******************end*****                  start******************end*****                    start******************end*****                        Payment methode          
                 bl.AddMother  (new Mother(1, "Dana", "Anilewitch", "0798512565",  "jerusalem", "jerusalem",new bool[] { true, false, true, false, true, false, true }, new TimeSpan[,] { { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5)}, { new TimeSpan(5, 3, 5), new TimeSpan (8, 3, 5)}, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5)}, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5)}, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5)} }, "comment", MyEnum.Paymentmethode.hourly));
                 bl.AddMother  (new Mother(2, "Rona", "Gurewitch" ,  "0798512565", "tel aviv",  "tel aviv", new bool[] { true, false, true, false, true, false, true }, new TimeSpan[,] { { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5)},{ new TimeSpan(15, 3, 5), new TimeSpan (8, 3, 5)}, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5)},{  new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5)}, { new TimeSpan(5, 3, 5),new TimeSpan (8, 3, 5) },{ new TimeSpan(5, 3, 5), new TimeSpan (8, 3, 5)} }, "comment", MyEnum.Paymentmethode.hourly));

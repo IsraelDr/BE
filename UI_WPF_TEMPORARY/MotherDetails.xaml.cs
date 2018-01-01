@@ -22,12 +22,14 @@ namespace UI_WPF_TEMPORARY
     /// </summary>
     public partial class MotherDetails : UserControl
     {
-        static BL_imp bl = new BL_imp();
+        //static BL_imp bl = new BL_imp();
+        public IBL bl; 
         static Window fr;
         bool isUpdate = false;
         public MotherDetails(Window f,Mother mother=null)
         {
             InitializeComponent();
+            bl = FactoryBL.IBLInstance;
             var values = from Enum e in Enum.GetValues(typeof(MyEnum.Paymentmethode))
                          select new { ID = e, Name = e.ToString() };
             foreach (var value in values)
