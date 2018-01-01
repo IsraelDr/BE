@@ -20,8 +20,9 @@ namespace BL
 {
     public class BL_imp : IBL
     {
-        public Idal dal= FactoryDAL.IdalInstance;
-        
+        static Dal_imp dal = new Dal_imp();
+
+        //Function
 
         public static int calculateDistance(string source, string destination)
         {
@@ -37,7 +38,7 @@ namespace BL
                 DirectionsResponse drivingDirections = GoogleMaps.Directions.Query(drivingDirectionRequest);
                 Route route = drivingDirections.Routes.First();
                 Leg leg = route.Legs.First();
-                return leg.Distance.Value/1000;
+                return leg.Distance.Value/10;
             }
             catch (Exception e)
             {
@@ -303,7 +304,7 @@ namespace BL
 
 
             //ID
-        public Child GetChildById(int id)
+            public Child GetChildById(int id)
         {
             return dal.GetChild(id);
         }
