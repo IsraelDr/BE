@@ -71,25 +71,32 @@ namespace UI_WPF_TEMPORARY
 
         private void listofMothers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int motherid;
-            nannysoptiongrid.ItemsSource = null;
-            nannysoptiongrid.AutoGeneratingColumn += nannysoptiongrid_PriorityNannyGeneratingColumns;
-            if (isUpdate)
-                motherid = bl.GetChildById(contr.Child_ID).Mother_ID;
-            else
-                motherid = int.Parse((listofMothers.SelectedValue).ToString());
-            nannysoptiongrid.ItemsSource = bl.PriorityNannyList(bl.GetMotherById(motherid));
-            nannysoptiongrid.Items.Refresh();
-            listofChildren.Items.Clear();
-            var values = from Child child in bl.getChildList()
-                         where child.Mother_ID== motherid
-                         select new { ID = child.ID, Name = child.name };
-            foreach (var value in values)
+            try
             {
-                listofChildren.Items.Add(value);
+                int motherid;
+                nannysoptiongrid.ItemsSource = null;
+                nannysoptiongrid.AutoGeneratingColumn += nannysoptiongrid_PriorityNannyGeneratingColumns;
+                if (isUpdate)
+                    motherid = bl.GetChildById(contr.Child_ID).Mother_ID;
+                else
+                    motherid = int.Parse((listofMothers.SelectedValue).ToString());
+                nannysoptiongrid.ItemsSource = bl.PriorityNannyList(bl.GetMotherById(motherid));
+                nannysoptiongrid.Items.Refresh();
+                listofChildren.Items.Clear();
+                var values = from Child child in bl.getChildList()
+                             where child.Mother_ID == motherid
+                             select new { ID = child.ID, Name = child.name };
+                foreach (var value in values)
+                {
+                    listofChildren.Items.Add(value);
+                }
+                listofChildren.DisplayMemberPath = "Name";
+                listofChildren.SelectedValuePath = "ID";
             }
-            listofChildren.DisplayMemberPath = "Name";
-            listofChildren.SelectedValuePath = "ID";
+            catch(Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
         void nannysoptiongrid_PriorityNannyGeneratingColumns(object sender, System.Windows.Controls.DataGridAutoGeneratingColumnEventArgs e)
         {

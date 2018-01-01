@@ -40,10 +40,10 @@ namespace UI_WPF_TEMPORARY
                 bl.AddNanny   (new Nanny(4, "Efrat" , "Milikowski",new DateTime(1994, 05, 17), 0798516858, "ashdod",   true, 6, 5, 12, 2, 6, false, 50, 300, new bool[] { true, false, true, false, true, false, true }, new TimeSpan[,] { { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) },{ new TimeSpan(5, 3, 5),new TimeSpan (8, 3, 5)}, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) } }, MyEnum.Vacation.tamat, "recommend", 15,3));
                 bl.AddNanny   (new Nanny(6, "Ilana" , "Levy",      new DateTime(1994, 05, 17), 0798516858, "bnei brak",true, 6, 5, 12, 2, 6, false, 50, 300, new bool[] { true, false, true, false, true, false, true }, new TimeSpan[,] { { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) } }, MyEnum.Vacation.tamat, "recommend", 15,5));
 
-                bl.AddChild   (new Child(1, 3, "Jankel", new DateTime(1994, 05, 12), true));
-                bl.AddChild   (new Child(2, 1, "Shloime", new DateTime(1994, 05, 12), true));
-                bl.AddChild   (new Child(3, 3, "Jossi", new DateTime(1994, 05, 12), true));
-                bl.AddChild   (new Child(4, 2, "Avi", new DateTime(1994, 05, 12), true));
+                bl.AddChild   (new Child("1", "3", "Jankel", new DateTime(1994, 05, 12), true));
+                bl.AddChild   (new Child("2", "1", "Shloime", new DateTime(1994, 05, 12), true));
+                bl.AddChild   (new Child("3", "3", "Jossi", new DateTime(1994, 05, 12), true));
+                bl.AddChild   (new Child("4", "2", "Avi", new DateTime(1994, 05, 12), true));
 
                 bl.AddContract(new Contract(4,1, true, false, 17, 485, MyEnum.Paymentmethode.houerly, new DateTime(1994, 05, 17), new DateTime(2000, 05, 17),19.15));
                 bl.AddContract(new Contract(4,2,true, false,  17, 485, MyEnum.Paymentmethode.houerly, new DateTime(1994, 05, 17), new DateTime(2000, 05, 17),15.14));
@@ -61,7 +61,28 @@ namespace UI_WPF_TEMPORARY
             this.Show();
         }
 
-        private void MotherButton_Click(object sender, RoutedEventArgs e)
+
+        private void Grid_MouseEnter(object sender, MouseEventArgs e)
+        {
+            mother_title.FontSize += 10;
+        }
+
+        private void Grid_MouseEnter_1(object sender, MouseEventArgs e)
+        {
+            nanny_title.FontSize += 10;
+        }
+
+        private void Grid_MouseLeave(object sender, MouseEventArgs e)
+        {
+            mother_title.FontSize -= 10;
+        }
+
+        private void Grid_MouseLeave_1(object sender, MouseEventArgs e)
+        {
+            nanny_title.FontSize -= 10;
+        }
+
+        private void Grid_KeyDown(object sender, KeyEventArgs e)
         {
             ListAll a = new ListAll(0);
             a.Show();
@@ -69,7 +90,16 @@ namespace UI_WPF_TEMPORARY
             a.Closed += new EventHandler(openwindow);
         }
 
-        private void NannyButton_Click(object sender, RoutedEventArgs e)
+
+        private void mother_title_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ListAll a = new ListAll(0);
+            a.Show();
+            this.Hide();
+            a.Closed += new EventHandler(openwindow);
+        }
+
+        private void nanny_title_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ListAll b = new ListAll(1);
             b.Show();
@@ -77,7 +107,47 @@ namespace UI_WPF_TEMPORARY
             b.Closed += new EventHandler(openwindow);
         }
 
-        private void ChildButton_Click(object sender, RoutedEventArgs e)
+        private void mother_title_grid_MouseEnter(object sender, MouseEventArgs e)
+        {
+            mother_title.FontSize += 10;
+        }
+
+        private void mother_title_grid_MouseLeave(object sender, MouseEventArgs e)
+        {
+            mother_title.FontSize -= 10;
+        }
+
+        private void nanny_title_grid_MouseEnter(object sender, MouseEventArgs e)
+        {
+            nanny_title.FontSize += 10;
+        }
+
+        private void nanny_title_grid_MouseLeave(object sender, MouseEventArgs e)
+        {
+            nanny_title.FontSize -= 10;
+        }
+
+        private void child_title_grid_MouseEnter(object sender, MouseEventArgs e)
+        {
+            child_title.FontSize += 10;
+        }
+
+        private void child_title_grid_MouseLeave(object sender, MouseEventArgs e)
+        {
+            child_title.FontSize -= 10;
+        }
+
+        private void contract_title_grid_MouseEnter(object sender, MouseEventArgs e)
+        {
+            contract_title.FontSize += 10;
+        }
+
+        private void contract_title_grid_MouseLeave(object sender, MouseEventArgs e)
+        {
+            contract_title.FontSize -= 10;
+        }
+
+        private void child_title_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ListAll c = new ListAll(2);
             c.Show();
@@ -85,12 +155,17 @@ namespace UI_WPF_TEMPORARY
             c.Closed += new EventHandler(openwindow);
         }
 
-        private void ContractsButton_Click(object sender, RoutedEventArgs e)
+        private void contract_title_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ListAll d = new ListAll(3);
             d.Show();
             this.Hide();
             d.Closed += new EventHandler(openwindow);
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            options_grid.Visibility = Visibility.Visible;
         }
     }
 }

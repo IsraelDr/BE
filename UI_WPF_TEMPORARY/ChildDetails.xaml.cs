@@ -43,14 +43,25 @@ namespace UI_WPF_TEMPORARY
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Child chil = new Child(int.Parse(new_ID.Text),int.Parse(new_IDmother.Text),
+
+            try
+            {
+                Child chil = new Child(new_ID.Text, new_IDmother.Text,
                                     new_Name.Text,
-                                    Convert.ToDateTime(new_Birthdate.SelectedDate),new_specialneeds.IsChecked==true);
-            if (isUpdate)
-                bl.UpdateChild(chil);
-            else
-                bl.AddChild(chil);
-            fr.Close();
+                                    new_Birthdate.SelectedDate, new_specialneeds.IsChecked == true);
+
+                if (isUpdate)
+                    bl.UpdateChild(chil);
+                else
+                    bl.AddChild(chil);
+
+                fr.Close();
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
         }
     }
 }

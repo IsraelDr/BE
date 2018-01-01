@@ -24,12 +24,19 @@ namespace BE
         {//using ToStringProperty() in Class Tools 
             return this.ToStringProperty();
         }
-        public Child(int _id,int mother_id,string _name,DateTime _birthdate,bool specialneeds)
+        public Child(string _id,string mother_id,string _name,DateTime? _birthdate,bool specialneeds)
         {
-            ID = _id;
-            Mother_ID = mother_id;
+            int temp;
+            if (!int.TryParse(_id, out temp))
+                throw new Exception("ID of Child not valid!");
+            ID = temp;
+            if (!int.TryParse(mother_id,out temp))
+                throw new Exception("ID of Mother not valid!");
+            Mother_ID = temp;
+            if (_name == "")
+                throw new Exception("Name is not valid!");
             name = _name;
-            Birthdate = _birthdate;
+            Birthdate = Convert.ToDateTime(_birthdate);
             SpecialNeeds = specialneeds;
         }
     }

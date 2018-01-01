@@ -51,8 +51,6 @@
         <TextBox Grid.Column="6"  Name="new_hourrate" Grid.Row="3" TextWrapping="Wrap" Text=""/>
         <Label Content="Monthly Rate"  Grid.Row="4"/>
         <TextBox  Name="new_monthlyrate" Grid.Row="4" TextWrapping="Wrap" Text="" Grid.Column="1"/>
-        <Label Content="kidsCount" Grid.Row="4" Grid.Column="2"/>
-        <TextBox Name="news_kidsCount" Grid.Column="3" Grid.Row="4" TextWrapping="Wrap" Text="" />
         <Grid Grid.ColumnSpan="7"  Grid.Row="4" Margin="0,68.6,0.6,-540.4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="70*"/>
@@ -91,14 +89,14 @@
             <tp:TimePickerSlider Name="new_Saturday_end" Grid.Column="2"   Grid.Row="6" />
             <Button Content="Save" Name="NannySavebutton" HorizontalAlignment="Left" Margin="40.2,92.2,0,-60" Grid.Row="6" VerticalAlignment="Top" Width="105" Height="23" Click="Button_Click" Grid.Column="1"/>
         </Grid>
-        <CheckBox  Name="new_elevator_exists" Content="Elevator Exists" Grid.Row="6"/>
-        <CheckBox  x:Name="possible_hourly_rate" Content="Is per Hour possible" Grid.Row="6" Grid.Column="4" />
+        <CheckBox  Name="new_elevator_exists" Content="Elevator Exists" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2"/>
+        <CheckBox  x:Name="possible_hourly_rate" Content="Is per Hour possible" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" />
         <TextBox x:Name="new_additional_info" Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="" />
         <Label Content="Additional Info"  Grid.Row="5"/>
         <Label Content="Recommendations" Grid.Row="4" Grid.Column="4"/>
         <TextBox Grid.Column="5"  x:Name="new_recommendations" Grid.Row="4" TextWrapping="Wrap" Text=""/>
-        <Label Content="Vacation"  Grid.Row="5" Grid.Column="2" Margin="0.2,0.4,1,0"/>
-        <ComboBox Grid.Column="3" Name="vacationmethod" Margin="0,0.4,0,0" Grid.Row="5">
+        <Label Content="Vacation"  Grid.Row="4" Grid.Column="2" Margin="0.2,0.4,1,0"/>
+        <ComboBox Grid.Column="3" Name="vacationmethod" Grid.Row="4">
         </ComboBox>
     </Grid>
 </UserControl>

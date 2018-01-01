@@ -4,19 +4,18 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UI_WPF_TEMPORARY"
-             mc:Ignorable="d" 
-             d:DesignHeight="444.595" d:DesignWidth="397.297">
+             mc:Ignorable="d">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="197*"/>
-            <ColumnDefinition Width="201*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="57*"/>
-            <RowDefinition Height="59*"/>
-            <RowDefinition Height="65*"/>
-            <RowDefinition Height="43*"/>
-            <RowDefinition Height="41*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Label Content="ID"/>
         <TextBox Grid.Column="1"  Name="new_ID" TextWrapping="Wrap" Text="" Margin="0.2,25,-0.4,24.8"/>

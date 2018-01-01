@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="ListAll" Height="331.311" Width="929.26">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFF1D0D0" Offset="1"/>
+                <GradientStop Color="White" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="361*"/>
             <ColumnDefinition Width="68*"/>
@@ -21,8 +27,8 @@
             <Button x:Name="RemoveButton" Content="REMOVE"  Grid.Row="1"  Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Click="RemoveButton_Click" />
             <Button Content="UPDATE" Grid.Row="2" Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click"/>
         </Grid>
-        <Grid HorizontalAlignment="Left" Height="270" VerticalAlignment="Top" Width="722" Grid.ColumnSpan="2">
-            <DataGrid x:Name="listofAll" Margin="0,0,0,10" />
+        <Grid HorizontalAlignment="Left" Height="302" VerticalAlignment="Top" Width="777" Grid.ColumnSpan="2" Margin="0,0,0,-0.4">
+            <DataGrid x:Name="listofAll" ColumnWidth="*" Margin="0,-1,0,0" Background="#FFF1D0D0" IsReadOnly="True" MouseDoubleClick="Button_Click" />
         </Grid>
 
     </Grid>
