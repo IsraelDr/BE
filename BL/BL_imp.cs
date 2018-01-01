@@ -38,7 +38,7 @@ namespace BL
                 DirectionsResponse drivingDirections = GoogleMaps.Directions.Query(drivingDirectionRequest);
                 Route route = drivingDirections.Routes.First();
                 Leg leg = route.Legs.First();
-                return leg.Distance.Value;
+                return leg.Distance.Value/10;
             }
             catch (Exception e)
             {
