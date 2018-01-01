@@ -281,10 +281,16 @@ namespace BL
                 //nangroup = getNannyList().GroupBy(x => 3 * (x.Min_age / 3));
             }
         }
-        
+        public IEnumerable<IGrouping<double, Contract>> ContractsByNannyDistance()
+        {
+            return from contract in getContractList()
+                   orderby 10 * (contract.distance/ 10)
+                   group contract by 10 * (contract.distance / 10);
+        }
 
-        //ID
-        public Child GetChildById(int id)
+
+            //ID
+            public Child GetChildById(int id)
         {
             return dal.GetChild(id);
         }
