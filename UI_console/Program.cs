@@ -45,7 +45,7 @@ namespace UI_console
                     switch (input)
                     {
                         case 1:
-                            bl.AddChild(new Child(1, 3, "Test", new DateTime(1994, 05, 12), true));
+                            bl.AddChild(new Child("1", "3", "Test", new DateTime(1994, 05, 12), true));
                             break;
                         case 2:
                             bl.AddMother(new Mother(1, "first", "last", "0798512565", "Tel Aviv", "surrounding", new bool[] { true, false }, new TimeSpan[,] { { new TimeSpan(5, 3, 5), new TimeSpan(5, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(5, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(5, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(5, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(5, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(5, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(5, 3, 5) } }, "comment", MyEnum.Paymentmethode.monthly));
