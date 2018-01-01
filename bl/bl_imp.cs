@@ -248,11 +248,11 @@ namespace BL
         public bool contractConditionDistanceGreatThen10(Contract c) { return (c.distance > 10); }
         public bool contractConditionDistanceSmallThenEqoul10(Contract c) { return (c.distance <= 10); }
         public bool contractConditionDistanceNannyHaveMoreThen2Children(Contract c) { return (GetNannyById(c.Nanny_ID).kidsCount > 2); }
-       // public bool contractsEnd(Contract c) { return (DateTime -); }
-        public bool contractStart2018(Contract c) { return true; }
-        public bool contractStartBefore2018(Contract c) { return true; }
-        public bool contractStartAfter2018(Contract c) { return true; }
-        public bool contractStoOneNanny(Contract c) { return true; }
+        public bool contractsEnd(Contract c) { return (DateTime.Now >c.enddate); }
+        public bool contractStart2018(Contract c) { return (  c.enddate.Year==2018); }
+        public bool contractStartBefore2018(Contract c) { return (c.enddate.Year < 2018); }
+        public bool contractStartAfter2018(Contract c) { return (c.startdate.Year > 2018); }
+        public bool contractWithDiscount(Contract c) { return c.discount; }
         //public bool contractConditionDistanceGreatThen10(Contract c) { return true; }
         //public bool contractConditionDistanceGreatThen10(Contract c) { return true; }
 
@@ -328,9 +328,8 @@ namespace BL
                 throw new Exception("A mother with this ID doesn't exist");
             dal.AddChild(child);//need to add logic
         }
-        public double calculateSalary(Nanny nan, Mother m)
+        public bool cheackForDiscount(Nanny nan, Mother m)
         {
-            double salary = 0;
             bool flag = false;
             foreach (Contract c in dal.getContractList())
             {
@@ -340,6 +339,11 @@ namespace BL
                     break;
                 }
             }
+            return flag;
+        }
+        public double calculateSalary(Nanny nan, Mother m)
+        {
+            double salary = 0;
             if (m.Paymentmethode == MyEnum.Paymentmethode.hourly)
             {
 
@@ -353,7 +357,7 @@ namespace BL
                 salary = week_payment * 4;//week hours X 4 =month salary
             }
             else salary = nan.Monthly_rate;
-            if (flag)
+            if (cheackForDiscount(nan,m))
             {
                 return (int)(salary * 0.98);
             }
@@ -362,6 +366,7 @@ namespace BL
 
         public void AddContract(Contract contract)
         {
+
                DateTime temporary = DateTime.Now.AddMonths(-3);
                if (dal.GetChild(contract.Child_ID).Birthdate.CompareTo(temporary) > 0&&contract.contract_signed)
                throw new Exception("Cannot sign contract for child under 3 month!!");//cant sign contract if younger then 3 month
@@ -399,6 +404,7 @@ namespace BL
             if (dal.GetNanny(contract.Nanny_ID).Max_number_kids <= dal.GetNanny(contract.Nanny_ID).kidsCount)
                 throw new Exception("Cannot sign contract nanny over the maximum kids !!!");//cant sign contract over the maximum kids lavel
             else dal.GetNanny(contract.Nanny_ID).kidsCount++;//if contract sign so Nanny.kidsCount++ 
+            contract.discount = cheackForDiscount(GetNannyById(contract.Nanny_ID), GetMotherById(dal.GetChild(contract.Child_ID).Mother_ID));
             dal.AddContract(contract);
         }
         public void AddMother(Mother mother)
