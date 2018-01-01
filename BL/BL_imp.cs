@@ -40,7 +40,7 @@ namespace BL
                 Leg leg = route.Legs.First();
                 return leg.Distance.Value;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             };
@@ -78,8 +78,8 @@ namespace BL
             }
             if (matcheList.Count == 0)//retur 5 closes mother Priorities 
             {
-                IEnumerable<Nanny> ienum= dal.getNannyList();
-                List<Nanny>temp= ienum.ToList<Nanny>();
+                IEnumerable<Nanny> ienum = dal.getNannyList();
+                List<Nanny> temp = ienum.ToList<Nanny>();
                 //sorting by Priorities Mache from 1 to 18 scale
                 temp.Sort((x, y) => PrioritiesMach(mother, x).CompareTo(PrioritiesMach(mother, y)));
                 for (int i = temp.Count - 1; i > (temp.Count - 1) - 5; i--)
@@ -120,7 +120,7 @@ namespace BL
                                 nnn.Add(n, d);
                             }
                         }
-                        catch(Exception e)
+                        catch (Exception e)
                         {
                             // fix Nanny?
                             int a = 5;
@@ -190,9 +190,9 @@ namespace BL
                 return InternetGetConnectedState(out description, 0);
             }
         }
-         
+
         public List<PriorityNanny> PriorityNannyList(Mother m)
-        { 
+        {
             List<PriorityNanny> p = new List<PriorityNanny>();
 
 
@@ -200,7 +200,7 @@ namespace BL
             foreach (Nanny nan in motherPriorities(m))
             {
                 PriorityNanny temp = new PriorityNanny(nan);
-                temp.Salary = calculateSalary(nan,m);
+                temp.Salary = calculateSalary(nan, m);
                 if (!InternetAvailability.IsInternetAvailable())
                 {
                     throw new Exception("No internet connection");
@@ -209,14 +209,14 @@ namespace BL
                 {
                     try
                     {
-                        
+
                         temp.Distance = calculateDistance(m.Adress, nan.address);
                         p.Add(temp);
 
                     }
-                    catch(Exception)
+                    catch (Exception)
                     {
-                        
+
                     }
                 });
                 t.Start();
@@ -227,14 +227,14 @@ namespace BL
             {
                 t.Join();
             }
-            p.Sort((x, y) =>x.Distance.CompareTo(y.Distance));
+            p.Sort((x, y) => x.Distance.CompareTo(y.Distance));
             return p;
         }
         public delegate bool contractCondition(Contract c);
 
-        public List<Contract> GetAllContractWithCondition( contractCondition condition)
+        public List<Contract> GetAllContractWithCondition(contractCondition condition)
         {
-            List <Contract> contractCondtionList = new List <Contract>();
+            List<Contract> contractCondtionList = new List<Contract>();
             foreach (Contract c in dal.getContractList())
             {
                 if (condition(c))
@@ -244,55 +244,44 @@ namespace BL
                 return contractCondtionList;
             else throw new Exception("Contract with serch condition not found");
         }
-        public  int GetNumberOfContractWithCondition(contractCondition condition)
+        public int GetNumberOfContractWithCondition(contractCondition condition)
         {
             List<Contract> contractCondtionList = new List<Contract>();
-            int numberOfContract=0;
+            int numberOfContract = 0;
             foreach (Contract c in dal.getContractList())
             {
                 if (condition(c))
                     numberOfContract++;
             }
-           
-                return numberOfContract;
-            
+
+            return numberOfContract;
+
         }
 
 
 
 
         //Groping
-        public List<Nanny> nannyByChildrenAge(bool orderByMaxAge = false)
+        public IEnumerable<IGrouping<int, Nanny>> nannysByChildrenAge(bool orderByMaxAge = false)
         {
-            if (orderByMaxAge)
+            if(!orderByMaxAge)
             {
-                var nangroup = getNannyList().GroupBy(x => 3 * x.Max_age / 3);
-                 List<Nanny> nList = new List<Nanny>();
-                foreach (Nanny item in nangroup)
-                {
-                    nList.Add(item as Nanny);
-                }
-                return nList;
+                return from item in getNannyList()
+                       let nanny = item
+                       group nanny by 3 * (nanny.Min_age / 3);
+                //nangroup = getNannyList().GroupBy(x => 3 * (x.Min_age / 3));
             }
-            else
+           else
             {
-                var nangroup = getNannyList().GroupBy(x => 3 * (x.Min_age / 3));
-                List<Nanny> nList = new List<Nanny>();
-                foreach (var item in nangroup)
-                {
-                    nList.Add(item as Nanny);
-                }
-                return nList;
+                return from item in getNannyList()
+                       let nanny = item
+                       group nanny by 3 * (nanny.Max_age / 3);
+                //nangroup = getNannyList().GroupBy(x => 3 * (x.Min_age / 3));
             }
-             
-           
         }
 
-
-      
-
-            //ID
-            public Child GetChildById(int id)
+        //ID
+        public Child GetChildById(int id)
         {
             return dal.GetChild(id);
         }
