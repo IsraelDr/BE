@@ -206,7 +206,7 @@ namespace UI_WPF_TEMPORARY
                 {
                     case 1:
                         GroupByAge uc = new GroupByAge();
-                        uc.Source = bl.nannysByChildrenAge(true);
+                        uc.Source = bl.nannysByChildrenAge(false);
                         this.GroupingPanel.Content = uc;
                         break;
                     case 3:

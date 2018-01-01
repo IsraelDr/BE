@@ -266,15 +266,17 @@ namespace BL
         {
             if(!orderByMaxAge)
             {
-                return from item in getNannyList()
-                       let nanny = item
+                return from nanny in getNannyList()
+                       orderby 3 * (nanny.Min_age / 3)
                        group nanny by 3 * (nanny.Min_age / 3);
+
                 //nangroup = getNannyList().GroupBy(x => 3 * (x.Min_age / 3));
             }
            else
             {
                 return from item in getNannyList()
                        let nanny = item
+                       orderby 3 * (nanny.Max_age / 3)
                        group nanny by 3 * (nanny.Max_age / 3);
                 //nangroup = getNannyList().GroupBy(x => 3 * (x.Min_age / 3));
             }
