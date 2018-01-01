@@ -21,6 +21,7 @@ namespace BE
         private DateTime startdate_;
         private DateTime enddate_;
         private double salary_;
+        private double distance_;
 
         public int Contract_number                   { get { return contract_number_; }set { contract_number_ = value; }}
         public int Contract_ID                       { get { return Contract_ID_; } set { Contract_ID_ = value; } }
@@ -34,6 +35,7 @@ namespace BE
         public DateTime startdate                    { get { return startdate_; }set { startdate_ = value; }}
         public DateTime enddate                      { get { return enddate_; }set { enddate_ = value; }}
         public double salary                         { get { return salary_; }set { salary_ = value; }}
+        public double distance                         { get { return distance_; } set { distance_ = value; } }
 
         public Contract(params object[] parameter)
         {
@@ -49,6 +51,7 @@ namespace BE
             startdate = (DateTime)parameter[7];
             enddate = (DateTime)parameter[8];
             salary = (double)parameter[9];
+            distance = double.Parse(parameter[10].ToString());
         }
         public override string ToString()
         {//using ToStringProperty() in Class Tools 

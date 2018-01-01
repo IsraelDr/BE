@@ -72,6 +72,9 @@
     <Compile Include="MotherDetails.xaml.cs">
       <DependentUpon>MotherDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="nannygrouptemplate.xaml.cs">
+      <DependentUpon>nannygrouptemplate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UpdateWindow.xaml.cs">
       <DependentUpon>UpdateWindow.xaml</DependentUpon>
     </Compile>
@@ -121,6 +124,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Nannydetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="nannygrouptemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

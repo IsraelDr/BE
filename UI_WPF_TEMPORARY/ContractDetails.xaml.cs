@@ -116,7 +116,7 @@ namespace UI_WPF_TEMPORARY
                                             ((PriorityNanny)(nannysoptiongrid.SelectedItem)).Monthly_rate,
                                             (MyEnum.Paymentmethode)Enum.Parse(typeof(MyEnum.Paymentmethode),paymentmethod.Text),
                                             Convert.ToDateTime(workbegindate.SelectedDate), Convert.ToDateTime(workenddate.SelectedDate),
-                                            ((PriorityNanny)(nannysoptiongrid.SelectedItem)).Salary);
+                                            ((PriorityNanny)(nannysoptiongrid.SelectedItem)).Salary, ((PriorityNanny)(nannysoptiongrid.SelectedItem)).Distance);
                 if (isUpdate)
                     bl.UpdateContract(contract);
                 else

@@ -33,13 +33,13 @@
                         <StackPanel>
                             <TextBlock Text="{Binding Path=Key}" FontSize="16" Foreground="Red" TextAlignment="Center" />
                             <ListView ItemsSource="{Binding}">
-                                <!--<ListView.ItemTemplate>
+                                <ListView.ItemTemplate>
                                     <DataTemplate>
-                                        <local:StudentTemplateUserControl>
+                                        <local:nannygrouptemplate>
 
-                                        </local:StudentTemplateUserControl>
+                                        </local:nannygrouptemplate>
                                     </DataTemplate>
-                                </ListView.ItemTemplate>-->
+                                </ListView.ItemTemplate>
                             </ListView>
                         </StackPanel>
                     </Border>
