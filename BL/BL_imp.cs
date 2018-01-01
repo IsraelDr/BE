@@ -4,6 +4,7 @@ using System.Linq;
 //using Google.Api.Maps.Service;
 using BE;
 using DAL;
+
 using GoogleMapsApi;
 using GoogleMapsApi.Entities.Common;
 using GoogleMapsApi.Entities.Directions.Request;
@@ -258,26 +259,37 @@ namespace BL
 
 
         //Groping
-       //public List<Nanny> nannyByChildrenAge(bool order=false)
-       //{
-       //     var result =
-       //         dal.getNannyList().GroupBy(c => c.Max_age);
-       //     var largestGroupFirst=
-       //         from g in result
-       //         orderby g.;
-       //     List<Nanny> n = new List<Nanny>();
-       //     n = result.ToList<Nanny>;
-       //     return n;
-       //     foreach (IGrouping<int,Nanny> group in result)
-       //     {
-       //         n.
-       //     }
-            
-            
-       //}
+        public List<Nanny> nannyByChildrenAge(bool orderByMaxAge = false)
+        {
+            if (orderByMaxAge)
+            {
+                var nangroup = getNannyList().GroupBy(x => 3 * x.Max_age / 3);
+                 List<Nanny> nList = new List<Nanny>();
+                foreach (Nanny item in nangroup)
+                {
+                    nList.Add(item as Nanny);
+                }
+                return nList;
+            }
+            else
+            {
+                var nangroup = getNannyList().GroupBy(x => 3 * (x.Min_age / 3));
+                List<Nanny> nList = new List<Nanny>();
+                foreach (var item in nangroup)
+                {
+                    nList.Add(item as Nanny);
+                }
+                return nList;
+            }
+             
+           
+        }
 
-        //ID
-        public Child GetChildById(int id)
+
+      
+
+            //ID
+            public Child GetChildById(int id)
         {
             return dal.GetChild(id);
         }
