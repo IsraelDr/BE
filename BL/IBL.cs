@@ -13,6 +13,7 @@ namespace BL
         IEnumerable<IGrouping<string, Nanny>> nannysByChildrenAge(bool orderByMaxAge = false);
         IEnumerable<IGrouping<double, Contract>> ContractsByNannyDistance();
 
+        //delegate bool contractCondition(Contract c);
         void AddNanny(Nanny nanny);
         void RemoveNanny(int id);
         void UpdateNanny(Nanny nanny);
