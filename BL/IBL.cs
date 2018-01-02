@@ -14,8 +14,6 @@ namespace BL
         IEnumerable<IGrouping<double, Contract>> ContractsByNannyDistance();
 
         //delegate bool contractCondition(Contract c);
-        int GetNumberOfContractWithCondition(bool delegate());
-
         void AddNanny(Nanny nanny);
         void RemoveNanny(int id);
         void UpdateNanny(Nanny nanny);
