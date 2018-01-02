@@ -29,6 +29,7 @@ namespace UI_WPF_TEMPORARY
             {
                 InitializeComponent();
                 bl = FactoryBL.IBLInstance;
+                //details_grid.Children.Add(new RadioButton());
                 switch (choosen)
                 {
                     case 0:
@@ -204,6 +205,8 @@ namespace UI_WPF_TEMPORARY
         {
             try
             {
+                listofAll.Visibility = Visibility.Visible;
+                GroupingPanel.Visibility = Visibility.Collapsed;
                 switch (Choosen)
                 {
                     case 1:
@@ -226,5 +229,21 @@ namespace UI_WPF_TEMPORARY
                 MessageBox.Show(ex.Message);
             }
         }
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                listofAll.Visibility = Visibility.Collapsed;
+                GroupingPanel.Visibility = Visibility.Visible;
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
     }
 }

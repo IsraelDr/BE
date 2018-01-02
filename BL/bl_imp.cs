@@ -276,13 +276,13 @@ namespace BL
 
 
         //Groping
-        public IEnumerable<IGrouping<int, Nanny>> nannysByChildrenAge(bool orderByMaxAge = false)
+        public IEnumerable<IGrouping<string, Nanny>> nannysByChildrenAge(bool orderByMaxAge = false)
         {
             if(!orderByMaxAge)
             {
                 return from nanny in getNannyList()
                        orderby 3 * (nanny.Min_age / 3)
-                       group nanny by 3 * (nanny.Min_age / 3);
+                       group nanny by (3 * (nanny.Min_age / 3)).ToString()+"-"+ (3 * (nanny.Min_age / 3)+3).ToString();
 
                 //nangroup = getNannyList().GroupBy(x => 3 * (x.Min_age / 3));
             }
@@ -291,7 +291,7 @@ namespace BL
                 return from item in getNannyList()
                        let nanny = item
                        orderby 3 * (nanny.Max_age / 3)
-                       group nanny by 3 * (nanny.Max_age / 3);
+                       group nanny by (3 * (nanny.Max_age / 3)).ToString() + "-" + (3 * (nanny.Min_age / 3) + 3).ToString();
                 //nangroup = getNannyList().GroupBy(x => 3 * (x.Min_age / 3));
             }
         }

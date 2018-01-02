@@ -10,7 +10,7 @@ namespace BL
     public interface IBL
     {
         List<PriorityNanny> PriorityNannyList(Mother m);
-        IEnumerable<IGrouping<int, Nanny>> nannysByChildrenAge(bool orderByMaxAge = false);
+        IEnumerable<IGrouping<string, Nanny>> nannysByChildrenAge(bool orderByMaxAge = false);
         IEnumerable<IGrouping<double, Contract>> ContractsByNannyDistance();
 
         void AddNanny(Nanny nanny);
