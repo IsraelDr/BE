@@ -52,6 +52,7 @@ namespace UI_WPF_TEMPORARY
                 bl.AddContract(new Contract(4,2,true, false,  17, 485, MyEnum.Paymentmethode.hourly, new DateTime(1994, 05, 17), new DateTime(2000, 05, 17),15.14, 4785, false));
                 bl.AddContract(new Contract(4,3, true, false, 17, 485, MyEnum.Paymentmethode.hourly, new DateTime(1994, 05, 17), new DateTime(2000, 05, 17),751.5,0, false));
                 bl.AddContract(new Contract(4,4, true, false, 17, 485, MyEnum.Paymentmethode.hourly, new DateTime(1994, 05, 17), new DateTime(2000, 05, 17),14000.50,147852,false));
+                
             }
             catch (Exception e)
             {

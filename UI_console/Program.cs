@@ -22,7 +22,13 @@ namespace UI_console
             bl.AddNanny(new Nanny(90, "Keshet", "Gur", new DateTime(1994, 05, 17), 0798516858, "jerusalem", true, 6, 5, 12, 2, 6, false, 50, 300, new bool[] { true, false, true, false, true, false, true }, new TimeSpan[,] { { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) } }, MyEnum.Vacation.Chinuch, "recommend", 15, 4));
             bl.AddNanny(new Nanny(4, "Efrat", "Milikowski", new DateTime(1994, 05, 17), 0798516858, "ashdod", true, 6, 5, 12, 2, 6, false, 50, 300, new bool[] { true, false, true, false, true, false, true }, new TimeSpan[,] { { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) } }, MyEnum.Vacation.tamat, "recommend", 15, 3));
             bl.AddNanny(new Nanny(6, "Ilana", "Levy", new DateTime(1994, 05, 17), 0798516858, "bnei brak", true, 6, 5, 12, 2, 6, false, 50, 300, new bool[] { true, false, true, false, true, false, true }, new TimeSpan[,] { { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) } }, MyEnum.Vacation.tamat, "recommend", 15, 5));
-            
+            Console.WriteLine("GetNumberOfContractWithConditioncontractConditionDistanceGreatThen10 "+" " + bl.GetNumberOfContractWithCondition(bl.contractConditionDistanceGreatThen10));
+            bl.GetNumberOfContractWithCondition(bl.contractConditionDistanceSmallThenEqoul10);
+            bl.GetNumberOfContractWithCondition(bl.contractConditionDistanceNannyHaveMoreThen2Children);
+            bl.GetNumberOfContractWithCondition(bl.contractsEnd);
+            bl.GetNumberOfContractWithCondition(bl.contractStart2018);
+            bl.GetNumberOfContractWithCondition(bl.contractStartAfter2018);
+            bl.GetNumberOfContractWithCondition(bl.contractStartBefore2018);
             Console.WriteLine((BL.BL_imp.calculateDistance("jerusalem", "tel-aviv")/1000).ToString());
 
             #region test case
