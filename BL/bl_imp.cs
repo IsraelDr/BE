@@ -253,8 +253,14 @@ namespace BL
         public bool contractStartBefore2018(Contract c) { return (c.enddate.Year < 2018); }
         public bool contractStartAfter2018(Contract c) { return (c.startdate.Year > 2018); }
         public bool contractWithDiscount(Contract c) { return c.discount; }
-        //public bool contractConditionDistanceGreatThen10(Contract c) { return true; }
-        //public bool contractConditionDistanceGreatThen10(Contract c) { return true; }
+        
+        //Console.WriteLine(" Number Of contracts Distance Great Then 10 KM: " + " " + bl.GetNumberOfContractWithCondition(bl.contractConditionDistanceGreatThen10));
+        //Console.WriteLine(" Number Of contracts Nanny Have More Then 2 Children: " + " " + bl.GetNumberOfContractWithCondition(bl.contractConditionDistanceNannyHaveMoreThen2Children));
+        //Console.WriteLine(" Number Of contracts Distance Small Then or Eqoul 10 KM: " + " " + bl.GetNumberOfContractWithCondition(bl.contractConditionDistanceSmallThenEqoul10));
+        //Console.WriteLine(" Number Of contracts End: " + " " + bl.GetNumberOfContractWithCondition(bl.contractsEnd));
+        //Console.WriteLine(" Number Of contracts Start at 2018: " + " " + bl.GetNumberOfContractWithCondition(bl.contractStart2018));
+        //Console.WriteLine(" Number Of contractS Start After 2018: " + " " + bl.GetNumberOfContractWithCondition(bl.contractStartAfter2018));
+        //Console.WriteLine(" Number Of contract Start Before 2018: " + " " + bl.GetNumberOfContractWithCondition(bl.contractStartBefore2018));
 
         /*Get Number Of Contract With Condition*/
         public delegate bool contractCondition(Contract c);
