@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="333.61" Width="659.4" MouseDown="Window_MouseDown" WindowStyle="ThreeDBorderWindow">
     <Window.Background>
-        <ImageBrush ImageSource="main_picture.jpg"/>
+        <ImageBrush ImageSource="445505370_28246.jpg"/>
     </Window.Background>
     <Window.Foreground>
         <ImageBrush/>

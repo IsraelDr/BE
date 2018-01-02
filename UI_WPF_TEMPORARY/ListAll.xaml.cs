@@ -207,19 +207,7 @@ namespace UI_WPF_TEMPORARY
             {
                 listofAll.Visibility = Visibility.Visible;
                 GroupingPanel.Visibility = Visibility.Collapsed;
-                switch (Choosen)
-                {
-                    case 1:
-                        GroupByAge uc = new GroupByAge();
-                        uc.Source = bl.nannysByChildrenAge(false);
-                        this.GroupingPanel.Content = uc;
-                        break;
-                    case 3:
-                        Groupbycontracts userc = new Groupbycontracts();
-                        userc.Source = bl.ContractsByNannyDistance();
-                        this.GroupingPanel.Content = userc;
-                        break;
-                }
+                
 
                 
 
@@ -235,7 +223,19 @@ namespace UI_WPF_TEMPORARY
             {
                 listofAll.Visibility = Visibility.Collapsed;
                 GroupingPanel.Visibility = Visibility.Visible;
-
+                switch (Choosen)
+                {
+                    case 1:
+                        GroupByAge uc = new GroupByAge();
+                        uc.Source = bl.nannysByChildrenAge(false);
+                        this.GroupingPanel.Content = uc;
+                        break;
+                    case 3:
+                        Groupbycontracts userc = new Groupbycontracts();
+                        userc.Source = bl.ContractsByNannyDistance();
+                        this.GroupingPanel.Content = userc;
+                        break;
+                }
 
 
             }
