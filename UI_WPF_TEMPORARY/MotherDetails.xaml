@@ -34,7 +34,7 @@
             <TextBox x:Name="new_LastName" TextWrapping="Wrap" Text="" Grid.Row="0" Grid.Column="5" VerticalAlignment="Center"/>
             <Label Content="Sorounding Address" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <Label Content="Phonenumber" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
-            <TextBox x:Name="new_Phonenumber" TextWrapping="Wrap" Text="" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center"/>
+            <TextBox x:Name="new_Phonenumber"  TextWrapping="Wrap" Text="" PreviewTextInput="new_Phonenumber_PreviewTextInput" Grid.Row="1" Grid.Column="2" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="107,4,0.333,0"/>
             <Label Content="Address" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" />
             <TextBox x:Name="new_Address" TextWrapping="Wrap" Text="" Grid.Row="1" Grid.Column="5" VerticalAlignment="Center"/>
             <Label Content="Comment" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" />

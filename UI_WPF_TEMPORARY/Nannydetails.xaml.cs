@@ -133,14 +133,15 @@ namespace UI_WPF_TEMPORARY
 
             }
         }
-        
-    private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
-    {
 
-           Regex regex = new Regex("[^0-9]+");
-           e.Handled = (regex.IsMatch(e.Text));
-           //e.Handled = (new_Phonenumber.Text.ToString().Count() <10);
-    }
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = (regex.IsMatch(e.Text) ||
+                        (new_Phonenumber.Text.ToString().Count() > 9) || 
+                        (new_Phonenumber.Text.ToString().Count()==0  && e.Text[0] != '0'));
+        }
     private void Button_Click(object sender, RoutedEventArgs e)
         {
             try

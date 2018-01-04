@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using BE;
 using RoyT.TimePicker;
 using BL;
+using System.Text.RegularExpressions;
 namespace UI_WPF_TEMPORARY
 {
     /// <summary>
@@ -151,6 +152,14 @@ namespace UI_WPF_TEMPORARY
         private void new_paymentmethode_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void new_Phonenumber_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = (regex.IsMatch(e.Text) ||
+                        (new_Phonenumber.Text.ToString().Count() > 9) ||
+                        (new_Phonenumber.Text.ToString().Count() == 0 && e.Text[0] != '0'));
         }
     }
 }
