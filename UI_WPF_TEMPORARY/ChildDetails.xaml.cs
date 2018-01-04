@@ -24,7 +24,7 @@ namespace UI_WPF_TEMPORARY
         //static BL_imp bl = new BL_imp();
         public bool isUpdate = false;
         public Window fr;
-        Child child;
+        public Child child;
         public IBL bl;
                 
         public ChildDetails(Window f,Child a=null)
@@ -32,19 +32,23 @@ namespace UI_WPF_TEMPORARY
             InitializeComponent();
             bl = FactoryBL.IBLInstance;
             child = a;
-            this.DataContext = child;
             fr = f;
             isUpdate = false;
             if(a!=null)
             {
                 isUpdate = true;
-                new_ID.Text = a.ID+"";
-                new_IDmother.Text = a.Mother_ID + "";
-                new_Name.Text = a.name;
-                new_Birthdate.SelectedDate = a.Birthdate;
-                new_specialneeds.IsChecked = (a.SpecialNeeds==true);
+                //new_ID.Text = a.ID+"";
+                //new_IDmother.Text = a.Mother_ID + "";
+                //new_Name.Text = a.name;
+                //new_Birthdate.SelectedDate = a.Birthdate;
+                //new_specialneeds.IsChecked = (a.SpecialNeeds==true);
 
             }
+            else
+            {
+                child = new Child();
+            }
+            this.DataContext = child;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -52,14 +56,13 @@ namespace UI_WPF_TEMPORARY
 
             try
             {
-                Child chil = new Child(new_ID.Text, new_IDmother.Text,
+                /*Child chil = new Child(new_ID.Text, new_IDmother.Text,
                                     new_Name.Text,
-                                    new_Birthdate.SelectedDate, new_specialneeds.IsChecked == true);
-
+                                    new_Birthdate.SelectedDate, new_specialneeds.IsChecked == true);*/
                 if (isUpdate)
-                    bl.UpdateChild(chil);
+                    bl.UpdateChild(child);
                 else
-                    bl.AddChild(chil);
+                    bl.AddChild(child);
 
                 fr.Close();
             }

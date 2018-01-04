@@ -46,7 +46,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Label x:Name="label" Content="Groups of Nanny's by minimal childrens age" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFFBF7F7" FontSize="21.333" Grid.ColumnSpan="2" />
+        <Label x:Name="label" Content="Groups of Nanny's by minimal childrens age" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFFBF7F7" Grid.Row="0" FontSize="21.333" Grid.ColumnSpan="2" />
 
     </Grid>
 </UserControl>
