@@ -5,6 +5,7 @@ using System.Linq;
 using BE;
 using DAL;
 
+
 using GoogleMapsApi;
 using GoogleMapsApi.Entities.Common;
 using GoogleMapsApi.Entities.Directions.Request;
@@ -326,14 +327,7 @@ namespace BL
         {
             return dal.GetContract(id);
         }
-        
-        //add
-        public void AddChild(Child child)
-        {
-            if (GetMotherById(child.Mother_ID) == null)
-                throw new Exception("A mother with this ID doesn't exist");
-            dal.AddChild(child);//need to add logic
-        }
+        //functions
         public bool cheackForDiscount(Nanny nan, Mother m)
         {
             bool flag = false;
@@ -363,12 +357,21 @@ namespace BL
                 salary = week_payment * 4;//week hours X 4 =month salary
             }
             else salary = nan.Monthly_rate;
-            if (cheackForDiscount(nan,m))
+            if (cheackForDiscount(nan, m))
             {
                 return (int)(salary * 0.98);
             }
             else { return (int)salary; }
         }
+
+        //add
+        public void AddChild(Child child)
+        {
+            if (GetMotherById(child.Mother_ID) == null)
+                throw new Exception("A mother with this ID doesn't exist");
+            dal.AddChild(child);//need to add logic
+        }
+        
 
         public void AddContract(Contract contract)
         {
@@ -376,7 +379,7 @@ namespace BL
                DateTime temporary = DateTime.Now.AddMonths(-3);
                if (dal.GetChild(contract.Child_ID).Birthdate.CompareTo(temporary) > 0&&contract.contract_signed)
                throw new Exception("Cannot sign contract for child under 3 month!!");//cant sign contract if younger then 3 month
-
+              
             if (dal.GetMother(contract.Child_ID).Paymentmethode == MyEnum.Paymentmethode.hourly)
             {
                 contract.Paymentmethode = MyEnum.Paymentmethode.hourly;
@@ -419,6 +422,9 @@ namespace BL
         }
         public void AddNanny(Nanny nanny)
         {
+            //Text = "{Binding phoneNumber, Converter={StaticResource NoValueConverter}}
+           
+
             DateTime temporary = nanny.Birthdate;
             temporary= temporary.AddYears(18);
             if(temporary.CompareTo(DateTime.Now)>0)
