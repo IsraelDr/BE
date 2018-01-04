@@ -27,17 +27,17 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Label Content="ID" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"  />
-            <TextBox x:Name="new_ID" Text="{Binding ID,Mode=OneWayToSource}" TextWrapping="Wrap" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"/>
-            <Label Content="Firstname" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox x:Name="new_ID" PreviewTextInput="new_ID_PreviewTextInput" Text="{Binding ID,Mode=OneWayToSource}" TextWrapping="Wrap" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"/>
+            <Label Content="First Name" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <TextBox x:Name="new_Firstname" TextWrapping="Wrap" Text="" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" />
-            <Label Content="Lastname"  Grid.Row="0" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Content="Last Name"  Grid.Row="0" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <TextBox x:Name="new_LastName" TextWrapping="Wrap" Text="" Grid.Row="0" Grid.Column="5" VerticalAlignment="Center"/>
             <Label Content="Sorounding Address" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <Label Content="Phonenumber" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
             <TextBox x:Name="new_Phonenumber"  TextWrapping="Wrap" Text="" PreviewTextInput="new_Phonenumber_PreviewTextInput" Grid.Row="1" Grid.Column="2" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="107,4,0.333,0"/>
             <Label Content="Address" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" />
             <TextBox x:Name="new_Address" TextWrapping="Wrap" Text="" Grid.Row="1" Grid.Column="5" VerticalAlignment="Center"/>
-            <Label Content="Comment" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Label Content="Comments" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" />
             <TextBox x:Name="new_comment" TextWrapping="Wrap" Text="" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"/>
             <TextBox x:Name="new_surrounding_address" TextWrapping="Wrap" Text="" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"/>
             <ComboBox Name="new_paymentmethode" VerticalAlignment="Center" SelectionChanged="new_paymentmethode_SelectionChanged" Grid.Row="2" Grid.Column="3"/>

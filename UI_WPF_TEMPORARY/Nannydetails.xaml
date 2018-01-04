@@ -26,7 +26,7 @@
         </Grid.ColumnDefinitions>
 
         <Label Content="ID" Margin="0,0,0.4,0.4" />
-        <TextBox Name="new_ID" TextWrapping="Wrap" Grid.Column="1"/>
+        <TextBox Name="new_ID" PreviewTextInput="new_ID_PreviewTextInput" TextWrapping="Wrap" Grid.Column="1"/>
         <Label Content="Firstname"  Grid.Column="2"/>
         <TextBox Grid.Column="3" Name="new_Firstname" TextWrapping="Wrap" Text="" />
         <Label Content="Lastname"  Grid.Column="4"/>

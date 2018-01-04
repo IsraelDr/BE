@@ -195,5 +195,12 @@ namespace UI_WPF_TEMPORARY
 
         }
 
+        private void new_ID_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = (regex.IsMatch(e.Text) ||
+                        (new_ID.Text.ToString().Count() > 8)
+                        /* ||(new_ID.Text.ToString().Count() == 0 && e.Text[0] != '0')*/);
+        }
     }
 }
