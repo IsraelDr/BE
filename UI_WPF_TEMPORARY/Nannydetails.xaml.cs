@@ -139,7 +139,7 @@ namespace UI_WPF_TEMPORARY
 
            Regex regex = new Regex("[^0-9]+");
            e.Handled = (regex.IsMatch(e.Text));
-           e.Handled = (new_Phonenumber.Text.ToString().Count() <10);
+           //e.Handled = (new_Phonenumber.Text.ToString().Count() <10);
     }
     private void Button_Click(object sender, RoutedEventArgs e)
         {
