@@ -245,5 +245,16 @@ namespace UI_WPF_TEMPORARY
             }
         }
 
+        private void Grid_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Addbutton.Height += 5;
+            Addbutton.Width += 5;
+        }
+
+        private void Grid_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Addbutton.Height -= 5;
+            Addbutton.Width -= 5;
+        }
     }
 }

@@ -4,9 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UI_WPF_TEMPORARY"
+             xmlns:BE="clr-namespace:BE;assembly=BE"
              xmlns:TimePicker="clr-namespace:RoyT.TimePicker;assembly=RoyT.TimePicker" x:Class="UI_WPF_TEMPORARY.MotherDetails"
-              >
-    <Grid >
+             mc:Ignorable="d">
+    <Grid d:DataContext="{d:DesignInstance BE:Mother }">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -26,7 +27,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Label Content="ID" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"  />
-            <TextBox x:Name="new_ID" TextWrapping="Wrap" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"/>
+            <TextBox x:Name="new_ID" Text="{Binding ID,Mode=OneWayToSource}" TextWrapping="Wrap" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"/>
             <Label Content="Firstname" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <TextBox x:Name="new_Firstname" TextWrapping="Wrap" Text="" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" />
             <Label Content="Lastname"  Grid.Row="0" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center"/>
