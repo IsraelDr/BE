@@ -46,7 +46,12 @@ namespace BE
         }
         public Mother()
         {
-
+            nanny_required = new bool[7];
+            Daily_Nanny_required_ = new TimeSpan[7][];
+            for (int i = 0; i < Daily_Nanny_required_.Length; i++)
+            {
+                Daily_Nanny_required_[i] = new TimeSpan[] { new TimeSpan(12,0,0), new TimeSpan(12, 0,0) };
+            }
         }
         //public Mother(params object[] parameters)
         //{

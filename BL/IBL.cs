@@ -39,6 +39,9 @@ namespace BL
         IEnumerable<BE.Mother> getMotherList();
         IEnumerable<BE.Child> getChildList();
         IEnumerable<BE.Contract> getContractList();
-        
+
+        List<string> GetPlaceAutoComplete(string str);
+
+
     }
 }

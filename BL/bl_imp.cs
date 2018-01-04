@@ -17,6 +17,8 @@ using GoogleMapsApi.StaticMaps;
 using GoogleMapsApi.StaticMaps.Entities;
 using System.Runtime;
 using System.Runtime.InteropServices;
+using GoogleMapsApi.Entities.PlaceAutocomplete.Request;
+
 namespace BL
 {
     public class BL_imp : IBL
@@ -503,7 +505,21 @@ namespace BL
                 throw new Exception("The nanny must be over 18 years old");
             dal.UpdateNanny(nanny);
         }
+        public List<string> GetPlaceAutoComplete(string str)
+        {
+            List<string> result = new List<string>();
+            PlaceAutocompleteRequest request = new PlaceAutocompleteRequest();
+            request.ApiKey = "AIzaSyA9DLA9vL6ARd0UGd5sZnwI0-Jocz9MBXQ";
+            request.Input = str;
+            var response = GoogleMaps.PlaceAutocomplete.Query(request);
+            foreach (var item in response.Results)
+            {
+                result.Add(item.Description);
+            }
+            return result;
+        }
     }
+    
     
 
 }

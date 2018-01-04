@@ -32,7 +32,7 @@
             <Label Content="First Name" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <TextBox x:Name="new_Firstname" TextWrapping="Wrap" Text="{Binding Path=info.Firstname,Mode=TwoWay}" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" />
             <Label Content="Last Name"  Grid.Row="1" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBox x:Name="new_LastName" TextWrapping="Wrap" Text="{Binding Path=info.Firstname,Mode=TwoWay}" Grid.Row="1" Grid.Column="5" VerticalAlignment="Center"/>
+            <TextBox x:Name="new_LastName" TextWrapping="Wrap" Text="{Binding Path=info.Lastname,Mode=TwoWay}" Grid.Row="1" Grid.Column="5" VerticalAlignment="Center"/>
             <Label Content="Sorounding Address" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <Label Content="Phonenumber" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
             <TextBox x:Name="new_Phonenumber"  TextWrapping="Wrap" Text="{Binding Path=info.Phonenumber,Mode=TwoWay}" PreviewTextInput="new_Phonenumber_PreviewTextInput" Grid.Row="2" Grid.Column="2" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="107,4,0.333,0"/>

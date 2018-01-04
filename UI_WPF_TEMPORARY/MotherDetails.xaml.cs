@@ -38,7 +38,10 @@ namespace UI_WPF_TEMPORARY
             bl = FactoryBL.IBLInstance;
 
             this.mother = m;
-            details = new T(mother, this);
+            if (m == null)
+                details = new T(new Mother(), this);
+            else
+                details = new T(mother, this);
             /*this.DataContext = new
                         {
                             info = mother,
@@ -137,6 +140,7 @@ namespace UI_WPF_TEMPORARY
         {
             try
             {
+                //List<string> a = bl.GetPlaceAutoComplete(new_Address.Text);
                 /*Mother mother = new Mother(/*new_ID.Textint.Parse( new_ID.Text),new_LastName.Text, new_Firstname.Text,
                                             new_Phonenumber.Text, new_Address.Text,
                                             new_surrounding_address.Text,

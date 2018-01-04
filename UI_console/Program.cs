@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using GoogleMapsAPI;
 using BE;
 using BL;
+using GoogleMapsApi.Entities.PlaceAutocomplete.Request;
+using GoogleMapsApi;
 
 namespace UI_console
 {
@@ -15,8 +17,26 @@ namespace UI_console
 
         static BL.BL_imp bl = new BL.BL_imp();
 
+        public static List<string> GetPlaceAutoComplete(string str)
+        {
+            List<string> result = new List<string>();
+            PlaceAutocompleteRequest request = new PlaceAutocompleteRequest();
+            request.ApiKey = "AIzaSyA9DLA9vL6ARd0UGd5sZnwI0-Jocz9MBXQ";
+            request.Input = str;
+            var response = GoogleMaps.PlaceAutocomplete.Query(request);
+            foreach (var item in response.Results)
+            {
+                result.Add(item.Description);
+            }
+            return result;
+        }
+
         static void Main(string[] args)
         {
+
+            Console.Write("input a string");
+            string s = Console.ReadLine();
+            List<string> bb = GetPlaceAutoComplete(s);
             //bl.AddMother(new Mother(1, "Dana", "Anilewitch", "0798512565", "jerusalem", "jerusalem", new bool[] { true, false, true, false, true, false, true }, new TimeSpan[,] { { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) } }, "comment", MyEnum.Paymentmethode.hourly));
             //bl.AddMother(new Mother(2, "Rona", "Gurewitch", "0798512565", "tel aviv", "tel aviv", new bool[] { true, false, true, false, true, false, true }, new TimeSpan[,] { { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(15, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) } }, "comment", MyEnum.Paymentmethode.hourly));
             //bl.AddMother(new Mother(3, "Tal", "Ben Atia", "0798512565", "basel", "basel", new bool[] { true, false, true, false, true, false, true }, new TimeSpan[,] { { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) } }, "comment", MyEnum.Paymentmethode.hourly));
