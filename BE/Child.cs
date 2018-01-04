@@ -15,16 +15,9 @@ namespace BE
         private DateTime Birthdate_;
         private bool SpecialNeeds_;
 
-        public int ID
-        {
-            get { return ID_; }
-            set
-            {
-                ID_ = value;
-            }
-        }
-        public int Mother_ID      { get { return Mother_ID_; } set { Mother_ID_=value; } }
-        public string name        { get { return name_; } set { name_=value; } }
+        public int ID{ get { return ID_; }set{ID_ = value;}}
+        public int Mother_ID { get { return Mother_ID_; } set { Mother_ID_ = value; } }
+        public string name { get { return name_; } set{name_ = value;} } 
         public DateTime Birthdate { get { return Birthdate_; } set { Birthdate_=value; } }
         public bool SpecialNeeds  { get { return SpecialNeeds_; } set { SpecialNeeds_=value; } }//-yes or no
                                               //Additional Info
@@ -43,8 +36,6 @@ namespace BE
             if (!int.TryParse(mother_id,out temp))
                 throw new Exception("ID of Mother not valid!");
             Mother_ID = temp;
-            if (_name == "")
-                throw new Exception("Name is not valid!");
             name = _name;
             Birthdate = Convert.ToDateTime(_birthdate);
             SpecialNeeds = specialneeds;

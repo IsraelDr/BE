@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace BE
 {
     public class Mother
@@ -15,7 +14,7 @@ namespace BE
         private string Adress_;//(psikim)
         private string surrounding_adress_;
         private bool[] nanny_required_;
-        private TimeSpan[,] Daily_Nanny_required_;
+        private TimeSpan[][] Daily_Nanny_required_;
         private string Comment_;
         private MyEnum.Paymentmethode Paymentmethode_;
         
@@ -27,11 +26,12 @@ namespace BE
         public string Adress                        { get { return Adress_; } set { Adress_ = value; } }//(psikim)
         public string surrounding_adress            { get { return surrounding_adress_; } set { surrounding_adress_ = value; } }
         public bool[] nanny_required                { get { return nanny_required_; } set { nanny_required_ = value; } }
-        public TimeSpan[,] daily_Nanny_required          { get { return Daily_Nanny_required_; } set { Daily_Nanny_required_ = value; } }
+        public TimeSpan[][] daily_Nanny_required          { get { return Daily_Nanny_required_; } set { Daily_Nanny_required_ = value; } }
         public string Comment                       { get { return Comment_; } set { Comment_ = value; } }
         public MyEnum.Paymentmethode Paymentmethode { get { return Paymentmethode_; } set { Paymentmethode_ = value; } }
-        
-        public Mother( int ID,string Firstname,string Lastname, string Phonenumber,string Adress,string surrounding_adress,bool[] nanny_required,TimeSpan[,] daily_Nanny_required,string Comment,MyEnum.Paymentmethode Paymentmethode)
+
+
+        public Mother( int ID,string Firstname,string Lastname, string Phonenumber,string Adress,string surrounding_adress,bool[] nanny_required,TimeSpan[][] daily_Nanny_required,string Comment,MyEnum.Paymentmethode Paymentmethode)
         {
             ID_ = ID;
             Lastname_ = Lastname;
@@ -43,6 +43,10 @@ namespace BE
             Daily_Nanny_required_ = daily_Nanny_required;
             Comment_ = Comment;
             Paymentmethode_ = Paymentmethode;
+        }
+        public Mother()
+        {
+
         }
         //public Mother(params object[] parameters)
         //{

@@ -8,6 +8,8 @@
         <ResourceDictionary>
 
             <local:converter x:Key="converter"/>
+            <local:DigitalTimeConverter x:Key="DigitalTimeConverter"/>
+
 
 
 

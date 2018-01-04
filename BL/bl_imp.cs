@@ -54,9 +54,9 @@ namespace BL
             {
                 if (n.Working_days[i] == true && m.nanny_required[i] == true)
                     daysCheck++;//6 checks
-                if (n.Daily_Working_hours[i, 0].TotalHours <= m.daily_Nanny_required[i, 0].TotalHours)
+                if (n.Daily_Working_hours[i, 0].TotalHours <= m.daily_Nanny_required[i][0].TotalHours)
                     startHoursCheck++;//6 checks
-                if (n.Daily_Working_hours[i, 1].TotalHours >= m.daily_Nanny_required[i, 1].TotalHours)
+                if (n.Daily_Working_hours[i, 1].TotalHours >= m.daily_Nanny_required[i][1].TotalHours)
                     endHoursCheck++;//6 checks
             }
             mcheCount = daysCheck + startHoursCheck + endHoursCheck;//18 is match
