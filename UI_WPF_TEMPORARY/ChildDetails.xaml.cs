@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BE;
 using BL;
+using System.Text.RegularExpressions;
 namespace UI_WPF_TEMPORARY
 {
     /// <summary>
@@ -71,6 +72,14 @@ namespace UI_WPF_TEMPORARY
                 MessageBox.Show(exp.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
 
             }
+        }
+
+        private void new_ID_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = (regex.IsMatch(e.Text) ||
+                        (new_ID.Text.ToString().Count() > 8)
+                        /* ||(new_ID.Text.ToString().Count() == 0 && e.Text[0] != '0')*/);
         }
     }
 }
