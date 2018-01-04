@@ -40,7 +40,7 @@ namespace BL
         IEnumerable<BE.Child> getChildList();
         IEnumerable<BE.Contract> getContractList();
 
-        List<string> GetPlaceAutoComplete(string str);
+        //List<string> GetPlaceAutoComplete(string str);
 
 
     }

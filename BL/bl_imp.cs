@@ -505,18 +505,26 @@ namespace BL
                 throw new Exception("The nanny must be over 18 years old");
             dal.UpdateNanny(nanny);
         }
-        public List<string> GetPlaceAutoComplete(string str)
+        public static List<string> GetPlaceAutoComplete(string str)
         {
-            List<string> result = new List<string>();
-            PlaceAutocompleteRequest request = new PlaceAutocompleteRequest();
-            request.ApiKey = "AIzaSyA9DLA9vL6ARd0UGd5sZnwI0-Jocz9MBXQ";
-            request.Input = str;
-            var response = GoogleMaps.PlaceAutocomplete.Query(request);
-            foreach (var item in response.Results)
+            try
             {
-                result.Add(item.Description);
+                List<string> result = new List<string>();
+                PlaceAutocompleteRequest request = new PlaceAutocompleteRequest();
+                request.ApiKey = "AIzaSyA9DLA9vL6ARd0UGd5sZnwI0-Jocz9MBXQ";
+                request.Input = str;
+                var response = GoogleMaps.PlaceAutocomplete.Query(request);
+                foreach (var item in response.Results)
+                {
+                    result.Add(item.Description);
+                }
+                return result;
+
             }
-            return result;
+            catch (Exception e)
+            {
+                throw e;
+            };
         }
     }
     
