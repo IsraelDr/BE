@@ -5,17 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UI_WPF_TEMPORARY"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="700" MouseDown="Window_MouseDown" WindowStyle="ThreeDBorderWindow">
+        Title="MainWindow" Height="440" Width="900" MouseDown="Window_MouseDown" WindowStyle="ThreeDBorderWindow">
     <Window.Effect>
         <DropShadowEffect/>
     </Window.Effect>
-    <Window.Background>
-        <ImageBrush ImageSource="445505370_28246.jpg"/>
-    </Window.Background>
+
     <Window.Foreground>
         <ImageBrush/>
     </Window.Foreground>
-    <Grid Name="options_grid" Background="#FFF1D0D0" Visibility="Hidden">
+    <Grid Name="options_grid">
+        <Grid.Background>
+            <RadialGradientBrush>
+                <GradientStop Color="#FFFDFC11" Offset="0.434"/>
+                <GradientStop Color="#FFFEA32D" Offset="0.826"/>
+            </RadialGradientBrush>
+        </Grid.Background>
         <Grid.OpacityMask>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="Black" Offset="0"/>
@@ -24,53 +28,56 @@
         </Grid.OpacityMask>
         <Grid.RowDefinitions>
 
-            <RowDefinition Height="80*" />
-            <RowDefinition Height="78*"/>
+            <RowDefinition  />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="321*"/>
-            <ColumnDefinition Width="332*"/>
+            <ColumnDefinition Width="527*"/>
+            <ColumnDefinition Width="167*"/>
         </Grid.ColumnDefinitions>
-        <Grid HorizontalAlignment="Left" Name="mother_title_grid" Height="154" VerticalAlignment="Top" Width="321" Grid.Row="0" MouseEnter="mother_title_grid_MouseEnter" MouseLeave="mother_title_grid_MouseLeave" KeyDown="Grid_KeyDown" Grid.Column="0">
+        <Grid HorizontalAlignment="Center" Name="mother_title_grid" VerticalAlignment="Center"  Grid.Row="0" MouseEnter="mother_title_grid_MouseEnter" MouseLeave="mother_title_grid_MouseLeave" KeyDown="Grid_KeyDown" Grid.Column="1" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="47*"/>
             </Grid.RowDefinitions>
-            <Label Content="Mother" Name="mother_title" HorizontalContentAlignment ="Center" VerticalContentAlignment="Center"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="223" FontSize="30" FontFamily="Sitka Small" FontWeight="Bold" Foreground="#FFE42D2D" Margin="46,42,52,45.6" MouseDown="mother_title_MouseDown">
+            <Label Content="Mother" Name="mother_title" HorizontalContentAlignment ="Center" VerticalContentAlignment="Center"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="auto" Width="223" FontSize="30" FontFamily="Sitka Small" FontWeight="Bold" Foreground="#FFE42D2D"  MouseDown="mother_title_MouseDown">
                 <Label.Effect>
                     <DropShadowEffect BlurRadius="20" RenderingBias="Quality" Color="#FFEA6A36" ShadowDepth="4"/>
                 </Label.Effect>
             </Label>
         </Grid>
-        <Grid HorizontalAlignment="Left" Name="nanny_title_grid" Height="154" VerticalAlignment="Top" Width="327" Grid.RowSpan="2" Margin="4.2,0,0,0" MouseEnter="nanny_title_grid_MouseEnter" MouseLeave="nanny_title_grid_MouseLeave" Grid.Column="1">
+        <Grid HorizontalAlignment="Center" Name="nanny_title_grid"  VerticalAlignment="Center" Grid.Row="1" MouseEnter="nanny_title_grid_MouseEnter" MouseLeave="nanny_title_grid_MouseLeave" Grid.Column="1" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="47*"/>
             </Grid.RowDefinitions>
-            <Label Content="Nanny" Name="nanny_title" HorizontalContentAlignment ="Center" VerticalContentAlignment="Center"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="188" FontSize="30" FontFamily="Sitka Small" FontWeight="Bold" Foreground="#FFE42D2D" Margin="67,49,72,38.6" MouseDown="nanny_title_MouseDown">
+            <Label Content="Nanny" Name="nanny_title" HorizontalContentAlignment ="Center" VerticalContentAlignment="Center"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="188" FontSize="30" FontFamily="Sitka Small" FontWeight="Bold" Foreground="#FFE42D2D" MouseDown="nanny_title_MouseDown">
                 <Label.Effect>
                     <DropShadowEffect BlurRadius="20" RenderingBias="Quality" Color="#FFEA6A36" ShadowDepth="4"/>
                 </Label.Effect>
             </Label>
         </Grid>
-        <Grid HorizontalAlignment="Left" Name="child_title_grid" Height="154" VerticalAlignment="Top" Width="321" MouseEnter="child_title_grid_MouseEnter" MouseLeave="child_title_grid_MouseLeave" KeyDown="Grid_KeyDown" Margin="0,0.4,0,-4" Grid.Row="1" Grid.ColumnSpan="2">
+        <Grid HorizontalAlignment="Center" Name="child_title_grid" VerticalAlignment="Center" MouseEnter="child_title_grid_MouseEnter" MouseLeave="child_title_grid_MouseLeave" KeyDown="Grid_KeyDown" Grid.Row="2" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="47*"/>
             </Grid.RowDefinitions>
-            <Label Content="Child" x:Name="child_title" HorizontalContentAlignment ="Center" VerticalContentAlignment="Center"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="188" FontSize="30" FontFamily="Sitka Small" FontWeight="Bold" Foreground="#FFE42D2D" Margin="64,45,69,42.6" MouseDown="child_title_MouseDown">
+            <Label Content="Child" x:Name="child_title" HorizontalContentAlignment ="Center" VerticalContentAlignment="Center"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="188" FontSize="30" FontFamily="Sitka Small" FontWeight="Bold" Foreground="#FFE42D2D" MouseDown="child_title_MouseDown">
                 <Label.Effect>
                     <DropShadowEffect BlurRadius="20" RenderingBias="Quality" Color="#FFEA6A36" ShadowDepth="4"/>
                 </Label.Effect>
             </Label>
         </Grid>
-        <Grid HorizontalAlignment="Left" Name="contract_title_grid" Height="154" VerticalAlignment="Top" Width="327" KeyDown="Grid_KeyDown" Margin="3.2,0.4,0,-4" Grid.Row="1" MouseEnter="contract_title_grid_MouseEnter" MouseLeave="contract_title_grid_MouseLeave" Grid.Column="1">
+        <Grid HorizontalAlignment="Center" Name="contract_title_grid" VerticalAlignment="Center" KeyDown="Grid_KeyDown" Grid.Row="3" MouseEnter="contract_title_grid_MouseEnter" MouseLeave="contract_title_grid_MouseLeave" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="47*"/>
             </Grid.RowDefinitions>
-            <Label Content="Contract" x:Name="contract_title" HorizontalContentAlignment ="Center" VerticalContentAlignment="Center"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="210" FontSize="30" FontFamily="Sitka Small" FontWeight="Bold" Foreground="#FFE42D2D" Margin="56,45,61,42.6" MouseDown="contract_title_MouseDown">
+            <Label Content="Contract" x:Name="contract_title" HorizontalContentAlignment ="Center" VerticalContentAlignment="Center"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="210" FontSize="30" FontFamily="Sitka Small" FontWeight="Bold" Foreground="#FFE42D2D" MouseDown="contract_title_MouseDown">
                 <Label.Effect>
                     <DropShadowEffect BlurRadius="20" RenderingBias="Quality" Color="#FFEA6A36" ShadowDepth="4"/>
                 </Label.Effect>
             </Label>
         </Grid>
+        <Image HorizontalAlignment="Stretch"  Grid.RowSpan="4" VerticalAlignment="Stretch" Source="445505370_28246.jpg" Stretch="Fill"/>
 
     </Grid>
 </Window>

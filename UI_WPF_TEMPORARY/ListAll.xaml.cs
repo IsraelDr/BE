@@ -35,6 +35,8 @@ namespace UI_WPF_TEMPORARY
                     case 0:
                         listofAll.AutoGeneratingColumn += listofAll_MotherGeneratingColumns;
                         listofAll.ItemsSource = bl.getMotherList();
+                        DetailsChoice.Visibility = Visibility.Collapsed;
+                        GroupChoice.Visibility = Visibility.Collapsed;
                     break;
                     case 1:
                         listofAll.AutoGeneratingColumn += listofAll_NannyGeneratingColumns;
@@ -42,6 +44,8 @@ namespace UI_WPF_TEMPORARY
                         break;
                     case 2:
                         listofAll.ItemsSource = bl.getChildList();
+                        DetailsChoice.Visibility = Visibility.Collapsed;
+                        GroupChoice.Visibility = Visibility.Collapsed;
                         break;
                     case 3:
                         listofAll.AutoGeneratingColumn += listofAll_ContractGeneratingColumns;
@@ -255,6 +259,28 @@ namespace UI_WPF_TEMPORARY
         {
             Addbutton.Height -= 5;
             Addbutton.Width -= 5;
+        }
+        private void Grid2_MouseEnter(object sender, MouseEventArgs e)
+        {
+            UpdateButton.Height += 5;
+            UpdateButton.Width += 5;
+        }
+
+        private void Grid2_MouseLeave(object sender, MouseEventArgs e)
+        {
+            UpdateButton.Height -= 5;
+            UpdateButton.Width -= 5;
+        }
+        private void Grid3_MouseEnter(object sender, MouseEventArgs e)
+        {
+            RemoveButton.Height += 5;
+            RemoveButton.Width += 5;
+        }
+
+        private void Grid3_MouseLeave(object sender, MouseEventArgs e)
+        {
+            RemoveButton.Height -= 5;
+            RemoveButton.Width -= 5;
         }
     }
 }

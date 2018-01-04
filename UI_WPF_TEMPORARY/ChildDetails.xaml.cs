@@ -31,7 +31,7 @@ namespace UI_WPF_TEMPORARY
         {
             InitializeComponent();
             bl = FactoryBL.IBLInstance;
-            child = new Child();
+            child = a;
             this.DataContext = child;
             fr = f;
             isUpdate = false;

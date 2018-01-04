@@ -7,23 +7,19 @@
              xmlns:BE="clr-namespace:BE;assembly=BE"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="300">
-    <Grid d:DataContext="{d:DesignInstance BE:Nanny }" Background="BlanchedAlmond">
+    <Grid Height="auto" Width="auto" d:DataContext="{d:DesignInstance BE:Nanny }" Background="BlanchedAlmond">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
 
 
-        <TextBlock Margin="5" Grid.Column="1"
+        <TextBlock Margin="5" Grid.Column="0"
                  Text="{Binding Path=first_name }"/>
-        <TextBlock Margin="5" Grid.Column="1" Grid.Row="1"
+        <TextBlock Margin="5" Grid.Column="1"
                  Text="{Binding Path=last_name }"/>
 
-        <TextBlock Margin="5" Grid.Column="1" Grid.Row="2"
+        <TextBlock Margin="5" Grid.Column="1" Visibility="Collapsed"
                  Text="{Binding Path=ID}"/>
 
 
