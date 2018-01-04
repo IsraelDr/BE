@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 using BE;
 using BL;
 using RoyT.TimePicker;
@@ -132,8 +133,15 @@ namespace UI_WPF_TEMPORARY
 
             }
         }
+        
+    private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+    {
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+           Regex regex = new Regex("[^0-9]+");
+           e.Handled = (regex.IsMatch(e.Text));
+           e.Handled = (new_Phonenumber.Text.ToString().Count() <10);
+    }
+    private void Button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -185,5 +193,6 @@ namespace UI_WPF_TEMPORARY
             }
 
         }
+
     }
 }
