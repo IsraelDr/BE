@@ -18,6 +18,11 @@ using GoogleMapsApi.StaticMaps.Entities;
 using System.Runtime;
 using System.Runtime.InteropServices;
 using GoogleMapsApi.Entities.PlaceAutocomplete.Request;
+//using GoogleMapsApi.Entities.PlaceAutocomplete.Response;
+
+using System.Text;
+using System.Threading.Tasks;
+//using GoogleMapsAPI;
 
 namespace BL
 {
@@ -523,6 +528,7 @@ namespace BL
             }
             catch (Exception e)
             {
+                int a = 5;
                 throw e;
             };
         }

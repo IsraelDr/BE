@@ -37,13 +37,15 @@
             <Label Content="Phonenumber" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
             <TextBox x:Name="new_Phonenumber"  TextWrapping="Wrap" Text="{Binding Path=info.Phonenumber,Mode=TwoWay}" PreviewTextInput="new_Phonenumber_PreviewTextInput" Grid.Row="2" Grid.Column="2" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="107,4,0.333,0"/>
             <Label Content="Address" Grid.Row="2" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" />
-            <TextBox x:Name="new_Address" TextWrapping="Wrap" Text="{Binding Path=info.Adress,Mode=TwoWay}" Grid.Row="2" Grid.Column="5" VerticalAlignment="Center"/>
+            <TextBox x:Name="new_Address" TextWrapping="Wrap" Text="{Binding Path=info.Adress,Mode=TwoWay}" Grid.Row="2" Grid.Column="5" VerticalAlignment="Center" TextChanged="new_Address_TextChanged"/>
+            <ListBox x:Name="adress_suggestion" Background="LightYellow" Visibility="Collapsed" Grid.Column="4" HorizontalAlignment="Left" Height="100" Margin="65.4,22,0,-70.8" Grid.Row="2" Grid.RowSpan="2" VerticalAlignment="Top" Width="100" Grid.ColumnSpan="2" SelectionChanged="adress_suggestion_SelectionChanged" OpacityMask="Black" Panel.ZIndex="2"/>
             <Label Content="Comments" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" />
             <TextBox x:Name="new_comment" TextWrapping="Wrap" Text="{Binding Path=info.Comment,Mode=TwoWay}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center"/>
             <TextBox x:Name="new_surrounding_address" TextWrapping="Wrap" Text="{Binding Path=info.surrounding_adress,Mode=TwoWay}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"/>
             <ComboBox Name="new_paymentmethode" VerticalAlignment="Center" SelectedItem="{Binding Path=info.Paymentmethode,Mode=TwoWay}"  Grid.Row="3" Grid.Column="3"/>
             <Label Content="payment methode" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" Grid.Column="2" />
             <TextBlock  FontSize="20"  HorizontalAlignment="Center" TextWrapping="Wrap" Text="Mother Details" VerticalAlignment="Center" Grid.ColumnSpan="6" Grid.Row="0"/>
+
 
         </Grid>
 

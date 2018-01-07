@@ -182,6 +182,52 @@ namespace UI_WPF_TEMPORARY
                         (new_ID.Text.ToString().Count() > 8)
                         /* ||(new_ID.Text.ToString().Count() == 0 && e.Text[0] != '0')*/);
         }
+
+        private void new_Address_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            List<String> s = new List<String>();
+            string str = new_Address.Text;
+            System.Threading.Thread t = new System.Threading.Thread(() =>
+            {
+                try
+                {
+                     s = BL.BL_imp.GetPlaceAutoComplete(str);
+                }
+                catch (Exception f)
+                {
+                    // fix Nanny?
+                    int a = 5;
+                }
+            });
+            t.Start();
+            t.Join();
+            if(s.Count()>0)
+            {
+                adress_suggestion.ItemsSource = s;
+                adress_suggestion.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                adress_suggestion.Visibility = Visibility.Collapsed;
+                adress_suggestion.ItemsSource = null;
+            }
+
+        }
+
+        private void adress_suggestion_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(adress_suggestion.ItemsSource!=null)
+            {
+                adress_suggestion.Visibility = Visibility.Collapsed;
+                new_Address.TextChanged -= new TextChangedEventHandler(new_Address_TextChanged);
+                if(adress_suggestion.SelectedIndex!=-1)
+                {
+                    new_Address.Text = adress_suggestion.SelectedItem.ToString();
+                }
+                new_Address.TextChanged -= new TextChangedEventHandler(new_Address_TextChanged);
+
+            }
+        }
     }
 
     public class T
