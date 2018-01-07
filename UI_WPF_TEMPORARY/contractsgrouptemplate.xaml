@@ -7,10 +7,12 @@
              xmlns:BE="clr-namespace:BE;assembly=BE"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    
+
     <Grid d:DataContext="{d:DesignInstance BE:Contract }" Background="BlanchedAlmond">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="11*"/>
+            <ColumnDefinition Width="228*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -18,12 +20,13 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Margin="5" Grid.Column="1"
-                 Text="{Binding Path=distance }"/>
-        <TextBlock Margin="5" Grid.Column="1" Grid.Row="1"
+        <Label Content="Distance: " Grid.Column="0" Grid.Row="0"/>
+        <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding  Path=distance }"/>
+        <Label Content="Contractnumber: " Grid.Column="0" Grid.Row="1"/>
+        <TextBlock Margin="5,4.6,3.8,4.8" Grid.Column="1" Grid.Row="1"
                  Text="{Binding Path=Contract_ID }"/>
-
-        <TextBlock Name="child_id" Margin="5" Grid.Column="1" Grid.Row="2"
+        <Label Content="Child ID: " Grid.Column="0" Grid.Row="2"/>
+        <TextBlock Name="child_id" Margin="5,5.2,3.8,4.2" Grid.Row="2" Grid.Column="1"
                  Text="{Binding Child_ID, Converter={StaticResource converter}}"/>
 
 

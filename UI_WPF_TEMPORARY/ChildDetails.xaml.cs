@@ -35,7 +35,15 @@ namespace UI_WPF_TEMPORARY
             child = a;
             fr = f;
             isUpdate = false;
-            if(a!=null)
+            var values = from Mother moth in bl.getMotherList()
+                         select new { ID = moth.ID, Name = moth.Firstname + " " + moth.Lastname };
+            foreach (var value in values)
+            {
+                new_IDmother.Items.Add(value);
+            }
+            new_IDmother.DisplayMemberPath = "Name";
+            new_IDmother.SelectedValuePath = "ID";
+            if (a!=null)
             {
                 isUpdate = true;
                 //new_ID.Text = a.ID+"";

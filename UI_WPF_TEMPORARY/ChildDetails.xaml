@@ -23,14 +23,14 @@
 
         <TextBox Grid.Column="1"  PreviewTextInput="new_ID_PreviewTextInput" Name="new_ID" TextWrapping="Wrap" Text="{Binding Path=ID,Mode=TwoWay}" Margin="0.2,25,-0.4,24.8"/>
         <Label Content="Mother ID" Grid.Row="1"/>
-        <TextBox Grid.Column="1" Grid.Row="1" Name="new_IDmother" TextWrapping="Wrap" Text="{Binding Path=Mother_ID,Mode=TwoWay}" Margin="0.2,25,-0.4,24.8"/>
+        <ComboBox Grid.Column="1" Name="new_IDmother" HorizontalAlignment="Center"  SelectedValue="{Binding Path=Mother_ID,Mode=TwoWay}" Margin="0.2,25,-0.4,24.8" Grid.Row="1" Width="160" VerticalAlignment="Stretch"/>
         <Label Content="Name" Grid.Row="2"/>
         <TextBox Grid.Column="1" Grid.Row="2" Name="new_Name" TextWrapping="Wrap" Text="{Binding Path=name,Mode=TwoWay}" Margin="0.2,25,-0.4,24.8"/>
         <Label Content="Birthdate" Grid.Row="3"/>
         <DatePicker Grid.Column="1" Name="new_Birthdate" Grid.Row="3" SelectedDate="{Binding Path=Birthdate,Mode=TwoWay}"/>
         <CheckBox Content="SpecialNeeds" Name="new_specialneeds" IsChecked="{Binding Path=SpecialNeeds,Mode=TwoWay}" Grid.Row="4"/>
         <Button x:Name="SaveBUTTON" Content="Save" Grid.Column="1" HorizontalAlignment="Left" Margin="47.2,24,0,0" Grid.Row="4" VerticalAlignment="Top" Width="112" Height="35" Click="Button_Click"/>
-
+        
 
 
     </Grid>

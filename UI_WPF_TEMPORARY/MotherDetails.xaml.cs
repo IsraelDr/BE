@@ -30,6 +30,7 @@ namespace UI_WPF_TEMPORARY
         public DigitalTime MaxTime { get { return new DigitalTime(22, 00);}set { } }
         public DigitalTime Time { get { return new DigitalTime(12, 00); } set { } }
         Mother mother;
+        System.Threading.Thread t=null;
         T details;
         bool isUpdate = false;
         public MotherDetails(Window f,Mother m=null)
@@ -187,7 +188,10 @@ namespace UI_WPF_TEMPORARY
         {
             List<String> s = new List<String>();
             string str = new_Address.Text;
-            System.Threading.Thread t = new System.Threading.Thread(() =>
+            
+            if (t!=null&&t.IsAlive)
+                t.Abort();
+            t = new System.Threading.Thread(() =>
             {
                 try
                 {
@@ -224,9 +228,21 @@ namespace UI_WPF_TEMPORARY
                 {
                     new_Address.Text = adress_suggestion.SelectedItem.ToString();
                 }
-                new_Address.TextChanged -= new TextChangedEventHandler(new_Address_TextChanged);
+                new_Address.TextChanged += new TextChangedEventHandler(new_Address_TextChanged);
 
             }
+        }
+
+        private void Grid_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Save.Height += 5;
+            Save.Width += 5;
+        }
+
+        private void Grid_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Save.Height -= 5;
+            Save.Width -= 5;
         }
     }
 

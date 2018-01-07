@@ -24,5 +24,6 @@ namespace UI_WPF_TEMPORARY
         {
             InitializeComponent();
         }
+
     }
 }

@@ -6,17 +6,18 @@
              xmlns:local="clr-namespace:UI_WPF_TEMPORARY"
              xmlns:BE="clr-namespace:BE;assembly=BE"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="300">
-    <Grid Height="auto" Width="auto" d:DataContext="{d:DesignInstance BE:Nanny }" Background="BlanchedAlmond">
+             d:DesignHeight="100" d:DesignWidth="200">
+    <Grid Height="auto" Width="200" d:DataContext="{d:DesignInstance BE:Nanny }" Background="BlanchedAlmond">
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
 
-
-        <TextBlock Margin="5" Grid.Column="0"
+        <Label Grid.Column="0" Content="Name: " />
+        <TextBlock Margin="5" Name="firstName" Grid.Column="1"
                  Text="{Binding Path=first_name }"/>
-        <TextBlock Margin="5" Grid.Column="1"
+        <TextBlock Margin="5" Grid.Column="2"
                  Text="{Binding Path=last_name }"/>
 
         <TextBlock Margin="5" Grid.Column="1" Visibility="Collapsed"

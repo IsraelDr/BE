@@ -12,7 +12,7 @@
             <ColumnDefinition Width="79*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="11*"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="49*"/>
         </Grid.RowDefinitions>
 
@@ -32,7 +32,7 @@
                     <Border BorderThickness="2" BorderBrush="Blue" Margin="5">
                         <StackPanel>
                             <TextBlock Text="{Binding Path=Key}" FontSize="16" Foreground="Red" TextAlignment="Center" />
-                            <ListView ItemsSource="{Binding}">
+                            <ListView ItemsSource="{Binding}" MouseDoubleClick="ListView_MouseDoubleClick">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <local:nannygrouptemplate>

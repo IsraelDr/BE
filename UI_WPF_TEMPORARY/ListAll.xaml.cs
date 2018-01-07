@@ -41,15 +41,18 @@ namespace UI_WPF_TEMPORARY
                     case 1:
                         listofAll.AutoGeneratingColumn += listofAll_NannyGeneratingColumns;
                         listofAll.ItemsSource = bl.getNannyList();
+                        GroupChoice.Content = "Group Nanny's by childrens Age";
                         break;
                     case 2:
                         listofAll.ItemsSource = bl.getChildList();
                         DetailsChoice.Visibility = Visibility.Collapsed;
                         GroupChoice.Visibility = Visibility.Collapsed;
+                        
                         break;
                     case 3:
                         listofAll.AutoGeneratingColumn += listofAll_ContractGeneratingColumns;
                         listofAll.ItemsSource = bl.getContractList();
+                        GroupChoice.Content = "Group Contracts by distance";
                         break;
                 }
             }
