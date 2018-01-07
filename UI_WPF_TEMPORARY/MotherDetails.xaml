@@ -27,69 +27,69 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Label Content="ID" Grid.Column="0"  Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"  />
+            <Label Content="ID" Grid.Column="0"  Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center"  />
             <TextBox x:Name="new_ID" PreviewTextInput="new_ID_PreviewTextInput" Text="{Binding Path=info.ID,Mode=TwoWay}" TextWrapping="Wrap" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"/>
-            <Label Content="First Name" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Content="First Name" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <TextBox x:Name="new_Firstname" TextWrapping="Wrap" Text="{Binding Path=info.Firstname,Mode=TwoWay}" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" />
-            <Label Content="Last Name"  Grid.Row="1" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Content="Last Name"  Grid.Row="1" Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <TextBox x:Name="new_LastName" TextWrapping="Wrap" Text="{Binding Path=info.Lastname,Mode=TwoWay}" Grid.Row="1" Grid.Column="5" VerticalAlignment="Center"/>
-            <Label Content="Sorounding Address" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Label Content="Phonenumber" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
-            <TextBox x:Name="new_Phonenumber"  TextWrapping="Wrap" Text="{Binding Path=info.Phonenumber,Mode=TwoWay}" PreviewTextInput="new_Phonenumber_PreviewTextInput" Grid.Row="2" Grid.Column="2" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="107,4,0.333,0"/>
-            <Label Content="Address" Grid.Row="2" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" />
-            <TextBox x:Name="new_Address" TextWrapping="Wrap" Text="{Binding Path=info.Adress,Mode=TwoWay}" Grid.Row="2" Grid.Column="5" VerticalAlignment="Center" TextChanged="new_Address_TextChanged"/>
+            <Label Content="Sorounding Address" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <Label Content="Phonenumber" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <TextBox x:Name="new_Phonenumber"  TextWrapping="Wrap" Text="{Binding Path=info.Phonenumber,Mode=TwoWay}" PreviewTextInput="new_Phonenumber_PreviewTextInput" Grid.Row="2" Grid.Column="3" VerticalAlignment="Top" />
+            <Label Content="Address" Grid.Row="2" Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <TextBox x:Name="new_Address"  Text="{Binding Path=info.Adress,Mode=TwoWay}" Grid.Row="2" Grid.Column="5" VerticalAlignment="Center" TextChanged="new_Address_TextChanged"/>
             <ListBox x:Name="adress_suggestion" HorizontalAlignment="Left" Visibility="Collapsed" VerticalAlignment="Bottom" Width="100"  SelectionChanged="adress_suggestion_SelectionChanged" OpacityMask="White"   Margin="65.4,0,0,-74.8" Grid.Column="4" Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="2" Height="104" Panel.ZIndex="100000000"/>
-            <Label Content="Comments" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Label Content="Comments" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" />
             <TextBox x:Name="new_comment" TextWrapping="Wrap" Text="{Binding Path=info.Comment,Mode=TwoWay}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center"/>
             <TextBox x:Name="new_surrounding_address" TextWrapping="Wrap" Text="{Binding Path=info.surrounding_adress,Mode=TwoWay}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"/>
             <ComboBox Name="new_paymentmethode" VerticalAlignment="Center" SelectedItem="{Binding Path=info.Paymentmethode,Mode=TwoWay}"  Grid.Row="3" Grid.Column="3"/>
-            <Label Content="payment methode" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" Grid.Column="2" />
+            <Label Content="Paymentmethod" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="3" Grid.Column="2" />
             <TextBlock  FontSize="20"  HorizontalAlignment="Center" TextWrapping="Wrap" Text="Mother Details" VerticalAlignment="Center" Grid.ColumnSpan="6" Grid.Row="0"/>
 
 
         </Grid>
 
-        <Grid Grid.Row="1" >
+        <Grid Grid.Row="1" Height="500" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="100"/>
 
             </Grid.RowDefinitions>
-            <Label Content="starttime" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" />
-            <Label Content="endtime" VerticalAlignment="Center" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" />
-            <CheckBox Content="Sunday" x:Name="new_Sunday" IsChecked="{Binding Path=info.nanny_required[0]}" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"/>
-            <CheckBox Content="Monday" x:Name="new_Monday" IsChecked="{Binding Path=info.nanny_required[1]}" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center"/>
-            <CheckBox Content="Tuesday" x:Name="new_Tuesday" IsChecked="{Binding Path=info.nanny_required[2]}" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"/>
-            <CheckBox Content="Wednesday" x:Name="new_Wednesday" IsChecked="{Binding Path=info.nanny_required[3]}" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"/>
-            <CheckBox Content="Thursday" x:Name="new_Thursday" IsChecked="{Binding Path=info.nanny_required[4]}" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center"/>
-            <CheckBox Content="Friday" x:Name="new_Friday" IsChecked="{Binding Path=info.nanny_required[5]}" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center"/>
-            <CheckBox Content="Saturday" x:Name="new_Saturday" IsChecked="{Binding Path=info.nanny_required[6]}" Grid.Row="7" Grid.Column="0" VerticalAlignment="Center"/>
-            <TimePicker:TimePickerSlider x:Name="new_Sunday_start" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[0][0],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="1" Grid.Row="1"/>
-            <TimePicker:TimePickerSlider x:Name="new_Sunday_end" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[0][1],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="2" Grid.Row="1"/>
-            <TimePicker:TimePickerSlider x:Name="new_Monday_start" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[1][0],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="1" Grid.Row="2"/>
-            <TimePicker:TimePickerSlider x:Name="new_Monday_end" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[1][1],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="2" Grid.Row="2"/>
-            <TimePicker:TimePickerSlider x:Name="new_Tuesday_start" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[2][0],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="1"   Grid.Row="3"/>
-            <TimePicker:TimePickerSlider x:Name="new_Tuesday_end" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[2][1],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="2"   Grid.Row="3"/>
-            <TimePicker:TimePickerSlider x:Name="new_Wednesday_start" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[3][0],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="1"  Grid.Row="4"/>
-            <TimePicker:TimePickerSlider x:Name="new_Wednesday_end" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[3][1],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="2"  Grid.Row="4"/>
-            <TimePicker:TimePickerSlider x:Name="new_Thursday_start" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[4][0],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="1"  Grid.Row="5" />
-            <TimePicker:TimePickerSlider x:Name="new_Thursday_end" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[4][1],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="2"   Grid.Row="5"/>
-            <TimePicker:TimePickerSlider x:Name="new_Friday_start" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[5][0],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="1"  Grid.Row="6"/>
-            <TimePicker:TimePickerSlider x:Name="new_Friday_end" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[5][1],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="2"  Grid.Row="6"/>
-            <TimePicker:TimePickerSlider x:Name="new_Saturday_start" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[6][0],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="1" Grid.Row="7"/>
-            <TimePicker:TimePickerSlider x:Name="new_Saturday_end" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[6][1],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="2"   Grid.Row="7"/>
+            <Label Content="Begin" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" />
+            <Label Content="End" VerticalAlignment="Center" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" />
+            <CheckBox Content="Sunday" x:Name="new_Sunday" Checked="Checkbox_Checked" Unchecked="Checkbox_Checked" IsChecked="{Binding Path=info.nanny_required[0]}" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"/>
+            <CheckBox Content="Monday" x:Name="new_Monday" Checked="Checkbox_Checked" Unchecked="Checkbox_Checked" IsChecked="{Binding Path=info.nanny_required[1]}" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center"/>
+            <CheckBox Content="Tuesday" x:Name="new_Tuesday" Checked="Checkbox_Checked" Unchecked="Checkbox_Checked" IsChecked="{Binding Path=info.nanny_required[2]}" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"/>
+            <CheckBox Content="Wednesday" x:Name="new_Wednesday" Checked="Checkbox_Checked" Unchecked="Checkbox_Checked" IsChecked="{Binding Path=info.nanny_required[3]}" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"/>
+            <CheckBox Content="Thursday" x:Name="new_Thursday" Checked="Checkbox_Checked" Unchecked="Checkbox_Checked" IsChecked="{Binding Path=info.nanny_required[4]}" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center"/>
+            <CheckBox Content="Friday" x:Name="new_Friday" Checked="Checkbox_Checked" Unchecked="Checkbox_Checked" IsChecked="{Binding Path=info.nanny_required[5]}" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center"/>
+            <CheckBox Content="Saturday" x:Name="new_Saturday" Checked="Checkbox_Checked" Unchecked="Checkbox_Checked" IsChecked="{Binding Path=info.nanny_required[6]}" Grid.Row="7" Grid.Column="0" VerticalAlignment="Center"/>
+            <TimePicker:TimePickerSlider x:Name="new_Sunday_start" Visibility="Collapsed" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[0][0],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="1" Grid.Row="1"/>
+            <TimePicker:TimePickerSlider x:Name="new_Sunday_end" Visibility="Collapsed" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[0][1],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="2" Grid.Row="1"/>
+            <TimePicker:TimePickerSlider x:Name="new_Monday_start" Visibility="Collapsed" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[1][0],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="1" Grid.Row="2"/>
+            <TimePicker:TimePickerSlider x:Name="new_Monday_end" Visibility="Collapsed" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[1][1],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="2" Grid.Row="2"/>
+            <TimePicker:TimePickerSlider x:Name="new_Tuesday_start" Visibility="Collapsed" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[2][0],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="1"   Grid.Row="3"/>
+            <TimePicker:TimePickerSlider x:Name="new_Tuesday_end" Visibility="Collapsed" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[2][1],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="2"   Grid.Row="3"/>
+            <TimePicker:TimePickerSlider x:Name="new_Wednesday_start" Visibility="Collapsed" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[3][0],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="1"  Grid.Row="4"/>
+            <TimePicker:TimePickerSlider x:Name="new_Wednesday_end" Visibility="Collapsed" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[3][1],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="2"  Grid.Row="4"/>
+            <TimePicker:TimePickerSlider x:Name="new_Thursday_start" Visibility="Collapsed" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[4][0],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="1"  Grid.Row="5" />
+            <TimePicker:TimePickerSlider x:Name="new_Thursday_end" Visibility="Collapsed" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[4][1],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="2"   Grid.Row="5"/>
+            <TimePicker:TimePickerSlider x:Name="new_Friday_start" Visibility="Collapsed" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[5][0],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="1"  Grid.Row="6"/>
+            <TimePicker:TimePickerSlider x:Name="new_Friday_end" Visibility="Collapsed" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[5][1],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="2"  Grid.Row="6"/>
+            <TimePicker:TimePickerSlider x:Name="new_Saturday_start" Visibility="Collapsed" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[6][0],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="1" Grid.Row="7"/>
+            <TimePicker:TimePickerSlider x:Name="new_Saturday_end" Visibility="Collapsed" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[6][1],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="2"   Grid.Row="7"/>
             <Grid HorizontalAlignment="Center" Height="100" Width="50" Name="Save" Grid.Column="1" Grid.Row="8" VerticalAlignment="Center"  MouseDown="Button_Click" MouseEnter="Grid_MouseEnter" MouseLeave="Grid_MouseLeave">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="49*"/>

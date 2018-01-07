@@ -167,7 +167,25 @@ namespace UI_WPF_TEMPORARY
                 MessageBox.Show(w.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+        private void Checkbox_Checked(object sender, RoutedEventArgs e)
+        {
+            TimePickerSlider slider;
+            if (((CheckBox)(sender)).IsChecked == true)
+            {
+                slider = (TimePickerSlider)FindName("new_" + ((CheckBox)(sender)).Content + "_start");
+                slider.Visibility = Visibility.Visible;
+                slider = (TimePickerSlider)FindName("new_" + ((CheckBox)(sender)).Content + "_end");
+                slider.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                slider = (TimePickerSlider)FindName("new_" + ((CheckBox)(sender)).Content + "_start");
+                slider.Visibility = Visibility.Collapsed;
+                slider = (TimePickerSlider)FindName("new_" + ((CheckBox)(sender)).Content + "_end");
+                slider.Visibility = Visibility.Collapsed;
+            }
 
+        }
         private void new_Phonenumber_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
@@ -229,6 +247,7 @@ namespace UI_WPF_TEMPORARY
                     new_Address.Text = adress_suggestion.SelectedItem.ToString();
                 }
                 new_Address.TextChanged += new TextChangedEventHandler(new_Address_TextChanged);
+                new_Address.Focus();
 
             }
         }
@@ -244,6 +263,7 @@ namespace UI_WPF_TEMPORARY
             Save.Height -= 5;
             Save.Width -= 5;
         }
+
     }
 
     public class T
