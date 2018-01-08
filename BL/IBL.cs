@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BE;
+using static BL.BL_imp;
+
 namespace BL
 {
     public interface IBL
@@ -41,7 +43,8 @@ namespace BL
         IEnumerable<BE.Contract> getContractList();
 
         //List<string> GetPlaceAutoComplete(string str);
-
+        List<Contract> GetAllContractWithCondition(contractCondition condition);
+        bool contractsEnd(Contract c);
 
     }
 }

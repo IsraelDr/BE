@@ -18,10 +18,16 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="55*"/>
                     <ColumnDefinition Width="56*"/>
+                    <ColumnDefinition Width="56*"/>
                 </Grid.ColumnDefinitions>
-                <RadioButton  IsChecked="True" Name="DetailsChoice" Content="Details" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="19" Checked="Button_Click_1"/>
+            <ComboBox Name="contractcond" Visibility="Collapsed" Grid.Column="2" Height="20" Width="200" HorizontalAlignment="Right" VerticalAlignment="Bottom" SelectionChanged="ComboBox_SelectionChanged">
+                <ComboBoxItem Content="None"/>
+                <ComboBoxItem Content="Ended Contracts"/>
+            </ComboBox>
+            <RadioButton  IsChecked="True" Name="DetailsChoice" Content="Details" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="19" Checked="Button_Click_1"/>
                 <RadioButton Name="GroupChoice" Content="Group by Nannys" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="19" Checked="Button_Click_2"/>
-            </Grid>
+            
+        </Grid>
         <Grid Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="33*"/>

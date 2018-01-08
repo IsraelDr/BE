@@ -25,6 +25,7 @@ namespace UI_WPF_TEMPORARY
         static int Choosen;
         public ListAll(int choosen)
         {
+            Choosen = choosen;
             try
             {
                 InitializeComponent();
@@ -61,7 +62,7 @@ namespace UI_WPF_TEMPORARY
                 MessageBox.Show(e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
 
             }
-            Choosen = choosen;
+            
         }
 
         private void Addbutton_Click(object sender, RoutedEventArgs e)
@@ -213,6 +214,8 @@ namespace UI_WPF_TEMPORARY
             try
             {
                 listofAll.Visibility = Visibility.Visible;
+                if(Choosen==3)
+                    contractcond.Visibility = Visibility.Visible;
                 GroupingPanel.Visibility = Visibility.Collapsed;
                 
 
@@ -229,6 +232,7 @@ namespace UI_WPF_TEMPORARY
             try
             {
                 listofAll.Visibility = Visibility.Collapsed;
+                contractcond.Visibility = Visibility.Collapsed;
                 GroupingPanel.Visibility = Visibility.Visible;
                 switch (Choosen)
                 {
@@ -286,5 +290,22 @@ namespace UI_WPF_TEMPORARY
             RemoveButton.Width -= 5;
         }
 
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //BL_imp.contractCondition contractCondition;
+            switch (((ComboBoxItem)contractcond.SelectedItem).Content.ToString())
+            {
+                case "None":
+                    listofAll.ItemsSource = null;
+                    listofAll.ItemsSource = bl.getContractList();
+                    break;
+                case "Ended Contracts":
+                    listofAll.ItemsSource = null;
+                    listofAll.ItemsSource = bl.GetAllContractWithCondition(bl.contractsEnd);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
