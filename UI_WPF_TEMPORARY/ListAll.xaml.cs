@@ -128,7 +128,7 @@ namespace UI_WPF_TEMPORARY
             }
 }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public void Button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -285,5 +285,6 @@ namespace UI_WPF_TEMPORARY
             RemoveButton.Height -= 5;
             RemoveButton.Width -= 5;
         }
+
     }
 }

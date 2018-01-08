@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UI_WPF_TEMPORARY"
         mc:Ignorable="d"
-        Title="UpdateWindow" Height="648.457" Width="619.21" HorizontalAlignment="Center" VerticalAlignment="Center">
+        Title="UpdateWindow" Height="700" Width="619.21" HorizontalAlignment="Center" VerticalAlignment="Center">
     <Grid x:Name="Updategrid" HorizontalAlignment="Center" VerticalAlignment="Center">
 
     </Grid>

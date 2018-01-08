@@ -145,5 +145,16 @@ namespace UI_WPF_TEMPORARY
             fr.Show();
             
         }
+        private void Grid_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Savebutton.Height += 5;
+            Savebutton.Width += 5;
+        }
+
+        private void Grid_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Savebutton.Height -= 5;
+            Savebutton.Width -= 5;
+        }
     }
 }

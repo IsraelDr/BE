@@ -33,11 +33,12 @@ namespace UI_WPF_TEMPORARY
         System.Threading.Thread t=null;
         T details;
         bool isUpdate = false;
-        public MotherDetails(Window f,Mother m=null)
+        public MotherDetails(Window f,Mother m=null, bool IsSaveable = true)
         {
             InitializeComponent();
             bl = FactoryBL.IBLInstance;
-
+            if (IsSaveable == false)
+                Save.Visibility = Visibility.Collapsed;
             this.mother = m;
             if (m == null)
                 details = new T(new Mother(), this);
@@ -201,9 +202,16 @@ namespace UI_WPF_TEMPORARY
                         (new_ID.Text.ToString().Count() > 8)
                         /* ||(new_ID.Text.ToString().Count() == 0 && e.Text[0] != '0')*/);
         }
-
+        private void new_surrounding_address_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            new_Address_TextChangedHelp(surround_adress_suggestion, new_surrounding_address);
+        }
         private void new_Address_TextChanged(object sender, TextChangedEventArgs e)
         {
+            new_Address_TextChangedHelp(adress_suggestion,new_Address);
+        }
+        private void new_Address_TextChangedHelp(ListBox adress_suggestion, TextBox new_Address)
+        { 
             List<String> s = new List<String>();
             string str = new_Address.Text;
             
@@ -235,19 +243,26 @@ namespace UI_WPF_TEMPORARY
             }
 
         }
-
+        private void surround_adress_suggestion_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            adress_suggestion_SelectionChangedhelp(surround_adress_suggestion, new_surrounding_address, new TextChangedEventHandler(new_surrounding_address_TextChanged));
+        }
         private void adress_suggestion_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(adress_suggestion.ItemsSource!=null)
+            adress_suggestion_SelectionChangedhelp(adress_suggestion, new_Address, new TextChangedEventHandler(new_Address_TextChanged));
+        }
+        private void adress_suggestion_SelectionChangedhelp(ListBox suggestion, TextBox Address, TextChangedEventHandler a)
+        { 
+            if (suggestion.ItemsSource!=null)
             {
-                adress_suggestion.Visibility = Visibility.Collapsed;
-                new_Address.TextChanged -= new TextChangedEventHandler(new_Address_TextChanged);
-                if(adress_suggestion.SelectedIndex!=-1)
+                suggestion.Visibility = Visibility.Collapsed;
+                Address.TextChanged -= a;
+                if(suggestion.SelectedIndex!=-1)
                 {
-                    new_Address.Text = adress_suggestion.SelectedItem.ToString();
+                    Address.Text = suggestion.SelectedItem.ToString();
                 }
-                new_Address.TextChanged += new TextChangedEventHandler(new_Address_TextChanged);
-                new_Address.Focus();
+                Address.TextChanged += a;
+                Address.Focus();
 
             }
         }
@@ -264,6 +279,7 @@ namespace UI_WPF_TEMPORARY
             Save.Width -= 5;
         }
 
+        
     }
 
     public class T

@@ -17,20 +17,30 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Label Content="ID"/>
-        <TextBlock  FontSize="20"  HorizontalAlignment="Left" Margin="50,-3,0,0" TextWrapping="Wrap" Text="Add Child:" VerticalAlignment="Top" Height="23" Width="180" Grid.ColumnSpan="2"/>
+        <Label Content="ID" Grid.Row="1"/>
+        <TextBlock  FontSize="20"  HorizontalAlignment="Center" TextWrapping="Wrap" Text="Child Details" VerticalAlignment="Center" Height="23" Width="auto" Grid.ColumnSpan="2"/>
 
-        <TextBox Grid.Column="1"  PreviewTextInput="new_ID_PreviewTextInput" Name="new_ID" TextWrapping="Wrap" Text="{Binding Path=ID,Mode=TwoWay}" Margin="0.2,25,-0.4,24.8"/>
-        <Label Content="Mother ID" Grid.Row="1"/>
-        <ComboBox Grid.Column="1" Name="new_IDmother" HorizontalAlignment="Center"  SelectedValue="{Binding Path=Mother_ID,Mode=TwoWay}" Margin="0.2,25,-0.4,24.8" Grid.Row="1" Width="160" VerticalAlignment="Stretch"/>
-        <Label Content="Name" Grid.Row="2"/>
-        <TextBox Grid.Column="1" Grid.Row="2" Name="new_Name" TextWrapping="Wrap" Text="{Binding Path=name,Mode=TwoWay}" Margin="0.2,25,-0.4,24.8"/>
-        <Label Content="Birthdate" Grid.Row="3"/>
-        <DatePicker Grid.Column="1" Name="new_Birthdate" Grid.Row="3" SelectedDate="{Binding Path=Birthdate,Mode=TwoWay}"/>
-        <CheckBox Content="SpecialNeeds" Name="new_specialneeds" IsChecked="{Binding Path=SpecialNeeds,Mode=TwoWay}" Grid.Row="4"/>
-        <Button x:Name="SaveBUTTON" Content="Save" Grid.Column="1" HorizontalAlignment="Left" Margin="47.2,24,0,0" Grid.Row="4" VerticalAlignment="Top" Width="112" Height="35" Click="Button_Click"/>
-        
+        <TextBox Grid.Column="1" Grid.Row="1"  PreviewTextInput="new_ID_PreviewTextInput" Name="new_ID" TextWrapping="Wrap" Text="{Binding Path=ID,Mode=TwoWay}" Margin="0.2,25,-0.4,24.8"/>
+        <Label Content="Mother ID" Grid.Row="2"/>
+        <ComboBox Grid.Column="1" Name="new_IDmother" HorizontalAlignment="Center"  SelectedValue="{Binding Path=Mother_ID,Mode=TwoWay}" Margin="0.2,25,-0.4,24.8" Grid.Row="2" Width="160" VerticalAlignment="Stretch"/>
+        <Label Content="Name" Grid.Row="3"/>
+        <TextBox Grid.Column="1" Grid.Row="3" Name="new_Name" TextWrapping="Wrap" Text="{Binding Path=name,Mode=TwoWay}" Margin="0.2,25,-0.4,24.8"/>
+        <Label Content="Birthdate" Grid.Row="4"/>
+        <DatePicker Grid.Column="1" Name="new_Birthdate" Grid.Row="4" SelectedDate="{Binding Path=Birthdate,Mode=TwoWay}"/>
+        <CheckBox Content="SpecialNeeds" Name="new_specialneeds" IsChecked="{Binding Path=SpecialNeeds,Mode=TwoWay}" Grid.Row="5"/>
+        <Grid HorizontalAlignment="Center" Height="100" Width="50" Name="SaveBUTTON" Grid.Column="1" Grid.Row="8" VerticalAlignment="Center"  MouseDown="Button_Click" MouseEnter="Grid_MouseEnter" MouseLeave="Grid_MouseLeave">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="49*"/>
+                <RowDefinition Height="19*"/>
+            </Grid.RowDefinitions>
+            <Grid.Background>
+                <ImageBrush Stretch="Uniform"/>
+            </Grid.Background>
+            <Image HorizontalAlignment="Stretch" Grid.Row="0" VerticalAlignment="Stretch" Source="Images/איש1.jpg" Margin="0,10,-0.2,1.4"/>
+            <Label Content="SAVE" HorizontalAlignment="Center" VerticalAlignment="Top"  Grid.Row="1"/>
+        </Grid>
 
 
     </Grid>

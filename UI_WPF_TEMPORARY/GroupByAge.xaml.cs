@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BE;
+using BL;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +24,7 @@ namespace UI_WPF_TEMPORARY
     public partial class GroupByAge : UserControl
     {
         private IEnumerable source;
-
+        public IBL bl;
         public IEnumerable Source
         {
             get { return source; }
@@ -39,6 +41,18 @@ namespace UI_WPF_TEMPORARY
 
         private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            try
+            {
+                IBL bl;
+                bl = FactoryBL.IBLInstance;
+                UpdateWindow a;
+                int ID;
+                ID = ((Nanny)((ListView)(sender)).SelectedItem).ID;
+                Nanny nanny = bl.GetNannyById(ID);
+                a = new UpdateWindow(1, nanny,false);
+                a.Show();
+                }
+            catch { }
         }
     }
 }

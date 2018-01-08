@@ -194,7 +194,17 @@ namespace UI_WPF_TEMPORARY
             }
 
         }
+        private void Grid_MouseEnter(object sender, MouseEventArgs e)
+        {
+            NannySavebutton.Height += 5;
+            NannySavebutton.Width += 5;
+        }
 
+        private void Grid_MouseLeave(object sender, MouseEventArgs e)
+        {
+            NannySavebutton.Height -= 5;
+            NannySavebutton.Width -= 5;
+        }
         private void new_ID_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");

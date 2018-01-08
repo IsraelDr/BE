@@ -11,10 +11,23 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <DataGrid Name="nannysoptiongrid" Grid.Row="1" Height="200" Margin="0,4.8,0,1.733" MouseDoubleClick="nannysoptiongrid_MouseDoubleClick"/>
-        <Button Content="Save" Name="Savebutton" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="116" Height="36" Click="Button_Click" />
-        <Grid HorizontalAlignment="Center" Height="191" Grid.Row="2" VerticalAlignment="Top" Width="850">
+        <TextBlock  FontSize="20"  HorizontalAlignment="Center" TextWrapping="Wrap" Text="Contract Details" VerticalAlignment="Top" Height="27" Width="180" Grid.Row="0"/>
+
+        <DataGrid Name="nannysoptiongrid" Grid.Row="2" Height="200" Margin="0,4.8,0,1.733" MouseDoubleClick="nannysoptiongrid_MouseDoubleClick"/>
+        <Grid HorizontalAlignment="Center" Height="100" Width="50" Name="Savebutton" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center"  MouseDown="Button_Click" MouseEnter="Grid_MouseEnter" MouseLeave="Grid_MouseLeave">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="49*"/>
+                <RowDefinition Height="19*"/>
+            </Grid.RowDefinitions>
+            <Grid.Background>
+                <ImageBrush Stretch="Uniform"/>
+            </Grid.Background>
+            <Image HorizontalAlignment="Stretch" Grid.Row="0" VerticalAlignment="Stretch" Source="Images/איש1.jpg" Margin="0,10,-0.2,1.4"/>
+            <Label Content="SAVE" HorizontalAlignment="Center" VerticalAlignment="Top"  Grid.Row="1"/>
+        </Grid>    
+        <Grid HorizontalAlignment="Center" Height="191" Grid.Row="3" VerticalAlignment="Top" Width="850">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -56,7 +69,7 @@
                 <CheckBox Content="I accept the Terms and signed" Name="is_signed" HorizontalAlignment="Center" Margin="0,47,0,0" VerticalAlignment="Center" Grid.RowSpan="2"/>
             </Grid>
         </Grid>
-        <Grid HorizontalAlignment="Center" Height="auto" VerticalAlignment="Top" Grid.Row="0" Width="850">
+        <Grid HorizontalAlignment="Center" Height="auto" VerticalAlignment="Top" Grid.Row="1" Width="850">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="431*"/>
                 <ColumnDefinition Width="419*"/>
@@ -68,8 +81,7 @@
                 </Grid.ColumnDefinitions>
                 <Label Content="Mother" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <ComboBox x:Name="listofMothers" Width="188" Height="30" Grid.Column="1" SelectionChanged="listofMothers_SelectionChanged"/>
-                <TextBlock  FontSize="20"  HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Add Contract:" VerticalAlignment="Top" Height="27" Width="180" Grid.ColumnSpan="2"/>
-            </Grid>
+                </Grid>
             <Grid HorizontalAlignment="Center" Height="94" VerticalAlignment="Top" Width="420" Grid.Row="0" Margin="0.6,0,-1.4,0" Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="175*"/>

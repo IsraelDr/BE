@@ -31,9 +31,13 @@ namespace UI_WPF_TEMPORARY
                     Updategrid.Children.Add(new Nannydetails(this,(Nanny)a, isSaveable));
                     break;
                 case 2:
+                    this.Height = 400;
+                    this.Width = 300;
                     Updategrid.Children.Add(new ChildDetails(this,(Child)a));
                     break;
                 case 3:
+                    this.Height = 700;
+                    this.Width = 1200;
                     Updategrid.Children.Add(new ContractDetails(this, (Contract)a));
                     break;
             }

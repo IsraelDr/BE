@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UI_WPF_TEMPORARY"
         mc:Ignorable="d"
-        Title="AddWindow" HorizontalAlignment="Center" VerticalAlignment="Center" Height="648.457" Width="619.21" >
+        Title="AddWindow" HorizontalAlignment="Center" VerticalAlignment="Center" Height="700" Width="619.21" >
     <Grid x:Name="AddGrid">
 
     </Grid>
