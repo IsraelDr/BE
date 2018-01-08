@@ -15,7 +15,7 @@
             <RowDefinition Height="409*"/>
         </Grid.RowDefinitions>
         <Label Content="Nanny Details" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Grid.Row="0" />
-        <Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Panel.ZIndex="-5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -45,7 +45,8 @@
             <Label Content="Phonenumber" Grid.Column="2" Grid.Row="1" />
             <TextBox Name="new_Phonenumber" Grid.Column="3" TextWrapping="Wrap" Text=""   PreviewTextInput="NumberValidationTextBox" Grid.Row="1"/>
             <Label Content="Address" Grid.Column="4" Grid.Row="1" />
-            <TextBox Grid.Column="6" Name="new_Address" TextWrapping="Wrap" Text=""  Grid.Row="1"/>
+            <TextBox Grid.Column="6" Name="new_Address" TextWrapping="Wrap" Text=""  Grid.Row="1" TextChanged="new_Address_TextChanged"/>
+            <ListBox x:Name="adress_suggestion" Visibility="Collapsed" HorizontalAlignment="Left"  VerticalAlignment="Bottom" SelectionChanged="surround_adress_suggestion_SelectionChanged" OpacityMask="White" Width="100" Grid.Column="5" Grid.Row="2" Grid.RowSpan="5" Height="104" Panel.ZIndex="5"/>
             <Label Content="Floor" Grid.Row="2" />
             <TextBox Grid.Column="1" Name="new_Floor" TextWrapping="Wrap" Text="" Grid.Row="2"/>
             <Label Content="experience" Grid.Row="2"  Grid.Column="2"/>
