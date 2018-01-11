@@ -29,7 +29,43 @@ namespace DS
         static public string childPath = @"childs.xml";
         static public XElement childRoot;
 
+        static XML_Source()
+        {
+            // initialize roots
 
+            // 'out' used for reference, otherwise we get null root after method finishes.
+            //loadOrCreate(specName, out specializationRoot);
+            loadOrCreate(motherPath, out motherRoot);
+            //loadOrCreate(employerName, out employerRoot);
+            //loadOrCreate(employeeName, out employeeRoot);
+        }
+        static void loadOrCreate(string filename, out XElement root)
+        {
+            if (!File.Exists(filename))
+                createXMLFile(filename, out root);
+            else
+                loadXMLFile(filename, out root);
+        }
+        //static public string concatXMLName(string filename)
+        //    => filename + ".xml";
+
+        static void createXMLFile(string filename, out XElement root)
+        {
+            root = new XElement(filename);
+            root.Save(filename);
+        }
+
+        static void loadXMLFile(string filename, out XElement root)
+        {
+            try
+            {
+                root = XElement.Load(filename);
+            }
+            catch
+            {
+                throw new Exception("error loading " + filename);
+            }
+        }
         public static void SaveMotherListLinq(List<Mother> MotherList)
         {
             motherRoot = new XElement("mothers",

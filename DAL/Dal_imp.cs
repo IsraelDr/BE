@@ -47,10 +47,15 @@ namespace DAL
 
         public void AddMother(Mother mother)
         {
-            Mother mom = GetMother(mother.ID);
+            DAL_XML_Imp a = new DAL_XML_Imp();
+            Mother mom = a.GetMother(mother.ID);
             if (mom != null)
                 throw new Exception("Mother with the same id already exists...");
-            DataSource.MotherList.Add(mother);
+            a.AddMother(mother);
+            //Mother mom = GetMother(mother.ID);
+            //if (mom != null)
+            //    throw new Exception("Mother with the same id already exists...");
+            //DataSource.MotherList.Add(mother);
         }
         public Mother GetMother(int id)
         {
@@ -149,9 +154,14 @@ namespace DAL
             return DataSource.NannyList.Where(predicate);
         }
         public IEnumerable<BE.Mother> getMotherList(Func<Mother, bool> predicate = null) {
-            if(predicate==null)
+            /*if(predicate==null)
                 return DataSource.MotherList.AsEnumerable();
-            return DataSource.MotherList.Where(predicate);
+            return DataSource.MotherList.Where(predicate);*/
+            
+            DAL_XML_Imp b = new DAL_XML_Imp();
+            if (predicate == null)
+                return b.getMotherList().AsEnumerable();
+            return b.getMotherList().Where(predicate);
         }
         public IEnumerable<BE.Child> getChildList(Func<Child, bool> predicate = null) {
             if(predicate==null)

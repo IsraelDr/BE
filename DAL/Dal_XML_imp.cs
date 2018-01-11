@@ -42,9 +42,18 @@ namespace DAL
 
         // overloaded method finds element based on ID
         XElement ElementIfExists(XElement root, int ID)
-            => (from spec in root.Elements()
-                where int.Parse(spec.Attribute("ID").Value) == ID
-                select spec).FirstOrDefault();
+        {
+            try
+            {
+                return (from spec in root.Elements()
+                 where int.Parse(spec.Attribute("ID").Value) == ID
+                 select spec).FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
 
         void removeElementFromXML(XElement XRoot, XElement element)
         {
@@ -83,13 +92,13 @@ namespace DAL
                   new XElement("surrounding_adress", m.surrounding_adress),
                   new XElement("Phonenumber", m.Phonenumber),
                   new XElement("Paymentmethode", m.Paymentmethode),
-                  new XElement("nanny_required", (from item in m.nanny_required select new XElement("Days", item)),
-                  new XElement("daily_Nanny_required", (from a in m.daily_Nanny_required select new XElement("Days",
+                  new XElement("nanny_required", (from item in m.nanny_required select new XElement("Days", item))),
+                  new XElement("daily_Nanny_required", (from a in m.daily_Nanny_required select new XElement("days",
                          (from b in a select new XElement("Time", new XElement("Hours", ((TimeSpan)(b)).Hours),
                                                                   new XElement("Minutes", ((TimeSpan)(b)).Minutes),
-                                                                  new XElement("Seconds", ((TimeSpan)(b)).Seconds))),
+                                                                  new XElement("Seconds", ((TimeSpan)(b)).Seconds)))))),
                    new XElement("Comment", m.Comment)
-                 ))))));
+                 ));
         public void AddMother(Mother m)
         {
             if (ElementIfExists(XML_Source.motherRoot, m.ID) != null)
@@ -114,8 +123,10 @@ namespace DAL
         public Mother GetMother(int id)
         {
             //XElement m = ElementIfExists(XML_Source.motherRoot, id);
-            XElement m = createMotherXElement(new Mother(1, "Dana", "Anilewitch", "0798512565", "jerusalem", "jerusalem", new bool[] { true, false, true, false, true, false, true }, new TimeSpan[][] { new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) } }, "comment", MyEnum.Paymentmethode.hourly));
-
+            //XElement m = createMotherXElement(new Mother(1, "Dana", "Anilewitch", "0798512565", "jerusalem", "jerusalem", new bool[] { true, false, true, false, true, false, true }, new TimeSpan[][] { new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) } }, "comment", MyEnum.Paymentmethode.hourly));
+            XElement m = ElementIfExists(XML_Source.motherRoot, id);
+            if (m == null)
+                return null;
             return new Mother()
             {
 
@@ -125,18 +136,19 @@ namespace DAL
                 Phonenumber = (string)m.Element("Phonenumber"),
                 Adress = (string)m.Element("address"),
                 surrounding_adress = (string)m.Element("surrounding_adress"),
-                Paymentmethode = (MyEnum.Paymentmethode)Enum.Parse(typeof(MyEnum.Paymentmethode), m.Element("Paymentmethode").ToString()),
+                Paymentmethode = (MyEnum.Paymentmethode)Enum.Parse(typeof(MyEnum.Paymentmethode), m.Element("Paymentmethode").Value.ToString()),
                 nanny_required = (from a in m.Element("nanny_required").Elements("Days") select Boolean.Parse(a.Value)).ToArray(),
-                //daily_Nanny_required = (from b in m.Element("daily_Nanny_required").Elements("Days")
-                //                        let a = b
-                //                        from c in a.Elements("Time")
-                //                        select new TimeSpan(5, 6, 3));
+                daily_Nanny_required = (from b in m.Element("daily_Nanny_required").Elements("days")
+                                             select (GetArray(b))).ToArray(),
             Comment = (string)m.Element("Comment")
             };
         }
-        public TimeSpan[] GetArray()
+        
+        public TimeSpan[] GetArray(XElement a)
         {
-            return new TimeSpan[3];
+            return (from c in a.Elements("Time")
+             select new TimeSpan(int.Parse(c.Element("Hours").Value), int.Parse(c.Element("Minutes").Value), int.Parse(c.Element("Seconds").Value))).ToArray();
+            //return new TimeSpan[10];
         }
         public List<Mother> getMotherList()
         {
@@ -148,20 +160,7 @@ namespace DAL
                             Firstname = (string)m.Element("Mother").Element("Firstname"),
                             Lastname = (string)m.Element("Mother").Element("Lastname")
                         }
-                        select new Mother()
-                        {
-
-                            ID = (int)m.Attribute("ID"),
-                            Firstname = (string)m.Element("Firstname"),
-                            Lastname = (string)m.Element("Lastname"),
-                            Phonenumber = (string)m.Element("Phonenumber"),
-                            Adress = (string)m.Element("address"),
-                            surrounding_adress = (string)m.Element("surrounding_adress"),
-                            //Paymentmethode = (m.Element("Paymentmethode")),
-                            //nanny_required = (bool[])m.Element("nanny_required"),
-                            //daily_Nanny_required = ()m.Element("daily_Nanny_required"),
-                            Comment = (string)m.Element("Comment")
-                        }).ToList();
+                        select GetMother( int.Parse(m.Attribute("ID").Value))).ToList();
             }
             catch
             {
