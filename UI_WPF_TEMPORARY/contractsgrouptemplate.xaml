@@ -18,15 +18,12 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Label Content="Distance: " Grid.Column="0" Grid.Row="0"/>
-        <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding  Path=distance }"/>
-        <Label Content="Contractnumber: " Grid.Column="0" Grid.Row="1"/>
-        <TextBlock Margin="5,4.6,3.8,4.8" Grid.Column="1" Grid.Row="1"
+        <Label Content="Contractnumber: " Grid.Column="0" Grid.Row="0"/>
+        <TextBlock Margin="5,4.6,3.8,4.8" Grid.Column="1" Grid.Row="0"
                  Text="{Binding Path=Contract_ID }"/>
-        <Label Content="Child ID: " Grid.Column="0" Grid.Row="2"/>
-        <TextBlock Name="child_id" Margin="5,5.2,3.8,4.2" Grid.Row="2" Grid.Column="1"
+        <Label Content="Child ID: " Grid.Column="0" Grid.Row="1"/>
+        <TextBlock Name="child_id" Margin="5,5.2,3.8,4.2" Grid.Row="1" Grid.Column="1"
                  Text="{Binding Child_ID, Converter={StaticResource converter}}"/>
 
 

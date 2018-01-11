@@ -11,14 +11,16 @@ namespace DAL
 
     public class DAL_XML_Imp //: Idal
     {
+
         //        static uint nextContractID;
         //        static uint nextSpecID;
 
-        //        static DAL_XML_Imp()
-        //        {
-        //            setNextID(XML_Source.contractRoot, out nextContractID, 100000);
-        //           // setNextID(XML_Source.specializationRoot, out nextSpecID, 100000);
-        //        }
+        static DAL_XML_Imp()
+        {
+
+            //setNextID(XML_Source.contractRoot, out nextContractID, 100000);
+            // setNextID(XML_Source.specializationRoot, out nextSpecID, 100000);
+        }
 
         //        static void setNextID(XElement XRoot, out uint nextParam, uint defaultNext)
         //        {
@@ -32,87 +34,140 @@ namespace DAL
         //                             select (uint)node.Attribute("ID")).Max() + 1;
         //        }
 
-        //        // check if element already exists in XML file
-        //        XElement ElementIfExists(XElement root, XElement element)
-        //            => (from spec in root.Elements()
-        //                where spec.Attribute("ID").Value == element.Attribute("ID").Value
-        //                select spec).FirstOrDefault();
+        // check if element already exists in XML file
+        XElement ElementIfExists(XElement root, XElement element)
+            => (from spec in root.Elements()
+                where spec.Attribute("ID").Value == element.Attribute("ID").Value
+                select spec).FirstOrDefault();
 
-        //        // overloaded method finds element based on ID
-        //        XElement ElementIfExists(XElement root, uint ID)
-        //            => (from spec in root.Elements()
-        //                where uint.Parse(spec.Attribute("ID").Value) == ID
-        //                select spec).FirstOrDefault();
+        // overloaded method finds element based on ID
+        XElement ElementIfExists(XElement root, int ID)
+            => (from spec in root.Elements()
+                where int.Parse(spec.Attribute("ID").Value) == ID
+                select spec).FirstOrDefault();
 
-        //        bool removeElementFromXML(XElement XRoot, XElement element)
-        //        {
-        //            XElement foundElement = ElementIfExists(XRoot, element);
-        //            if (foundElement != null) // element found
-        //            {
-        //                foundElement.Remove();
-        //                //XML_Source.SaveXML<Specialization>();
-        //                return true;
-        //            }
-        //            else
-        //                throw new Exception("element " + element.Attribute("ID") + " not found in XML");
-        //        }
+        void removeElementFromXML(XElement XRoot, XElement element)
+        {
+            XElement foundElement = ElementIfExists(XRoot, element);
+            if (foundElement != null) // element found
+            {
+                foundElement.Remove();
+                //XML_Source.SaveXML<Specialization>();
+            }
+            else
+                throw new Exception("element " + element.Attribute("ID") + " not found in XML");
+        }
 
-        //        bool removeElementFromXML(XElement XRoot, uint ID)
-        //        {
-        //            XElement foundElement = ElementIfExists(XRoot, ID);
-        //            if (foundElement != null) // element found
-        //            {
-        //                foundElement.Remove();
-        //                //XML_Source.SaveXML<Specialization>();
-        //                return true;
-        //            }
-        //            else
-        //                throw new Exception("element " + ID + " not found in XML");
-        //        }
+        void removeElementFromXML(XElement XRoot, int ID)
+        {
+            XElement foundElement = ElementIfExists(XRoot, ID);
+            if (foundElement != null) // element found
+            {
+                foundElement.Remove();
+                //XML_Source.SaveXML<Specialization>();
+            }
+            else
+                throw new Exception("element " + ID + " not found in XML");
+        }
 
 
 
         //        public uint getNextSpecID() => nextSpecID;
 
-        //        XElement createMotherXElement(Mother m)
-        //            =>    new XElement("mother"              ,new XAttribute("ID", m.ID),
-        //                  new XElement("firstName"           ,m.Firstname),
-        //                  new XElement("lastName"            ,m.Lastname),
-        //                  new XElement("phoneNumber"         ,m.Phonenumber),
-        //                  new XElement("Address"             ,m.Adress),
-        //                  new XElement("surrounding_adress"  , m.surrounding_adress),
-        //                  new XElement("Phonenumber"         , m.Phonenumber),
-        //                  new XElement("Paymentmethode"      , m.Paymentmethode),
-        //                  new XElement("nanny_required"      , m.nanny_required),
-        //                  new XElement("daily_Nanny_required", m.daily_Nanny_required),
-        //                  new XElement("Comment"             , m.Comment)
-        //                );
+        XElement createMotherXElement(Mother m)//converter from Mother to xelement
+            => (new XElement("mother", new XAttribute("ID", m.ID),
+                  new XElement("firstName", m.Firstname),
+                  new XElement("lastName", m.Lastname),
+                  new XElement("phoneNumber", m.Phonenumber),
+                  new XElement("Address", m.Adress),
+                  new XElement("surrounding_adress", m.surrounding_adress),
+                  new XElement("Phonenumber", m.Phonenumber),
+                  new XElement("Paymentmethode", m.Paymentmethode),
+                  new XElement("nanny_required", (from item in m.nanny_required select new XElement("Days", item)),
+                  new XElement("daily_Nanny_required", (from a in m.daily_Nanny_required select new XElement("Days",
+                         (from b in a select new XElement("Time", new XElement("Hours", ((TimeSpan)(b)).Hours),
+                                                                  new XElement("Minutes", ((TimeSpan)(b)).Minutes),
+                                                                  new XElement("Seconds", ((TimeSpan)(b)).Seconds))),
+                   new XElement("Comment", m.Comment)
+                 ))))));
+        public void AddMother(Mother m)
+        {
+            if (ElementIfExists(XML_Source.motherRoot, m.ID) != null)
+            {
+                throw new Exception(m.ID + " already exists in file");
+            }
 
-        //        public bool addMother(Mother m)
-        //        {
-        //            if (ElementIfExists(XML_Source.motherRoot, (uint)m.ID) != null)
-        //            {
-        //                throw new Exception(m.ID + " already exists in file");
-        //            }
+            XML_Source.motherRoot.Add(createMotherXElement(m));
+            XML_Source.SaveXML<Mother>();
+        }
+        public void RemoveMother(int ID)
+            => removeElementFromXML(XML_Source.motherRoot, ID);
 
-        //            XML_Source.motherRoot.Add(createMotherXElement(m));
-        //            XML_Source.SaveXML<Mother>();
-        //            return true;
-        //        }
-        //        public bool deleteMother(Mother mother)
-        //            => removeElementFromXML(XML_Source.motherRoot,(uint)mother.ID);
+        public void UpdateMother(Mother mother)
+        {
+            XElement foundElement = ElementIfExists(XML_Source.motherRoot, (int)mother.ID);
+            if (foundElement == null)
+                throw new Exception(mother.ID + " does not exist in XML");
+            removeElementFromXML(XML_Source.motherRoot, (int)foundElement);
+            AddMother(mother);
+        }
+        public Mother GetMother(int id)
+        {
+            //XElement m = ElementIfExists(XML_Source.motherRoot, id);
+            XElement m = createMotherXElement(new Mother(1, "Dana", "Anilewitch", "0798512565", "jerusalem", "jerusalem", new bool[] { true, false, true, false, true, false, true }, new TimeSpan[][] { new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) } }, "comment", MyEnum.Paymentmethode.hourly));
 
-        //        public bool updateMother(Mother mother)
-        //        {
-        //            XElement foundElement = ElementIfExists(XML_Source.motherRoot, (uint)mother.ID);
-        //            if (foundElement == null)
-        //                throw new Exception(mother.ID + " does not exist in XML");
+            return new Mother()
+            {
 
-        //            return
-        //                removeElementFromXML(XML_Source.motherRoot, (uint)foundElement)
-        //                && addMother(mother);
-        //        }
+                ID = (int)m.Attribute("ID"),
+                Firstname = (string)m.Element("Firstname"),
+                Lastname = (string)m.Element("Lastname"),
+                Phonenumber = (string)m.Element("Phonenumber"),
+                Adress = (string)m.Element("address"),
+                surrounding_adress = (string)m.Element("surrounding_adress"),
+                Paymentmethode = (MyEnum.Paymentmethode)Enum.Parse(typeof(MyEnum.Paymentmethode), m.Element("Paymentmethode").ToString()),
+                nanny_required = (from a in m.Element("nanny_required").Elements("Days") select Boolean.Parse(a.Value)).ToArray(),
+                //daily_Nanny_required = (from b in m.Element("daily_Nanny_required").Elements("Days")
+                //                        let a = b
+                //                        from c in a.Elements("Time")
+                //                        select new TimeSpan(5, 6, 3));
+            Comment = (string)m.Element("Comment")
+            };
+        }
+        public TimeSpan[] GetArray()
+        {
+            return new TimeSpan[3];
+        }
+        public List<Mother> getMotherList()
+        {
+            try
+            {
+                return (from m in XML_Source.motherRoot.Elements()
+                        let currentMother = new Mother()
+                        {
+                            Firstname = (string)m.Element("Mother").Element("Firstname"),
+                            Lastname = (string)m.Element("Mother").Element("Lastname")
+                        }
+                        select new Mother()
+                        {
 
+                            ID = (int)m.Attribute("ID"),
+                            Firstname = (string)m.Element("Firstname"),
+                            Lastname = (string)m.Element("Lastname"),
+                            Phonenumber = (string)m.Element("Phonenumber"),
+                            Adress = (string)m.Element("address"),
+                            surrounding_adress = (string)m.Element("surrounding_adress"),
+                            //Paymentmethode = (m.Element("Paymentmethode")),
+                            //nanny_required = (bool[])m.Element("nanny_required"),
+                            //daily_Nanny_required = ()m.Element("daily_Nanny_required"),
+                            Comment = (string)m.Element("Comment")
+                        }).ToList();
+            }
+            catch
+            {
+                throw new Exception("getmotherList() exception");
+            }
+        }
         //        XElement createContractXElement(Contract c)
         //            => new XElement("contract", new XAttribute("ID", c.Contract_ID),
         //                 new XElement("ChildID", c.Child_ID),
@@ -207,36 +262,7 @@ namespace DAL
 
 
 
-        //        public List<Mother> getMotherList()
-        //        {
-        //            try
-        //            {
-        //                return (from m in XML_Source.motherRoot.Elements()
-        //                        let currentMother = new Mother()
-        //                        {
-        //                            Firstname = (string)m.Element("Mother").Element("Firstname"),
-        //                            Lastname = (string)m.Element("Mother").Element("Lastname")
-        //                        }
-        //                        select new Mother()
-        //                        {
-
-        //                        ID                 = (int)m.Attribute("ID"),
-        //                        Firstname          = (string)m.Element("Firstname"),
-        //                        Lastname            = (string)m.Element("Lastname"),
-        //                        Phonenumber         = (string)m.Element("Phonenumber"),
-        //                        Adress           =   (Address)m.Element("Address"),
-        //                        surrounding_adress  =(strint) m.Element("surrounding_adress"),
-        //                        Paymentmethode      = (bl)m.Element("Paymentmethode"),
-        //                        nanny_required      = m.Element("nanny_required"),
-        //                        daily_Nanny_required= m.Element("daily_Nanny_required"),
-        //                        Comment             = m.Element("Comment")
-        //                        }).ToList();
-        //            }
-        //            catch
-        //            {
-        //                throw new Exception("getmotherList() exception");
-        //            }
-        //        }
+        //        
 
         //        public List<Child> getChildList()
         //        {
@@ -298,5 +324,5 @@ namespace DAL
 
         //        public DoWorkDelegate getXMLNannyBackground_DoWork()
         //            => XML_Source.downloadNannyXml;
-    }
+    } 
 }

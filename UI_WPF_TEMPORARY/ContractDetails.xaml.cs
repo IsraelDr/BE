@@ -114,12 +114,13 @@ namespace UI_WPF_TEMPORARY
             {
                 if (introduce_meeting.IsChecked == false || is_signed.IsChecked == false)
                     throw new Exception("One of the checkboxes was not clicked!!");
-                Contract contract = new Contract(((PriorityNanny)(nannysoptiongrid.SelectedItem)).ID, listofChildren.SelectedValue, introduce_meeting.IsChecked,
+                Contract contract = new Contract(((PriorityNanny)(nannysoptiongrid.SelectedItem)).ID, listofMothers.SelectedValue, listofChildren.SelectedValue, introduce_meeting.IsChecked,
                                             is_signed.IsChecked, ((PriorityNanny)(nannysoptiongrid.SelectedItem)).Hourly_rate,
                                             ((PriorityNanny)(nannysoptiongrid.SelectedItem)).Monthly_rate,
                                             (MyEnum.Paymentmethode)Enum.Parse(typeof(MyEnum.Paymentmethode),paymentmethod.Text),
                                             Convert.ToDateTime(workbegindate.SelectedDate), Convert.ToDateTime(workenddate.SelectedDate),
-                                            ((PriorityNanny)(nannysoptiongrid.SelectedItem)).Salary, ((PriorityNanny)(nannysoptiongrid.SelectedItem)).Distance);
+                                            ((PriorityNanny)(nannysoptiongrid.SelectedItem)).Salary, ((PriorityNanny)(nannysoptiongrid.SelectedItem)).Distance,
+                                            bl.checkForDiscunt((Nanny)(nannysoptiongrid.SelectedItem), bl.GetMotherById((int)listofMothers.SelectedValue)));
                 if (isUpdate)
                     bl.UpdateContract(contract);
                 else

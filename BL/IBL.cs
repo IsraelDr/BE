@@ -46,5 +46,7 @@ namespace BL
         List<Contract> GetAllContractWithCondition(contractCondition condition);
         bool contractsEnd(Contract c);
 
+        bool checkForDiscunt(Nanny nan, Mother m);
+
     }
 }

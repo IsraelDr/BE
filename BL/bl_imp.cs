@@ -335,7 +335,7 @@ namespace BL
             return dal.GetContract(id);
         }
         //functions
-        public bool cheackForDiscount(Nanny nan, Mother m)
+        public bool checkForDiscunt(Nanny nan, Mother m)
         {
             bool flag = false;
             foreach (Contract c in dal.getContractList())
@@ -364,7 +364,7 @@ namespace BL
                 salary = week_payment * 4;//week hours X 4 =month salary
             }
             else salary = nan.Monthly_rate;
-            if (cheackForDiscount(nan, m))
+            if (checkForDiscunt(nan, m))
             {
                 return (int)(salary * 0.98);
             }
@@ -420,7 +420,7 @@ namespace BL
             if (dal.GetNanny(contract.Nanny_ID).Max_number_kids <= dal.GetNanny(contract.Nanny_ID).kidsCount)
                 throw new Exception("Cannot sign contract nanny over the maximum kids !!!");//cant sign contract over the maximum kids lavel
             else dal.GetNanny(contract.Nanny_ID).kidsCount++;//if contract sign so Nanny.kidsCount++ 
-            contract.discount = cheackForDiscount(GetNannyById(contract.Nanny_ID), GetMotherById(dal.GetChild(contract.Child_ID).Mother_ID));
+            contract.discount = checkForDiscunt(GetNannyById(contract.Nanny_ID), GetMotherById(dal.GetChild(contract.Child_ID).Mother_ID));
             dal.AddContract(contract);
         }
         public void AddMother(Mother mother)

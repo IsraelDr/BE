@@ -214,8 +214,13 @@ namespace UI_WPF_TEMPORARY
             try
             {
                 listofAll.Visibility = Visibility.Visible;
-                if(Choosen==3)
+                if (Choosen == 3)
+                {
                     contractcond.Visibility = Visibility.Visible;
+                    contractcond.SelectionChanged -= new SelectionChangedEventHandler(ComboBox_SelectionChanged);
+                    contractcond.SelectedIndex = 0;
+                    contractcond.SelectionChanged += new SelectionChangedEventHandler(ComboBox_SelectionChanged);
+                }
                 GroupingPanel.Visibility = Visibility.Collapsed;
                 
 

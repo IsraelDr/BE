@@ -54,7 +54,10 @@ namespace DAL
         }
         public Mother GetMother(int id)
         {
-            return DataSource.MotherList.FirstOrDefault(n => n.ID == id);
+            DAL_XML_Imp a = new DAL_XML_Imp();
+
+            return a.GetMother(id);
+            //return DataSource.MotherList.FirstOrDefault(n => n.ID == id);
         }
         public void RemoveMother(int id)
         {
