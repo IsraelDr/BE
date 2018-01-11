@@ -73,17 +73,20 @@ namespace DAL
             if (foundElement != null) // element found
             {
                 foundElement.Remove();
+                XML_Source.SaveXML<Mother>();
                 //XML_Source.SaveXML<Specialization>();
             }
             else
                 throw new Exception("element " + ID + " not found in XML");
         }
 
+   
 
 
-        //        public uint getNextSpecID() => nextSpecID;
 
-        XElement createMotherXElement(Mother m)//converter from Mother to xelement
+    //        public uint getNextSpecID() => nextSpecID;
+
+    XElement createMotherXElement(Mother m)//converter from Mother to xelement
             => (new XElement("mother", new XAttribute("ID", m.ID),
                   new XElement("firstName", m.Firstname),
                   new XElement("lastName", m.Lastname),
@@ -117,7 +120,7 @@ namespace DAL
             XElement foundElement = ElementIfExists(XML_Source.motherRoot, (int)mother.ID);
             if (foundElement == null)
                 throw new Exception(mother.ID + " does not exist in XML");
-            removeElementFromXML(XML_Source.motherRoot, (int)foundElement);
+            removeElementFromXML(XML_Source.motherRoot, (int)foundElement.Attribute("ID"));
             AddMother(mother);
         }
         public Mother GetMother(int id)
@@ -131,10 +134,10 @@ namespace DAL
             {
 
                 ID = (int)m.Attribute("ID"),
-                Firstname = (string)m.Element("Firstname"),
-                Lastname = (string)m.Element("Lastname"),
+                Firstname = (string)m.Element("firstName"),
+                Lastname = (string)m.Element("lastName"),
                 Phonenumber = (string)m.Element("Phonenumber"),
-                Adress = (string)m.Element("address"),
+                Adress = (string)m.Element("Address"),
                 surrounding_adress = (string)m.Element("surrounding_adress"),
                 Paymentmethode = (MyEnum.Paymentmethode)Enum.Parse(typeof(MyEnum.Paymentmethode), m.Element("Paymentmethode").Value.ToString()),
                 nanny_required = (from a in m.Element("nanny_required").Elements("Days") select Boolean.Parse(a.Value)).ToArray(),
@@ -157,8 +160,8 @@ namespace DAL
                 return (from m in XML_Source.motherRoot.Elements()
                         let currentMother = new Mother()
                         {
-                            Firstname = (string)m.Element("Mother").Element("Firstname"),
-                            Lastname = (string)m.Element("Mother").Element("Lastname")
+                            Firstname = (string)m.Element("firstName").Value,
+                            Lastname = (string)m.Element("lastName").Value
                         }
                         select GetMother( int.Parse(m.Attribute("ID").Value))).ToList();
             }

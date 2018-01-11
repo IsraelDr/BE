@@ -66,23 +66,27 @@ namespace DAL
         }
         public void RemoveMother(int id)
         {
-            Mother moth = GetMother(id);
-            if (moth == null)
-                throw new Exception("Mother with the same id not found...");
+            DAL_XML_Imp a = new DAL_XML_Imp();
+            a.RemoveMother(id);
+            //Mother moth = GetMother(id);
+            //if (moth == null)
+            //    throw new Exception("Mother with the same id not found...");
 
-            DataSource.MotherList.RemoveAll(n => n.ID == id);
+            //DataSource.MotherList.RemoveAll(n => n.ID == id);
 
-            DataSource.MotherList.Remove(moth);
-            IEnumerable<Child> children = getChildList(x => x.Mother_ID == id);
-            foreach (Child child in children.ToList())
-            {
-                RemoveChild(child.ID);
-            }
+            //DataSource.MotherList.Remove(moth);
+            //IEnumerable<Child> children = getChildList(x => x.Mother_ID == id);
+            //foreach (Child child in children.ToList())
+            //{
+            //    RemoveChild(child.ID);
+            //}
         }
         public void UpdateMother(Mother mother)
         {
-            DataSource.MotherList.RemoveAll(n => n.ID == mother.ID);
-            DataSource.MotherList.Add(mother);
+            DAL_XML_Imp a = new DAL_XML_Imp();
+            a.UpdateMother(mother);
+            //DataSource.MotherList.RemoveAll(n => n.ID == mother.ID);
+            //DataSource.MotherList.Add(mother);
         }
 
 
