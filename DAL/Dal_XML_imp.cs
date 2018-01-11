@@ -79,14 +79,20 @@ namespace DAL
             else
                 throw new Exception("element " + ID + " not found in XML");
         }
+        public TimeSpan[] GetArray(XElement a)
+        {
+            return (from c in a.Elements("Time")
+                    select new TimeSpan(int.Parse(c.Element("Hours").Value), int.Parse(c.Element("Minutes").Value), int.Parse(c.Element("Seconds").Value))).ToArray();
+            //return new TimeSpan[10];
+        }
 
-   
 
 
 
-    //        public uint getNextSpecID() => nextSpecID;
 
-    XElement createMotherXElement(Mother m)//converter from Mother to xelement
+        //All the function connected to Mother XML
+        #region Mother
+        XElement createMotherXElement(Mother m)//converter from Mother to xelement
             => (new XElement("mother", new XAttribute("ID", m.ID),
                   new XElement("firstName", m.Firstname),
                   new XElement("lastName", m.Lastname),
@@ -147,12 +153,7 @@ namespace DAL
             };
         }
         
-        public TimeSpan[] GetArray(XElement a)
-        {
-            return (from c in a.Elements("Time")
-             select new TimeSpan(int.Parse(c.Element("Hours").Value), int.Parse(c.Element("Minutes").Value), int.Parse(c.Element("Seconds").Value))).ToArray();
-            //return new TimeSpan[10];
-        }
+        
         public List<Mother> getMotherList()
         {
             try
@@ -170,6 +171,10 @@ namespace DAL
                 throw new Exception("getmotherList() exception");
             }
         }
+        #endregion Mother
+
+
+        
         //        XElement createContractXElement(Contract c)
         //            => new XElement("contract", new XAttribute("ID", c.Contract_ID),
         //                 new XElement("ChildID", c.Child_ID),
