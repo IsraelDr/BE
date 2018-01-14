@@ -9,42 +9,64 @@ namespace DAL
 {
     public class Dal_imp:Idal
     {
+        #region Nanny
         public void AddNanny(Nanny nanny)
         {
-            Nanny nann = GetNanny(nanny.ID);
+            DAL_XML_Imp b = new DAL_XML_Imp();
+            //Nanny nann = GetNanny(nanny.ID);
+            Nanny nann=b.GetNanny(nanny.ID);
             if (nann != null)
                 throw new Exception("Nanny with the same id already exists...");
-            DataSource.NannyList.Add(nanny);
+            //DataSource.NannyList.Add(nanny);
+            b.AddNanny(nanny);
 
         }
         public Nanny GetNanny(int id)
         {
-            return DataSource.NannyList.FirstOrDefault(n => n.ID == id);
+            DAL_XML_Imp b = new DAL_XML_Imp();
+            return b.GetNanny(id);
+            //return DataSource.NannyList.FirstOrDefault(n => n.ID == id);
         }
 
         public void RemoveNanny(int id)
         {
-            Nanny nann = GetNanny(id);
+            DAL_XML_Imp b = new DAL_XML_Imp();
+            //Nanny nann = GetNanny(id);
+            Nanny nann = b.GetNanny(id);
             if (nann == null)
                 throw new Exception("Nanny with the same id not found...");
+            b.RemoveNanny(id);
+            //DataSource.NannyList.RemoveAll(n => n.ID == id);
 
-            DataSource.NannyList.RemoveAll(n => n.ID == id);
-
-            DataSource.NannyList.Remove(nann);
-            IEnumerable<Contract> contractsofNanny = getContractList(x => x.Nanny_ID == id);
-            foreach (Contract contr in contractsofNanny.ToList())
-            {
-                RemoveContract(contr.Contract_ID);
-            }
+            //DataSource.NannyList.Remove(nann);
+            //IEnumerable<Contract> contractsofNanny = getContractList(x => x.Nanny_ID == id);
+            //foreach (Contract contr in contractsofNanny.ToList())
+            //{
+            //    RemoveContract(contr.Contract_ID);
+            //}
 
         }
 
         public void UpdateNanny(Nanny nanny)
         {
-            DataSource.NannyList.RemoveAll(n => n.ID == nanny.ID);
-            DataSource.NannyList.Add(nanny);
+            DAL_XML_Imp b = new DAL_XML_Imp();
+            b.UpdateNanny(nanny);
+            //DataSource.NannyList.RemoveAll(n => n.ID == nanny.ID);
+            //DataSource.NannyList.Add(nanny);
         }
+        public IEnumerable<BE.Nanny> getNannyList(Func<Nanny, bool> predicate = null)
+        {
+            /*if(predicate==null)
+                return DataSource.NannyList.AsEnumerable();
+            return DataSource.NannyList.Where(predicate);*/
+            DAL_XML_Imp b = new DAL_XML_Imp();
+            if (predicate == null)
+                return b.getNannyList().AsEnumerable();
+            return b.getNannyList().Where(predicate);
+        }
+        #endregion Nanny
 
+        #region Mother
         public void AddMother(Mother mother)
         {
             DAL_XML_Imp a = new DAL_XML_Imp();
@@ -64,6 +86,9 @@ namespace DAL
             return a.GetMother(id);
             //return DataSource.MotherList.FirstOrDefault(n => n.ID == id);
         }
+        
+
+        
         public void RemoveMother(int id)
         {
             DAL_XML_Imp a = new DAL_XML_Imp();
@@ -88,8 +113,20 @@ namespace DAL
             //DataSource.MotherList.RemoveAll(n => n.ID == mother.ID);
             //DataSource.MotherList.Add(mother);
         }
+        public IEnumerable<BE.Mother> getMotherList(Func<Mother, bool> predicate = null)
+        {
+            /*if(predicate==null)
+                return DataSource.MotherList.AsEnumerable();
+            return DataSource.MotherList.Where(predicate);*/
 
+            DAL_XML_Imp b = new DAL_XML_Imp();
+            if (predicate == null)
+                return b.getMotherList().AsEnumerable();
+            return b.getMotherList().Where(predicate);
+        }
+        #endregion Mother
 
+        #region Child
         public void AddChild(Child child)
         {
             Child chil = GetChild(child.ID);
@@ -122,7 +159,15 @@ namespace DAL
             DataSource.ChildList.Add(chil);
 
         }
+        public IEnumerable<BE.Child> getChildList(Func<Child, bool> predicate = null)
+        {
+            if (predicate == null)
+                return DataSource.ChildList.AsEnumerable();
+            return DataSource.ChildList.Where(predicate);
+        }
+        #endregion Child
 
+        #region Contract
         public void AddContract(Contract contract)
         {
             Contract contr = GetContract(contract.Contract_ID);
@@ -152,30 +197,13 @@ namespace DAL
             DataSource.ContractList.Add(contract);
         }
 
-        public IEnumerable<BE.Nanny> getNannyList(Func<Nanny,bool> predicate =null) {
-            if(predicate==null)
-                return DataSource.NannyList.AsEnumerable();
-            return DataSource.NannyList.Where(predicate);
-        }
-        public IEnumerable<BE.Mother> getMotherList(Func<Mother, bool> predicate = null) {
-            /*if(predicate==null)
-                return DataSource.MotherList.AsEnumerable();
-            return DataSource.MotherList.Where(predicate);*/
-            
-            DAL_XML_Imp b = new DAL_XML_Imp();
-            if (predicate == null)
-                return b.getMotherList().AsEnumerable();
-            return b.getMotherList().Where(predicate);
-        }
-        public IEnumerable<BE.Child> getChildList(Func<Child, bool> predicate = null) {
-            if(predicate==null)
-                return DataSource.ChildList.AsEnumerable();
-            return DataSource.ChildList.Where(predicate);
-        }
+        
+        
         public IEnumerable<BE.Contract> getContractList (Func<Contract, bool> predicate = null) {
             if(predicate==null)
                 return DataSource.ContractList.AsEnumerable();
             return DataSource.ContractList.Where(predicate);
         }
+        #endregion Contract
     }
 }

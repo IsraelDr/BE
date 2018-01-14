@@ -24,7 +24,7 @@ namespace BE
         private int Hourly_rate_;//                                     //Hourly rate
         private int Monthly_rate_;                                     //Monthly rate
         private bool[] Working_days_;                                  //Working days
-        private TimeSpan[,] Daily_Working_hours_;// Daily_Working_hours(week)//Daily Working hours(week)
+        private TimeSpan[][] Daily_Working_hours_;// Daily_Working_hours(week)//Daily Working hours(week)
         private MyEnum.Vacation Vacation_days_;// "Chinuch" or "tamat" { get; set; //Vacation days- "Chinuch" or "tamat"
         private string Recommendations_;                               //Recommendations
         private string Additional_Info_;                                  //Additional Info
@@ -48,7 +48,7 @@ namespace BE
         public int Hourly_rate           { get { return Hourly_rate_; } set { Hourly_rate_ = value; } }//                                     //Hourly rate
         public int Monthly_rate          { get { return Monthly_rate_; } set { Monthly_rate_ = value; } }                                      //Monthly rate
         public bool[] Working_days       { get { return Working_days_; } set { Working_days_ = value; } }                                   //Working days
-        public TimeSpan[,] Daily_Working_hours{ get { return Daily_Working_hours_; } set { Daily_Working_hours_ = value; } }// Daily_Working_hours(week)//Daily Working hours(week)
+        public TimeSpan[][] Daily_Working_hours{ get { return Daily_Working_hours_; } set { Daily_Working_hours_ = value; } }// Daily_Working_hours(week)//Daily Working hours(week)
         public MyEnum.Vacation Vacation_days        { get { return Vacation_days_; } set { Vacation_days_ = value; } }// "Chinuch" or "tamat" { get; set; //Vacation days- "Chinuch" or "tamat"
         public string Recommendations    { get { return Recommendations_; } set { Recommendations_ = value; } }                                //Recommendations
         public string Additional_Info       { get { return Additional_Info_; } set { Additional_Info_ = value; } }                                   //Additional Info
@@ -72,7 +72,7 @@ namespace BE
             Hourly_rate = int.Parse(parameters[13].ToString());
             Monthly_rate = int.Parse(parameters[14].ToString());
             Working_days = (bool[])parameters[15];
-            Daily_Working_hours = (TimeSpan[,])parameters[16];
+            Daily_Working_hours = (TimeSpan[][])parameters[16];
             Vacation_days = (MyEnum.Vacation)Enum.Parse(typeof(MyEnum.Vacation), parameters[17].ToString());
             Recommendations = (string)parameters[18];
             Additional_Info = parameters[19].ToString();
@@ -101,6 +101,15 @@ namespace BE
             Recommendations = nan.Recommendations;
             Additional_Info = nan.Additional_Info;
             kidsCount = nan.kidsCount;
+        }
+        public Nanny()
+        {
+            Working_days = new bool[7];
+            Daily_Working_hours_ = new TimeSpan[7][];
+            for (int i = 0; i < Daily_Working_hours_.Length; i++)
+            {
+                Daily_Working_hours_[i] = new TimeSpan[] { new TimeSpan(12, 0, 0), new TimeSpan(12, 0, 0) };
+            }
         }
         public override string ToString()
         {//using ToStringProperty() in Class Tools 

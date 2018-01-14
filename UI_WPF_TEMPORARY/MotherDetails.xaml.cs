@@ -31,7 +31,7 @@ namespace UI_WPF_TEMPORARY
         public DigitalTime Time    { get { return new DigitalTime(12, 00); } set { } }
         Mother mother;
         System.Threading.Thread t=null;
-        T details;
+        MotherT details;
         bool isUpdate = false;
         public MotherDetails(Window f,Mother m=null, bool IsSaveable = true)
         {
@@ -41,9 +41,9 @@ namespace UI_WPF_TEMPORARY
                 Save.Visibility = Visibility.Collapsed;
             this.mother = m;
             if (m == null)
-                details = new T(new Mother(), this);
+                details = new MotherT(new Mother(), this);
             else
-                details = new T(mother, this);
+                details = new MotherT(mother, this);
             /*this.DataContext = new
                         {
                             info = mother,
@@ -282,10 +282,10 @@ namespace UI_WPF_TEMPORARY
         
     }
 
-    public class T
+    public class MotherT
     {
         public Mother info { get; set; } 
         public MotherDetails workingHours { get; set; }
-        public  T(Mother d,MotherDetails a) { info = d; workingHours = a; }
+        public  MotherT(Mother d,MotherDetails a) { info = d; workingHours = a; }
     }
 }

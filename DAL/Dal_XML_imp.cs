@@ -173,8 +173,115 @@ namespace DAL
         }
         #endregion Mother
 
+        //All the function connected to Nanny XML
+        #region Nanny
+        XElement createNannyXElement(Nanny n)//converter from Nanny to xelement
+            => (new XElement("Nanny", new XAttribute("ID", n.ID),
+                  new XElement("firstName", n.first_name),
+                  new XElement("lastName", n.last_name),
+                  new XElement("Birthdate", new XElement("Day", ((DateTime)(n.Birthdate)).Day),
+                                            new XElement("Month", ((DateTime)(n.Birthdate)).Month),
+                                            new XElement("Year", ((DateTime)(n.Birthdate)).Year)),
+                  new XElement("PhoneNumber", n.PhoneNumber),
+                  new XElement("Address", n.address),
+                  new XElement("elevatorExists", n.elevatorExists),
+                  new XElement("Floor", n.Floor),
+                  new XElement("experience", n.experience),
+                  new XElement("Max_number_kids", n.Max_number_kids),
+                  new XElement("Min_age", n.Min_age),
+                  new XElement("Max_age", n.Max_age),
+                  new XElement("Possible_Hourly_rate", n.Possible_Hourly_rate),
+                  new XElement("Hourly_rate", n.Hourly_rate),
+                  new XElement("Monthly_rate", n.Monthly_rate),
+                  new XElement("Working_days", (from item in n.Working_days select new XElement("Days", item))),
+                  new XElement("Daily_Working_hours", (from a in (n.Daily_Working_hours)
+                                                       select new XElement("days",(from b in a
+                                                select new XElement("Time", new XElement("Hours", ((TimeSpan)(b)).Hours),
+                                                      new XElement("Minutes", ((TimeSpan)(b)).Minutes),
+                                                      new XElement("Seconds", ((TimeSpan)(b)).Seconds)))))),
+                   new XElement("Vacation_days", n.Vacation_days),
+                  new XElement("Recommendations", n.Recommendations),
+                  new XElement("Additional_Info", n.Additional_Info),
+                  new XElement("kidsCount", n.kidsCount),
+                  new XElement("fideback", n.fideback)
+                 ));
+        public void AddNanny(Nanny m)
+        {
+            if (ElementIfExists(XML_Source.nannyRoot, m.ID) != null)
+            {
+                throw new Exception(m.ID + " already exists in file");
+            }
 
-        
+            XML_Source.nannyRoot.Add(createNannyXElement(m));
+            XML_Source.SaveXML<Nanny>();
+        }
+        public void RemoveNanny(int ID)
+            => removeElementFromXML(XML_Source.nannyRoot, ID);
+
+        public void UpdateNanny(Nanny Nanny)
+        {
+            XElement foundElement = ElementIfExists(XML_Source.nannyRoot, (int)Nanny.ID);
+            if (foundElement == null)
+                throw new Exception(Nanny.ID + " does not exist in XML");
+            removeElementFromXML(XML_Source.nannyRoot, (int)foundElement.Attribute("ID"));
+            AddNanny(Nanny);
+        }
+        public Nanny GetNanny(int id)
+        {
+            //XElement m = ElementIfExists(XML_Source.nannyRoot, id);
+            //XElement m = createNannyXElement(new Nanny(1, "Dana", "Anilewitch", "0798512565", "jerusalem", "jerusalem", new bool[] { true, false, true, false, true, false, true }, new TimeSpan[][] { new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) } }, "comment", MyEnum.Paymentmethode.hourly));
+            XElement m = ElementIfExists(XML_Source.nannyRoot, id);
+            if (m == null)
+                return null;
+            return new Nanny()
+            {
+
+                ID = (int)m.Attribute("ID"),
+                first_name = (string)m.Element("firstName"),
+                last_name = (string)m.Element("lastName"),
+                Birthdate = new DateTime(int.Parse(m.Element("Birthdate").Element("Year").Value), int.Parse(m.Element("Birthdate").Element("Month").Value), int.Parse(m.Element("Birthdate").Element("Day").Value)),
+                PhoneNumber = (string)m.Element("PhoneNumber"),
+                address = (string)m.Element("Address"),
+                elevatorExists = (bool)m.Element("elevatorExists"),
+                Floor = (int)m.Element("Floor"),
+                experience = (int)m.Element("experience"),
+                Max_number_kids = (int)m.Element("Max_number_kids"),
+                Min_age = (int)m.Element("Min_age"),
+                Max_age = (int)m.Element("Max_age"),
+                Possible_Hourly_rate = (bool)m.Element("Possible_Hourly_rate"),
+                Hourly_rate = (int)m.Element("Hourly_rate"),
+                Monthly_rate = (int)m.Element("Monthly_rate"),
+                Working_days = (from a in m.Element("Working_days").Elements("Days") select Boolean.Parse(a.Value)).ToArray(),
+                Daily_Working_hours = (from b in m.Element("Daily_Working_hours").Elements("days")
+                                       select (GetArray(b))).ToArray(),
+                Vacation_days = (MyEnum.Vacation)Enum.Parse(typeof(MyEnum.Vacation), m.Element("Vacation_days").Value.ToString()),
+                Recommendations = (string)m.Element("Recommendations"),
+                Additional_Info = (string)m.Element("Additional_Info"),
+                kidsCount = (int)m.Element("kidsCount"),
+                fideback = (int)m.Element("fideback")
+            };
+        }
+
+
+        public List<Nanny> getNannyList()
+        {
+            try
+            {
+                return (from m in XML_Source.nannyRoot.Elements()
+                        let currentNanny = new Nanny()
+                        {
+                            first_name = (string)m.Element("firstName").Value,
+                            last_name = (string)m.Element("lastName").Value
+                        }
+                        select GetNanny(int.Parse(m.Attribute("ID").Value))).ToList();
+            }
+            catch
+            {
+                throw new Exception("getNannyList() exception");
+            }
+        }
+        #endregion Nanny
+
         //        XElement createContractXElement(Contract c)
         //            => new XElement("contract", new XAttribute("ID", c.Contract_ID),
         //                 new XElement("ChildID", c.Child_ID),
@@ -331,5 +438,5 @@ namespace DAL
 
         //        public DoWorkDelegate getXMLNannyBackground_DoWork()
         //            => XML_Source.downloadNannyXml;
-    } 
+    }
 }

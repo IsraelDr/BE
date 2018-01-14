@@ -61,9 +61,9 @@ namespace BL
             {
                 if (n.Working_days[i] == true && m.nanny_required[i] == true)
                     daysCheck++;//6 checks
-                if (n.Daily_Working_hours[i, 0].TotalHours <= m.daily_Nanny_required[i][0].TotalHours)
+                if (n.Daily_Working_hours[i][0].TotalHours <= m.daily_Nanny_required[i][0].TotalHours)
                     startHoursCheck++;//6 checks
-                if (n.Daily_Working_hours[i, 1].TotalHours >= m.daily_Nanny_required[i][1].TotalHours)
+                if (n.Daily_Working_hours[i][1].TotalHours >= m.daily_Nanny_required[i][1].TotalHours)
                     endHoursCheck++;//6 checks
             }
             mcheCount = daysCheck + startHoursCheck + endHoursCheck;//18 is match
@@ -359,7 +359,7 @@ namespace BL
                 for (int i = 0; i <= 6; i++)//6 days hours X Hourly_payment= week 
                 {
 
-                    week_payment += nan.Hourly_rate * (nan.Daily_Working_hours[i, 1].TotalHours - nan.Daily_Working_hours[i, 0].TotalHours);
+                    week_payment += nan.Hourly_rate * (nan.Daily_Working_hours[i][1].TotalHours - nan.Daily_Working_hours[i][0].TotalHours);
                 }
                 salary = week_payment * 4;//week hours X 4 =month salary
             }
@@ -395,7 +395,7 @@ namespace BL
                 for (int i = 0; i <= 6; i++)//6 days hours X Hourly_payment= week 
                 {
                    
-                     week_payment += contract.Hourly_payment  * (n.Daily_Working_hours[i, 1].TotalHours - n.Daily_Working_hours[i, 0].TotalHours);
+                     week_payment += contract.Hourly_payment  * (n.Daily_Working_hours[i][1].TotalHours - n.Daily_Working_hours[i][0].TotalHours);
                 }
                 contract.salary = week_payment * 4;//week hours X 4 =month salary
             }
