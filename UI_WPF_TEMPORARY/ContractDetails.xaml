@@ -4,8 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UI_WPF_TEMPORARY"
+             xmlns:BE="clr-namespace:BE;assembly=BE"
              mc:Ignorable="d">
-    <Grid Margin="0,0,-0.4,-0.6">
+    <Grid d:DataContext="{d:DesignInstance BE:Contract }" Margin="0,0,-0.4,-0.6">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -15,7 +16,7 @@
         </Grid.RowDefinitions>
         <TextBlock  FontSize="20"  HorizontalAlignment="Center" TextWrapping="Wrap" Text="Contract Details" VerticalAlignment="Top" Height="27" Width="180" Grid.Row="0"/>
 
-        <DataGrid Name="nannysoptiongrid" Grid.Row="2" Height="200" Margin="0,4.8,0,1.733" MouseDoubleClick="nannysoptiongrid_MouseDoubleClick"/>
+        <DataGrid Name="nannysoptiongrid" Grid.Row="2" SelectedItem="{Binding Path=Nanny_ID,Converter={StaticResource NannyIDconverter},Mode=TwoWay}" Height="200" Margin="0,4.8,0,1.733" MouseDoubleClick="nannysoptiongrid_MouseDoubleClick" SelectionChanged="nannysoptiongrid_SelectionChanged"/>
         <Grid HorizontalAlignment="Center" Height="100" Width="50" Name="Savebutton" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center"  MouseDown="Button_Click" MouseEnter="Grid_MouseEnter" MouseLeave="Grid_MouseLeave">
             <Grid.RowDefinitions>
                 <RowDefinition Height="49*"/>
@@ -41,7 +42,7 @@
                     <ColumnDefinition Width="206*"/>
                     <ColumnDefinition Width="219*"/>
                 </Grid.ColumnDefinitions>
-                <DatePicker Name="workbegindate" Grid.Column="1" VerticalAlignment="Center"/>
+                <DatePicker Name="workbegindate" SelectedDate="{Binding Path=startdate,Mode=TwoWay}" Grid.Column="1" VerticalAlignment="Center"/>
                 <Label Content="Work Begin" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
             </Grid>
             <Grid HorizontalAlignment="Left" Height="91" VerticalAlignment="Top" Width="425" Grid.Column="1" Margin="0.2,0,-0.4,0">
@@ -49,7 +50,7 @@
                     <ColumnDefinition Width="206*"/>
                     <ColumnDefinition Width="219*"/>
                 </Grid.ColumnDefinitions>
-                <DatePicker Name="workenddate" Grid.Column="1" VerticalAlignment="Center"/>
+                <DatePicker Name="workenddate" SelectedDate="{Binding Path=enddate,Mode=TwoWay}" Grid.Column="1" VerticalAlignment="Center"/>
                 <Label Content="Work End" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
             </Grid>
             <Grid HorizontalAlignment="Left" Height="89" VerticalAlignment="Top" Width="425" Grid.ColumnSpan="2" Margin="0,0.2,0,0" Grid.Row="1">
@@ -58,15 +59,15 @@
                     <ColumnDefinition Width="219*"/>
                 </Grid.ColumnDefinitions>
                 <Label Content="paymentmethod" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
-                <ComboBox Name="paymentmethod" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120"/>
+                <ComboBox Name="paymentmethod" SelectedValue="{Binding Path=Paymentmethode,Mode=TwoWay}" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120"/>
             </Grid>
             <Grid Grid.Column="1" HorizontalAlignment="Left" Height="89" Margin="0.2,0.2,-0.4,0" VerticalAlignment="Top" Width="425" Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="47*"/>
                     <RowDefinition Height="42*"/>
                 </Grid.RowDefinitions>
-                <CheckBox Content="Introduction Meeting" Name="introduce_meeting" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <CheckBox Content="I accept the Terms and signed" Name="is_signed" HorizontalAlignment="Center" Margin="0,47,0,0" VerticalAlignment="Center" Grid.RowSpan="2"/>
+                <CheckBox IsChecked="{Binding Path=introduce_meeting,Mode=TwoWay}" Content="Introduction Meeting" Name="introduce_meeting" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox IsChecked="{Binding Path=contract_signed,Mode=TwoWay}" Content="I accept the Terms and signed" Name="is_signed" HorizontalAlignment="Center" Margin="0,47,0,0" VerticalAlignment="Center" Grid.RowSpan="2"/>
             </Grid>
         </Grid>
         <Grid HorizontalAlignment="Center" Height="auto" VerticalAlignment="Top" Grid.Row="1" Width="850">
@@ -80,7 +81,7 @@
                     <ColumnDefinition Width="271*"/>
                 </Grid.ColumnDefinitions>
                 <Label Content="Mother" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <ComboBox x:Name="listofMothers" Width="188" Height="30" Grid.Column="1" SelectionChanged="listofMothers_SelectionChanged"/>
+                <ComboBox x:Name="listofMothers"  SelectedValue="{Binding Path=Mother_ID,Mode=TwoWay}" Width="188" Height="30" Grid.Column="1" SelectionChanged="listofMothers_SelectionChanged"/>
                 </Grid>
             <Grid HorizontalAlignment="Center" Height="94" VerticalAlignment="Top" Width="420" Grid.Row="0" Margin="0.6,0,-1.4,0" Grid.Column="1">
                 <Grid.ColumnDefinitions>
@@ -88,7 +89,7 @@
                     <ColumnDefinition Width="271*"/>
                 </Grid.ColumnDefinitions>
                 <Label Content="Child" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <ComboBox x:Name="listofChildren" Width="188" Height="30" Grid.Column="1" />
+                <ComboBox x:Name="listofChildren" SelectedValue="{Binding Path=Child_ID,Mode=TwoWay}" Width="188" Height="30" Grid.Column="1" />
             </Grid>
         </Grid>
 

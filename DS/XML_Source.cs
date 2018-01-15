@@ -34,10 +34,10 @@ namespace DS
             // initialize roots
 
             // 'out' used for reference, otherwise we get null root after method finishes.
-            //loadOrCreate(specName, out specializationRoot);
+            loadOrCreate(contractPath, out contractRoot);
             loadOrCreate(motherPath, out motherRoot);
             loadOrCreate(nannyPath, out nannyRoot);
-            //loadOrCreate(employeeName, out employeeRoot);
+            loadOrCreate(childPath, out childRoot);
         }
         static void loadOrCreate(string filename, out XElement root)
         {

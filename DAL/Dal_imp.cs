@@ -129,80 +129,99 @@ namespace DAL
         #region Child
         public void AddChild(Child child)
         {
-            Child chil = GetChild(child.ID);
+            DAL_XML_Imp b = new DAL_XML_Imp();
+            Child chil = b.GetChild(child.ID);
             if (chil != null)
                 throw new Exception("Child with the same id already exists...");
-            DataSource.ChildList.Add(child);
+            //b.getChildList().Add(child);
+            b.AddChild(child);
         }
         public Child GetChild(int id)
         {
-            return DataSource.ChildList.FirstOrDefault(n => n.ID == id);
+            DAL_XML_Imp b = new DAL_XML_Imp();
+            //return DataSource.ChildList.FirstOrDefault(n => n.ID == id);
+            return b.getChildList().FirstOrDefault(n => n.ID == id);
         }
         public void RemoveChild(int id)
         {
-            Child chil = GetChild(id);
+            DAL_XML_Imp b = new DAL_XML_Imp();
+            Child chil = b.GetChild(id);
             if (chil == null)
                 throw new Exception("Child with the same id not found...");
+            b.RemoveChild(id);
+            //DataSource.ChildList.RemoveAll(n => n.ID == id);
 
-            DataSource.ChildList.RemoveAll(n => n.ID == id);
-
-            DataSource.ChildList.Remove(chil);
-            IEnumerable<Contract> contractsofChild = getContractList(x => x.Child_ID == id);
-            foreach (Contract contr in contractsofChild.ToList())
-            {
-                RemoveContract(contr.Contract_ID);
-            }
+            //DataSource.ChildList.Remove(chil);
+            //IEnumerable<Contract> contractsofChild = getContractList(x => x.Child_ID == id);
+            //foreach (Contract contr in contractsofChild.ToList())
+            //{
+            //    RemoveContract(contr.Contract_ID);
+            //}
         }
         public void UpdateChild(Child chil)
         {
-            DataSource.ChildList.RemoveAll(n => n.ID == chil.ID);
-            DataSource.ChildList.Add(chil);
+            DAL_XML_Imp b = new DAL_XML_Imp();
+            b.UpdateChild(chil);
+            //DataSource.ChildList.RemoveAll(n => n.ID == chil.ID);
+            //DataSource.ChildList.Add(chil);
 
         }
         public IEnumerable<BE.Child> getChildList(Func<Child, bool> predicate = null)
         {
+            DAL_XML_Imp b = new DAL_XML_Imp();
             if (predicate == null)
-                return DataSource.ChildList.AsEnumerable();
-            return DataSource.ChildList.Where(predicate);
+                return b.getChildList().AsEnumerable();
+            return b.getChildList().Where(predicate);
         }
         #endregion Child
 
         #region Contract
         public void AddContract(Contract contract)
         {
-            Contract contr = GetContract(contract.Contract_ID);
+            DAL_XML_Imp b = new DAL_XML_Imp();
+
+            Contract contr = b.GetContract(contract.Contract_ID);
             if (contr != null)
                 throw new Exception("Contract with the same id already exists...");
-             
+            b.AddContract(contract);
                
-            DataSource.ContractList.Add(contract);
+            //DataSource.ContractList.Add(contract);
         }
         public Contract GetContract(int id)
         {
-            return DataSource.ContractList.FirstOrDefault(n => n.Contract_ID == id);
+            DAL_XML_Imp b = new DAL_XML_Imp();
+            return b.GetContract(id);
+            //return DataSource.ContractList.FirstOrDefault(n => n.Contract_ID == id);
         }
         public void RemoveContract(int id)
         {
-            Contract contr = GetContract(id);
+            DAL_XML_Imp b = new DAL_XML_Imp();
+            Contract contr = b.GetContract(id);
             if (contr == null)
                 throw new Exception("Contract with the same id not found...");
+            b.RemoveContract(id);
+            //DataSource.ContractList.RemoveAll(n => n.Contract_ID == id);
 
-            DataSource.ContractList.RemoveAll(n => n.Contract_ID == id);
-
-            DataSource.ContractList.Remove(contr);
+            //DataSource.ContractList.Remove(contr);
         }
         public void UpdateContract(Contract contract)
         {
-            DataSource.ContractList.RemoveAll(n => n.Contract_ID == contract.Contract_ID);
-            DataSource.ContractList.Add(contract);
+            //DataSource.ContractList.RemoveAll(n => n.Contract_ID == contract.Contract_ID);
+            //DataSource.ContractList.Add(contract);
+            DAL_XML_Imp b = new DAL_XML_Imp();
+            b.UpdateContract(contract);
+
         }
 
         
         
         public IEnumerable<BE.Contract> getContractList (Func<Contract, bool> predicate = null) {
-            if(predicate==null)
-                return DataSource.ContractList.AsEnumerable();
-            return DataSource.ContractList.Where(predicate);
+            DAL_XML_Imp b = new DAL_XML_Imp();
+            if (predicate == null)
+                //return DataSource.ContractList.AsEnumerable();
+                return b.getContractList().AsEnumerable();
+            //return DataSource.ContractList.Where(predicate);
+            return b.getContractList().Where(predicate);
         }
         #endregion Contract
     }

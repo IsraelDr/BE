@@ -58,4 +58,30 @@ namespace UI_WPF_TEMPORARY
 
 
     }
+    class NannyIDconverter : IValueConverter
+    {
+        //static BL_imp bl = new BL_imp();
+        public IBL bl = FactoryBL.IBLInstance;
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            try
+            {
+                Nanny m = bl.GetNannyById((int)value);
+                if (bl.GetNannyById((int)value) != null)
+                    return (PriorityNanny)m;
+                return null;
+            }
+            catch (Exception)
+            {
+                return value;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return ((PriorityNanny)value).ID;
+        }
+
+
+    }
 }

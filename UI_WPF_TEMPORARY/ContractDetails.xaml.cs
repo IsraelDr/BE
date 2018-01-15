@@ -24,6 +24,7 @@ namespace UI_WPF_TEMPORARY
         //static BL_imp bl = new BL_imp();
         public IBL bl;
         static Window fr;
+        //ContractT details;
         bool isUpdate = false;
         Contract contr;
 
@@ -49,26 +50,35 @@ namespace UI_WPF_TEMPORARY
             }
             paymentmethod.DisplayMemberPath = "Name";
             paymentmethod.SelectedValuePath = "ID";
+            nannysoptiongrid.SelectedValuePath = "Nanny_ID";
             fr = f;
+            //this.contr = contract;
+            if (contract == null)
+                contr = new Contract();
+            //details = new ContractT(new Contract(), this);
+            else
+                contr = contract;
+                //details = new ContractT(contr, this);
             isUpdate = false;
+            this.DataContext = contr;
             nannysoptiongrid.ItemsSource = null;
             if (contract != null)
             {
                 contr = contract;
                 isUpdate = true;
-                listofMothers.SelectedValue = bl.GetChildById(contract.Child_ID).Mother_ID;
-                listofChildren.SelectedValue = contract.Child_ID;
-                paymentmethod.SelectedValue = contract.Paymentmethode;
-                introduce_meeting.IsChecked = contract.introduce_meeting ? true : false;
-                is_signed.IsChecked = contract.contract_signed? true : false;
-                workbegindate.SelectedDate = contract.startdate;
-                workenddate.SelectedDate = contract.enddate;
-                foreach (var item in nannysoptiongrid.ItemsSource)
-                {
-                    if (((PriorityNanny)item).ID == contract.Nanny_ID)
-                        nannysoptiongrid.SelectedItem = (PriorityNanny)item;
-                        
-                }
+                //listofMothers.SelectedValue = bl.GetChildById(contract.Child_ID).Mother_ID;
+                //listofChildren.SelectedValue = contract.Child_ID;
+                //paymentmethod.SelectedValue = contract.Paymentmethode;
+                //introduce_meeting.IsChecked = contract.introduce_meeting ? true : false;
+                //is_signed.IsChecked = contract.contract_signed? true : false;
+                //workbegindate.SelectedDate = contract.startdate;
+                //workenddate.SelectedDate = contract.enddate;
+                //foreach (var item in nannysoptiongrid.ItemsSource)
+                //{
+                //    if (((PriorityNanny)item).ID == contract.Nanny_ID)
+                //        nannysoptiongrid.SelectedItem = (PriorityNanny)item;
+
+                //}
             }
         }
 
@@ -114,17 +124,17 @@ namespace UI_WPF_TEMPORARY
             {
                 if (introduce_meeting.IsChecked == false || is_signed.IsChecked == false)
                     throw new Exception("One of the checkboxes was not clicked!!");
-                Contract contract = new Contract(((PriorityNanny)(nannysoptiongrid.SelectedItem)).ID, listofMothers.SelectedValue, listofChildren.SelectedValue, introduce_meeting.IsChecked,
+                /*Contract contract = new Contract(((PriorityNanny)(nannysoptiongrid.SelectedItem)).ID, listofMothers.SelectedValue, listofChildren.SelectedValue, introduce_meeting.IsChecked,
                                             is_signed.IsChecked, ((PriorityNanny)(nannysoptiongrid.SelectedItem)).Hourly_rate,
                                             ((PriorityNanny)(nannysoptiongrid.SelectedItem)).Monthly_rate,
                                             (MyEnum.Paymentmethode)Enum.Parse(typeof(MyEnum.Paymentmethode),paymentmethod.Text),
                                             Convert.ToDateTime(workbegindate.SelectedDate), Convert.ToDateTime(workenddate.SelectedDate),
                                             ((PriorityNanny)(nannysoptiongrid.SelectedItem)).Salary, ((PriorityNanny)(nannysoptiongrid.SelectedItem)).Distance,
                                             bl.checkForDiscunt((Nanny)(nannysoptiongrid.SelectedItem), bl.GetMotherById((int)listofMothers.SelectedValue)));
-                if (isUpdate)
-                    bl.UpdateContract(contract);
+                */if (isUpdate)
+                    bl.UpdateContract(contr);
                 else
-                    bl.AddContract(contract);
+                    bl.AddContract(contr);
                 fr.Close();
             }
             catch (Exception w)
@@ -157,5 +167,24 @@ namespace UI_WPF_TEMPORARY
             Savebutton.Height -= 5;
             Savebutton.Width -= 5;
         }
+
+        private void nannysoptiongrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            List<PriorityNanny> a = (List<PriorityNanny>)nannysoptiongrid.ItemsSource;
+            PriorityNanny temp = (from A in a
+                                 where A.ID == (int)(nannysoptiongrid.SelectedItem)
+                                 select A).FirstOrDefault();
+            this.contr.Monthly_payment = temp.Monthly_rate;
+            this.contr.Hourly_payment = temp.Hourly_rate;
+            this.contr.discount = bl.checkForDiscunt((Nanny)temp, bl.GetMotherById(this.contr.Mother_ID));
+            this.contr.salary = temp.Salary;
+            this.contr.distance = temp.Distance;
+        }
     }
+    /*public class ContractT
+    {
+        public Contract Info { get; set; }
+        public ContractDetails Daily_Working_hours { get; set; }
+        public ContractT(Contract d, ContractDetails a) { Info = d; Daily_Working_hours = a; }
+    }*/
 }

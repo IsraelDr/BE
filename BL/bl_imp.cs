@@ -90,7 +90,7 @@ namespace BL
                 List<Nanny> temp = ienum.ToList<Nanny>();
                 //sorting by Priorities Mache from 1 to 18 scale
                 temp.Sort((x, y) => PrioritiesMach(mother, x).CompareTo(PrioritiesMach(mother, y)));
-                for (int i = temp.Count - 1; i > (temp.Count - 1) - 5; i--)
+                for (int i = temp.Count - 1; i > (temp.Count - 1) - 5&&i>=0; i--)
                 {
                     matcheList.Add(temp[i]);
                 }

@@ -11,7 +11,7 @@ namespace DAL
         private static Idal dal_instance;
 
         private FactoryDAL() { }
-        static FactoryDAL() { dal_instance = new Dal_imp(); } // called once at program startup
+        static FactoryDAL() { dal_instance = new DAL_XML_Imp(); } // called once at program startup
 
         public static Idal IdalInstance { get { return dal_instance; } }
     }

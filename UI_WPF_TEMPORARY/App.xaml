@@ -9,6 +9,7 @@
 
             <local:converter x:Key="converter"/>
             <local:DigitalTimeConverter x:Key="DigitalTimeConverter"/>
+            <local:NannyIDconverter x:Key="NannyIDconverter"/>
 
 
 

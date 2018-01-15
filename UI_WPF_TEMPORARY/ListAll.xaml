@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:UI_WPF_TEMPORARY"
         mc:Ignorable="d"
         Title="ListAll" Height="331.311"  Width="800">
-    <Grid Name="details_grid" HorizontalAlignment="Left" Height="292" VerticalAlignment="Top" Width="762" >
+    <Grid Name="details_grid" HorizontalAlignment="Stretch"  Height="292" VerticalAlignment="Stretch" Width="762" ScrollViewer.HorizontalScrollBarVisibility="Visible" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="38*"/>
                 <RowDefinition Height="169*"/>

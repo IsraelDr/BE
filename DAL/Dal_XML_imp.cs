@@ -9,7 +9,7 @@ using DS;
 namespace DAL
 {
 
-    public class DAL_XML_Imp //: Idal
+    public class DAL_XML_Imp : Idal
     {
 
         //        static uint nextContractID;
@@ -73,7 +73,7 @@ namespace DAL
             if (foundElement != null) // element found
             {
                 foundElement.Remove();
-                XML_Source.SaveXML<Mother>();
+                
                 //XML_Source.SaveXML<Specialization>();
             }
             else
@@ -119,7 +119,10 @@ namespace DAL
             XML_Source.SaveXML<Mother>();
         }
         public void RemoveMother(int ID)
-            => removeElementFromXML(XML_Source.motherRoot, ID);
+        {
+            removeElementFromXML(XML_Source.motherRoot, ID);
+            XML_Source.SaveXML<Mother>();
+        }
 
         public void UpdateMother(Mother mother)
         {
@@ -128,6 +131,7 @@ namespace DAL
                 throw new Exception(mother.ID + " does not exist in XML");
             removeElementFromXML(XML_Source.motherRoot, (int)foundElement.Attribute("ID"));
             AddMother(mother);
+            XML_Source.SaveXML<Mother>();
         }
         public Mother GetMother(int id)
         {
@@ -152,9 +156,14 @@ namespace DAL
             Comment = (string)m.Element("Comment")
             };
         }
-        
-        
-        public List<Mother> getMotherList()
+
+        public IEnumerable<BE.Mother> getMotherList(Func<Mother, bool> predicate = null)
+        {
+            if (predicate == null)
+                return getMotherListhelp().AsEnumerable();
+            return getMotherListhelp().Where(predicate);
+        }
+        public List<Mother> getMotherListhelp()
         {
             try
             {
@@ -216,7 +225,10 @@ namespace DAL
             XML_Source.SaveXML<Nanny>();
         }
         public void RemoveNanny(int ID)
-            => removeElementFromXML(XML_Source.nannyRoot, ID);
+        {
+            removeElementFromXML(XML_Source.nannyRoot, ID);
+            XML_Source.SaveXML<Nanny>();
+        }
 
         public void UpdateNanny(Nanny Nanny)
         {
@@ -225,6 +237,7 @@ namespace DAL
                 throw new Exception(Nanny.ID + " does not exist in XML");
             removeElementFromXML(XML_Source.nannyRoot, (int)foundElement.Attribute("ID"));
             AddNanny(Nanny);
+            XML_Source.SaveXML<Nanny>();
         }
         public Nanny GetNanny(int id)
         {
@@ -262,8 +275,13 @@ namespace DAL
             };
         }
 
-
-        public List<Nanny> getNannyList()
+        public IEnumerable<BE.Nanny> getNannyList(Func<Nanny, bool> predicate = null)
+        {
+            if (predicate == null)
+                return getNannyListhelp().AsEnumerable();
+            return getNannyListhelp().Where(predicate);
+        }
+        public List<Nanny> getNannyListhelp()
         {
             try
             {
@@ -282,6 +300,181 @@ namespace DAL
         }
         #endregion Nanny
 
+        //All the function connected to Child XML
+        #region Child
+        XElement createChildXElement(Child n)//converter from Child to xelement
+            => (new XElement("Child", new XAttribute("ID", n.ID),
+                  new XElement("Mother_ID", n.Mother_ID),
+                  new XElement("name", n.name),
+                  new XElement("Birthdate", new XElement("Day", ((DateTime)(n.Birthdate)).Day),
+                                            new XElement("Month", ((DateTime)(n.Birthdate)).Month),
+                                            new XElement("Year", ((DateTime)(n.Birthdate)).Year)),
+                  new XElement("SpecialNeeds", n.SpecialNeeds)
+                 ));
+        public void AddChild(Child m)
+        {
+            if (ElementIfExists(XML_Source.childRoot, m.ID) != null)
+            {
+                throw new Exception(m.ID + " already exists in file");
+            }
+
+            XML_Source.childRoot.Add(createChildXElement(m));
+            XML_Source.SaveXML<Child>();
+        }
+        public void RemoveChild(int ID)
+        {
+            removeElementFromXML(XML_Source.childRoot, ID);
+            XML_Source.SaveXML<Child>();
+        }
+
+        public void UpdateChild(Child Child)
+        {
+            XElement foundElement = ElementIfExists(XML_Source.childRoot, (int)Child.ID);
+            if (foundElement == null)
+                throw new Exception(Child.ID + " does not exist in XML");
+            removeElementFromXML(XML_Source.childRoot, (int)foundElement.Attribute("ID"));
+            AddChild(Child);
+            XML_Source.SaveXML<Child>();
+        }
+        public Child GetChild(int id)
+        {
+            //XElement m = ElementIfExists(XML_Source.ChildRoot, id);
+            //XElement m = createChildXElement(new Child(1, "Dana", "Anilewitch", "0798512565", "jerusalem", "jerusalem", new bool[] { true, false, true, false, true, false, true }, new TimeSpan[][] { new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) } }, "comment", MyEnum.Paymentmethode.hourly));
+            XElement m = ElementIfExists(XML_Source.childRoot, id);
+            if (m == null)
+                return null;
+            return new Child()
+            {
+
+                ID = (int)m.Attribute("ID"),
+                name = (string)m.Element("name"),
+                Mother_ID = (int)m.Element("Mother_ID"),
+                Birthdate = new DateTime(int.Parse(m.Element("Birthdate").Element("Year").Value), int.Parse(m.Element("Birthdate").Element("Month").Value), int.Parse(m.Element("Birthdate").Element("Day").Value)),
+                SpecialNeeds = (bool)m.Element("SpecialNeeds"),
+                
+            };
+        }
+
+        public IEnumerable<BE.Child> getChildList(Func<Child, bool> predicate = null)
+        {
+            if (predicate == null)
+                return getChildListhelp().AsEnumerable();
+            return getChildListhelp().Where(predicate);
+        }
+        public List<Child> getChildListhelp()
+        {
+            try
+            {
+                return (from m in XML_Source.childRoot.Elements()
+                        let currentChild = new Child()
+                        {
+                            name = (string)m.Element("name").Value
+                        }
+                        select GetChild(int.Parse(m.Attribute("ID").Value))).ToList();
+            }
+            catch
+            {
+                throw new Exception("getChildList() exception");
+            }
+        }
+        #endregion Child
+
+        //All the function connected to Contract XML
+        #region Contract
+        XElement createContractXElement(Contract n)//converter from Contract to xelement
+            => (new XElement("Contract", new XAttribute("ID", n.Contract_ID),
+                  new XElement("Nanny_ID", n.Nanny_ID),
+                  new XElement("Child_ID", n.Child_ID),
+                  new XElement("Mother_ID", n.Mother_ID),
+                  new XElement("introduce_meeting", n.introduce_meeting),
+                  new XElement("contract_signed", n.contract_signed),
+                  new XElement("Hourly_payment", n.Hourly_payment),
+                  new XElement("Monthly_payment", n.Monthly_payment),
+                  new XElement("Paymentmethode", n.Paymentmethode),
+                  new XElement("startdate", new XElement("Day", ((DateTime)(n.startdate)).Day),
+                                            new XElement("Month", ((DateTime)(n.startdate)).Month),
+                                            new XElement("Year", ((DateTime)(n.startdate)).Year)),
+                  new XElement("enddate", new XElement("Day", ((DateTime)(n.enddate)).Day),
+                                            new XElement("Month", ((DateTime)(n.enddate)).Month),
+                                            new XElement("Year", ((DateTime)(n.enddate)).Year)),
+                  new XElement("salary", n.salary),
+                  new XElement("distance", n.distance),
+                  new XElement("discount", n.discount)
+                  
+                 ));
+        public void AddContract(Contract m)
+        {
+            if (ElementIfExists(XML_Source.contractRoot, m.Contract_ID)!= null)
+            {
+                throw new Exception(m.Contract_ID + " already exists in file");
+            }
+
+            XML_Source.contractRoot.Add(createContractXElement(m));
+            XML_Source.SaveXML<Contract>();
+        }
+        public void RemoveContract(int ID)
+        {
+            removeElementFromXML(XML_Source.contractRoot, ID);
+            XML_Source.SaveXML<Contract>();
+        }
+
+        public void UpdateContract(Contract Contract)
+        {
+            XElement foundElement = ElementIfExists(XML_Source.contractRoot, (int)Contract.Contract_ID);
+            if (foundElement == null)
+                throw new Exception(Contract.Contract_ID + " does not exist in XML");
+            removeElementFromXML(XML_Source.contractRoot, (int)foundElement.Attribute("ID"));
+            AddContract(Contract);
+            XML_Source.SaveXML<Contract>();
+        }
+        public Contract GetContract(int id)
+        {
+            //XElement m = ElementIfExists(XML_Source.ContractRoot, id);
+            //XElement m = createContractXElement(new Contract(1, "Dana", "Anilewitch", "0798512565", "jerusalem", "jerusalem", new bool[] { true, false, true, false, true, false, true }, new TimeSpan[][] { new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) }, new TimeSpan[] { new TimeSpan(5, 3, 5), new TimeSpan(8, 3, 5) } }, "comment", MyEnum.Paymentmethode.hourly));
+            XElement m = ElementIfExists(XML_Source.contractRoot, id);
+            if (m == null)
+                return null;
+            return new Contract()
+            {
+
+                Contract_ID = (int)m.Attribute("ID"),
+                Nanny_ID = (int)m.Element("Nanny_ID"),
+                Child_ID = (int)m.Element("Child_ID"),
+                Mother_ID = (int)m.Element("Mother_ID"),
+                introduce_meeting = (bool)m.Element("introduce_meeting"),
+                contract_signed = (bool)m.Element("contract_signed"),
+                Hourly_payment = (int)m.Element("Hourly_payment"),
+                Monthly_payment = (double)m.Element("Monthly_payment"),
+                Paymentmethode = (MyEnum.Paymentmethode)Enum.Parse(typeof(MyEnum.Paymentmethode), m.Element("Paymentmethode").Value.ToString()),
+                startdate = new DateTime(int.Parse(m.Element("startdate").Element("Year").Value), int.Parse(m.Element("startdate").Element("Month").Value), int.Parse(m.Element("startdate").Element("Day").Value)),
+                enddate = new DateTime(int.Parse(m.Element("enddate").Element("Year").Value), int.Parse(m.Element("enddate").Element("Month").Value), int.Parse(m.Element("enddate").Element("Day").Value)),
+                salary = (double)m.Element("salary"),
+                distance = (double)m.Element("distance"),
+                discount = (bool)m.Element("discount")
+                
+            };
+        }
+
+        public IEnumerable<BE.Contract> getContractList(Func<Contract, bool> predicate = null)
+        {
+            if (predicate == null)
+                return getContractListhelp().AsEnumerable();
+            return getContractListhelp().Where(predicate);
+        }
+        public List<Contract> getContractListhelp()
+        {
+            try
+            {
+                return (from m in XML_Source.contractRoot.Elements()
+                        let currentContract = int.Parse(m.Attribute("ID").Value)
+                        select GetContract(currentContract)).ToList();
+            }
+            catch
+            {
+                throw new Exception("getContractList() exception");
+            }
+        }
+        #endregion Contract
         //        XElement createContractXElement(Contract c)
         //            => new XElement("contract", new XAttribute("ID", c.Contract_ID),
         //                 new XElement("ChildID", c.Child_ID),

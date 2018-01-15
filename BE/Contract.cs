@@ -9,7 +9,7 @@ namespace BE
     public class Contract
     {
      
-        private static int contract_number_=9999999;
+        private static int contract_number_=10000003;
         private int Contract_ID_;
         private int Nanny_ID_;
         private int Child_ID_;
@@ -27,7 +27,9 @@ namespace BE
         
 
         public int     Contract_number                   { get { return contract_number_; }set { contract_number_ = value; }}
-        public int     Contract_ID                       { get { return Contract_ID_; } set { Contract_ID_ = value; } }
+        public int Contract_ID
+        {   get { return Contract_ID_; }
+            set { Contract_number=Math.Max(Contract_number,value); Contract_ID_ = value; }}
         public int     Nanny_ID                          { get { return Nanny_ID_; }set { Nanny_ID_ = value; }}
         public int     Child_ID                          { get { return Child_ID_; }set { Child_ID_ = value; }}
         public int     Mother_ID                         { get { return Mother_ID_; } set { Mother_ID_ = value; } }
@@ -59,6 +61,11 @@ namespace BE
             salary = (double)parameter[10];
             distance = double.Parse(parameter[11].ToString());
             discount=(bool)parameter[12];
+        }
+        public Contract()
+        {
+            Contract_number++;
+            Contract_ID = Contract_number;
         }
         public override string ToString()
         {//using ToStringProperty() in Class Tools 
