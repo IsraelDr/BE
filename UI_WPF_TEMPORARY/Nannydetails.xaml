@@ -62,8 +62,8 @@
             <TextBox Grid.Column="6"  Name="new_hourrate" Grid.Row="3" TextWrapping="Wrap" Text="{Binding Path=Info.Hourly_rate,Mode=TwoWay}"/>
             <Label Content="Monthly Rate"  Grid.Row="4"/>
             <TextBox  Name="new_monthlyrate" Grid.Row="4" TextWrapping="Wrap" Text="{Binding Path=Info.Monthly_rate,Mode=TwoWay}" Grid.Column="1"/>
-            <CheckBox  Name="new_elevator_exists" IsChecked="{Binding Path=Info.elevatorExists}" Content="Elevator Exists" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2"/>
-            <CheckBox  x:Name="possible_hourly_rate" IsChecked="{Binding Path=Info.Possible_Hourly_rate}" Content="Is per Hour possible" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" />
+            <CheckBox  Name="new_elevator_exists" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding Path=Info.elevatorExists}" Content="Elevator Exists" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2"/>
+            <CheckBox  x:Name="possible_hourly_rate"  HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding Path=Info.Possible_Hourly_rate}" Content="Is per Hour possible" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" />
             <TextBox x:Name="new_additional_Info" Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="{Binding Path=Info.Additional_Info,Mode=TwoWay}" />
             <Label Content="Additional Info"  Grid.Row="5"/>
             <Label Content="Recommendations" Grid.Row="4" Grid.Column="4"/>

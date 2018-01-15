@@ -12,9 +12,10 @@ namespace DAL
     public class DAL_XML_Imp : Idal
     {
 
-        //        static uint nextContractID;
-        //        static uint nextSpecID;
-
+        /// <summary>
+        /// Main Functions of Class
+        /// </summary>
+        # region Main Class
         static DAL_XML_Imp()
         {
 
@@ -85,9 +86,7 @@ namespace DAL
                     select new TimeSpan(int.Parse(c.Element("Hours").Value), int.Parse(c.Element("Minutes").Value), int.Parse(c.Element("Seconds").Value))).ToArray();
             //return new TimeSpan[10];
         }
-
-
-
+        #endregion Main Class
 
 
         //All the function connected to Mother XML
@@ -122,6 +121,16 @@ namespace DAL
         {
             removeElementFromXML(XML_Source.motherRoot, ID);
             XML_Source.SaveXML<Mother>();
+            IEnumerable<Child> children = getChildList(x => x.Mother_ID == ID);
+            foreach (Child child in children.ToList())
+            {
+                RemoveChild(child.ID);//delete all children
+            }
+            IEnumerable<Contract> contractsofNanny = getContractList(x => x.Nanny_ID == ID);
+            foreach (Contract contr in contractsofNanny.ToList())
+            {
+                RemoveContract(contr.Contract_ID);//delete all contracts
+            }
         }
 
         public void UpdateMother(Mother mother)
@@ -228,6 +237,11 @@ namespace DAL
         {
             removeElementFromXML(XML_Source.nannyRoot, ID);
             XML_Source.SaveXML<Nanny>();
+            IEnumerable<Contract> contractsofNanny = getContractList(x => x.Nanny_ID == ID);
+            foreach (Contract contr in contractsofNanny.ToList())
+            {
+                RemoveContract(contr.Contract_ID);
+            }
         }
 
         public void UpdateNanny(Nanny Nanny)
@@ -475,161 +489,6 @@ namespace DAL
             }
         }
         #endregion Contract
-        //        XElement createContractXElement(Contract c)
-        //            => new XElement("contract", new XAttribute("ID", c.Contract_ID),
-        //                 new XElement("ChildID", c.Child_ID),
-        //                 new XElement("MotherID", c.Mother_ID),
-        //                 new XElement("Contract_number", c.Contract_number),
-        //                 new XElement("contract_signed", c.contract_signed),
-        //                 new XElement("discount", c.discount),
-        //                 new XElement("distance", c.distance),
-        //                 new XElement("enddate", c.enddate),
-        //                  new XElement("Hourly_payment", c.Hourly_payment), 
-        //                  new XElement("introduce_meeting", c.introduce_meeting),
-        //                  new XElement("Monthly_payment", c.Monthly_payment),
-        //                  new XElement("Nanny_ID", c.Nanny_ID),
-        //                  new XElement("Paymentmethode", c.Paymentmethode),
-        //                  new XElement("salary", c.salary),
-        //                  new XElement("startdate", c.startdate)
-        //                 );
-
-        //        public bool addContract(Contract contract, bool autoAssignID = true)
-        //        {
-        //            if (ElementIfExists(XML_Source.contractRoot, (uint)contract.Contract_ID) != null)
-        //            {
-        //                throw new Exception(contract.Contract_ID + " already exists in file");
-        //            }
-
-        //            if (autoAssignID)
-        //                contract.Contract_ID =(int)nextContractID++;
-
-        //            XML_Source.contractRoot.Add(createContractXElement(contract));
-        //            XML_Source.SaveXML<Contract>();
-
-        //            return true;
-        //        }
-
-        //        public bool deleteContract(Contract contract)
-        //            => removeElementFromXML(XML_Source.contractRoot,(uint)contract.Contract_ID);
-
-
-        //        public bool updateContract(Contract contract)
-        //        {
-        //            XElement foundElement = ElementIfExists(XML_Source.contractRoot,(uint)contract.Contract_ID);
-        //            if (foundElement == null)
-        //                throw new Exception(contract.Contract_ID + " does not exist in XML");
-
-        //            return
-        //                removeElementFromXML(XML_Source.contractRoot, (uint)foundElement)
-        //                && addContract(contract, false); // don't assign new contract ID
-        //        }
-
-        //        public uint getNextContractID()
-        //        {
-        //            return nextContractID;
-        //        }
-
-        //        XElement createChildXElement(Child c)
-        //        {
-        //            XElement child = new XElement("child", new XAttribute("ID",c.ID),
-        //                                    new XElement("Birthdate",c.Birthdate),
-        //                                    new XElement("Mother_ID",c.Mother_ID),
-        //                                    new XElement("name", c.name),
-        //                                    new XElement("SpecialNeeds", c.SpecialNeeds)
-        //                                   );
-        //            // if private person, add first name and last name
-        //            return child;
-        //        }
-
-        //        public bool addChild(Child c)
-        //        {
-        //            if (ElementIfExists(XML_Source.childRoot, (uint)c.ID) != null)
-        //            {
-        //                throw new Exception(c.ID + " already exists in file");
-        //            }
-
-        //            XML_Source.childRoot.Add(createChildXElement(c));
-        //            XML_Source.SaveXML<Child>();
-        //            return true;
-        //        }
-
-        //        public bool deleteChild(Child child)
-        //            => removeElementFromXML(XML_Source.childRoot, (uint)child.ID);
-
-        //        public bool updateChild(Child child)
-        //        {
-        //            XElement foundElement = ElementIfExists(XML_Source.childRoot, (uint)child.ID);
-        //            if (foundElement == null)
-        //                throw new Exception(child.ID + " does not exist in XML");
-
-        //            return
-        //                removeElementFromXML(XML_Source.childRoot, (uint)foundElement)
-        //                && addChild(child);
-        //        }
-
-
-
-        //        
-
-        //        public List<Child> getChildList()
-        //        {
-        //            try
-        //            {
-        //                return (from c in XML_Source.childRoot.Elements()
-        //                        select new Child()
-        //                        {
-        //                            ID = uint.Parse(c.Attribute("ID").Value),
-        //                            firstName = (string)e.Element("firstName"), // check if exists perhaps
-        //                            lastName = (string)e.Element("lastName"),
-        //                            phoneNumber = (string)e.Element("phoneNumber"),
-        //                            specializationID = uint.Parse(c.Element("specializationID").Value),
-        //                            establishmentDate = DateTime.Parse(c.Element("establishmentDate").Value),
-        //                            address = (CivicAddress)e.Element("CivicAddress") // calls explicit converter of Xlement to CivicAddress
-        //                        }
-        //                        ).ToList();
-        //            }
-        //            catch
-        //            {
-        //                throw new Exception("getChildList() exception");
-        //            }
-        //        }
-
-        //        public List<Contract> getContractList()
-        //        {
-        //            try
-        //            {
-        //                return (from cont in XML_Source.contractRoot.Elements()
-        //                        where cont.Name == "contract"
-        //                        select new Contract()
-        //                        {
-        //                            Contract_ID = (int)cont.Attribute("ID"),
-        //                            Child_ID = (int)cont.Element("ChildID"),
-        //                            Mother_ID = (uint)cont.Element("mother_ID"),
-        //                            Contract_number= cont.Element("Contract_number").
-        //                            isInterviewed = (bool)cont.Element("isInterviewed"),
-        //                            contractFinalized = (bool)cont.Element("contractFinalized"),
-        //                            grossWagePerHour = (double)cont.Element("grossWagePerHour"),
-        //                            netWagePerHour = (double)cont.Element("netWagePerHour"),
-        //                            contractEstablishedDate = (DateTime)cont.Element("contractEstablishedDate"),
-        //                            contractTerminatedDate = (DateTime)cont.Element("contractTerminatedDate"),
-        //                            maxWorkHours = (uint)cont.Element("maxWorkHours")
-
-        //                        }).ToList();
-        //            }
-        //            catch { throw new Exception("getContractList() exception"); }
-        //        }
-
-        //        public List<Nanny> getNannyList()
-        //        {
-        //            var returnList = XML_Source.Nannys?.ToList();
-
-        //            if (returnList == null)
-        //                return new List<Nanny>();
-        //            else
-        //                return returnList;
-        //        }
-
-        //        public DoWorkDelegate getXMLNannyBackground_DoWork()
-        //            => XML_Source.downloadNannyXml;
+        
     }
 }

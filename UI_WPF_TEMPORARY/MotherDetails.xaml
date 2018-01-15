@@ -68,6 +68,7 @@
                 <RowDefinition Height="100"/>
 
             </Grid.RowDefinitions>
+            <Label Content="Working Days" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" />
             <Label Content="Begin" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" />
             <Label Content="End" VerticalAlignment="Center" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" />
             <CheckBox Content="Sunday" x:Name="new_Sunday" Checked="Checkbox_Checked" Unchecked="Checkbox_Checked" IsChecked="{Binding Path=info.nanny_required[0]}" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"/>

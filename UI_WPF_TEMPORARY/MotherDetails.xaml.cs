@@ -231,6 +231,13 @@ namespace UI_WPF_TEMPORARY
             });
             t.Start();
             t.Join();
+            if(s.Contains(str))
+            {
+                new_Address.Text = str;
+                adress_suggestion.Visibility = Visibility.Collapsed;
+                adress_suggestion.ItemsSource = null;
+                return;
+            }
             if(s.Count()>0)
             {
                 adress_suggestion.ItemsSource = s;
