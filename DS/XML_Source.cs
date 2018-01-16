@@ -66,7 +66,7 @@ namespace DS
                 throw new Exception("error loading " + filename);
             }
         }
-        public static void SaveMotherListLinq(List<Mother> MotherList)
+        /*public static void SaveMotherListLinq(List<Mother> MotherList)
         {
             motherRoot = new XElement("mothers",
                                     from p in MotherList
@@ -79,7 +79,7 @@ namespace DS
                                         )
                                     );
             motherRoot.Save(motherPath);
-        }
+        }*/
         public static void LoadData()
         {
             try

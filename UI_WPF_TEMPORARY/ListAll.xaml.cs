@@ -186,6 +186,8 @@ namespace UI_WPF_TEMPORARY
         {
             if (e.PropertyName == "Contract_number")
                 e.Cancel = true;
+            if (e.PropertyName == "Mother_ID")
+                e.Cancel = true;
 
         }
         void listofAll_NannyGeneratingColumns(object sender, System.Windows.Controls.DataGridAutoGeneratingColumnEventArgs e)
@@ -239,6 +241,7 @@ namespace UI_WPF_TEMPORARY
                 listofAll.Visibility = Visibility.Collapsed;
                 contractcond.Visibility = Visibility.Collapsed;
                 GroupingPanel.Visibility = Visibility.Visible;
+                //ActionsButtons.Visibility = Visibility.Hidden;
                 switch (Choosen)
                 {
                     case 1:
