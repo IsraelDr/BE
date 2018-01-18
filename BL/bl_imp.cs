@@ -150,7 +150,7 @@ namespace BL
                 t.Join();
             }
             closesNannyList = nnn.OrderBy(x => x.Value).Select(x => x.Key).ToList<Nanny>();
-            return closesNannyList;
+             return closesNannyList;
         }
         /// <summary>
         /// Google autoComplete
@@ -260,6 +260,8 @@ namespace BL
                 t.Join();
             }
             p.Sort((x, y) => x.Distance.CompareTo(y.Distance));
+            if(p.Count>5)
+            return p.GetRange(0, 5);
             return p;
         }
         #endregion PriorityNanny by GoogleMaps
