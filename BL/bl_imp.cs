@@ -30,8 +30,7 @@ namespace BL
     {
         public Idal dal = FactoryDAL.IdalInstance;
 
-        //Function
-
+        #region PriorityNanny by GoogleMaps
         public static int calculateDistance(string source, string destination)
         {
             try
@@ -144,18 +143,12 @@ namespace BL
             }
             closesNannyList = nnn.OrderBy(x => x.Value).Select(x => x.Key).ToList<Nanny>();
             return closesNannyList;
-            /******old*********/
-            ////foreach (int nan in )
-            //{
-            //}
-            ////temp.Sort((x, y) => calculateDistance(mom.Address, x.address).CompareTo(calculateDistance(mom.Address, y.address)));
-            //foreach (Nanny n in temp)
-            //{
-            //    if (calculateDistance(mom.Address, n.address) <= radius)
-            //        closesNannyList.Add(n);
-            //}
-            //return closesNannyList;
         }
+        /// <summary>
+        /// Google autoComplete
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public static List<string> GetPlaceAutoComplete(string str)
         {
             try
@@ -210,7 +203,7 @@ namespace BL
             else
                 throw new Exception("Ther is't Nanny with Tamat Viction days");
         }
-        public class InternetAvailability
+        public class InternetAvailability//Internet connection
         {
             [DllImport("wininet.dll")]
             private extern static bool InternetGetConnectedState(out int description, int reservedValue);
@@ -261,8 +254,9 @@ namespace BL
             p.Sort((x, y) => x.Distance.CompareTo(y.Distance));
             return p;
         }
-        
+        #endregion PriorityNanny by GoogleMaps
 
+        #region Filter conditions
         public List<Contract> GetAllContractWithCondition(contractCondition condition)
         {
 
@@ -306,10 +300,10 @@ namespace BL
 
         }
 
+        #endregion Filter conditions
 
-
-
-        //Groping
+        #region Grouping
+        //Groping functions
         public IEnumerable<IGrouping<string, Nanny>> nannysByChildrenAge(bool orderByMaxAge = false)
         {
             if(!orderByMaxAge)
@@ -335,26 +329,10 @@ namespace BL
                    orderby 10 * (contract.distance/ 10)
                    group contract by 10 * (contract.distance / 10);
         }
+        #endregion Grouping
 
-
-            //ID
-            public Child GetChildById(int id)
-        {
-            return dal.GetChild(id);
-        }
-        public Nanny GetNannyById(int id)
-        {
-            return dal.GetNanny(id);
-        }
-        public Mother GetMotherById(int id)
-        {
-            return dal.GetMother(id);
-        }
-        public Contract GetContractById(int id)
-        {
-            return dal.GetContract(id);
-        }
-        //functions
+        #region Checks dscount and salary
+        //checks if with this nanny has discount
         public bool checkForDiscunt(Nanny nan, Mother m)
         {
             bool flag = false;
@@ -391,15 +369,55 @@ namespace BL
             else { return (int)salary; }
         }
 
+        #endregion Checks dscount and salary
+
+        #region Child
         //add
+        /// <summary>
+        /// functions update remove get get list child
+        /// </summary>
+        /// <param name="child"></param>
+        public Child GetChildById(int id)
+        {
+            return dal.GetChild(id);
+        }
         public void AddChild(Child child)
         {
             if (GetMotherById(child.Mother_ID) == null)
                 throw new Exception("A mother with this ID doesn't exist");
             dal.AddChild(child);//need to add logic
         }
-        
+        /**********Remove******/
+        public void RemoveChild(int id)
+        {
 
+            dal.RemoveChild(id);
+        }
+        /**********Update******/
+        public void UpdateChild(Child chil)
+        {
+            if (GetMotherById(chil.Mother_ID) == null)
+                throw new Exception("A mother with this ID doesn't exist");
+            if (GetChildById(chil.ID) == null)
+                throw new Exception("A child with this ID doesn't exist");
+            dal.UpdateChild(chil);
+        }
+        public IEnumerable<Child> getChildList()
+        {
+            return dal.getChildList();
+        }
+        #endregion Child
+
+
+        #region Contract
+        /// <summary>
+        /// functions update get remove getlist Contract
+        /// </summary>
+        /// <param name="contract"></param>
+        public Contract GetContractById(int id)
+        {
+            return dal.GetContract(id);
+        }
         public void AddContract(Contract contract)
         {
 
@@ -448,12 +466,62 @@ namespace BL
             contract.discount = checkForDiscunt(GetNannyById(contract.Nanny_ID), GetMotherById(dal.GetChild(contract.Child_ID).Mother_ID));
             dal.AddContract(contract);
         }
+        public void UpdateContract(Contract contract)
+        {
+            dal.UpdateContract(contract);
+            //if (dal.GetChild(contract.Child_ID).Birthdate.CompareTo(temporary) > 0)
+            //    throw new Exception("Cannot sign contract for child under 3 month!!");//cant sign contract if younger then 3 month
+        }
+        public void RemoveContract(int id)
+        {
+            Nanny temp = dal.GetNanny(dal.GetContract(id).Nanny_ID);
+            dal.RemoveContract(id);
+            temp.kidsCount--;
+            dal.UpdateNanny(temp);
+        }
+        public IEnumerable<Contract> getContractList()
+        {
+            return dal.getContractList();
+        }
+        #endregion Contract
+
+        #region Mother
+        /// <summary>
+        /// function Mother update remove add getlist
+        /// </summary>
+        /// <param name="mother"></param>
         public void AddMother(Mother mother)
         {
             if (mother.Firstname == ""||mother.Firstname==null || mother.Lastname == ""||mother.Lastname==null)
                 throw new Exception("Please enter First and Lastname!");
             dal.AddMother(mother);//need to add logic
         }
+        public Mother GetMotherById(int id)
+        {
+            return dal.GetMother(id);
+        }
+        public void RemoveMother(int id)
+        {
+            dal.RemoveMother(id);
+        }
+        public void UpdateMother(Mother mother)
+        {
+            if (mother.Firstname == "" || mother.Firstname == null || mother.Lastname == "" || mother.Lastname == null)
+                throw new Exception("Please enter First and Lastname!");
+            dal.UpdateMother(mother);
+        }
+        public IEnumerable<Mother> getMotherList()
+        {
+            return dal.getMotherList();
+        }
+
+        #endregion Mother
+
+        #region Nanny
+        /// <summary>
+        /// functions add remove getlist update of Nanny
+        /// </summary>
+        /// <param name="nanny"></param>
         public void AddNanny(Nanny nanny)
         {
             //Text = "{Binding phoneNumber, Converter={StaticResource NoValueConverter}}
@@ -465,73 +533,20 @@ namespace BL
                 throw new Exception("The nanny must be over 18 years old");
             dal.AddNanny(nanny);//need to add logic
         }
+        public Nanny GetNannyById(int id)
+        {
+            return dal.GetNanny(id);
+        }
         //GET LIST
-        public IEnumerable<Child> getChildList()
-        {
-            return dal.getChildList();
-        }
-
-        public IEnumerable<Contract> getContractList()
-        {
-            return dal.getContractList();
-        }
-
-        public IEnumerable<Mother> getMotherList()
-        {
-            return dal.getMotherList();
-        }
 
         public IEnumerable<Nanny> getNannyList()
         {
             return dal.getNannyList();
         }
-        /**********Remove******/
-        public void RemoveChild(int id)
-        {
-           
-            dal.RemoveChild(id);
-        }
-
-        public void RemoveContract(int id)
-        {
-            Nanny temp = dal.GetNanny(dal.GetContract(id).Nanny_ID);
-            dal.RemoveContract(id);
-            temp.kidsCount--;
-            dal.UpdateNanny(temp);
-        }
-
-        public void RemoveMother(int id)
-        {
-            dal.RemoveMother(id);
-        }
-
+        
         public void RemoveNanny(int id)
         {
             dal.RemoveNanny(id);
-        }
-
-        /**********Update******/
-        public void UpdateChild(Child chil)
-        {
-            if (GetMotherById(chil.Mother_ID) == null)
-                throw new Exception("A mother with this ID doesn't exist");
-            if (GetChildById(chil.ID) == null)
-                throw new Exception("A child with this ID doesn't exist");
-            dal.UpdateChild(chil);
-        }
-
-        public void UpdateContract(Contract contract)
-        {
-            dal.UpdateContract(contract);
-            //if (dal.GetChild(contract.Child_ID).Birthdate.CompareTo(temporary) > 0)
-            //    throw new Exception("Cannot sign contract for child under 3 month!!");//cant sign contract if younger then 3 month
-        }
-
-        public void UpdateMother(Mother mother)
-        {
-            if (mother.Firstname == "" || mother.Firstname == null || mother.Lastname == "" || mother.Lastname == null)
-                throw new Exception("Please enter First and Lastname!");
-            dal.UpdateMother(mother);
         }
 
         public void UpdateNanny(Nanny nanny)
@@ -542,10 +557,15 @@ namespace BL
                 throw new Exception("The nanny must be over 18 years old");
             dal.UpdateNanny(nanny);
         }
+        #endregion Nanny
+
+        
+        
+       
         
     }
-    
-    
+
+
 
 }
 

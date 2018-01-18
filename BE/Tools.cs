@@ -9,6 +9,12 @@ namespace BE
 {
     static class Tools
     {
+        /// <summary>
+        /// Class to print each field
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="t"></param>
+        /// <returns></returns>
         public static string ToStringProperty<T>(this T t)//general function, to print string with all fields
         {
             string str = "";

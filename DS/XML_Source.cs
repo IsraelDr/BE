@@ -14,7 +14,7 @@ namespace DS
 {
     static public class XML_Source
     {
-        //static string prefix = @"../../../XML DB Files/"; // relative source of files
+       // static string prefix = @"../../../DS/XML DB Files/"; // relative source of files
 
 
         static public string nannyPath = @"nannys.xml";
@@ -66,20 +66,7 @@ namespace DS
                 throw new Exception("error loading " + filename);
             }
         }
-        /*public static void SaveMotherListLinq(List<Mother> MotherList)
-        {
-            motherRoot = new XElement("mothers",
-                                    from p in MotherList
-                                    select new XElement("mother",
-                                        new XElement("id", p.ID),
-                                       new XElement("name",
-                                            new XElement("firstName", p.Firstname),
-                                            new XElement("lastName", p.Lastname)
-                                            )
-                                        )
-                                    );
-            motherRoot.Save(motherPath);
-        }*/
+
         public static void LoadData()
         {
             try

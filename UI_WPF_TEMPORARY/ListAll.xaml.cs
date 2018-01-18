@@ -339,18 +339,25 @@ namespace UI_WPF_TEMPORARY
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //BL_imp.contractCondition contractCondition;
-            switch (((ComboBoxItem)contractcond.SelectedItem).Content.ToString())
+            try
             {
-                case "None":
-                    listofAll.ItemsSource = null;
-                    listofAll.ItemsSource = bl.getContractList();
-                    break;
-                case "Ended Contracts":
-                    listofAll.ItemsSource = null;
-                    listofAll.ItemsSource = bl.GetAllContractWithCondition(bl.contractsEnd);
-                    break;
-                default:
-                    break;
+                switch (((ComboBoxItem)contractcond.SelectedItem).Content.ToString())
+                {
+                    case "None":
+                        listofAll.ItemsSource = null;
+                        listofAll.ItemsSource = bl.getContractList();
+                        break;
+                    case "Ended Contracts":
+                        listofAll.ItemsSource = null;
+                        listofAll.ItemsSource = bl.GetAllContractWithCondition(bl.contractsEnd);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch(Exception g)
+            {
+                MessageBox.Show(g.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
