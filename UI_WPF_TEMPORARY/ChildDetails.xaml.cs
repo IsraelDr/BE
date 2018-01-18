@@ -27,7 +27,11 @@ namespace UI_WPF_TEMPORARY
         public Window fr;
         public Child child;
         public IBL bl;
-                
+        /// <summary>
+        /// Initialize child
+        /// </summary>
+        /// <param name="Window  f"></param>
+        /// <param name="Child a"></param>        
         public ChildDetails(Window f,Child a=null)
         {
             InitializeComponent();
@@ -58,17 +62,18 @@ namespace UI_WPF_TEMPORARY
                 child = new Child();
             }
             this.DataContext = child;
-        }
-
+        } /// \n
+        /// <summary>
+        /// save bouten update or add
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
             try
             {
-                /*Child chil = new Child(new_ID.Text, new_IDmother.Text,
-                                    new_Name.Text,
-                                    new_Birthdate.SelectedDate, new_specialneeds.IsChecked == true);*/
-                if (isUpdate)
+                    if (isUpdate)
                     bl.UpdateChild(child);
                 else
                     bl.AddChild(child);
@@ -81,17 +86,31 @@ namespace UI_WPF_TEMPORARY
 
             }
         }
+        /// <summary>
+        /// if Mouse Enter font size get bigger
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Grid_MouseEnter(object sender, MouseEventArgs e)
         {
             SaveBUTTON.Height += 5;
             SaveBUTTON.Width += 5;
         }
-
+        /// <summary>
+        ///if Mouse Leave font size get smaller
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Grid_MouseLeave(object sender, MouseEventArgs e)
         {
             SaveBUTTON.Height -= 5;
             SaveBUTTON.Width -= 5;
         }
+        /// <summary>
+        /// only digit 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void new_ID_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
