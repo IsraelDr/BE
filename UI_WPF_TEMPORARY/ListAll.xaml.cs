@@ -178,6 +178,12 @@ namespace UI_WPF_TEMPORARY
                 e.Cancel = true;
             if (e.PropertyName == "nanny_required")
                 e.Cancel = true;
+            if (e.PropertyName == "Comment")
+                e.Cancel = true;
+            if (e.PropertyName == "surrounding_Address")
+                e.Column.Header = "Near Address";
+            if (e.PropertyName == "Paymentmethode")
+                e.Column.Header = "Paymentmethod";
 
 
 
@@ -188,6 +194,19 @@ namespace UI_WPF_TEMPORARY
                 e.Cancel = true;
             if (e.PropertyName == "Mother_ID")
                 e.Cancel = true;
+            if (e.PropertyName == "Hourly_payment")
+                e.Cancel = true;
+            if (e.PropertyName == "Monthly_payment")
+                e.Cancel = true;
+            if (e.PropertyName == "introduce_meeting")
+                e.Column.Header = "Introduced";
+            if (e.PropertyName == "contract_signed")
+                e.Column.Header = "Signed";
+            if (e.PropertyName == "salary")
+                e.Column.Header = "Salary[₪]";
+
+
+
 
         }
         void listofAll_NannyGeneratingColumns(object sender, System.Windows.Controls.DataGridAutoGeneratingColumnEventArgs e)
@@ -208,6 +227,25 @@ namespace UI_WPF_TEMPORARY
                 e.Cancel = true;
             if (e.PropertyName == "Recommendations")
                 e.Cancel = true;
+            if (e.PropertyName == "Birthdate")
+                e.Cancel = true;
+            if (e.PropertyName == "Hourly_rate")
+                e.Cancel = true;
+            if (e.PropertyName == "Monthly_rate")
+                e.Cancel = true;
+            if (e.PropertyName == "Possible_Hourly_rate")
+                e.Cancel = true;
+            if (e.PropertyName == "kidsCount")
+                e.Column.Header = "Number of Kids";
+            if (e.PropertyName == "elevatorExists")
+                e.Column.Header = "Elevator";
+            if (e.PropertyName == "PhoneNumber")
+                e.Column.Header = "Phone";
+            if (e.PropertyName == "Max_number_kids")
+                e.Column.Header = "Max. Count Kids";
+            if (e.PropertyName == "Floor")
+                e.Column.Width = 40;
+
 
         }
 
@@ -315,5 +353,6 @@ namespace UI_WPF_TEMPORARY
                     break;
             }
         }
+
     }
 }

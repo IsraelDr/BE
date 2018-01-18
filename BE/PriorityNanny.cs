@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace BE
 {
+    /// <summary>
+    /// class of each special nanny that fits to a mother
+    /// by prioritys, inheritance of nanny
+    /// </summary>
     public class PriorityNanny:Nanny
     {
         //private Nanny nanny_;

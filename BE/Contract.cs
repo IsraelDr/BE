@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace BE
 {
+    /// <summary>
+    /// Class that defines an object of each contract
+    /// </summary>
     public class Contract
     {
      
@@ -66,6 +69,8 @@ namespace BE
         {
             Contract_number++;
             Contract_ID = Contract_number;
+            startdate = DateTime.Now;
+            enddate = DateTime.Now;
         }
         public override string ToString()
         {//using ToStringProperty() in Class Tools 

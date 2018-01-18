@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
         <TextBlock  FontSize="20"  HorizontalAlignment="Center" TextWrapping="Wrap" Text="Contract Details" VerticalAlignment="Top" Height="27" Width="180" Grid.Row="0"/>
 
-        <DataGrid Name="nannysoptiongrid" Grid.Row="2" SelectedItem="{Binding Path=Nanny_ID,Converter={StaticResource NannyIDconverter},Mode=TwoWay}" Height="200" Margin="0,4.8,0,1.733" MouseDoubleClick="nannysoptiongrid_MouseDoubleClick" SelectionChanged="nannysoptiongrid_SelectionChanged"/>
+        <DataGrid Name="nannysoptiongrid" Grid.Row="2" SelectedItem="{Binding Path=Nanny_ID,Converter={StaticResource NannyIDconverter},Mode=TwoWay}" Height="200" Margin="0,4.8,0,1.733" MouseDoubleClick="nannysoptiongrid_MouseDoubleClick" SelectionChanged="nannysoptiongrid_SelectionChanged" IsReadOnly="True"/>
         <Grid HorizontalAlignment="Center" Height="100" Width="50" Name="Savebutton" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center"  MouseDown="Button_Click" MouseEnter="Grid_MouseEnter" MouseLeave="Grid_MouseLeave">
             <Grid.RowDefinitions>
                 <RowDefinition Height="49*"/>

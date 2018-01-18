@@ -9,7 +9,7 @@ namespace BE
 {
     static class Tools
     {
-        public static string ToStringProperty<T>(this T t)
+        public static string ToStringProperty<T>(this T t)//general function, to print string with all fields
         {
             string str = "";
             foreach (PropertyInfo item in t.GetType().GetProperties())

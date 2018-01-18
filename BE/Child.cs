@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    [Serializable]
+   /// <summary>
+   /// Class that defines an object of each child
+   /// </summary>
     public class Child
     {
         private int ID_;
@@ -26,6 +28,7 @@ namespace BE
             return this.ToStringProperty();
         }
         public Child() {
+            Birthdate = DateTime.Now;
         }
         public Child(string _id,string mother_id,string _name,DateTime? _birthdate,bool specialneeds)
         {

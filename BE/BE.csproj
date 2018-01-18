@@ -41,11 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Address.cs" />
     <Compile Include="Child.cs" />
     <Compile Include="Contract.cs" />
     <Compile Include="Mother.cs" />
-    <Compile Include="MyBE.cs" />
     <Compile Include="MyEnum.cs" />
     <Compile Include="Nanny.cs" />
     <Compile Include="PriorityNanny.cs" />

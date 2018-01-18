@@ -100,13 +100,13 @@ namespace BL
         /**********new close Nanny List using Google Maps &  Thread ******/ //return the Nanny list that the close to mother
         public List<Nanny> closeNannyList(Mother mom, int radius)
         {
-            return closeNannyList(mom, mom.Adress, radius);
+            return closeNannyList(mom, mom.Address, radius);
         }
         public List<Nanny> closeNannyList(Mother mom, string source, int radius)
         {
             if (mom == null) { return null; }
             if (source == null)
-                source = mom.Adress;
+                source = mom.Address;
             List<Nanny> closesNannyList = new List<Nanny>();
             List<Nanny> temp = new List<Nanny>();
             //temp = dal.getNannyList();
@@ -122,7 +122,7 @@ namespace BL
                     {
                         try
                         {
-                            int d = calculateDistance(mom.Adress, n.address);
+                            int d = calculateDistance(mom.Address, n.address);
                             if (d <= radius && d >= 0)
                             {
                                 nnn.Add(n, d);
@@ -148,13 +148,35 @@ namespace BL
             ////foreach (int nan in )
             //{
             //}
-            ////temp.Sort((x, y) => calculateDistance(mom.Adress, x.address).CompareTo(calculateDistance(mom.Adress, y.address)));
+            ////temp.Sort((x, y) => calculateDistance(mom.Address, x.address).CompareTo(calculateDistance(mom.Address, y.address)));
             //foreach (Nanny n in temp)
             //{
-            //    if (calculateDistance(mom.Adress, n.address) <= radius)
+            //    if (calculateDistance(mom.Address, n.address) <= radius)
             //        closesNannyList.Add(n);
             //}
             //return closesNannyList;
+        }
+        public static List<string> GetPlaceAutoComplete(string str)
+        {
+            try
+            {
+                List<string> result = new List<string>();
+                PlaceAutocompleteRequest request = new PlaceAutocompleteRequest();
+                request.ApiKey = "AIzaSyA9DLA9vL6ARd0UGd5sZnwI0-Jocz9MBXQ";
+                request.Input = str;
+                var response = GoogleMaps.PlaceAutocomplete.Query(request);
+                foreach (var item in response.Results)
+                {
+                    result.Add(item.Description);
+                }
+                return result;
+
+            }
+            catch (Exception e)
+            {
+                int a = 5;
+                throw e;
+            };
         }
         public List<Child> childWithOutNunnyList()//return list of all children with out Nanny
         {
@@ -174,6 +196,7 @@ namespace BL
                 throw new Exception("To all childeren thre is Nanny!");
             return children;
         }
+        
         public List<Nanny> NannyByViction()
         {
             List<Nanny> ByViction = new List<Nanny>();
@@ -218,7 +241,7 @@ namespace BL
                     try
                     {
 
-                        temp.Distance = calculateDistance(m.Adress, nan.address);
+                        temp.Distance = calculateDistance(m.Address, nan.address);
                         p.Add(temp);
 
                     }
@@ -262,15 +285,6 @@ namespace BL
         public bool contractStartAfter2018(Contract c) { return (c.startdate.Year > 2018); }
         public bool contractWithDiscount(Contract c) { return c.discount; }
         
-        //Console.WriteLine(" Number Of contracts Distance Great Then 10 KM: " + " " + bl.GetNumberOfContractWithCondition(bl.contractConditionDistanceGreatThen10));
-        //Console.WriteLine(" Number Of contracts Nanny Have More Then 2 Children: " + " " + bl.GetNumberOfContractWithCondition(bl.contractConditionDistanceNannyHaveMoreThen2Children));
-        //Console.WriteLine(" Number Of contracts Distance Small Then or Eqoul 10 KM: " + " " + bl.GetNumberOfContractWithCondition(bl.contractConditionDistanceSmallThenEqoul10));
-        //Console.WriteLine(" Number Of contracts End: " + " " + bl.GetNumberOfContractWithCondition(bl.contractsEnd));
-        //Console.WriteLine(" Number Of contracts Start at 2018: " + " " + bl.GetNumberOfContractWithCondition(bl.contractStart2018));
-        //Console.WriteLine(" Number Of contractS Start After 2018: " + " " + bl.GetNumberOfContractWithCondition(bl.contractStartAfter2018));
-        //Console.WriteLine(" Number Of contract Start Before 2018: " + " " + bl.GetNumberOfContractWithCondition(bl.contractStartBefore2018));
-
-        /*Get Number Of Contract With Condition*/
         public delegate bool contractCondition(Contract c);
         public int GetNumberOfContractWithCondition(contractCondition condition)
         {
@@ -419,12 +433,19 @@ namespace BL
 
             if (dal.GetNanny(contract.Nanny_ID).Max_number_kids <= dal.GetNanny(contract.Nanny_ID).kidsCount)
                 throw new Exception("Cannot sign contract nanny over the maximum kids !!!");//cant sign contract over the maximum kids lavel
-            else dal.GetNanny(contract.Nanny_ID).kidsCount++;//if contract sign so Nanny.kidsCount++ 
+            else
+            {
+                Nanny temp = dal.GetNanny(contract.Nanny_ID);
+                temp.kidsCount++;
+                dal.UpdateNanny(temp);//if contract sign so Nanny.kidsCount++ 
+            }
             contract.discount = checkForDiscunt(GetNannyById(contract.Nanny_ID), GetMotherById(dal.GetChild(contract.Child_ID).Mother_ID));
             dal.AddContract(contract);
         }
         public void AddMother(Mother mother)
         {
+            if (mother.Firstname == ""||mother.Firstname==null || mother.Lastname == ""||mother.Lastname==null)
+                throw new Exception("Please enter First and Lastname!");
             dal.AddMother(mother);//need to add logic
         }
         public void AddNanny(Nanny nanny)
@@ -467,7 +488,10 @@ namespace BL
 
         public void RemoveContract(int id)
         {
+            Nanny temp = dal.GetNanny(dal.GetContract(id).Nanny_ID);
             dal.RemoveContract(id);
+            temp.kidsCount--;
+            dal.UpdateNanny(temp);
         }
 
         public void RemoveMother(int id)
@@ -499,6 +523,8 @@ namespace BL
 
         public void UpdateMother(Mother mother)
         {
+            if (mother.Firstname == "" || mother.Firstname == null || mother.Lastname == "" || mother.Lastname == null)
+                throw new Exception("Please enter First and Lastname!");
             dal.UpdateMother(mother);
         }
 
@@ -510,28 +536,7 @@ namespace BL
                 throw new Exception("The nanny must be over 18 years old");
             dal.UpdateNanny(nanny);
         }
-        public static List<string> GetPlaceAutoComplete(string str)
-        {
-            try
-            {
-                List<string> result = new List<string>();
-                PlaceAutocompleteRequest request = new PlaceAutocompleteRequest();
-                request.ApiKey = "AIzaSyA9DLA9vL6ARd0UGd5sZnwI0-Jocz9MBXQ";
-                request.Input = str;
-                var response = GoogleMaps.PlaceAutocomplete.Query(request);
-                foreach (var item in response.Results)
-                {
-                    result.Add(item.Description);
-                }
-                return result;
-
-            }
-            catch (Exception e)
-            {
-                int a = 5;
-                throw e;
-            };
-        }
+        
     }
     
     

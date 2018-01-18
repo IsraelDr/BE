@@ -56,6 +56,8 @@ namespace UI_WPF_TEMPORARY
             {
                 new_paymentmethode.Items.Add(value.Name);
             }
+            //new_paymentmethode.DisplayMemberPath = "Name";
+            //new_paymentmethode.SelectedValuePath = "ID";
             //new_paymentmethode.SelectedItem = MyEnum.Paymentmethode.hourly.ToString();
             fr = f;
             //new_Sunday_start.MinTime = new DigitalTime(00, 00);
@@ -110,8 +112,8 @@ namespace UI_WPF_TEMPORARY
                 //new_LastName.Text = mother.Lastname;
                 //new_Firstname.Text = mother.Firstname;
                 //new_Phonenumber.Text = mother.Phonenumber + "";
-                //new_Address.Text = mother.Adress;
-                //new_surrounding_address.Text = mother.surrounding_adress + "";
+                //new_Address.Text = mother.Address;
+                //new_surrounding_address.Text = mother.surrounding_Address + "";
                 //new_Sunday.IsChecked = mother.nanny_required[0];
                 //new_Monday.IsChecked = mother.nanny_required[1];
                 //new_Tuesday.IsChecked = mother.nanny_required[2];
@@ -142,21 +144,6 @@ namespace UI_WPF_TEMPORARY
         {
             try
             {
-                
-                /*Mother mother = new Mother(/*new_ID.Textint.Parse( new_ID.Text),new_LastName.Text, new_Firstname.Text,
-                                            new_Phonenumber.Text, new_Address.Text,
-                                            new_surrounding_address.Text,
-                                            new bool[] {new_Sunday.IsChecked==true, new_Monday.IsChecked == true ,
-                                    new_Tuesday.IsChecked==true,new_Wednesday.IsChecked==true,new_Thursday.IsChecked==true,
-                                    new_Friday.IsChecked==true,new_Saturday.IsChecked==true},
-                                            new TimeSpan[][] { new TimeSpan[]{new_Sunday_start.Time.ToTimeSpan(),new_Sunday_end.Time.ToTimeSpan() },
-                                    new TimeSpan[]{new_Monday_start.Time.ToTimeSpan(),new_Monday_end.Time.ToTimeSpan() },
-                                    new TimeSpan[]{new_Tuesday_start.Time.ToTimeSpan(),new_Tuesday_end.Time.ToTimeSpan() },
-                                    new TimeSpan[]{new_Wednesday_start.Time.ToTimeSpan(),new_Wednesday_end.Time.ToTimeSpan() },
-                                    new TimeSpan[]{new_Thursday_start.Time.ToTimeSpan(),new_Thursday_end.Time.ToTimeSpan() },
-                                    new TimeSpan[]{new_Friday_start.Time.ToTimeSpan(),new_Friday_end.Time.ToTimeSpan() },
-                                    new TimeSpan[]{new_Saturday_start.Time.ToTimeSpan(),new_Saturday_end.Time.ToTimeSpan() }},
-                                    new_comment.Text,/*new_paymentmethode.Text/(MyEnum.Paymentmethode)Enum.Parse             ( typeof(MyEnum.Paymentmethode), new_paymentmethode.Text));*/
                 if (isUpdate)
                     bl.UpdateMother(details.info);
                 else
@@ -204,13 +191,13 @@ namespace UI_WPF_TEMPORARY
         }
         private void new_surrounding_address_TextChanged(object sender, TextChangedEventArgs e)
         {
-            new_Address_TextChangedHelp(surround_adress_suggestion, new_surrounding_address);
+            new_Address_TextChangedHelp(surround_Address_suggestion, new_surrounding_address);
         }
         private void new_Address_TextChanged(object sender, TextChangedEventArgs e)
         {
-            new_Address_TextChangedHelp(adress_suggestion,new_Address);
+            new_Address_TextChangedHelp(Address_suggestion,new_Address);
         }
-        private void new_Address_TextChangedHelp(ListBox adress_suggestion, TextBox new_Address)
+        private void new_Address_TextChangedHelp(ListBox Address_suggestion, TextBox new_Address)
         { 
             List<String> s = new List<String>();
             string str = new_Address.Text;
@@ -234,31 +221,31 @@ namespace UI_WPF_TEMPORARY
             if(s.Contains(str))
             {
                 new_Address.Text = str;
-                adress_suggestion.Visibility = Visibility.Collapsed;
-                adress_suggestion.ItemsSource = null;
+                Address_suggestion.Visibility = Visibility.Collapsed;
+                Address_suggestion.ItemsSource = null;
                 return;
             }
             if(s.Count()>0)
             {
-                adress_suggestion.ItemsSource = s;
-                adress_suggestion.Visibility = Visibility.Visible;
+                Address_suggestion.ItemsSource = s;
+                Address_suggestion.Visibility = Visibility.Visible;
             }
             else
             {
-                adress_suggestion.Visibility = Visibility.Collapsed;
-                adress_suggestion.ItemsSource = null;
+                Address_suggestion.Visibility = Visibility.Collapsed;
+                Address_suggestion.ItemsSource = null;
             }
 
         }
-        private void surround_adress_suggestion_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void surround_Address_suggestion_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            adress_suggestion_SelectionChangedhelp(surround_adress_suggestion, new_surrounding_address, new TextChangedEventHandler(new_surrounding_address_TextChanged));
+            Address_suggestion_SelectionChangedhelp(surround_Address_suggestion, new_surrounding_address, new TextChangedEventHandler(new_surrounding_address_TextChanged));
         }
-        private void adress_suggestion_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Address_suggestion_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            adress_suggestion_SelectionChangedhelp(adress_suggestion, new_Address, new TextChangedEventHandler(new_Address_TextChanged));
+            Address_suggestion_SelectionChangedhelp(Address_suggestion, new_Address, new TextChangedEventHandler(new_Address_TextChanged));
         }
-        private void adress_suggestion_SelectionChangedhelp(ListBox suggestion, TextBox Address, TextChangedEventHandler a)
+        private void Address_suggestion_SelectionChangedhelp(ListBox suggestion, TextBox Address, TextChangedEventHandler a)
         { 
             if (suggestion.ItemsSource!=null)
             {
@@ -286,7 +273,6 @@ namespace UI_WPF_TEMPORARY
             Save.Width -= 5;
         }
 
-        
     }
 
     public class MotherT

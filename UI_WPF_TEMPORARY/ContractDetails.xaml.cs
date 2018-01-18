@@ -145,11 +145,18 @@ namespace UI_WPF_TEMPORARY
 
         private void nannysoptiongrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Nanny nanny = bl.GetNannyById(((Nanny)nannysoptiongrid.SelectedItem).ID);
-            UpdateWindow a = new UpdateWindow(1, nanny,false);
-            a.Show();
-            fr.Hide();
-            a.Closed += new EventHandler(openwindow);
+            try
+            {
+                Nanny nanny = bl.GetNannyById((int)nannysoptiongrid.SelectedItem);
+                UpdateWindow a = new UpdateWindow(1, nanny, false);
+                a.Show();
+                fr.Hide();
+                a.Closed += new EventHandler(openwindow);
+            }
+            catch(Exception d)
+            {
+                throw d;
+            }
         }
         private void openwindow(object sender, EventArgs e)
         {

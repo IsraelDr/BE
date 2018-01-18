@@ -8,6 +8,7 @@ namespace BL
 {
     public class FactoryBL
     {
+        //to build only on oject each time
         private static IBL bl_instance;
 
         private FactoryBL() { }

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace BE
 {
+    /// <summary>
+    /// class used for each object of nanny
+    /// </summary>
     public class Nanny
     {
         private int ID_;                                               //ID
@@ -36,12 +39,13 @@ namespace BE
         public string first_name         { get { return first_name_; } set { first_name_ = value; } }                                      //first name
         public string last_name          { get { return last_name_; } set { last_name_ = value; } }                                      //last name
         public DateTime Birthdate        { get { return Birthdate_; } set { Birthdate_ = value; } }                                       //Birthdate
-        public string PhoneNumber           { get { return PhoneNumber_; } set { PhoneNumber_ = value; } }                                       //Phone number
         public string address            { get { return address_; } set { address_ = value; } }//(st,city,cuntry)                      //Address(St, City, Country)
+        public string PhoneNumber           { get { return PhoneNumber_; } set { PhoneNumber_ = value; } }                                       //Phone number
+        public int kidsCount { get { return kidsCount_; } set { kidsCount_ = value; } }
+        public int Max_number_kids { get { return Max_number_kids_; } set { Max_number_kids_ = value; } }                                   //Max number kids
         public bool elevatorExists       { get { return elevatorExists_; } set { elevatorExists_ = value; } }                                   //Elevator exists?
         public int Floor                 { get { return Floor_; } set { Floor_ = value; } }                                             //Floor_
         public int experience            { get { return experience_; } set { experience_ = value; } }                                        //experience
-        public int Max_number_kids       { get { return Max_number_kids_; } set { Max_number_kids_ = value; } }                                   //Max number kids
         public int Min_age               { get { return Min_age_; } set { Min_age_ = value; } }// Min_age (Month)                         //Min age (Month)
         public int Max_age               { get { return Max_age_; } set { Max_age_ = value; } }//Max_age(Month)                           //Max age(Month)
         public bool Possible_Hourly_rate { get { return Possible_Hourly_rate_; } set { Possible_Hourly_rate_ = value; } }//Possible pay rate by Hour? //Possible Hourly rate
@@ -52,7 +56,6 @@ namespace BE
         public MyEnum.Vacation Vacation_days        { get { return Vacation_days_; } set { Vacation_days_ = value; } }// "Chinuch" or "tamat" { get; set; //Vacation days- "Chinuch" or "tamat"
         public string Recommendations    { get { return Recommendations_; } set { Recommendations_ = value; } }                                //Recommendations
         public string Additional_Info       { get { return Additional_Info_; } set { Additional_Info_ = value; } }                                   //Additional Info
-        public int kidsCount             { get { return kidsCount_; } set { kidsCount_ = value; } }
         public int fideback              { get { return fideback_; } set { fideback_ = value; } }
         public Nanny(params object[] parameters)
         {
@@ -106,6 +109,7 @@ namespace BE
         {
             Working_days = new bool[7];
             Daily_Working_hours_ = new TimeSpan[7][];
+            Birthdate = DateTime.Now;
             for (int i = 0; i < Daily_Working_hours_.Length; i++)
             {
                 Daily_Working_hours_[i] = new TimeSpan[] { new TimeSpan(12, 0, 0), new TimeSpan(12, 0, 0) };
