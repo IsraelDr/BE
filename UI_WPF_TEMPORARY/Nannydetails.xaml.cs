@@ -40,6 +40,7 @@ namespace UI_WPF_TEMPORARY
             if (IsSaveable == false)
                 NannySavebutton.Visibility = Visibility.Collapsed;
             this.nanny = nanny;
+            new_Birthdate.DisplayDateEnd = DateTime.Today;
             if (nanny == null)
                 details = new NannyT(new Nanny(), this);
             else
