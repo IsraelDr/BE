@@ -265,15 +265,21 @@ namespace BL
 
         public List<Contract> GetAllContractWithCondition(contractCondition condition)
         {
-            List<Contract> contractCondtionList = new List<Contract>();
-            foreach (Contract c in dal.getContractList())
-            {
-                if (condition(c))
-                    contractCondtionList.Add(c);
-            }
-            if (contractCondtionList.Count > 0)
-                return contractCondtionList;
-            else throw new Exception("Contract with serch condition not found");
+
+            
+            
+             List<Contract> contractCondtionList = new List<Contract>();
+             foreach (Contract c in dal.getContractList())
+             {
+                 if (condition(c))
+                     contractCondtionList.Add(c);
+             }
+             if (contractCondtionList.Count > 0)
+                 return contractCondtionList;
+             else throw new Exception("Contract with serch condition not found");
+              
+           
+            
         }
         //dalegate condition 
         public bool contractConditionDistanceGreatThen10(Contract c) { return (c.distance > 10); }
