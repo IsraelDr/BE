@@ -54,7 +54,13 @@ namespace BL
                 throw e;
             };
 
-        }/**********new Google Maps ******/
+        }
+        /// <summary>
+        /// return number of maches betwin Mother and Nunny from 0-18 Checks
+        /// </summary>
+        /// <param name="m Mother"></param>
+        /// <param name="n Nanny"></param>
+        /// <returns></returns>
         public int PrioritiesMach(Mother m, Nanny n)
         {
             int mcheCount = 0, daysCheck = 0, startHoursCheck = 0, endHoursCheck = 0;
@@ -71,7 +77,7 @@ namespace BL
             return mcheCount;
         }
         public bool isPrioritiesMach(Mother m, Nanny n)
-        { if (PrioritiesMach(m, n) == 18)//there if 18 cheacs "days Check" + "start Hours Check" , "end Hours Check"
+        { if (PrioritiesMach(m, n) == 18)//there if 18 cheacks "days Check" + "start Hours Check" , "end Hours Check"
                 return true;
             else
                 return false;
@@ -216,7 +222,7 @@ namespace BL
                 return InternetGetConnectedState(out description, 0);
             }
         }
-
+        //return list of best mache of nanny 
         public List<PriorityNanny> PriorityNannyList(Mother m)
         {
             List<PriorityNanny> p = new List<PriorityNanny>();
