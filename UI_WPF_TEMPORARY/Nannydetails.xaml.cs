@@ -51,96 +51,12 @@ namespace UI_WPF_TEMPORARY
                 vacationmethod.Items.Add(value.Name);
             }
             this.DataContext = details;
-            //vacationmethod.SelectedItem = MyEnum.Vacation.Chinuch.ToString();
-            //new_Sunday_start.MinTime = new DigitalTime(00, 00);
-            //new_Sunday_end.MinTime = new DigitalTime(00, 00);
-            //new_Monday_start.MinTime = new DigitalTime(00, 00);
-            //new_Monday_end.MinTime = new DigitalTime(00, 00);
-            //new_Tuesday_start.MinTime = new DigitalTime(00, 00);
-            //new_Tuesday_end.MinTime = new DigitalTime(00, 00);
-            //new_Wednesday_start.MinTime = new DigitalTime(00, 00);
-            //new_Wednesday_end.MinTime = new DigitalTime(00, 00);
-            //new_Thursday_start.MinTime = new DigitalTime(00, 00);
-            //new_Thursday_end.MinTime = new DigitalTime(00, 00);
-            //new_Friday_start.MinTime = new DigitalTime(00, 00);
-            //new_Friday_end.MinTime = new DigitalTime(00, 00);
-            //new_Saturday_start.MinTime = new DigitalTime(00, 00);
-            //new_Saturday_end.MinTime = new DigitalTime(00, 00);
-
-            //new_Sunday_start.MaxTime = new DigitalTime(23, 59);
-            //new_Sunday_end.MaxTime = new DigitalTime(23, 59);
-            //new_Monday_start.MaxTime = new DigitalTime(23, 59);
-            //new_Monday_end.MaxTime = new DigitalTime(23, 59);
-            //new_Tuesday_start.MaxTime = new DigitalTime(23, 59);
-            //new_Tuesday_end.MaxTime = new DigitalTime(23, 59);
-            //new_Wednesday_start.MaxTime = new DigitalTime(23, 59);
-            //new_Wednesday_end.MaxTime = new DigitalTime(23, 59);
-            //new_Thursday_start.MaxTime = new DigitalTime(23, 59);
-            //new_Thursday_end.MaxTime = new DigitalTime(23, 59);
-            //new_Friday_start.MaxTime = new DigitalTime(23, 59);
-            //new_Friday_end.MaxTime = new DigitalTime(23, 59);
-            //new_Saturday_start.MaxTime = new DigitalTime(23, 59);
-            //new_Saturday_end.MaxTime = new DigitalTime(23, 59);
-
-            //new_Sunday_start.Time = new DigitalTime(12, 00);
-            //new_Sunday_end.Time = new DigitalTime(12, 00);
-            //new_Monday_start.Time = new DigitalTime(12, 00);
-            //new_Monday_end.Time = new DigitalTime(12, 00);
-            //new_Tuesday_start.Time = new DigitalTime(12, 00);
-            //new_Tuesday_end.Time = new DigitalTime(12, 00);
-            //new_Wednesday_start.Time = new DigitalTime(12, 00);
-            //new_Wednesday_end.Time = new DigitalTime(12, 00);
-            //new_Thursday_start.Time = new DigitalTime(12, 00);
-            //new_Thursday_end.Time = new DigitalTime(12, 00);
-            //new_Friday_start.Time = new DigitalTime(12, 00);
-            //new_Friday_end.Time = new DigitalTime(12, 00);
-            //new_Saturday_start.Time = new DigitalTime(12, 00);
-            //new_Saturday_end.Time = new DigitalTime(12, 00);
             fr = f;
             isUpdate = false;
             if (nanny != null)
             {
-                //new_Sunday_start.Time.Hour = 21;// = new .DigitalTime(21, 00);
                 isUpdate = true;
-                //new_ID.Text = nanny.ID + "";
-                //new_LastName.Text = nanny.last_name;
-                //new_Firstname.Text = nanny.first_name;
-                //new_Birthdate.SelectedDate = nanny.Birthdate;
-                //new_Phonenumber.Text = nanny.PhoneNumber+"";
-                //new_Address.Text = nanny.address;
-                //new_elevator_exists.IsChecked = nanny.elevatorExists;
-                //new_Floor.Text = nanny.Floor + "";
-                //new_experience.Text = nanny.experience + "";
-                //new_Max_Num_Kids.Text = nanny.Max_number_kids + "";
-                //new_min_age.Text = nanny.Min_age + "";
-                //new_max_age.Text = nanny.Max_age + "";
-                //possible_hourly_rate.IsChecked = nanny.Possible_Hourly_rate;
-                //new_hourrate.Text = nanny.Hourly_rate+"";
-                //new_monthlyrate.Text = nanny.Monthly_rate + "";
-                //new_Sunday.IsChecked = nanny.Working_days[0];
-                //new_Monday.IsChecked = nanny.Working_days[1];
-                //new_Tuesday.IsChecked = nanny.Working_days[2];
-                //new_Wednesday.IsChecked = nanny.Working_days[3];
-                //new_Thursday.IsChecked = nanny.Working_days[4];
-                //new_Friday.IsChecked = nanny.Working_days[5];
-                //new_Saturday.IsChecked = nanny.Working_days[6];
-                //new_Sunday_start.Time = new DigitalTime(nanny.Daily_Working_hours[0][0].Hours, nanny.Daily_Working_hours[0][0].Minutes);
-                //new_Sunday_end.Time = new DigitalTime(nanny.Daily_Working_hours[0][1].Hours, nanny.Daily_Working_hours[0][1].Minutes);
-                //new_Monday_start.Time = new DigitalTime(nanny.Daily_Working_hours[1][0].Hours, nanny.Daily_Working_hours[1][0].Minutes);
-                //new_Monday_end.Time = new DigitalTime(nanny.Daily_Working_hours[1][1].Hours, nanny.Daily_Working_hours[1][1].Minutes);
-                //new_Tuesday_start.Time = new DigitalTime(nanny.Daily_Working_hours[2][0].Hours, nanny.Daily_Working_hours[2][0].Minutes);
-                //new_Tuesday_end.Time = new DigitalTime(nanny.Daily_Working_hours[2][1].Hours, nanny.Daily_Working_hours[2][1].Minutes);
-                //new_Wednesday_start.Time = new DigitalTime(nanny.Daily_Working_hours[3][0].Hours, nanny.Daily_Working_hours[3][0].Minutes);
-                //new_Wednesday_end.Time = new DigitalTime(nanny.Daily_Working_hours[3][1].Hours, nanny.Daily_Working_hours[3][1].Minutes);
-                //new_Thursday_start.Time = new DigitalTime(nanny.Daily_Working_hours[4][0].Hours, nanny.Daily_Working_hours[4][0].Minutes);
-                //new_Thursday_end.Time = new DigitalTime(nanny.Daily_Working_hours[4][1].Hours, nanny.Daily_Working_hours[4][1].Minutes);
-                //new_Friday_start.Time = new DigitalTime(nanny.Daily_Working_hours[5][0].Hours, nanny.Daily_Working_hours[5][0].Minutes);
-                //new_Friday_end.Time = new DigitalTime(nanny.Daily_Working_hours[5][1].Hours, nanny.Daily_Working_hours[5][1].Minutes);
-                //new_Saturday_start.Time = new DigitalTime(nanny.Daily_Working_hours[6][0].Hours, nanny.Daily_Working_hours[6][0].Minutes);
-                //new_Saturday_end.Time = new DigitalTime(nanny.Daily_Working_hours[6][1].Hours, nanny.Daily_Working_hours[6][1].Minutes);
-                //vacationmethod.Text = nanny.Vacation_days.ToString();
-                //new_recommendations.Text = nanny.Recommendations;
-                //new_additional_info.Text = nanny.Additional_Info+"";
+
                 vacationmethod.Text = nanny.Vacation_days.ToString();
 
             }
