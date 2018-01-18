@@ -226,9 +226,9 @@ namespace UI_WPF_TEMPORARY
         }
         private void new_Address_TextChanged(object sender, TextChangedEventArgs e)
         {
-            new_Address_TextChangedHelp(adress_suggestion, new_Address);
+            new_Address_TextChangedHelp(Address_suggestion, new_Address);
         }
-        private void new_Address_TextChangedHelp(ListBox adress_suggestion, TextBox new_Address)
+        private void new_Address_TextChangedHelp(ListBox Address_suggestion, TextBox new_Address)
         {
             List<String> s = new List<String>();
             string str = new_Address.Text;
@@ -252,27 +252,27 @@ namespace UI_WPF_TEMPORARY
             if (s.Contains(str))
             {
                 new_Address.Text = str;
-                adress_suggestion.Visibility = Visibility.Collapsed;
-                adress_suggestion.ItemsSource = null;
+                Address_suggestion.Visibility = Visibility.Collapsed;
+                Address_suggestion.ItemsSource = null;
                 return;
             }
             if (s.Count() > 0)
             {
-                adress_suggestion.ItemsSource = s;
-                adress_suggestion.Visibility = Visibility.Visible;
+                Address_suggestion.ItemsSource = s;
+                Address_suggestion.Visibility = Visibility.Visible;
             }
             else
             {
-                adress_suggestion.Visibility = Visibility.Collapsed;
-                adress_suggestion.ItemsSource = null;
+                Address_suggestion.Visibility = Visibility.Collapsed;
+                Address_suggestion.ItemsSource = null;
             }
 
         }
-        private void surround_adress_suggestion_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void surround_Address_suggestion_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            adress_suggestion_SelectionChangedhelp(adress_suggestion, new_Address, new TextChangedEventHandler(new_Address_TextChanged));
+            Address_suggestion_SelectionChangedhelp(Address_suggestion, new_Address, new TextChangedEventHandler(new_Address_TextChanged));
         }
-        private void adress_suggestion_SelectionChangedhelp(ListBox suggestion, TextBox Address, TextChangedEventHandler a)
+        private void Address_suggestion_SelectionChangedhelp(ListBox suggestion, TextBox Address, TextChangedEventHandler a)
         {
             if (suggestion.ItemsSource != null)
             {

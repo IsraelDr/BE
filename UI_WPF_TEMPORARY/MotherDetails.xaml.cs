@@ -33,12 +33,6 @@ namespace UI_WPF_TEMPORARY
         System.Threading.Thread t=null;
         MotherT details;
         bool isUpdate = false;
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="f"></param>
-        /// <param name="m"></param>
-        /// <param name="IsSaveable"></param>
         public MotherDetails(Window f,Mother m=null, bool IsSaveable = true)
         {
             InitializeComponent();
@@ -62,41 +56,94 @@ namespace UI_WPF_TEMPORARY
             {
                 new_paymentmethode.Items.Add(value.Name);
             }
+            //new_paymentmethode.DisplayMemberPath = "Name";
+            //new_paymentmethode.SelectedValuePath = "ID";
             //new_paymentmethode.SelectedItem = MyEnum.Paymentmethode.hourly.ToString();
             fr = f;
-            
+            //new_Sunday_start.MinTime = new DigitalTime(00, 00);
+            //new_Sunday_end.MinTime = new DigitalTime(00, 00);
+            //new_Monday_start.MinTime = new DigitalTime(00, 00);
+            //new_Monday_end.MinTime = new DigitalTime(00, 00);
+            //new_Tuesday_start.MinTime = new DigitalTime(00, 00);
+            //new_Tuesday_end.MinTime = new DigitalTime(00, 00);
+            //new_Wednesday_start.MinTime = new DigitalTime(00, 00);
+            //new_Wednesday_end.MinTime = new DigitalTime(00, 00);
+            //new_Thursday_start.MinTime = new DigitalTime(00, 00);
+            //new_Thursday_end.MinTime = new DigitalTime(00, 00);
+            //new_Friday_start.MinTime = new DigitalTime(00, 00);
+            //new_Friday_end.MinTime = new DigitalTime(00, 00);
+            //new_Saturday_start.MinTime = new DigitalTime(00, 00);
+            //new_Saturday_end.MinTime = new DigitalTime(00, 00);
+
+            //new_Sunday_start.MaxTime = new DigitalTime(23, 59);
+            //new_Sunday_end.MaxTime = new DigitalTime(23, 59);
+            //new_Monday_start.MaxTime = new DigitalTime(23, 59);
+            //new_Monday_end.MaxTime = new DigitalTime(23, 59);
+            //new_Tuesday_start.MaxTime = new DigitalTime(23, 59);
+            //new_Tuesday_end.MaxTime = new DigitalTime(23, 59);
+            //new_Wednesday_start.MaxTime = new DigitalTime(23, 59);
+            //new_Wednesday_end.MaxTime = new DigitalTime(23, 59);
+            //new_Thursday_start.MaxTime = new DigitalTime(23, 59);
+            //new_Thursday_end.MaxTime = new DigitalTime(23, 59);
+            //new_Friday_start.MaxTime = new DigitalTime(23, 59);
+            //new_Friday_end.MaxTime = new DigitalTime(23, 59);
+            //new_Saturday_start.MaxTime = new DigitalTime(23, 59);
+            //new_Saturday_end.MaxTime = new DigitalTime(23, 59);
+
+            //new_Sunday_start.Time = new DigitalTime(12, 00);
+            //new_Sunday_end.Time = new DigitalTime(12, 00);
+            //new_Monday_start.Time = new DigitalTime(12, 00);
+            //new_Monday_end.Time = new DigitalTime(12, 00);
+            //new_Tuesday_start.Time = new DigitalTime(12, 00);
+            //new_Tuesday_end.Time = new DigitalTime(12, 00);
+            //new_Wednesday_start.Time = new DigitalTime(12, 00);
+            //new_Wednesday_end.Time = new DigitalTime(12, 00);
+            //new_Thursday_start.Time = new DigitalTime(12, 00);
+            //new_Thursday_end.Time = new DigitalTime(12, 00);
+            //new_Friday_start.Time = new DigitalTime(12, 00);
+            //new_Friday_end.Time = new DigitalTime(12, 00);
+            //new_Saturday_start.Time = new DigitalTime(12, 00);
+            //new_Saturday_end.Time = new DigitalTime(12, 00);
             isUpdate = false;
             if(m!=null)
             {
                 isUpdate = true;
-               
+                //new_ID.Text = mother.ID + "";
+                //new_LastName.Text = mother.Lastname;
+                //new_Firstname.Text = mother.Firstname;
+                //new_Phonenumber.Text = mother.Phonenumber + "";
+                //new_Address.Text = mother.Address;
+                //new_surrounding_address.Text = mother.surrounding_Address + "";
+                //new_Sunday.IsChecked = mother.nanny_required[0];
+                //new_Monday.IsChecked = mother.nanny_required[1];
+                //new_Tuesday.IsChecked = mother.nanny_required[2];
+                //new_Wednesday.IsChecked = mother.nanny_required[3];
+                //new_Thursday.IsChecked = mother.nanny_required[4];
+                //new_Friday.IsChecked = mother.nanny_required[5];
+                //new_Saturday.IsChecked = mother.nanny_required[6];
+                //new_Sunday_start.Time = new DigitalTime(mother.daily_Nanny_required[0][0].Hours, mother.daily_Nanny_required[0][0].Minutes);
+                //new_Sunday_end.Time = new DigitalTime(mother.daily_Nanny_required[0][1].Hours, mother.daily_Nanny_required[0][1].Minutes);
+                //new_Monday_start.Time = new DigitalTime(mother.daily_Nanny_required[1][0].Hours, mother.daily_Nanny_required[1][0].Minutes);
+                //new_Monday_end.Time = new DigitalTime(mother.daily_Nanny_required[1][1].Hours, mother.daily_Nanny_required[1][1].Minutes);
+                //new_Tuesday_start.Time = new DigitalTime(mother.daily_Nanny_required[2][0].Hours, mother.daily_Nanny_required[2][0].Minutes);
+                //new_Tuesday_end.Time = new DigitalTime(mother.daily_Nanny_required[2][1].Hours, mother.daily_Nanny_required[2][1].Minutes);
+                //new_Wednesday_start.Time = new DigitalTime(mother.daily_Nanny_required[3][0].Hours, mother.daily_Nanny_required[3][0].Minutes);
+                //new_Wednesday_end.Time = new DigitalTime(mother.daily_Nanny_required[3][1].Hours, mother.daily_Nanny_required[3][1].Minutes);
+                //new_Thursday_start.Time = new DigitalTime(mother.daily_Nanny_required[4][0].Hours, mother.daily_Nanny_required[4][0].Minutes);
+                //new_Thursday_end.Time = new DigitalTime(mother.daily_Nanny_required[4][1].Hours, mother.daily_Nanny_required[4][1].Minutes);
+                //new_Friday_start.Time = new DigitalTime(mother.daily_Nanny_required[5][0].Hours, mother.daily_Nanny_required[5][0].Minutes);
+                //new_Friday_end.Time = new DigitalTime(mother.daily_Nanny_required[5][1].Hours, mother.daily_Nanny_required[5][1].Minutes);
+                //new_Saturday_start.Time = new DigitalTime(mother.daily_Nanny_required[6][0].Hours, mother.daily_Nanny_required[6][0].Minutes);
+                //new_Saturday_end.Time = new DigitalTime(mother.daily_Nanny_required[6][1].Hours, mother.daily_Nanny_required[6][1].Minutes);
+                //new_comment.Text = mother.Comment;
                 new_paymentmethode.Text = mother.Paymentmethode.ToString();
             }
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                
-                /*Mother mother = new Mother(/*new_ID.Textint.Parse( new_ID.Text),new_LastName.Text, new_Firstname.Text,
-                                            new_Phonenumber.Text, new_Address.Text,
-                                            new_surrounding_address.Text,
-                                            new bool[] {new_Sunday.IsChecked==true, new_Monday.IsChecked == true ,
-                                    new_Tuesday.IsChecked==true,new_Wednesday.IsChecked==true,new_Thursday.IsChecked==true,
-                                    new_Friday.IsChecked==true,new_Saturday.IsChecked==true},
-                                            new TimeSpan[][] { new TimeSpan[]{new_Sunday_start.Time.ToTimeSpan(),new_Sunday_end.Time.ToTimeSpan() },
-                                    new TimeSpan[]{new_Monday_start.Time.ToTimeSpan(),new_Monday_end.Time.ToTimeSpan() },
-                                    new TimeSpan[]{new_Tuesday_start.Time.ToTimeSpan(),new_Tuesday_end.Time.ToTimeSpan() },
-                                    new TimeSpan[]{new_Wednesday_start.Time.ToTimeSpan(),new_Wednesday_end.Time.ToTimeSpan() },
-                                    new TimeSpan[]{new_Thursday_start.Time.ToTimeSpan(),new_Thursday_end.Time.ToTimeSpan() },
-                                    new TimeSpan[]{new_Friday_start.Time.ToTimeSpan(),new_Friday_end.Time.ToTimeSpan() },
-                                    new TimeSpan[]{new_Saturday_start.Time.ToTimeSpan(),new_Saturday_end.Time.ToTimeSpan() }},
-                                    new_comment.Text,/*new_paymentmethode.Text/(MyEnum.Paymentmethode)Enum.Parse             ( typeof(MyEnum.Paymentmethode), new_paymentmethode.Text));*/
                 if (isUpdate)
                     bl.UpdateMother(details.info);
                 else
@@ -108,11 +155,6 @@ namespace UI_WPF_TEMPORARY
                 MessageBox.Show(w.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void Checkbox_Checked(object sender, RoutedEventArgs e)
         {
             TimePickerSlider slider;
@@ -132,43 +174,36 @@ namespace UI_WPF_TEMPORARY
             }
 
         }
-        
         private void new_Phonenumber_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            //digits and 10 numbers only on first number "0" 
-               Regex regex = new Regex("[^0-9]+");
-            e.Handled = (regex.IsMatch(e.Text) ||//need to be false
-                        (new_Phonenumber.Text.ToString().Count() > 9) ||//need to be false
-                        (new_Phonenumber.Text.ToString().Count() == 0 && e.Text[0] != '0'));//need to be false
-        }
-       
-        private void new_ID_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {   // digits and 9 numbers only on text box
             Regex regex = new Regex("[^0-9]+");
-            e.Handled = (regex.IsMatch(e.Text) ||//need to be fals
-                        (new_ID.Text.ToString().Count() > 8)//need to be fals
+            e.Handled = (regex.IsMatch(e.Text) ||
+                        (new_Phonenumber.Text.ToString().Count() > 9) ||
+                        (new_Phonenumber.Text.ToString().Count() == 0 && e.Text[0] != '0'));
+        }
+
+        private void new_ID_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = (regex.IsMatch(e.Text) ||
+                        (new_ID.Text.ToString().Count() > 8)
                         /* ||(new_ID.Text.ToString().Count() == 0 && e.Text[0] != '0')*/);
         }
-        
         private void new_surrounding_address_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //open aoto complete text box
-            new_Address_TextChangedHelp(surround_adress_suggestion, new_surrounding_address);
+            new_Address_TextChangedHelp(surround_Address_suggestion, new_surrounding_address);
         }
-        
         private void new_Address_TextChanged(object sender, TextChangedEventArgs e)
-        {   //help function that send to aoto complete text box
-            new_Address_TextChangedHelp(adress_suggestion,new_Address);
+        {
+            new_Address_TextChangedHelp(Address_suggestion,new_Address);
         }
-        
-        private void new_Address_TextChangedHelp(ListBox adress_suggestion, TextBox new_Address)
+        private void new_Address_TextChangedHelp(ListBox Address_suggestion, TextBox new_Address)
         { 
             List<String> s = new List<String>();
             string str = new_Address.Text;
             
-            if (t!=null&&t.IsAlive)//Is Alive checked 
+            if (t!=null&&t.IsAlive)
                 t.Abort();
-            //aoto complete text box
             t = new System.Threading.Thread(() =>
             {
                 try
@@ -186,46 +221,31 @@ namespace UI_WPF_TEMPORARY
             if(s.Contains(str))
             {
                 new_Address.Text = str;
-                adress_suggestion.Visibility = Visibility.Collapsed;
-                adress_suggestion.ItemsSource = null;
+                Address_suggestion.Visibility = Visibility.Collapsed;
+                Address_suggestion.ItemsSource = null;
                 return;
             }
             if(s.Count()>0)
             {
-                adress_suggestion.ItemsSource = s;
-                adress_suggestion.Visibility = Visibility.Visible;
+                Address_suggestion.ItemsSource = s;
+                Address_suggestion.Visibility = Visibility.Visible;
             }
             else
             {
-                adress_suggestion.Visibility = Visibility.Collapsed;
-                adress_suggestion.ItemsSource = null;
+                Address_suggestion.Visibility = Visibility.Collapsed;
+                Address_suggestion.ItemsSource = null;
             }
 
         }
-        /// <summary>
-        /// list of auto complite
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void surround_adress_suggestion_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void surround_Address_suggestion_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            adress_suggestion_SelectionChangedhelp(surround_adress_suggestion, new_surrounding_address, new TextChangedEventHandler(new_surrounding_address_TextChanged));
+            Address_suggestion_SelectionChangedhelp(surround_Address_suggestion, new_surrounding_address, new TextChangedEventHandler(new_surrounding_address_TextChanged));
         }
-        /// <summary>
-        /// list of auto complite
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void adress_suggestion_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Address_suggestion_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            adress_suggestion_SelectionChangedhelp(adress_suggestion, new_Address, new TextChangedEventHandler(new_Address_TextChanged));
+            Address_suggestion_SelectionChangedhelp(Address_suggestion, new_Address, new TextChangedEventHandler(new_Address_TextChanged));
         }
-        /// <summary>
-        /// list of auto complite help
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void adress_suggestion_SelectionChangedhelp(ListBox suggestion, TextBox Address, TextChangedEventHandler a)
+        private void Address_suggestion_SelectionChangedhelp(ListBox suggestion, TextBox Address, TextChangedEventHandler a)
         { 
             if (suggestion.ItemsSource!=null)
             {
@@ -240,34 +260,21 @@ namespace UI_WPF_TEMPORARY
 
             }
         }
-        /// <summary>
-        /// if Mouse Enter font size get bigger
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void Grid_MouseEnter(object sender, MouseEventArgs e)
         {
             Save.Height += 5;
             Save.Width += 5;
         }
-        /// <summary>
-        /// if Mouse Leave font size get smaller
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void Grid_MouseLeave(object sender, MouseEventArgs e)
         {
             Save.Height -= 5;
             Save.Width -= 5;
         }
 
-        
     }
-    /// <summary>
-    /// class to baind maximal and minimal time
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
+
     public class MotherT
     {
         public Mother info { get; set; } 
