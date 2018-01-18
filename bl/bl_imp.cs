@@ -54,35 +54,30 @@ namespace BL
                 throw e;
             };
 
-        }/**********new Google Maps ******/
+        }
+        /// <summary>
+        /// return number of maches betwin Mother and Nunny from 0-18 Checks
+        /// </summary>
+        /// <param name="m Mother"></param>
+        /// <param name="n Nanny"></param>
+        /// <returns></returns>
         public int PrioritiesMach(Mother m, Nanny n)
         {
             int mcheCount = 0, daysCheck = 0, startHoursCheck = 0, endHoursCheck = 0;
             for (int i = 0; i < 6; i++)
             {
                 if (n.Working_days[i] == true && m.nanny_required[i] == true)
-                {
                     daysCheck++;//6 checks
-                    if (n.Daily_Working_hours[i][0].TotalHours <= m.daily_Nanny_required[i][0].TotalHours)
-                        startHoursCheck++;//6 checks
-                    if (n.Daily_Working_hours[i][1].TotalHours >= m.daily_Nanny_required[i][1].TotalHours)
-                        endHoursCheck++;//6 checks
-                }
-                else
-                {
-                    if ((n.Working_days[i] == false && m.nanny_required[i] == false) || (n.Working_days[i] == true))
-                    {
-                        daysCheck++;
-                        startHoursCheck++;
-                        endHoursCheck++;
-                    }
-                }
+                if (n.Daily_Working_hours[i][0].TotalHours <= m.daily_Nanny_required[i][0].TotalHours)
+                    startHoursCheck++;//6 checks
+                if (n.Daily_Working_hours[i][1].TotalHours >= m.daily_Nanny_required[i][1].TotalHours)
+                    endHoursCheck++;//6 checks
             }
             mcheCount = daysCheck + startHoursCheck + endHoursCheck;//18 is match
             return mcheCount;
         }
         public bool isPrioritiesMach(Mother m, Nanny n)
-        { if (PrioritiesMach(m, n) == 18)//there if 18 cheacs "days Check" + "start Hours Check" , "end Hours Check"
+        { if (PrioritiesMach(m, n) == 18)//there if 18 cheacks "days Check" + "start Hours Check" , "end Hours Check"
                 return true;
             else
                 return false;
@@ -106,7 +101,6 @@ namespace BL
                 {
                     matcheList.Add(temp[i]);
                 }
-                matcheList = matcheList.GetRange(0, 5);
             }
             return matcheList;
         }
@@ -228,7 +222,7 @@ namespace BL
                 return InternetGetConnectedState(out description, 0);
             }
         }
-
+        //return list of best mache of nanny 
         public List<PriorityNanny> PriorityNannyList(Mother m)
         {
             List<PriorityNanny> p = new List<PriorityNanny>();
@@ -436,15 +430,14 @@ namespace BL
         {
 
                DateTime temporary = DateTime.Now.AddMonths(-3);
-                Nanny n = dal.GetNanny(contract.Nanny_ID);
                if (dal.GetChild(contract.Child_ID).Birthdate.CompareTo(temporary) > 0&&contract.contract_signed)
                throw new Exception("Cannot sign contract for child under 3 month!!");//cant sign contract if younger then 3 month
-            if (!(dal.GetChild(contract.Child_ID).Birthdate.AddMonths(n.Min_age).CompareTo(DateTime.Now) < 0 && dal.GetChild(contract.Child_ID).Birthdate.AddMonths(n.Max_age).CompareTo(DateTime.Now) > 0))
-                throw new Exception("Child is not in the Nanny's Age Range!!");//cant sign contract if younger then 3 month
+              
             if (dal.GetMother(contract.Child_ID).Paymentmethode == MyEnum.Paymentmethode.hourly)
             {
                 contract.Paymentmethode = MyEnum.Paymentmethode.hourly;
                 double week_payment = 0;
+                Nanny n = dal.GetNanny(contract.Nanny_ID);
                 for (int i = 0; i <= 6; i++)//6 days hours X Hourly_payment= week 
                 {
                    
@@ -484,8 +477,8 @@ namespace BL
         public void UpdateContract(Contract contract)
         {
             dal.UpdateContract(contract);
-            //if(dal.GetChild(contract.Child_ID).Birthdate.CompareTo(temporary) > 0)
-            //   throw new Exception("Cannot sign contract for child under 3 month!!");//cant sign contract if younger then 3 month
+            //if (dal.GetChild(contract.Child_ID).Birthdate.CompareTo(temporary) > 0)
+            //    throw new Exception("Cannot sign contract for child under 3 month!!");//cant sign contract if younger then 3 month
         }
         public void RemoveContract(int id)
         {
@@ -540,9 +533,8 @@ namespace BL
         public void AddNanny(Nanny nanny)
         {
             //Text = "{Binding phoneNumber, Converter={StaticResource NoValueConverter}}
+           
 
-            if (nanny.first_name == "" || nanny.first_name == null || nanny.last_name == "" || nanny.last_name == null)
-                throw new Exception("Please enter First and Lastname!");
             DateTime temporary = nanny.Birthdate;
             temporary= temporary.AddYears(18);
             if(temporary.CompareTo(DateTime.Now)>0)
@@ -567,8 +559,6 @@ namespace BL
 
         public void UpdateNanny(Nanny nanny)
         {
-            if (nanny.first_name == "" || nanny.first_name == null || nanny.last_name == "" || nanny.last_name == null)
-                throw new Exception("Please enter First and Lastname!");
             DateTime temporary = nanny.Birthdate;
             temporary = temporary.AddYears(18);
             if (temporary.CompareTo(DateTime.Now) > 0)
