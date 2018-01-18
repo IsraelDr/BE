@@ -23,7 +23,9 @@ using GoogleMapsApi.Entities.PlaceAutocomplete.Request;
 using System.Text;
 using System.Threading.Tasks;
 //using GoogleMapsAPI;
-
+/// <summary>
+/// 
+/// </summary>
 namespace BL
 {
     public class BL_imp : IBL
