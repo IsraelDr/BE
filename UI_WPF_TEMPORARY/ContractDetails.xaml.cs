@@ -113,7 +113,7 @@ namespace UI_WPF_TEMPORARY
         }
         void nannysoptiongrid_PriorityNannyGeneratingColumns(object sender, System.Windows.Controls.DataGridAutoGeneratingColumnEventArgs e)
         {
-            if (e.PropertyName == "Working_days"|| e.PropertyName == "Daily_Working_hours" || e.PropertyName == "Vacation_days")
+            if (e.PropertyName == "Working_days"|| e.PropertyName == "Daily_Working_hours" || e.PropertyName == "Vacation_days"|| e.PropertyName == "Birthdate")
                 e.Cancel = true;
 
         }

@@ -34,6 +34,7 @@ namespace UI_WPF_TEMPORARY
                 switch (choosen)
                 {
                     case 0:
+                        
                         listofAll.AutoGeneratingColumn += listofAll_MotherGeneratingColumns;
                         listofAll.ItemsSource = bl.getMotherList();
                         DetailsChoice.Visibility = Visibility.Collapsed;
@@ -253,6 +254,8 @@ namespace UI_WPF_TEMPORARY
         {
             try
             {
+                if(ActionsButtons!=null)
+                    ActionsButtons.Visibility = Visibility.Visible;
                 listofAll.Visibility = Visibility.Visible;
                 if (Choosen == 3)
                 {
@@ -279,7 +282,8 @@ namespace UI_WPF_TEMPORARY
                 listofAll.Visibility = Visibility.Collapsed;
                 contractcond.Visibility = Visibility.Collapsed;
                 GroupingPanel.Visibility = Visibility.Visible;
-                //ActionsButtons.Visibility = Visibility.Hidden;
+                if (ActionsButtons != null)
+                    ActionsButtons.Visibility = Visibility.Collapsed;
                 switch (Choosen)
                 {
                     case 1:
