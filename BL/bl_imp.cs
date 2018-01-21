@@ -391,8 +391,10 @@ namespace BL
         }
         public void AddChild(Child child)
         {
+            if(child.Birthdate>DateTime.Now)
+                throw new Exception("child Birthdate cen't be bigger then the time Now");
             if (GetMotherById(child.Mother_ID) == null)
-                throw new Exception("A mother with this ID doesn't exist");
+                throw new Exception("ID mother doesn't found");
             dal.AddChild(child);//need to add logic
         }
         /**********Remove******/
@@ -404,8 +406,10 @@ namespace BL
         /**********Update******/
         public void UpdateChild(Child chil)
         {
+            if (chil.Birthdate > DateTime.Now)
+                throw new Exception("child Birthdate cen't be bigger then the time Now");
             if (GetMotherById(chil.Mother_ID) == null)
-                throw new Exception("A mother with this ID doesn't exist");
+                throw new Exception("ID mother doesn't found");
             if (GetChildById(chil.ID) == null)
                 throw new Exception("A child with this ID doesn't exist");
             dal.UpdateChild(chil);
@@ -482,16 +486,16 @@ namespace BL
         }
         public void UpdateContract(Contract contract)
         {
-            //DateTime temporary = DateTime.Now.AddMonths(-3);
-            //Nanny n = dal.GetNanny(contract.Nanny_ID);
-            //if (dal.GetChild(contract.Child_ID).Birthdate.CompareTo(temporary) > 0 && contract.contract_signed)
-            //    throw new Exception("Cannot sign contract for child under 3 month!!");//cant sign contract if younger then 3 month
-            //if (dal.GetChild(contract.Child_ID).Birthdate.AddMonths(n.Min_age).CompareTo(contract.startdate) > 0 || dal.GetChild(contract.Child_ID).Birthdate.AddMonths(n.Max_age).CompareTo(contract.enddate) < 0)
-            //    throw new Exception("Child is not in the Age Range for this Contract!!");
-            //if (contract.enddate < contract.startdate)
-            //    throw new Exception(" contract End date must be after contract Begin date ");
-            //if (dal.GetChild(contract.Child_ID).Birthdate > DateTime.Now && dal.GetChild(contract.Child_ID).Birthdate > contract.startdate)
-            //    throw new Exception("cent sighin child that didn't bourn yet (Birthdate bigger then today or begin date) ");
+            DateTime temporary = DateTime.Now.AddMonths(-3);
+            Nanny n = dal.GetNanny(contract.Nanny_ID);
+            if (dal.GetChild(contract.Child_ID).Birthdate.CompareTo(temporary) > 0 && contract.contract_signed)
+                throw new Exception("Cannot sign contract for child under 3 month!!");//cant sign contract if younger then 3 month
+            if (dal.GetChild(contract.Child_ID).Birthdate.AddMonths(n.Min_age).CompareTo(contract.startdate) > 0 || dal.GetChild(contract.Child_ID).Birthdate.AddMonths(n.Max_age).CompareTo(contract.enddate) < 0)
+                throw new Exception("Child is not in the Age Range for this Contract!!");
+            if (contract.enddate < contract.startdate)
+                throw new Exception(" contract End date must be after contract Begin date ");
+            if (dal.GetChild(contract.Child_ID).Birthdate > DateTime.Now && dal.GetChild(contract.Child_ID).Birthdate > contract.startdate)
+                throw new Exception("cent sighin child that didn't bourn yet (Birthdate bigger then today or begin date) ");
             dal.UpdateContract(contract);
 
             //if (dal.GetChild(contract.Child_ID).Birthdate.CompareTo(temporary) > 0)
