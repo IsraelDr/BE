@@ -91,13 +91,19 @@ namespace UI_WPF_TEMPORARY
                 int motherid;
                 nannysoptiongrid.ItemsSource = null;
                 nannysoptiongrid.AutoGeneratingColumn += nannysoptiongrid_PriorityNannyGeneratingColumns;
-                if (isUpdate)
+                if (isUpdate && listofMothers.SelectedValue == null)
+                {
                     motherid = bl.GetChildById(contr.Child_ID).Mother_ID;
+                }
                 else
+                {
                     motherid = int.Parse((listofMothers.SelectedValue).ToString());
+                    listofChildren.SelectedItem = null;
+                    nannysoptiongrid.SelectedItem = null;
+                }
+                listofChildren.Items.Clear();
                 nannysoptiongrid.ItemsSource = bl.PriorityNannyList(bl.GetMotherById(motherid));
                 nannysoptiongrid.Items.Refresh();
-                listofChildren.Items.Clear();
                 var values = from Child child in bl.getChildList()
                              where child.Mother_ID == motherid
                              select new { ID = child.ID, Name = child.name };
@@ -107,8 +113,24 @@ namespace UI_WPF_TEMPORARY
                 }
                 listofChildren.DisplayMemberPath = "Name";
                 listofChildren.SelectedValuePath = "ID";
+                if (isUpdate && listofMothers.SelectedValue == null)
+                {
+                    int rowIndex = 0;
+                    foreach (PriorityNanny item in nannysoptiongrid.ItemsSource)
+                    {
+                        if (item.ID == contr.Nanny_ID)
+                        {
+                            object item2 = nannysoptiongrid.Items[rowIndex]; // = Product X
+                            nannysoptiongrid.SelectedItem = item2;
+                            DataGridRow row = nannysoptiongrid.ItemContainerGenerator.ContainerFromIndex(rowIndex) as DataGridRow;
+                        }
+                        rowIndex++;
+                            //nannysoptiongrid.SelectedItem = item;
+                            
+                    }
+                }
             }
-            catch(Exception exc)
+            catch (Exception exc)
             {
                 MessageBox.Show(exc.Message);
             }
@@ -188,6 +210,10 @@ namespace UI_WPF_TEMPORARY
             this.contr.discount = bl.checkForDiscunt((Nanny)temp, bl.GetMotherById(this.contr.Mother_ID));
             this.contr.salary = temp.Salary;
             this.contr.distance = temp.Distance;
+        }
+        private void OnWorkBeginSelectedChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.workenddate.SelectedDate = workbegindate.SelectedDate;
         }
     }
 }

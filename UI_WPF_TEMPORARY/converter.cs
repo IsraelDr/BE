@@ -79,6 +79,9 @@ namespace UI_WPF_TEMPORARY
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            //return value;
+            if (value == null)
+                return value;
             return ((PriorityNanny)value).ID;
         }
 
