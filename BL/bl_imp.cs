@@ -441,8 +441,8 @@ namespace BL
                 throw new Exception("Child is not in the Age Range for this Contract!!");
             if (contract.enddate < contract.startdate)
                 throw new Exception(" contract End date must be after contract Begin date ");
-            if(dal.GetChild(contract.Child_ID).Birthdate> DateTime.Now&& dal.GetChild(contract.Child_ID).Birthdate > contract.startdate)
-                throw new Exception("cent sighin child that didn't bourn yet (Birthdate bigger then today or begin date) ");
+            //if(dal.GetChild(contract.Child_ID).Birthdate> DateTime.Now&& dal.GetChild(contract.Child_ID).Birthdate > contract.startdate)
+            //    throw new Exception("cent sighin child that didn't bourn yet (Birthdate bigger then today or begin date) ");
             if (dal.GetMother(contract.Child_ID).Paymentmethode == MyEnum.Paymentmethode.hourly)
             {
                 contract.Paymentmethode = MyEnum.Paymentmethode.hourly;
@@ -494,8 +494,8 @@ namespace BL
                 throw new Exception("Child is not in the Age Range for this Contract!!");
             if (contract.enddate < contract.startdate)
                 throw new Exception(" contract End date must be after contract Begin date ");
-            if (dal.GetChild(contract.Child_ID).Birthdate > DateTime.Now && dal.GetChild(contract.Child_ID).Birthdate > contract.startdate)
-                throw new Exception("cent sighin child that didn't bourn yet (Birthdate bigger then today or begin date) ");
+            //if (dal.GetChild(contract.Child_ID).Birthdate > DateTime.Now && dal.GetChild(contract.Child_ID).Birthdate > contract.startdate)
+            //    throw new Exception("cent sighin child that didn't bourn yet (Birthdate bigger then today or begin date) ");
             dal.UpdateContract(contract);
 
             //if (dal.GetChild(contract.Child_ID).Birthdate.CompareTo(temporary) > 0)
@@ -560,10 +560,14 @@ namespace BL
             temporary= temporary.AddYears(18);
             if(temporary.CompareTo(DateTime.Now)>0)
                 throw new Exception("The nanny must be over 18 years old");
-            if (nanny.Min_age > nanny.Min_age)
+            if (nanny.Min_age < 3)
+                throw new Exception("nanny Minimum age must be bigger then 3 month");
+            if (nanny.Min_age > nanny.Max_age)
                 throw new Exception(" kids Max-Age must be bigger then Minimum-age ");
+
             if (nanny.Max_number_kids < 1)
                 throw new Exception("Maxmimum number of kids must be bigger then 0");
+          
             dal.AddNanny(nanny);//need to add logic
         }
         public Nanny GetNannyById(int id)
@@ -588,7 +592,9 @@ namespace BL
             temporary = temporary.AddYears(18);
             if (temporary.CompareTo(DateTime.Now) > 0)
                 throw new Exception("The nanny must be over 18 years old");
-            if (nanny.Min_age > nanny.Min_age)
+            if (nanny.Min_age < 3)
+                throw new Exception("nanny Minimum age must be bigger then 3 month");
+            if (nanny.Min_age > nanny.Max_age)
                 throw new Exception(" kids Max-Age must be bigger then Minimum-age ");
             if (nanny.Max_number_kids < 1)
                 throw new Exception("Maxmimum number of kids must be bigger then 0");
