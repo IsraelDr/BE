@@ -10,15 +10,14 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="41"/>
-            <RowDefinition Height="165.667"/>
+            <RowDefinition Height="200.667"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <TextBlock  FontSize="20"  HorizontalAlignment="Center" TextWrapping="Wrap" Text="Contract Details" VerticalAlignment="Top" Height="27" Width="180" Grid.Row="0" Margin="335,0,334.733,0" Grid.RowSpan="2"/>
 
-        <DataGrid Name="nannysoptiongrid" Grid.Row="2" SelectedItem="{Binding Path=Nanny_ID,Converter={StaticResource NannyIDconverter},Mode=TwoWay}" Margin="0,5,-0.267,1.667" MouseDoubleClick="nannysoptiongrid_MouseDoubleClick" SelectionChanged="nannysoptiongrid_SelectionChanged" IsReadOnly="True" Grid.RowSpan="2"/>
-        <Grid HorizontalAlignment="Center" Height="100" Width="50" Name="Savebutton" Grid.Row="5" VerticalAlignment="Center"  MouseDown="Button_Click" MouseEnter="Grid_MouseEnter" MouseLeave="Grid_MouseLeave" Margin="400,68.333,399.733,22.334">
+        <DataGrid Name="nannysoptiongrid" Grid.Row="2" SelectedItem="{Binding Path=Nanny_ID,Converter={StaticResource NannyIDconverter},Mode=TwoWay}" Margin="0,5,-0.267,1.667" MouseDoubleClick="nannysoptiongrid_MouseDoubleClick" SelectionChanged="nannysoptiongrid_SelectionChanged" IsReadOnly="True"/>
+        <Grid HorizontalAlignment="Center" Height="100" Width="50" Name="Savebutton" Grid.Row="4" VerticalAlignment="Center"  MouseDown="Button_Click" MouseEnter="Grid_MouseEnter" MouseLeave="Grid_MouseLeave" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="49*"/>
                 <RowDefinition Height="19*"/>
@@ -26,10 +25,10 @@
             <Grid.Background>
                 <ImageBrush Stretch="Uniform"/>
             </Grid.Background>
-            <Image HorizontalAlignment="Stretch" Grid.Row="0" VerticalAlignment="Stretch" Source="Images/איש1.jpg" Margin="0,10,-0.2,1.4"/>
+            <Image HorizontalAlignment="Stretch" Grid.Row="0" VerticalAlignment="Stretch" Source="Images/איש1.jpg" />
             <Label Content="SAVE" HorizontalAlignment="Center" VerticalAlignment="Top"  Grid.Row="1"/>
         </Grid>
-        <Grid HorizontalAlignment="Center" Height="191" Grid.Row="4" VerticalAlignment="Top" Width="850" Margin="0,0.333,-0.267,-0.666" Grid.RowSpan="2">
+        <Grid HorizontalAlignment="Center" Height="191" Grid.Row="3" VerticalAlignment="Top" Width="850">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -43,7 +42,7 @@
                     <ColumnDefinition Width="206*"/>
                     <ColumnDefinition Width="219*"/>
                 </Grid.ColumnDefinitions>
-                <DatePicker DisplayDateStart="" Name="workbegindate" SelectedDate="{Binding Path=startdate,Mode=TwoWay}" Grid.Column="1" VerticalAlignment="Center"/>
+                <DatePicker  Name="workbegindate" SelectedDate="{Binding Path=startdate,Mode=TwoWay}" Grid.Column="1" VerticalAlignment="Center"/>
                 <Label Content="Work Begin" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
             </Grid>
             <Grid HorizontalAlignment="Left" Height="91" VerticalAlignment="Top" Width="425" Grid.Column="1" Margin="0.2,0,-0.4,0">
@@ -82,7 +81,7 @@
                     <ColumnDefinition Width="271*"/>
                 </Grid.ColumnDefinitions>
                 <Label Content="Mother" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label Content="Nannys List:" RenderTransformOrigin="0.468,-1.141" Height="25" Grid.ColumnSpan="2" Margin="59,66,199,0"/>
+                <Label Content="Nannys List:" Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="20" />
                 <ComboBox x:Name="listofMothers"  SelectedValue="{Binding Path=Mother_ID,Mode=TwoWay}" Width="188" Height="30" Grid.Column="1" SelectionChanged="listofMothers_SelectionChanged"/>
             </Grid>
             <Grid HorizontalAlignment="Center" Height="94" VerticalAlignment="Top" Width="420" Grid.Row="0" Margin="0.6,0,-1.4,0" Grid.Column="1">

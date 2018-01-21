@@ -52,6 +52,8 @@ namespace UI_WPF_TEMPORARY
             paymentmethod.SelectedValuePath = "ID";
             nannysoptiongrid.SelectedValuePath = "Nanny_ID";
             fr = f;
+            workbegindate.DisplayDateStart = DateTime.Today;
+            workenddate.DisplayDateStart = DateTime.Today;
             //this.contr = contract;
             if (contract == null)
                 contr = new Contract();
@@ -188,10 +190,4 @@ namespace UI_WPF_TEMPORARY
             this.contr.distance = temp.Distance;
         }
     }
-    /*public class ContractT
-    {
-        public Contract Info { get; set; }
-        public ContractDetails Daily_Working_hours { get; set; }
-        public ContractT(Contract d, ContractDetails a) { Info = d; Daily_Working_hours = a; }
-    }*/
 }

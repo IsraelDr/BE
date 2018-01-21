@@ -205,6 +205,8 @@ namespace UI_WPF_TEMPORARY
                 e.Column.Header = "Signed";
             if (e.PropertyName == "salary")
                 e.Column.Header = "Salary[₪]";
+            if (e.PropertyName == "distance")
+                e.Column.Header = "Distance[km]";
 
 
 

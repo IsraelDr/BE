@@ -39,6 +39,7 @@ namespace UI_WPF_TEMPORARY
             child = a;
             fr = f;
             isUpdate = false;
+            new_Birthdate.DisplayDateEnd = DateTime.Today;
             var values = from Mother moth in bl.getMotherList()
                          select new { ID = moth.ID, Name = moth.Firstname + " " + moth.Lastname };
             foreach (var value in values)
