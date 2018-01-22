@@ -36,7 +36,7 @@ namespace UI_WPF_TEMPORARY
                     Updategrid.Children.Add(new ChildDetails(this,(Child)a));
                     break;
                 case 3:
-                    this.Height = 700;
+                    this.Height = 600;
                     this.Width = 1200;
                     Updategrid.Children.Add(new ContractDetails(this, (Contract)a));
                     break;

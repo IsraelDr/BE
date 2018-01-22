@@ -68,19 +68,27 @@ namespace UI_WPF_TEMPORARY
             {
                 contr = contract;
                 isUpdate = true;
-                //listofMothers.SelectedValue = bl.GetChildById(contract.Child_ID).Mother_ID;
-                //listofChildren.SelectedValue = contract.Child_ID;
-                //paymentmethod.SelectedValue = contract.Paymentmethode;
-                //introduce_meeting.IsChecked = contract.introduce_meeting ? true : false;
-                //is_signed.IsChecked = contract.contract_signed? true : false;
-                //workbegindate.SelectedDate = contract.startdate;
-                //workenddate.SelectedDate = contract.enddate;
-                //foreach (var item in nannysoptiongrid.ItemsSource)
-                //{
-                //    if (((PriorityNanny)item).ID == contract.Nanny_ID)
-                //        nannysoptiongrid.SelectedItem = (PriorityNanny)item;
-
-                //}
+                List<PriorityNanny> lst=new List<PriorityNanny>();
+                Nanny n=(Nanny)bl.GetNannyById(contr.Nanny_ID);
+                PriorityNanny temp = new PriorityNanny(n);
+                temp.Distance = contr.distance;
+                temp.Salary = contr.salary;
+                lst.Add(temp);
+                nannysoptiongrid.ItemsSource = lst;
+                //listofChildren.Items.Add(bl.GetChildById(contr.Child_ID).name);
+                //listofChildren.SelectedItem = contr.Child_ID;
+               
+                var values2 = from Child child in bl.getChildList()
+                             where child.Mother_ID == contr.Mother_ID
+                             select new { ID = child.ID, Name = child.name };
+                foreach (var value in values2)
+                {
+                    listofChildren.Items.Add(value);
+                }
+                listofChildren.DisplayMemberPath = "Name";
+                listofChildren.SelectedValuePath = "ID";
+                listofChildren.SelectedValue = contr.Child_ID;
+                listofChildren.IsEnabled = false;
             }
         }
 
@@ -88,6 +96,11 @@ namespace UI_WPF_TEMPORARY
         {
             try
             {
+                if (isUpdate)
+                {
+                    listofMothers.IsEnabled = false;
+                    return;
+                }
                 int motherid;
                 nannysoptiongrid.ItemsSource = null;
                 nannysoptiongrid.AutoGeneratingColumn += nannysoptiongrid_PriorityNannyGeneratingColumns;
@@ -102,7 +115,9 @@ namespace UI_WPF_TEMPORARY
                     nannysoptiongrid.SelectedItem = null;
                 }
                 listofChildren.Items.Clear();
-                nannysoptiongrid.ItemsSource = bl.PriorityNannyList(bl.GetMotherById(motherid));
+                
+                List<PriorityNanny> lst= bl.PriorityNannyList(bl.GetMotherById(motherid));
+                nannysoptiongrid.ItemsSource = lst;
                 nannysoptiongrid.Items.Refresh();
                 var values = from Child child in bl.getChildList()
                              where child.Mother_ID == motherid
@@ -113,22 +128,6 @@ namespace UI_WPF_TEMPORARY
                 }
                 listofChildren.DisplayMemberPath = "Name";
                 listofChildren.SelectedValuePath = "ID";
-                if (isUpdate && listofMothers.SelectedValue == null)
-                {
-                    int rowIndex = 0;
-                    foreach (PriorityNanny item in nannysoptiongrid.ItemsSource)
-                    {
-                        if (item.ID == contr.Nanny_ID)
-                        {
-                            object item2 = nannysoptiongrid.Items[rowIndex]; // = Product X
-                            nannysoptiongrid.SelectedItem = item2;
-                            DataGridRow row = nannysoptiongrid.ItemContainerGenerator.ContainerFromIndex(rowIndex) as DataGridRow;
-                        }
-                        rowIndex++;
-                            //nannysoptiongrid.SelectedItem = item;
-                            
-                    }
-                }
             }
             catch (Exception exc)
             {
@@ -201,6 +200,11 @@ namespace UI_WPF_TEMPORARY
 
         private void nannysoptiongrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (isUpdate)
+            {
+                nannysoptiongrid.IsEnabled = false;
+                return;
+            }
             List<PriorityNanny> a = (List<PriorityNanny>)nannysoptiongrid.ItemsSource;
             PriorityNanny temp = (from A in a
                                  where A.ID == (int)(nannysoptiongrid.SelectedItem)
@@ -215,5 +219,6 @@ namespace UI_WPF_TEMPORARY
         {
             this.workenddate.SelectedDate = workbegindate.SelectedDate;
         }
+
     }
 }

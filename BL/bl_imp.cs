@@ -391,7 +391,9 @@ namespace BL
         }
         public void AddChild(Child child)
         {
-            if(child.Birthdate>DateTime.Now)
+            if (child.name == "" || child.name == null)
+                throw new Exception("Please enter a name!");
+            if (child.Birthdate>DateTime.Now)
                 throw new Exception("child Birthdate cen't be bigger then the time Now");
             if (GetMotherById(child.Mother_ID) == null)
                 throw new Exception("ID mother doesn't found");
@@ -406,6 +408,8 @@ namespace BL
         /**********Update******/
         public void UpdateChild(Child chil)
         {
+            if (chil.name == "" || chil.name == null)
+                throw new Exception("Please enter a name!");
             if (chil.Birthdate > DateTime.Now)
                 throw new Exception("child Birthdate cen't be bigger then the time Now");
             if (GetMotherById(chil.Mother_ID) == null)
@@ -521,6 +525,11 @@ namespace BL
         /// <param name="mother"></param>
         public void AddMother(Mother mother)
         {
+            for (int i = 0; i < 6; i++)
+            {
+                if ((mother.nanny_required[i] == true) && ((mother.daily_Nanny_required[i][0]).CompareTo(mother.daily_Nanny_required[i][1]) > 0))
+                    throw new Exception("One of the beginning time is after the end time!!");
+            }
             if (mother.Firstname == ""||mother.Firstname==null || mother.Lastname == ""||mother.Lastname==null)
                 throw new Exception("Please enter First and Lastname!");
             dal.AddMother(mother);//need to add logic
@@ -535,6 +544,11 @@ namespace BL
         }
         public void UpdateMother(Mother mother)
         {
+            for (int i = 0; i < 6; i++)
+            {
+                if ((mother.nanny_required[i]==true)&&((mother.daily_Nanny_required[i][0]).CompareTo(mother.daily_Nanny_required[i][1]) > 0))
+                    throw new Exception("One of the beginning time is after the end time!!");
+            }
             if (mother.Firstname == "" || mother.Firstname == null || mother.Lastname == "" || mother.Lastname == null)
                 throw new Exception("Please enter First and Lastname!");
             dal.UpdateMother(mother);
@@ -554,8 +568,12 @@ namespace BL
         public void AddNanny(Nanny nanny)
         {
             //Text = "{Binding phoneNumber, Converter={StaticResource NoValueConverter}}
-           
 
+            for (int i = 0; i < 6; i++)
+            {
+                if ((nanny.Working_days[i] == true) && ((nanny.Daily_Working_hours[i][0]).CompareTo(nanny.Daily_Working_hours[i][1]) > 0))
+                    throw new Exception("One of the beginning time is after the end time!!");
+            }
             DateTime temporary = nanny.Birthdate;
             temporary= temporary.AddYears(18);
             if(temporary.CompareTo(DateTime.Now)>0)
@@ -588,6 +606,11 @@ namespace BL
 
         public void UpdateNanny(Nanny nanny)
         {
+            for (int i = 0; i < 6; i++)
+            {
+                if ((nanny.Working_days[i] == true) && ((nanny.Daily_Working_hours[i][0]).CompareTo(nanny.Daily_Working_hours[i][1]) > 0))
+                    throw new Exception("One of the beginning time is after the end time!!");
+            }
             DateTime temporary = nanny.Birthdate;
             temporary = temporary.AddYears(18);
             if (temporary.CompareTo(DateTime.Now) > 0)

@@ -64,7 +64,6 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
-                <RowDefinition/>
                 <RowDefinition Height="100"/>
 
             </Grid.RowDefinitions>
@@ -77,7 +76,6 @@
             <CheckBox Content="Wednesday" x:Name="new_Wednesday" Checked="Checkbox_Checked" Unchecked="Checkbox_Checked" IsChecked="{Binding Path=info.nanny_required[3]}" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"/>
             <CheckBox Content="Thursday" x:Name="new_Thursday" Checked="Checkbox_Checked" Unchecked="Checkbox_Checked" IsChecked="{Binding Path=info.nanny_required[4]}" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center"/>
             <CheckBox Content="Friday" x:Name="new_Friday" Checked="Checkbox_Checked" Unchecked="Checkbox_Checked" IsChecked="{Binding Path=info.nanny_required[5]}" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center"/>
-            <CheckBox Content="Saturday" x:Name="new_Saturday" Checked="Checkbox_Checked" Unchecked="Checkbox_Checked" IsChecked="{Binding Path=info.nanny_required[6]}" Grid.Row="7" Grid.Column="0" VerticalAlignment="Center"/>
             <TimePicker:TimePickerSlider x:Name="new_Sunday_start" Visibility="Collapsed" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Time="{Binding Path=info.daily_Nanny_required[0][0],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="1"/>
             <TimePicker:TimePickerSlider x:Name="new_Sunday_end" Visibility="Collapsed" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Time="{Binding Path=info.daily_Nanny_required[0][1],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="2" Grid.Row="1"/>
             <TimePicker:TimePickerSlider x:Name="new_Monday_start" Visibility="Collapsed" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[1][0],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="1" Grid.Row="2"/>
@@ -90,8 +88,6 @@
             <TimePicker:TimePickerSlider x:Name="new_Thursday_end" Visibility="Collapsed" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[4][1],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="2"   Grid.Row="5"/>
             <TimePicker:TimePickerSlider x:Name="new_Friday_start" Visibility="Collapsed" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[5][0],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="1"  Grid.Row="6"/>
             <TimePicker:TimePickerSlider x:Name="new_Friday_end" Visibility="Collapsed" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[5][1],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="2"  Grid.Row="6"/>
-            <TimePicker:TimePickerSlider x:Name="new_Saturday_start" Visibility="Collapsed" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[6][0],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="1" Grid.Row="7"/>
-            <TimePicker:TimePickerSlider x:Name="new_Saturday_end" Visibility="Collapsed" MinTime="{Binding Path=workingHours.MinTime,Mode=TwoWay}" Time="{Binding Path=info.daily_Nanny_required[6][1],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay}" MaxTime="{Binding Path=workingHours.MaxTime,Mode=TwoWay}" Grid.Column="2"   Grid.Row="7"/>
             <Grid HorizontalAlignment="Center" Height="100" Width="50" Name="Save" Grid.Column="1" Grid.Row="8" VerticalAlignment="Center"  MouseDown="Button_Click" MouseEnter="Grid_MouseEnter" MouseLeave="Grid_MouseLeave">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="49*"/>
