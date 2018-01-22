@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BE;
+using BL;
 
 namespace UI_WPF_TEMPORARY
 {
@@ -22,7 +24,7 @@ namespace UI_WPF_TEMPORARY
     public partial class Groupbycontracts : UserControl
     {
         private IEnumerable source;
-
+        public IBL bl;
         public IEnumerable Source
         {
             get { return source; }
@@ -35,6 +37,22 @@ namespace UI_WPF_TEMPORARY
         public Groupbycontracts()
         {
             InitializeComponent();
+        }
+
+        private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                IBL bl;
+                bl = FactoryBL.IBLInstance;
+                UpdateWindow a;
+                int ID;
+                ID = ((Contract)((ListView)(sender)).SelectedItem).Contract_ID;
+                Contract contr = bl.GetContractById(ID);
+                a = new UpdateWindow(3, contr, false);
+                a.Show();
+            }
+            catch { }
         }
     }
 }

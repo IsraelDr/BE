@@ -40,6 +40,7 @@ namespace UI_WPF_TEMPORARY
             {
                 listofMothers.Items.Add(value);
             }
+            nannysoptiongrid.AutoGeneratingColumn += nannysoptiongrid_PriorityNannyGeneratingColumns;
             listofMothers.DisplayMemberPath = "Name";
             listofMothers.SelectedValuePath = "ID";
             var paymentmethods = from Enum e in Enum.GetValues(typeof(MyEnum.Paymentmethode))
@@ -138,6 +139,16 @@ namespace UI_WPF_TEMPORARY
         {
             if (e.PropertyName == "Working_days"|| e.PropertyName == "Daily_Working_hours" || e.PropertyName == "Vacation_days"|| e.PropertyName == "Birthdate")
                 e.Cancel = true;
+            if (e.PropertyName == "fideback")
+                e.Column.Header = "Feedback";
+            if (e.PropertyName == "Hourly_rate")
+                e.Cancel = true;
+            if (e.PropertyName == "Monthly_rate")
+                e.Cancel = true;
+            if (e.PropertyName == "Recommendations")
+                e.Cancel = true;
+            if (e.PropertyName == "Additional_Info")
+                e.Cancel = true;
 
         }
 
@@ -202,7 +213,7 @@ namespace UI_WPF_TEMPORARY
         {
             if (isUpdate)
             {
-                nannysoptiongrid.IsEnabled = false;
+                //nannysoptiongrid.IsEnabled = false;
                 return;
             }
             List<PriorityNanny> a = (List<PriorityNanny>)nannysoptiongrid.ItemsSource;
@@ -220,5 +231,9 @@ namespace UI_WPF_TEMPORARY
             this.workenddate.SelectedDate = workbegindate.SelectedDate;
         }
 
+        private void date_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

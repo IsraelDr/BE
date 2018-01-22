@@ -204,6 +204,11 @@ namespace UI_WPF_TEMPORARY
 
             }
         }
+
+        private void new_Birthdate_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
     public class NannyT
     {

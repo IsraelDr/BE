@@ -105,7 +105,9 @@ namespace DAL
                          (from b in a select new XElement("Time", new XElement("Hours", ((TimeSpan)(b)).Hours),
                                                                   new XElement("Minutes", ((TimeSpan)(b)).Minutes),
                                                                   new XElement("Seconds", ((TimeSpan)(b)).Seconds)))))),
-                   new XElement("Comment", m.Comment)
+                   new XElement("Comment", m.Comment),
+                    new XElement("Distance",m.Max_Distance)
+
                  ));
         public void AddMother(Mother m)
         {
@@ -162,7 +164,8 @@ namespace DAL
                 nanny_required = (from a in m.Element("nanny_required").Elements("Days") select Boolean.Parse(a.Value)).ToArray(),
                 daily_Nanny_required = (from b in m.Element("daily_Nanny_required").Elements("days")
                                              select (GetArray(b))).ToArray(),
-            Comment = (string)m.Element("Comment")
+            Comment = (string)m.Element("Comment"),
+            Max_Distance=(int)m.Element("Distance")
             };
         }
 

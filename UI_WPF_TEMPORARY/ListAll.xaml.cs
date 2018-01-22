@@ -181,6 +181,8 @@ namespace UI_WPF_TEMPORARY
                 e.Cancel = true;
             if (e.PropertyName == "Comment")
                 e.Cancel = true;
+            if (e.PropertyName == "Max_Distance")
+                e.Cancel = true;
             if (e.PropertyName == "surrounding_Address")
                 e.Column.Header = "Near Address";
             if (e.PropertyName == "Paymentmethode")

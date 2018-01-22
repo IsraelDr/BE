@@ -43,9 +43,11 @@
             <TextBox x:Name="new_comment" TextWrapping="Wrap" Text="{Binding Path=info.Comment,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center"/>
             <TextBox x:Name="new_surrounding_address" TextWrapping="Wrap" Text="{Binding Path=info.surrounding_Address,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="5" VerticalAlignment="Center" TextChanged="new_surrounding_address_TextChanged"/>
             <ListBox x:Name="surround_Address_suggestion"  HorizontalAlignment="Left" Visibility="Collapsed" VerticalAlignment="Bottom" SelectionChanged="surround_Address_suggestion_SelectionChanged" OpacityMask="White" Width="100"  Margin="0,0,0,-74.8" Grid.Column="5" Grid.Row="2" Grid.RowSpan="2"  Height="104" Panel.ZIndex="5"/>
-            <ComboBox Name="new_paymentmethode" VerticalAlignment="Center" SelectedItem="{Binding Path=info.Paymentmethode,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Grid.Row="3" Grid.Column="3"/>
-            <Label Content="Paymentmethod" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="3" Grid.Column="2" />
-            <TextBlock  FontSize="20"  HorizontalAlignment="Center" TextWrapping="Wrap" Text="Mother Details" VerticalAlignment="Center" Grid.ColumnSpan="6" Grid.Row="0"/>
+            <Label Content="Max Distance" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <TextBox x:Name="new_distance"  Text="{Binding Path=info.Max_Distance,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="3" VerticalAlignment="Center" />
+            <ComboBox Name="new_paymentmethode" VerticalAlignment="Center" SelectedItem="{Binding Path=info.Paymentmethode,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Grid.Row="3" Grid.Column="5"/>
+            <Label Content="Paymentmethod" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="3" Grid.Column="4" />
+            <TextBlock  FontSize="20"  HorizontalAlignment="Center" TextWrapping="Wrap" Text="Mother Details" VerticalAlignment="Center" Grid.ColumnSpan="6" Grid.Row="0" FontStyle="Italic" FontWeight="SemiBold" TextDecorations="Underline" FontFamily="Sitka Small"/>
 
 
         </Grid>
@@ -64,6 +66,7 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
+
                 <RowDefinition Height="100"/>
 
             </Grid.RowDefinitions>

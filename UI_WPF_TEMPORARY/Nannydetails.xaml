@@ -15,7 +15,7 @@
             <RowDefinition Height="154*"/>
             <RowDefinition Height="409*"/>
         </Grid.RowDefinitions>
-        <Label Content="Nanny Details" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Grid.Row="0" />
+        <TextBlock Text="Nanny Details" VerticalAlignment="Center"  HorizontalAlignment="Center" TextDecorations="Underline" FontSize="20" Grid.Row="0" FontWeight="SemiBold" FontFamily="Sitka Small" FontStyle="Italic" />
         <Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Panel.ZIndex="-5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -42,7 +42,7 @@
             <Label Content="Lastname"  Grid.Column="4"/>
             <TextBox Grid.Column="6" Name="new_LastName" TextWrapping="Wrap" Text="{Binding Path=Info.last_name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             <Label Content="Birthdate"  Grid.Row="1"/>
-            <DatePicker HorizontalAlignment="Left"  SelectedDate="{Binding Path=Info.Birthdate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Name="new_Birthdate" VerticalAlignment="Top" Grid.Row="1"  Grid.Column="1" />
+            <DatePicker HorizontalAlignment="Left"  SelectedDate="{Binding Path=Info.Birthdate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Name="new_Birthdate" VerticalAlignment="Top" Grid.Row="1"  Grid.Column="1" KeyDown="new_Birthdate_KeyDown" />
             <Label Content="Phonenumber" Grid.Column="2" Grid.Row="1" />
             <TextBox Name="new_Phonenumber" Grid.Column="3" TextWrapping="Wrap" Text="{Binding Path=Info.PhoneNumber,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"   PreviewTextInput="NumberValidationTextBox" Grid.Row="1"/>
             <Label Content="Address" Grid.Column="4" Grid.Row="1" />

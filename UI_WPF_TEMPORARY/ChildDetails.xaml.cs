@@ -120,5 +120,10 @@ namespace UI_WPF_TEMPORARY
                         (new_ID.Text.ToString().Count() > 8)
                         /* ||(new_ID.Text.ToString().Count() == 0 && e.Text[0] != '0')*/);
         }
+
+        private void new_Birthdate_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

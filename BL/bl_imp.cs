@@ -101,57 +101,58 @@ namespace BL
                 {
                     matcheList.Add(temp[i]);
                 }
+                matcheList = matcheList.GetRange(0, 5);
             }
             return matcheList;
         }
         /**********new close Nanny List using Google Maps &  Thread ******/ //return the Nanny list that the close to mother
-        public List<Nanny> closeNannyList(Mother mom, int radius)
-        {
-            return closeNannyList(mom, mom.Address, radius);
-        }
-        public List<Nanny> closeNannyList(Mother mom, string source, int radius)
-        {
-            if (mom == null) { return null; }
-            if (source == null)
-                source = mom.Address;
-            List<Nanny> closesNannyList = new List<Nanny>();
-            List<Nanny> temp = new List<Nanny>();
-            //temp = dal.getNannyList();
+        //public List<Nanny> closeNannyList(Mother mom, int radius)
+        //{
+        //    return closeNannyList(mom, mom.Address, radius);
+        //}
+        //public List<Nanny> closeNannyList(Mother mom, string source, int radius)
+        //{
+        //    if (mom == null) { return null; }
+        //    if (source == null)
+        //        source = mom.Address;
+        //    List<Nanny> closesNannyList = new List<Nanny>();
+        //    List<Nanny> temp = new List<Nanny>();
+        //    //temp = dal.getNannyList();
 
-            // check temp not null
+        //    // check temp not null
 
-            Dictionary<Nanny, int> nnn = new Dictionary<Nanny, int>(); // check Nanny,int
+        //    Dictionary<Nanny, int> nnn = new Dictionary<Nanny, int>(); // check Nanny,int
 
-            List<System.Threading.Thread> thds = new List<System.Threading.Thread>();
-            foreach (Nanny n in temp)
-            {
-                System.Threading.Thread t = new System.Threading.Thread(() =>
-                    {
-                        try
-                        {
-                            int d = calculateDistance(mom.Address, n.address);
-                            if (d <= radius && d >= 0)
-                            {
-                                nnn.Add(n, d);
-                            }
-                        }
-                        catch (Exception e)
-                        {
-                            // fix Nanny?
-                            int a = 5;
-                        }
-                    });
-                t.Start();
-                //t.Join();
-                thds.Add(t);
-            }
-            foreach (System.Threading.Thread t in thds)
-            {
-                t.Join();
-            }
-            closesNannyList = nnn.OrderBy(x => x.Value).Select(x => x.Key).ToList<Nanny>();
-             return closesNannyList;
-        }
+        //    List<System.Threading.Thread> thds = new List<System.Threading.Thread>();
+        //    foreach (Nanny n in temp)
+        //    {
+        //        System.Threading.Thread t = new System.Threading.Thread(() =>
+        //            {
+        //                try
+        //                {
+        //                    int d = calculateDistance(mom.Address, n.address);
+        //                    if (d <= radius && d >= 0)
+        //                    {
+        //                        nnn.Add(n, d);
+        //                    }
+        //                }
+        //                catch (Exception e)
+        //                {
+        //                    // fix Nanny?
+        //                    int a = 5;
+        //                }
+        //            });
+        //        t.Start();
+        //        //t.Join();
+        //        thds.Add(t);
+        //    }
+        //    foreach (System.Threading.Thread t in thds)
+        //    {
+        //        t.Join();
+        //    }
+        //    closesNannyList = nnn.OrderBy(x => x.Value).Select(x => x.Key).ToList<Nanny>();
+        //     return closesNannyList;
+        //}
         /// <summary>
         /// Google autoComplete
         /// </summary>
@@ -243,12 +244,13 @@ namespace BL
                     {
 
                         temp.Distance = calculateDistance(m.Address, nan.address);
-                        p.Add(temp);
+                        if(temp.Distance<=m.Max_Distance)
+                            p.Add(temp);
 
                     }
                     catch (Exception)
                     {
-
+                        throw new Exception("Failed to calculate the distance!");
                     }
                 });
                 t.Start();
@@ -447,7 +449,7 @@ namespace BL
                 throw new Exception(" contract End date must be after contract Begin date ");
             //if(dal.GetChild(contract.Child_ID).Birthdate> DateTime.Now&& dal.GetChild(contract.Child_ID).Birthdate > contract.startdate)
             //    throw new Exception("cent sighin child that didn't bourn yet (Birthdate bigger then today or begin date) ");
-            if (dal.GetMother(contract.Child_ID).Paymentmethode == MyEnum.Paymentmethode.hourly)
+            if (dal.GetMother(contract.Mother_ID).Paymentmethode == MyEnum.Paymentmethode.hourly)
             {
                 contract.Paymentmethode = MyEnum.Paymentmethode.hourly;
                 double week_payment = 0;

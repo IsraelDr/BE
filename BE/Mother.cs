@@ -20,6 +20,7 @@ namespace BE
         private TimeSpan[][] Daily_Nanny_required_;
         private string Comment_;
         private MyEnum.Paymentmethode Paymentmethode_;
+        private int Max_Distance_;
         
 
         public int ID                               { get { return ID_; } set { ID_ = value; } }
@@ -36,9 +37,9 @@ namespace BE
         public TimeSpan[][] daily_Nanny_required          { get { return Daily_Nanny_required_; } set { Daily_Nanny_required_ = value; } }
         public string Comment                       { get { return Comment_; } set { Comment_ = value; } }
         public MyEnum.Paymentmethode Paymentmethode { get { return Paymentmethode_; } set { Paymentmethode_ = value; } }
-
+        public int Max_Distance                               { get { return Max_Distance_; } set { Max_Distance_ = value; } }
         //ctor
-        public Mother( int ID,string Firstname,string Lastname, string Phonenumber,string Address,string surrounding_Address,bool[] nanny_required,TimeSpan[][] daily_Nanny_required,string Comment,MyEnum.Paymentmethode Paymentmethode)
+        public Mother( int ID,string Firstname,string Lastname, string Phonenumber,string Address,string surrounding_Address,bool[] nanny_required,TimeSpan[][] daily_Nanny_required,string Comment,MyEnum.Paymentmethode Paymentmethode, int max_Distance)
         {
             ID_ = ID;
             Lastname_ = Lastname;
@@ -50,6 +51,7 @@ namespace BE
             Daily_Nanny_required_ = daily_Nanny_required;
             Comment_ = Comment;
             Paymentmethode_ = Paymentmethode;
+            Max_Distance_ = max_Distance;
         }//ctor
         public Mother()
         {
@@ -59,6 +61,7 @@ namespace BE
             {
                 Daily_Nanny_required_[i] = new TimeSpan[] { new TimeSpan(12,0,0), new TimeSpan(12, 0,0) };
             }
+            Max_Distance = 12;
         }
         public override string ToString()
         {//using ToStringProperty() in Class Tools 
