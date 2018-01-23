@@ -37,7 +37,7 @@
                 <RowDefinition Height="91*"/>
                 <RowDefinition Height="89*"/>
             </Grid.RowDefinitions>
-            <Grid HorizontalAlignment="Left" Height="91" VerticalAlignment="Top" Width="425" Grid.ColumnSpan="2" Margin="0,10,0,0">
+            <Grid HorizontalAlignment="Center" Height="91" VerticalAlignment="Center" Width="425" Grid.Column="0" Margin="0,10,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="206*"/>
                     <ColumnDefinition Width="219*"/>
@@ -45,7 +45,7 @@
                 <DatePicker  Name="workbegindate" SelectedDate="{Binding Path=startdate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" SelectedDateChanged="OnWorkBeginSelectedChanged"  Grid.Column="1" VerticalAlignment="Center" KeyDown="date_KeyDown"/>
                 <Label Content="Work Begin" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
             </Grid>
-            <Grid HorizontalAlignment="Left" Height="91" VerticalAlignment="Top" Width="425" Grid.Column="1" Margin="0.2,0,-0.4,0">
+            <Grid HorizontalAlignment="Center" Height="91" VerticalAlignment="Center" Width="425" Grid.Column="0" Grid.Row="1"  Margin="0.2,0,-0.4,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="206*"/>
                     <ColumnDefinition Width="219*"/>
@@ -53,15 +53,15 @@
                 <DatePicker Name="workenddate" SelectedDate="{Binding Path=enddate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DisplayDateStart="{Binding Path=startdate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" VerticalAlignment="Center" KeyDown="date_KeyDown"/>
                 <Label Content="Work End" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
             </Grid>
-            <Grid HorizontalAlignment="Left" Height="89" VerticalAlignment="Top" Width="425" Grid.ColumnSpan="2" Margin="0,0.2,0,0" Grid.Row="1">
+            <Grid HorizontalAlignment="Center" Height="89" VerticalAlignment="Center" Width="425" Grid.Column="2" Margin="0,0.2,0,0" Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="206*"/>
                     <ColumnDefinition Width="219*"/>
                 </Grid.ColumnDefinitions>
-                <Label Content="paymentmethod" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+                <Label Content="Paymentmethod" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
                 <ComboBox Name="paymentmethod" SelectedValue="{Binding Path=Paymentmethode,Mode=TwoWay}" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120"/>
             </Grid>
-            <Grid Grid.Column="1" HorizontalAlignment="Left" Height="89" Margin="0.2,0.2,-0.4,0" VerticalAlignment="Top" Width="425" Grid.Row="1">
+            <Grid Grid.Column="1" HorizontalAlignment="Center" Height="89" Margin="0.2,0.2,-0.4,0" VerticalAlignment="Center" Width="425" Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="47*"/>
                     <RowDefinition Height="42*"/>
@@ -95,6 +95,5 @@
         <Label HorizontalAlignment="Left" Margin="45,109,0,0" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Top">
 
         </Label>
-
     </Grid>
 </UserControl>

@@ -441,6 +441,8 @@ namespace BL
 
             DateTime temporary = DateTime.Now.AddMonths(-3);
             Nanny n = dal.GetNanny(contract.Nanny_ID);
+            if (n == null)
+                throw new Exception("No nanny was choosen");
             if (dal.GetChild(contract.Child_ID).Birthdate.CompareTo(temporary) > 0&&contract.contract_signed)
                throw new Exception("Cannot sign contract for child under 3 month!!");//cant sign contract if younger then 3 month
             if(dal.GetChild(contract.Child_ID).Birthdate.AddMonths(n.Min_age).CompareTo(contract.startdate)>0|| dal.GetChild(contract.Child_ID).Birthdate.AddMonths(n.Max_age).CompareTo(contract.enddate) < 0)

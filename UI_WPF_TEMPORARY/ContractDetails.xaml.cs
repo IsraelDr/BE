@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BE;
 using BL;
+using System.Windows.Media.Animation;
+
 namespace UI_WPF_TEMPORARY
 {
     /// <summary>
@@ -28,14 +30,14 @@ namespace UI_WPF_TEMPORARY
         bool isUpdate = false;
         Contract contr;
 
-        public ContractDetails(Window f, Contract contract = null, bool isSaveable=true)
+        public ContractDetails(Window f, Contract contract = null, bool isSaveable = true)
         {
             InitializeComponent();
             bl = FactoryBL.IBLInstance;
             if (isSaveable == false)
                 Savebutton.Visibility = Visibility.Collapsed;
             var values = from Mother moth in bl.getMotherList()
-                         select new { ID = moth.ID, Name = moth.Firstname + " "+moth.Lastname };
+                         select new { ID = moth.ID, Name = moth.Firstname + " " + moth.Lastname };
             foreach (var value in values)
             {
                 listofMothers.Items.Add(value);
@@ -61,7 +63,7 @@ namespace UI_WPF_TEMPORARY
             //details = new ContractT(new Contract(), this);
             else
                 contr = contract;
-                //details = new ContractT(contr, this);
+            //details = new ContractT(contr, this);
             isUpdate = false;
             this.DataContext = contr;
             nannysoptiongrid.ItemsSource = null;
@@ -69,8 +71,8 @@ namespace UI_WPF_TEMPORARY
             {
                 contr = contract;
                 isUpdate = true;
-                List<PriorityNanny> lst=new List<PriorityNanny>();
-                Nanny n=(Nanny)bl.GetNannyById(contr.Nanny_ID);
+                List<PriorityNanny> lst = new List<PriorityNanny>();
+                Nanny n = (Nanny)bl.GetNannyById(contr.Nanny_ID);
                 PriorityNanny temp = new PriorityNanny(n);
                 temp.Distance = contr.distance;
                 temp.Salary = contr.salary;
@@ -78,10 +80,10 @@ namespace UI_WPF_TEMPORARY
                 nannysoptiongrid.ItemsSource = lst;
                 //listofChildren.Items.Add(bl.GetChildById(contr.Child_ID).name);
                 //listofChildren.SelectedItem = contr.Child_ID;
-               
+
                 var values2 = from Child child in bl.getChildList()
-                             where child.Mother_ID == contr.Mother_ID
-                             select new { ID = child.ID, Name = child.name };
+                              where child.Mother_ID == contr.Mother_ID
+                              select new { ID = child.ID, Name = child.name };
                 foreach (var value in values2)
                 {
                     listofChildren.Items.Add(value);
@@ -116,8 +118,8 @@ namespace UI_WPF_TEMPORARY
                     nannysoptiongrid.SelectedItem = null;
                 }
                 listofChildren.Items.Clear();
-                
-                List<PriorityNanny> lst= bl.PriorityNannyList(bl.GetMotherById(motherid));
+
+                List<PriorityNanny> lst = bl.PriorityNannyList(bl.GetMotherById(motherid));
                 nannysoptiongrid.ItemsSource = lst;
                 nannysoptiongrid.Items.Refresh();
                 var values = from Child child in bl.getChildList()
@@ -137,7 +139,7 @@ namespace UI_WPF_TEMPORARY
         }
         void nannysoptiongrid_PriorityNannyGeneratingColumns(object sender, System.Windows.Controls.DataGridAutoGeneratingColumnEventArgs e)
         {
-            if (e.PropertyName == "Working_days"|| e.PropertyName == "Daily_Working_hours" || e.PropertyName == "Vacation_days"|| e.PropertyName == "Birthdate")
+            if (e.PropertyName == "Working_days" || e.PropertyName == "Daily_Working_hours" || e.PropertyName == "Vacation_days" || e.PropertyName == "Birthdate")
                 e.Cancel = true;
             if (e.PropertyName == "fideback")
                 e.Column.Header = "Feedback";
@@ -165,7 +167,8 @@ namespace UI_WPF_TEMPORARY
                                             Convert.ToDateTime(workbegindate.SelectedDate), Convert.ToDateTime(workenddate.SelectedDate),
                                             ((PriorityNanny)(nannysoptiongrid.SelectedItem)).Salary, ((PriorityNanny)(nannysoptiongrid.SelectedItem)).Distance,
                                             bl.checkForDiscunt((Nanny)(nannysoptiongrid.SelectedItem), bl.GetMotherById((int)listofMothers.SelectedValue)));
-                */if (isUpdate)
+                */
+                if (isUpdate)
                     bl.UpdateContract(contr);
                 else
                     bl.AddContract(contr);
@@ -187,7 +190,7 @@ namespace UI_WPF_TEMPORARY
                 fr.Hide();
                 a.Closed += new EventHandler(openwindow);
             }
-            catch(Exception d)
+            catch (Exception d)
             {
                 throw d;
             }
@@ -195,7 +198,7 @@ namespace UI_WPF_TEMPORARY
         private void openwindow(object sender, EventArgs e)
         {
             fr.Show();
-            
+
         }
         private void Grid_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -218,8 +221,8 @@ namespace UI_WPF_TEMPORARY
             }
             List<PriorityNanny> a = (List<PriorityNanny>)nannysoptiongrid.ItemsSource;
             PriorityNanny temp = (from A in a
-                                 where A.ID == (int)(nannysoptiongrid.SelectedItem)
-                                 select A).FirstOrDefault();
+                                  where A.ID == (int)(nannysoptiongrid.SelectedItem)
+                                  select A).FirstOrDefault();
             this.contr.Monthly_payment = temp.Monthly_rate;
             this.contr.Hourly_payment = temp.Hourly_rate;
             this.contr.discount = bl.checkForDiscunt((Nanny)temp, bl.GetMotherById(this.contr.Mother_ID));
@@ -236,4 +239,5 @@ namespace UI_WPF_TEMPORARY
             e.Handled = true;
         }
     }
+
 }

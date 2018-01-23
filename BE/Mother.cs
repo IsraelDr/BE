@@ -61,7 +61,6 @@ namespace BE
             {
                 Daily_Nanny_required_[i] = new TimeSpan[] { new TimeSpan(12,0,0), new TimeSpan(12, 0,0) };
             }
-            Max_Distance = 12;
         }
         public override string ToString()
         {//using ToStringProperty() in Class Tools 
