@@ -238,6 +238,26 @@ namespace UI_WPF_TEMPORARY
         {
             e.Handled = true;
         }
+
+        private void introduce_meeting_Checked(object sender, RoutedEventArgs e)
+        {
+            introduce_meeting.BorderBrush = Brushes.Black ;
+        }
+
+        private void introduce_meeting_Unchecked(object sender, RoutedEventArgs e)
+        {
+            introduce_meeting.BorderBrush = Brushes.Red;
+        }
+
+        private void is_signed_Unchecked(object sender, RoutedEventArgs e)
+        {
+            is_signed.BorderBrush = Brushes.Red;
+        }
+
+        private void is_signed_Checked(object sender, RoutedEventArgs e)
+        {
+            is_signed.BorderBrush = Brushes.Black; 
+        }
     }
 
 }

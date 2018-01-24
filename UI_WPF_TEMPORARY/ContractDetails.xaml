@@ -18,6 +18,18 @@
         <Label Content="Nannys List:" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="20" />
         <DataGrid Name="nannysoptiongrid" Grid.Row="2" Margin="0,40,0,0" ColumnWidth="*" SelectedItem="{Binding Path=Nanny_ID,Converter={StaticResource NannyIDconverter},Mode=TwoWay}" MouseDoubleClick="nannysoptiongrid_MouseDoubleClick"  IsReadOnly="True" Grid.RowSpan="1" SelectionMode="Single" MaxHeight="200" VerticalAlignment="Stretch" SelectionChanged="nannysoptiongrid_SelectionChanged"/>
         <Grid HorizontalAlignment="Center" Height="100" Width="50" Name="Savebutton" Grid.Row="4" VerticalAlignment="Center"  MouseDown="Button_Click" MouseEnter="Grid_MouseEnter" MouseLeave="Grid_MouseLeave" >
+            <Grid.Style>
+                <Style>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=introduce_meeting,Path=IsChecked}" Value="False">
+                            <Setter Property="Grid.IsEnabled" Value="False"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=is_signed,Path=IsChecked}" Value="False">
+                            <Setter Property="Grid.IsEnabled" Value="False"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
             <Grid.RowDefinitions>
                 <RowDefinition Height="49*"/>
                 <RowDefinition Height="19*"/>
@@ -66,8 +78,8 @@
                     <RowDefinition Height="47*"/>
                     <RowDefinition Height="42*"/>
                 </Grid.RowDefinitions>
-                <CheckBox IsChecked="{Binding Path=introduce_meeting,Mode=TwoWay}" Content="Introduction Meeting" Name="introduce_meeting" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <CheckBox IsChecked="{Binding Path=contract_signed,Mode=TwoWay}" Content="I accept the Terms and signed" Name="is_signed" HorizontalAlignment="Center" Margin="0,47,0,0" VerticalAlignment="Center" Grid.RowSpan="2"/>
+                <CheckBox IsChecked="{Binding Path=introduce_meeting,Mode=TwoWay}" Content="Introduction Meeting" Name="introduce_meeting" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" BorderBrush="Red" Checked="introduce_meeting_Checked" Unchecked="introduce_meeting_Unchecked"/>
+                <CheckBox IsChecked="{Binding Path=contract_signed,Mode=TwoWay}" Content="I accept the Terms and Conditions and I sign" Name="is_signed" HorizontalAlignment="Center" Margin="0,47,0,0" VerticalAlignment="Center" Grid.RowSpan="2" Foreground="Black"  BorderBrush="Red" Unchecked="is_signed_Unchecked" Checked="is_signed_Checked"/>
             </Grid>
         </Grid>
         <Grid HorizontalAlignment="Center" Height="94" VerticalAlignment="Top" Grid.Row="1" Width="850" Margin="0,0,-0.267,0">

@@ -248,7 +248,7 @@ namespace BL
                             p.Add(temp);
 
                     }
-                    catch (Exception)
+                    catch (Exception l)
                     {
                         throw new Exception("Failed to calculate the distance!");
                     }
