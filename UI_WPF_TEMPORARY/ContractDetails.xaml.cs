@@ -118,8 +118,8 @@ namespace UI_WPF_TEMPORARY
                     nannysoptiongrid.SelectedItem = null;
                 }
                 listofChildren.Items.Clear();
-
-                List<PriorityNanny> lst = bl.PriorityNannyList(bl.GetMotherById(motherid));
+                int countfailed = 0;
+                List<PriorityNanny> lst = bl.PriorityNannyList(bl.GetMotherById(motherid),ref countfailed);
                 nannysoptiongrid.ItemsSource = lst;
                 nannysoptiongrid.Items.Refresh();
                 var values = from Child child in bl.getChildList()
@@ -131,6 +131,8 @@ namespace UI_WPF_TEMPORARY
                 }
                 listofChildren.DisplayMemberPath = "Name";
                 listofChildren.SelectedValuePath = "ID";
+                if (countfailed > 0)
+                    throw new Exception("Failed "+ countfailed + " times to calculate the distance!");
             }
             catch (Exception exc)
             {
@@ -142,7 +144,20 @@ namespace UI_WPF_TEMPORARY
             if (e.PropertyName == "Working_days" || e.PropertyName == "Daily_Working_hours" || e.PropertyName == "Vacation_days" || e.PropertyName == "Birthdate")
                 e.Cancel = true;
             if (e.PropertyName == "fideback")
+            {
                 e.Column.Header = "Feedback";
+                e.Column.Width = 60;
+            }
+            if (e.PropertyName == "Salary")
+            {
+                e.Column.Header = "Salary[₪]";
+                e.Column.Width = 60;
+            }
+            if (e.PropertyName == "Distance")
+            {
+                e.Column.Header = "Distance[km]";
+                e.Column.Width = 80;
+            }
             if (e.PropertyName == "Hourly_rate")
                 e.Cancel = true;
             if (e.PropertyName == "Monthly_rate")
@@ -151,8 +166,38 @@ namespace UI_WPF_TEMPORARY
                 e.Cancel = true;
             if (e.PropertyName == "Additional_Info")
                 e.Cancel = true;
+            if (e.PropertyName == "Possible_Hourly_rate")
+                e.Cancel = true;
+            if (e.PropertyName == "Floor")
+                e.Column.Width = 40;
+            if (e.PropertyName == "elevatorExists")
+            {
+                e.Column.Header = "Elevator";
+                e.Column.Width = 60;
+            }
+            if (e.PropertyName == "PhoneNumber")
+                e.Column.Header = "Phone";
+            if (e.PropertyName == "Min_age")
+                e.Column.Header = "Minage[Month]";
+            if (e.PropertyName == "Max_age")
+                e.Column.Header = "Maxage[Month]";
+            if (e.PropertyName == "kidsCount")
+            {
+                e.Column.Header = "Class";
+                e.Column.Width = 40;
+            }
+            if (e.PropertyName == "Max_number_kids")
+            {
+                e.Column.Header = "Capacity";
+                e.Column.Width = 55;
+            }
 
-        }
+
+
+
+
+
+    }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

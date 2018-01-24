@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:UI_WPF_TEMPORARY"
              xmlns:BE="clr-namespace:BE;assembly=BE"
              mc:Ignorable="d">
-    <Grid d:DataContext="{d:DesignInstance BE:Contract }" Margin="0,0,-0.4,-0.6">
+    <Grid d:DataContext="{d:DesignInstance BE:Contract }" Margin="20,0,20,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -70,8 +70,8 @@
                     <ColumnDefinition Width="206*"/>
                     <ColumnDefinition Width="219*"/>
                 </Grid.ColumnDefinitions>
-                <Label Content="Paymentmethod" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
-                <ComboBox Name="paymentmethod" SelectedValue="{Binding Path=Paymentmethode,Mode=TwoWay}" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120"/>
+                <Label Content="Paymentmethod" HorizontalAlignment="Right"  VerticalAlignment="Center"/>
+                <ComboBox Name="paymentmethod" HorizontalAlignment="Left" SelectedValue="{Binding Path=Paymentmethode,Mode=TwoWay}" Grid.Column="1" VerticalAlignment="Center" Width="120"/>
             </Grid>
             <Grid Grid.Column="1" HorizontalAlignment="Center" Height="89" Margin="0.2,0.2,-0.4,0" VerticalAlignment="Center" Width="425" Grid.Row="1">
                 <Grid.RowDefinitions>
@@ -92,16 +92,16 @@
                     <ColumnDefinition Width="175*"/>
                     <ColumnDefinition Width="271*"/>
                 </Grid.ColumnDefinitions>
-                <Label Content="Mother" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <ComboBox x:Name="listofMothers"  SelectedValue="{Binding Path=Mother_ID,Mode=TwoWay}" Width="188" Height="30" Grid.Column="1" SelectionChanged="listofMothers_SelectionChanged"/>
+                <Label Content="Mother" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <ComboBox x:Name="listofMothers" HorizontalAlignment="Left"  SelectedValue="{Binding Path=Mother_ID,Mode=TwoWay}" Width="188" Height="30" Grid.Column="1" SelectionChanged="listofMothers_SelectionChanged"/>
             </Grid>
             <Grid HorizontalAlignment="Center" Height="94" VerticalAlignment="Top" Width="420" Grid.Row="0" Margin="0.6,0,-1.4,0" Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="175*"/>
                     <ColumnDefinition Width="271*"/>
                 </Grid.ColumnDefinitions>
-                <Label Content="Child" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <ComboBox x:Name="listofChildren" SelectedValue="{Binding Path=Child_ID,Mode=TwoWay}" Width="188" Height="30" Grid.Column="1" />
+                <Label Content="Child" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <ComboBox x:Name="listofChildren" HorizontalAlignment="Left" SelectedValue="{Binding Path=Child_ID,Mode=TwoWay}" Width="188" Height="30" Grid.Column="1" />
             </Grid>
         </Grid>
         <Label HorizontalAlignment="Left" Margin="45,109,0,0" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Top">

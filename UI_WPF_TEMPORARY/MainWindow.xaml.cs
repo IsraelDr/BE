@@ -177,5 +177,10 @@ namespace UI_WPF_TEMPORARY
         {
             options_grid.Visibility = Visibility.Visible;
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Environment.Exit(Environment.ExitCode);
+        }
     }
 }

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:UI_WPF_TEMPORARY"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="" Height="440" Width="900" MouseDown="Window_MouseDown" WindowStyle="ThreeDBorderWindow">
+        Title="" Height="440" Width="900" MouseDown="Window_MouseDown" WindowStyle="ThreeDBorderWindow" Closed="Window_Closed">
     <Window.Effect>
         <DropShadowEffect/>
     </Window.Effect>

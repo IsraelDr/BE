@@ -51,7 +51,8 @@ namespace BL
             }
             catch (Exception e)
             {
-                throw e;
+                return 10000000;//huge number so the program want crash
+                //throw e;
             };
 
         }
@@ -224,11 +225,11 @@ namespace BL
             }
         }
         //return list of best mache of nanny 
-        public List<PriorityNanny> PriorityNannyList(Mother m)
+        public List<PriorityNanny> PriorityNannyList(Mother m,ref int counter)
         {
             List<PriorityNanny> p = new List<PriorityNanny>();
 
-
+            int countfailure = 0;
             List<System.Threading.Thread> thds = new List<System.Threading.Thread>();
             foreach (Nanny nan in motherPriorities(m))
             {
@@ -244,7 +245,9 @@ namespace BL
                     {
 
                         temp.Distance = calculateDistance(m.Address, nan.address);
-                        if(temp.Distance<=m.Max_Distance)
+                        if (temp.Distance == 10000000)//not possible number
+                            countfailure++;
+                        else if (temp.Distance<=m.Max_Distance)
                             p.Add(temp);
 
                     }
@@ -262,6 +265,8 @@ namespace BL
                 t.Join();
             }
             p.Sort((x, y) => x.Distance.CompareTo(y.Distance));
+            if (countfailure > 0)
+                counter = countfailure;
             return p;
         }
         #endregion PriorityNanny by GoogleMaps

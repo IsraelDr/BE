@@ -7,7 +7,7 @@
              xmlns:BE="clr-namespace:BE;assembly=BE"
              xmlns:TimePicker="clr-namespace:RoyT.TimePicker;assembly=RoyT.TimePicker" x:Class="UI_WPF_TEMPORARY.MotherDetails"
              mc:Ignorable="d">
-    <Grid d:DataContext="{d:DesignInstance BE:Mother }">
+    <Grid d:DataContext="{d:DesignInstance BE:Mother }" Margin="10,5,10,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>

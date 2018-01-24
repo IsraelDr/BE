@@ -11,7 +11,7 @@ namespace BL
 {
     public interface IBL
     {
-        List<PriorityNanny> PriorityNannyList(Mother m);
+        List<PriorityNanny> PriorityNannyList(Mother m,ref int counter);
         IEnumerable<IGrouping<string, Nanny>> nannysByChildrenAge(bool orderByMaxAge = false);
         IEnumerable<IGrouping<double, Contract>> ContractsByNannyDistance();
 

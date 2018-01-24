@@ -31,7 +31,7 @@ namespace UI_WPF_TEMPORARY
                     Updategrid.Children.Add(new Nannydetails(this,(Nanny)a, isSaveable));
                     break;
                 case 2:
-                    this.Height = 400;
+                    this.Height = 480;
                     this.Width = 300;
                     Updategrid.Children.Add(new ChildDetails(this,(Child)a));
                     break;
