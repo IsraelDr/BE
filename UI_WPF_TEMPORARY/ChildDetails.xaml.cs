@@ -32,10 +32,12 @@ namespace UI_WPF_TEMPORARY
         /// </summary>
         /// <param name="Window  f"></param>
         /// <param name="Child a"></param>        
-        public ChildDetails(Window f,Child a=null)
+        public ChildDetails(Window f,Child a=null,bool isSaveable=true)
         {
             InitializeComponent();
             bl = FactoryBL.IBLInstance;
+            if (isSaveable == false)
+                SaveBUTTON.Visibility = Visibility.Collapsed;
             child = a;
             fr = f;
             isUpdate = false;

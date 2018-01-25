@@ -303,6 +303,42 @@ namespace UI_WPF_TEMPORARY
         {
             is_signed.BorderBrush = Brushes.Black; 
         }
+
+        private void listofChildren_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (listofChildren.SelectedItem == null)
+                return;
+            try
+            {
+                Child child = bl.GetChildById((int)listofChildren.SelectedValue);
+                UpdateWindow a = new UpdateWindow(2, child, false);
+                a.Show();
+                fr.Hide();
+                a.Closed += new EventHandler(openwindow);
+            }
+            catch (Exception d)
+            {
+                throw d;
+            }
+        }
+
+        private void listofMothers_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (listofMothers.SelectedItem == null)
+                return;
+            try
+            {
+                Mother mothers = bl.GetMotherById((int)listofMothers.SelectedValue);
+                UpdateWindow a = new UpdateWindow(0, mothers, false);
+                a.Show();
+                fr.Hide();
+                a.Closed += new EventHandler(openwindow);
+            }
+            catch (Exception d)
+            {
+                throw d;
+            }
+        }
     }
 
 }

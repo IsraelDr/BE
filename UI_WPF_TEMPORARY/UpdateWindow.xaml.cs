@@ -25,7 +25,7 @@ namespace UI_WPF_TEMPORARY
             switch (choice)
             {
                 case 0:
-                    Updategrid.Children.Add(new MotherDetails(this, (Mother)a));
+                    Updategrid.Children.Add(new MotherDetails(this, (Mother)a, isSaveable));
                     break;
                 case 1:
                     Updategrid.Children.Add(new Nannydetails(this,(Nanny)a, isSaveable));
@@ -33,7 +33,7 @@ namespace UI_WPF_TEMPORARY
                 case 2:
                     this.Height = 480;
                     this.Width = 300;
-                    Updategrid.Children.Add(new ChildDetails(this,(Child)a));
+                    Updategrid.Children.Add(new ChildDetails(this,(Child)a, isSaveable));
                     break;
                 case 3:
                     this.Height = 450;
