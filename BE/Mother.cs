@@ -55,11 +55,11 @@ namespace BE
         }//ctor
         public Mother()
         {
-            nanny_required = new bool[7];
-            Daily_Nanny_required_ = new TimeSpan[7][];
+            nanny_required = new bool[6];
+            Daily_Nanny_required_ = new TimeSpan[6][];
             for (int i = 0; i < Daily_Nanny_required_.Length; i++)
             {
-                Daily_Nanny_required_[i] = new TimeSpan[] { new TimeSpan(12,0,0), new TimeSpan(12, 0,0) };
+                Daily_Nanny_required_[i] = new TimeSpan[] { new TimeSpan(8,0,0), new TimeSpan(15, 0,0) };
             }
         }
         public override string ToString()

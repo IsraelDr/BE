@@ -107,12 +107,12 @@ namespace BE
         }
         public Nanny()
         {
-            Working_days = new bool[7];
-            Daily_Working_hours_ = new TimeSpan[7][];
+            Working_days = new bool[6];
+            Daily_Working_hours_ = new TimeSpan[6][];
             Birthdate = DateTime.Now;
             for (int i = 0; i < Daily_Working_hours_.Length; i++)
             {
-                Daily_Working_hours_[i] = new TimeSpan[] { new TimeSpan(12, 0, 0), new TimeSpan(12, 0, 0) };
+                Daily_Working_hours_[i] = new TimeSpan[] { new TimeSpan(8, 0, 0), new TimeSpan(15, 0, 0) };
             }
         }
         public override string ToString()

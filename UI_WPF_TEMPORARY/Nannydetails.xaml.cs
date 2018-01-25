@@ -28,7 +28,7 @@ namespace UI_WPF_TEMPORARY
         public IBL bl;
         public DigitalTime MinTime { get { return new DigitalTime(00, 00); } set { } }
         public DigitalTime MaxTime { get { return new DigitalTime(22, 00); } set { } }
-        public DigitalTime Time { get { return new DigitalTime(12, 00); } set { } }
+        public DigitalTime Time { get { return new DigitalTime(8, 00); } set { } }
         public bool isUpdate = false;
         Nanny nanny;
         NannyT details;
