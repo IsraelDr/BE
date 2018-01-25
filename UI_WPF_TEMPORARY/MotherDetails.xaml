@@ -33,7 +33,7 @@
             <TextBox x:Name="new_Firstname" TextWrapping="Wrap" Text="{Binding Path=info.Firstname,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" />
             <Label Content="Last Name"  Grid.Row="1" Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <TextBox x:Name="new_LastName" TextWrapping="Wrap" Text="{Binding Path=info.Lastname,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="5" VerticalAlignment="Center"/>
-            <Label Content="Sorounding Address" Grid.Row="2" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <Label Content="Near Address" Grid.Row="2" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Left"/>
             <Label Content="Phonenumber" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" />
             <TextBox x:Name="new_Phonenumber"  TextWrapping="Wrap" Text="{Binding Path=info.Phonenumber,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="new_Phonenumber_PreviewTextInput" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" />
             <Label Content="Address" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" />
