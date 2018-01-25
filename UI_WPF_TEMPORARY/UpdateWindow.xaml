@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:UI_WPF_TEMPORARY"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="" Height="700" Width="619.21" HorizontalAlignment="Center" VerticalAlignment="Center" ResizeMode="NoResize">
+        Title="" Height="700" Width="700" HorizontalAlignment="Center" VerticalAlignment="Center" ResizeMode="NoResize">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            <GradientStop Color="#FFF6A40E" Offset="0"/>
+            <GradientStop Color="#FFD11283" Offset="0"/>
             <GradientStop Color="White" Offset="0.77"/>
         </LinearGradientBrush>
     </Window.Background>

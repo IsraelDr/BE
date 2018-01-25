@@ -62,8 +62,8 @@
             <TextBox Grid.Column="6" VerticalAlignment="Center"  Name="new_hourrate" Grid.Row="3" TextWrapping="Wrap" Text="{Binding Path=Info.Hourly_rate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             <Label Content="Monthly Rate"  Grid.Row="4"/>
             <TextBox  Name="new_monthlyrate" VerticalAlignment="Center" Grid.Row="4" TextWrapping="Wrap" Text="{Binding Path=Info.Monthly_rate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1"/>
-            <CheckBox  Name="new_elevator_exists"  HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding Path=Info.elevatorExists}" Content="Elevator" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2"/>
-            <CheckBox  x:Name="possible_hourly_rate"  HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding Path=Info.Possible_Hourly_rate}" Content="Per Hour" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" />
+            <CheckBox  Name="new_elevator_exists"  HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="{Binding Path=Info.elevatorExists}" Content="Elevator" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="1"/>
+            <CheckBox  x:Name="possible_hourly_rate"  HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="{Binding Path=Info.Possible_Hourly_rate}" Content="Per Hour" Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="1" />
             <TextBox x:Name="new_additional_Info" VerticalAlignment="Center" Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="{Binding Path=Info.Additional_Info,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
             <Label Content="Additional Info"  Grid.Row="5"/>
             <Label Content="Recommendations"  Grid.Row="4" Grid.Column="4"/>
@@ -91,12 +91,12 @@
             <Label Content="Working Days" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" />
             <Label Content="Begin" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" />
             <Label Content="End" VerticalAlignment="Center" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" />
-            <CheckBox Content="Sunday" Name="new_Sunday" IsChecked="{Binding Path=Info.Working_days[0]}" Margin="0,0,0,0.6" Grid.Row="1" Checked="Checkbox_Checked" Unchecked="Checkbox_Checked" />
-            <CheckBox Content="Monday" Name="new_Monday" IsChecked="{Binding Path=Info.Working_days[1]}" HorizontalAlignment="Left" Checked="Checkbox_Checked" Unchecked="Checkbox_Checked" VerticalAlignment="Top" Grid.Row="2" Height="16" Margin="0,0.4,0,0" Width="63"/>
-            <CheckBox Content="Tuesday" Name="new_Tuesday" Grid.Row="3" IsChecked="{Binding Path=Info.Working_days[2]}" Checked="Checkbox_Checked"  Unchecked="Checkbox_Checked"/>
-            <CheckBox Content="Wednesday" Name="new_Wednesday" Grid.Row="4" IsChecked="{Binding Path=Info.Working_days[3]}" Checked="Checkbox_Checked" Unchecked="Checkbox_Checked"/>
-            <CheckBox Content="Thursday" Name="new_Thursday" Grid.Row="5" IsChecked="{Binding Path=Info.Working_days[4]}" Checked="Checkbox_Checked" Unchecked="Checkbox_Checked"/>
-            <CheckBox Content="Friday" Name="new_Friday" Grid.Row="6" IsChecked="{Binding Path=Info.Working_days[5]}" Checked="Checkbox_Checked" Unchecked="Checkbox_Checked"/>
+            <CheckBox Content="Sunday" VerticalAlignment="Center" Margin="65,0,0,0" Name="new_Sunday" IsChecked="{Binding Path=Info.Working_days[0]}"  Grid.Row="1" Checked="Checkbox_Checked" Unchecked="Checkbox_Checked" />
+            <CheckBox Content="Monday" VerticalAlignment="Center" Margin="65,0,0,0" Name="new_Monday" IsChecked="{Binding Path=Info.Working_days[1]}" HorizontalAlignment="Left" Checked="Checkbox_Checked" Unchecked="Checkbox_Checked" Grid.Row="2" Height="16" Width="63"/>
+            <CheckBox Content="Tuesday" VerticalAlignment="Center" Margin="65,0,0,0"  Name="new_Tuesday" Grid.Row="3" IsChecked="{Binding Path=Info.Working_days[2]}" Checked="Checkbox_Checked"  Unchecked="Checkbox_Checked"/>
+            <CheckBox Content="Wednesday" VerticalAlignment="Center" Margin="65,0,0,0" Name="new_Wednesday" Grid.Row="4" IsChecked="{Binding Path=Info.Working_days[3]}" Checked="Checkbox_Checked" Unchecked="Checkbox_Checked"/>
+            <CheckBox Content="Thursday" VerticalAlignment="Center" Margin="65,0,0,0" Name="new_Thursday" Grid.Row="5" IsChecked="{Binding Path=Info.Working_days[4]}" Checked="Checkbox_Checked" Unchecked="Checkbox_Checked"/>
+            <CheckBox Content="Friday" VerticalAlignment="Center" Margin="65,0,0,0" Name="new_Friday" Grid.Row="6" IsChecked="{Binding Path=Info.Working_days[5]}" Checked="Checkbox_Checked" Unchecked="Checkbox_Checked"/>
             <tp:TimePickerSlider Name="new_Sunday_start" Visibility="Collapsed" MinTime="{Binding Path=Daily_Working_hours.MinTime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Time="{Binding Path=Info.Daily_Working_hours[0][0],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxTime="{Binding Path=Daily_Working_hours.MaxTime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="1" Margin="0,0,0.8,0.2"/>
             <tp:TimePickerSlider Name="new_Sunday_end" Visibility="Collapsed" MinTime="{Binding Path=Daily_Working_hours.MinTime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Time="{Binding Path=Info.Daily_Working_hours[0][1],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxTime="{Binding Path=Daily_Working_hours.MaxTime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="1"  Margin="0.2,0,1,0.2"/>
             <tp:TimePickerSlider Name="new_Monday_start" Visibility="Collapsed" MinTime="{Binding Path=Daily_Working_hours.MinTime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Time="{Binding Path=Info.Daily_Working_hours[1][0],Converter={StaticResource DigitalTimeConverter},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxTime="{Binding Path=Daily_Working_hours.MaxTime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1"   Grid.Row="2" Margin="0,0.4,0.8,0.4"/>
@@ -117,7 +117,7 @@
                 <Grid.Background>
                     <ImageBrush Stretch="Uniform"/>
                 </Grid.Background>
-                <Image HorizontalAlignment="Stretch" Grid.Row="0" VerticalAlignment="Stretch" Source="Images/איש1.jpg"/>
+                <Image HorizontalAlignment="Stretch" Grid.Row="0" VerticalAlignment="Stretch" Source="Images/איש1.jpg" OpacityMask="#FFD11283"/>
                 <Label Content="SAVE" HorizontalAlignment="Center" VerticalAlignment="Top"  Grid.Row="1" Height="26" Width="37"/>
             </Grid>
 

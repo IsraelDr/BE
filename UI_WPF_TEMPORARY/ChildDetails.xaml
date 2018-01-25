@@ -19,17 +19,17 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="120"/>
         </Grid.RowDefinitions>
-        <Label Content="ID" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Content="ID" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <TextBlock  FontSize="20"  HorizontalAlignment="Center" TextWrapping="Wrap" Text="Child Details" VerticalAlignment="Center" Height="23" TextDecorations="Underline" Width="auto" Grid.ColumnSpan="2" FontStyle="Italic" FontWeight="SemiBold" FontFamily="Sitka Small"/>
 
         <TextBox Grid.Column="1" Grid.Row="1"  PreviewTextInput="new_ID_PreviewTextInput" Name="new_ID" TextWrapping="Wrap" Text="{Binding Path=ID,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0.2,25,-0.4,24.8"/>
-        <Label Content="Mother ID" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Content="Mother ID" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <ComboBox Grid.Column="1" Name="new_IDmother" HorizontalAlignment="Center"  SelectedValue="{Binding Path=Mother_ID,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0.2,25,-0.4,24.8" Grid.Row="2" Width="160" VerticalAlignment="Stretch"/>
-        <Label Content="Name" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Content="Name" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <TextBox Grid.Column="1" Grid.Row="3" Name="new_Name" TextWrapping="Wrap" Text="{Binding Path=name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0.2,25,-0.4,24.8"/>
-        <Label Content="Birthdate" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Content="Birthdate" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <DatePicker Grid.Column="1" Name="new_Birthdate" Grid.Row="4" SelectedDate="{Binding Path=Birthdate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0.2,25,-0.4,24.8" KeyDown="new_Birthdate_KeyDown"/>
-        <CheckBox Content="SpecialNeeds" HorizontalAlignment="Center" VerticalAlignment="Center" Name="new_specialneeds" IsChecked="{Binding Path=SpecialNeeds,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Row="5"/>
+        <CheckBox Content="SpecialNeeds" HorizontalAlignment="Left" VerticalAlignment="Center" Name="new_specialneeds" IsChecked="{Binding Path=SpecialNeeds,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Row="5"/>
         <Grid HorizontalAlignment="Center" Height="100" Margin="10,10,10,10" Width="50" Name="SaveBUTTON" Grid.Column="1" Grid.Row="8" VerticalAlignment="Center"  MouseDown="Button_Click" MouseEnter="Grid_MouseEnter" MouseLeave="Grid_MouseLeave">
             <Grid.RowDefinitions>
                 <RowDefinition Height="49*"/>

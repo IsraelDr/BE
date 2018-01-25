@@ -6,14 +6,12 @@
         xmlns:local="clr-namespace:UI_WPF_TEMPORARY"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="" HorizontalAlignment="Center" VerticalAlignment="Center" Height="700" Width="619.21" ResizeMode="NoResize" >
-    <Grid x:Name="AddGrid">
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                <GradientStop Color="#FFF6A40E"/>
-                <GradientStop Color="White" Offset="0.762"/>
-            </LinearGradientBrush>
-        </Grid.Background>
-
-    </Grid>
+        Title="" HorizontalAlignment="Center" VerticalAlignment="Center" Height="700" Width="700" ResizeMode="NoResize" >
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+            <GradientStop Color="#FFD11283"/>
+            <GradientStop Color="White" Offset="0.762"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid x:Name="AddGrid" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 </Window>

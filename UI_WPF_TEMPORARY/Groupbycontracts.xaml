@@ -28,7 +28,7 @@
 
 
             <ListView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate >
                     <Border BorderThickness="2" BorderBrush="Blue" Margin="5">
                         <StackPanel>
                             <TextBlock Text="{Binding Path=Key}" FontSize="16" Foreground="Red" TextAlignment="Center" />
